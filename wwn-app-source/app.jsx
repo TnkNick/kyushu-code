@@ -57,6 +57,8 @@ function App() {
 
   const changeLang = (l) => { setLang(l); try { localStorage.setItem('lookbook-lang', l); } catch (e) {} };
 
+  React.useEffect(() => { if (window.__hideSplash) window.__hideSplash(); }, []);
+
   React.useEffect(() => {
     if (!PARAM.flow) return;
     const post = () => window.parent.postMessage(
@@ -177,20 +179,20 @@ function Footer({ trip, day, onPrev, onNext, first, last, lang }) {
             <span className="stage-prev-i"><Icon name="chevronLeft" size={18} stroke={1.4} /></span>
             <span className="stage-prev-txt">
               <span className="stage-prev-k">{x({ en: 'Previous', th: 'ก่อนหน้า' })}</span>
-              <span className="stage-prev-t">{(lang === 'th' ? trip.days[day - 1].labelTh : trip.days[day - 1].label)} · {x(trip.days[day - 1].title)}</span>
+              <span className="stage-prev-t">{(lang === 'th' ? trip.days[day - 1].labelTh : trip.days[day - 1].label)}</span>
             </span>
           </button>
         ) : <span className="stage-foot-spacer"></span>}
         {last ? (
           <div className="stage-foot-end">
             <Icon name="compass" size={20} stroke={1.1} />
-            <p>{x({ en: 'Journey complete — ten days across Japan.', th: 'การเดินทางสิ้นสุดลง — สิบวันทั่วญี่ปุ่น' })}</p>
+            <p>{x({ en: 'Journey complete — nine days across Kyushu.', th: 'การเดินทางสิ้นสุดลง — เก้าวันทั่วคิวชู' })}</p>
           </div>
         ) : (
           <button className="stage-next" onClick={onNext}>
             <span className="stage-next-txt">
               <span className="stage-next-k">{x({ en: 'Next', th: 'ถัดไป' })}</span>
-              <span className="stage-next-t">{(lang === 'th' ? trip.days[day + 1].labelTh : trip.days[day + 1].label)} · {x(trip.days[day + 1].title)}</span>
+              <span className="stage-next-t">{(lang === 'th' ? trip.days[day + 1].labelTh : trip.days[day + 1].label)}</span>
             </span>
             <Icon name="arrowRight" size={18} stroke={1.4} />
           </button>

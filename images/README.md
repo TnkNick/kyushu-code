@@ -56,15 +56,16 @@
 | `p-tagot.jpg` | Tagot | 820×820 |
 | `p-tum.jpg` | P’Tum | 820×820 |
 
-### Itinerary timeline + activity detail — 59 รูป
+### Itinerary timeline + activity detail — 60 รูป
 
 | ไฟล์ | คือ | ขนาด |
 |---|---|---|
-| `a-d1-imdonut.jpg` | I’m Donut & Fuk Coffee | 1280×800 |
-| `a-d1-ramen.jpg` | Ippudo · Daimyo (original) | 1280×800 |
+| `a-d1-imdonut.jpg` | I’m Donut? | 1280×800 |
+| `a-d1-fukcoffee.jpg` | Fuk Coffee | 1280×800 |
+| `a-d1-ramen.jpg` | Menya Gaga · Tenjin | 1280×800 |
 | `a-d1-canalcity.jpg` | Canal City & Tenjin | 1280×800 |
 | `a-d1-illum.jpg` | Winter Illumination | 1280×800 |
-| `a-d1-motsunabe.jpg` | Motsunabe | 1280×800 |
+| `a-d1-motsunabe.jpg` | Motsunabe Rakutenchi | 1280×800 |
 | `a-d1-nightlife.jpg` | FUKUOKA CRAFT by El Borracho | 1280×800 |
 | `a-d2-cityrun.jpg` | Morning city run | 1280×800 |
 | `a-d3-daikanbo.jpg` | Daikanbo viewpoint | 1280×800 |
@@ -120,21 +121,23 @@
 | `a-d10-dinner.jpg` | Hakata Yakitori | 1280×800 |
 | `a-d10-nightlife.jpg` | Bar Gentle — a quiet last drink | 1280×800 |
 
-### Activity menu — dish photo popup — 74 รูป
+### Activity menu — dish photo popup — 76 รูป
 
 | ไฟล์ | คือ | ขนาด |
 |---|---|---|
 | `dish-a-d1-imdonut-0.jpg` | Original I’m Donut | 1080×810 |
 | `dish-a-d1-imdonut-1.jpg` | Pistachio donut | 1080×810 |
-| `dish-a-d1-imdonut-2.jpg` | Fuk Coffee latte | 1080×810 |
-| `dish-a-d1-ramen-0.jpg` | Shiromaru Motoaji | 1080×810 |
-| `dish-a-d1-ramen-1.jpg` | Akamaru Shinaji | 1080×810 |
-| `dish-a-d1-ramen-2.jpg` | Karaka-men | 1080×810 |
-| `dish-a-d1-ramen-3.jpg` | Hakata Hitokuchi Gyoza | 1080×810 |
-| `dish-a-d1-motsunabe-0.jpg` | Soy-broth motsunabe | 1080×810 |
-| `dish-a-d1-motsunabe-1.jpg` | Miso-broth motsunabe | 1080×810 |
-| `dish-a-d1-motsunabe-2.jpg` | Champon noodles | 1080×810 |
-| `dish-a-d1-motsunabe-3.jpg` | Mentaiko tamagoyaki | 1080×810 |
+| `dish-a-d1-imdonut-2.jpg` | Custard donut | 1080×810 |
+| `dish-a-d1-fukcoffee-0.jpg` | Fukuoka-map latte | 1080×810 |
+| `dish-a-d1-fukcoffee-1.jpg` | Drip coffee | 1080×810 |
+| `dish-a-d1-ramen-0.jpg` | Tonkotsu ramen | 1080×810 |
+| `dish-a-d1-ramen-1.jpg` | Ajitama ramen | 1080×810 |
+| `dish-a-d1-ramen-2.jpg` | Chashu ramen | 1080×810 |
+| `dish-a-d1-ramen-3.jpg` | Gyoza | 1080×810 |
+| `dish-a-d1-motsunabe-0.jpg` | Motsunabe · soy broth | 1080×810 |
+| `dish-a-d1-motsunabe-1.jpg` | Motsunabe · miso broth | 1080×810 |
+| `dish-a-d1-motsunabe-2.jpg` | Champon shime | 1080×810 |
+| `dish-a-d1-motsunabe-3.jpg` | Su-motsu | 1080×810 |
 | `dish-a-d2-starbucks-0.jpg` | Seasonal latte | 1080×810 |
 | `dish-a-d2-starbucks-1.jpg` | Umegae mochi (nearby) | 1080×810 |
 | `dish-a-d2-starbucks-2.jpg` | Matcha frappuccino | 1080×810 |
@@ -199,4 +202,4 @@
 | `dish-a-d9-sweets-1.jpg` | Fluffy fruit pancakes | 1080×810 |
 | `dish-a-d9-sweets-2.jpg` | Fruit sandwich | 1080×810 |
 
-_รวม 156 ไฟล์ · สร้างจาก `_generate_placeholders.py`_
+_รวม 159 ไฟล์ · สร้างจาก `_generate_placeholders.py`_

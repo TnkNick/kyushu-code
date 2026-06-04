@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
 <title>WWN · Japan Trip</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -14,10 +14,22 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 <meta name="apple-mobile-web-app-title" content="Kyushu Trip" />
 <link rel="apple-touch-icon" href="icon-192.png" />
+<!-- iOS PWA launch / splash screens (portrait) — iPhone SE2/3 → 16 Pro Max -->
+<link rel="apple-touch-startup-image" media="screen and (device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="splash/launch-750x1334.png" />
+<link rel="apple-touch-startup-image" media="screen and (device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="splash/launch-1242x2208.png" />
+<link rel="apple-touch-startup-image" media="screen and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="splash/launch-1125x2436.png" />
+<link rel="apple-touch-startup-image" media="screen and (device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="splash/launch-828x1792.png" />
+<link rel="apple-touch-startup-image" media="screen and (device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="splash/launch-1242x2688.png" />
+<link rel="apple-touch-startup-image" media="screen and (device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="splash/launch-1170x2532.png" />
+<link rel="apple-touch-startup-image" media="screen and (device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="splash/launch-1284x2778.png" />
+<link rel="apple-touch-startup-image" media="screen and (device-width: 393px) and (device-height: 852px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="splash/launch-1179x2556.png" />
+<link rel="apple-touch-startup-image" media="screen and (device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="splash/launch-1290x2796.png" />
+<link rel="apple-touch-startup-image" media="screen and (device-width: 402px) and (device-height: 874px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="splash/launch-1206x2622.png" />
+<link rel="apple-touch-startup-image" media="screen and (device-width: 440px) and (device-height: 956px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="splash/launch-1320x2868.png" />
 <style>
   /* ───────────────────────── reset ───────────────────────── */
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html, body { height: 100%; }
+  * { margin: 0; padding: 0; box-sizing: border-box; touch-action: manipulation; }
+  html, body { height: 100%; -webkit-text-size-adjust: 100%; }
   body {
     background: #0e0b07;
     font-family: "Sukhumvit Set", "IBM Plex Sans Thai", "Hanken Grotesk", system-ui, sans-serif;
@@ -27,6 +39,41 @@
   #root { height: 100%; }
   button { font-family: inherit; cursor: pointer; color: inherit; }
   a { color: inherit; }
+
+  /* ───────────────────────── boot splash ─────────────────────────
+     Shown the instant the page paints — covers the in-browser Babel
+     transpile gap so the app never flashes a blank #root on launch.
+     Removed from the DOM by App's first effect (window.__hideSplash). */
+  #app-splash {
+    position: fixed; inset: 0; z-index: 2147483647;
+    display: flex; align-items: center; justify-content: center;
+    background: #14100b;
+    background-image: radial-gradient(130% 90% at 82% -15%, rgba(217,170,92,.20), transparent 55%),
+                      radial-gradient(120% 95% at -12% 112%, rgba(208,106,62,.16), transparent 50%);
+    padding: env(safe-area-inset-top, 0px) env(safe-area-inset-right, 0px)
+             env(safe-area-inset-bottom, 0px) env(safe-area-inset-left, 0px);
+    opacity: 1; transition: opacity .5s ease;
+  }
+  #app-splash.hide { opacity: 0; pointer-events: none; }
+  .splash-core { display: flex; flex-direction: column; align-items: center; gap: 15px;
+    animation: splashRise .8s cubic-bezier(.2,.7,.2,1) both; }
+  .splash-icon { width: 86px; height: 86px; border-radius: 23%;
+    box-shadow: 0 18px 46px -14px rgba(0,0,0,.6); animation: splashPulse 2.2s ease-in-out infinite; }
+  .splash-word { font-family: "Hanken Grotesk", system-ui, sans-serif; color: #f2e7d5;
+    font-size: 17px; letter-spacing: .36em; font-weight: 600; padding-left: .36em; }
+  .splash-sub { font-family: "Hanken Grotesk", system-ui, sans-serif; color: #b2a288;
+    font-size: 11px; letter-spacing: .22em; text-transform: uppercase; margin-top: -6px; }
+  .splash-bar { width: 118px; height: 2px; border-radius: 2px; overflow: hidden;
+    background: rgba(217,170,92,.16); margin-top: 10px; }
+  .splash-bar span { display: block; height: 100%; width: 38%; border-radius: 2px;
+    background: linear-gradient(90deg, transparent, #d9aa5c, transparent);
+    animation: splashSlide 1.15s ease-in-out infinite; }
+  @keyframes splashRise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+  @keyframes splashPulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.06); } }
+  @keyframes splashSlide { from { transform: translateX(-130%); } to { transform: translateX(360%); } }
+  @media (prefers-reduced-motion: reduce) {
+    .splash-core, .splash-icon, .splash-bar span { animation: none; }
+  }
 
   /* ───────────────────────── theme tokens ───────────────────────── */
   .lookbook {
@@ -153,7 +200,11 @@
     background: linear-gradient(180deg, rgba(12,11,9,.46) 0%, rgba(12,11,9,.12) 32%, rgba(12,11,9,.18) 64%, rgba(12,11,9,.74) 100%); }
 
   .cover-inner { position: absolute; inset: 0; z-index: 2; display: flex; flex-direction: column;
-    justify-content: space-between; padding: clamp(28px, 5vw, 64px); color: #f6f2ea; }
+    justify-content: space-between; color: #f6f2ea;
+    padding: calc(clamp(28px, 5vw, 64px) + env(safe-area-inset-top, 0px))
+             calc(clamp(28px, 5vw, 64px) + env(safe-area-inset-right, 0px))
+             calc(clamp(28px, 5vw, 64px) + env(safe-area-inset-bottom, 0px))
+             calc(clamp(28px, 5vw, 64px) + env(safe-area-inset-left, 0px)); }
   .cover-top { display: flex; justify-content: space-between; align-items: center;
     animation: rise .9s .1s ease both; }
   .wordmark { display: inline-flex; align-items: center; gap: 9px; font-size: 15px; letter-spacing: .14em;
@@ -198,7 +249,7 @@
     font-size: calc(clamp(28px,4vw,52px) * var(--scale)); }
 
   /* hero */
-  .ov-hero { position: relative; max-width: 1100px; margin: 0 auto; padding: clamp(48px,9vh,120px) clamp(22px,4vw,56px) clamp(40px,6vw,72px);
+  .ov-hero { position: relative; width: 100%; padding: clamp(48px,9vh,120px) max(clamp(22px,4vw,56px), calc((100% - 1100px) / 2)) clamp(40px,6vw,72px);
     display: flex; flex-direction: column; align-items: flex-start; overflow: hidden; }
   .ov-native { position: absolute; right: -2vw; top: 50%; transform: translateY(-50%);
     font-size: clamp(180px, 34vw, 460px); line-height: .8; font-weight: 700; color: var(--ink);
@@ -480,7 +531,9 @@
   /* chrome shell — two rows: a bar (logo · date · clock/lang) + a scrollable day rail */
   .chrome { flex: none; border-bottom: 1px solid var(--line);
     background: color-mix(in srgb, var(--paper) 86%, transparent);
-    backdrop-filter: blur(16px) saturate(140%); position: sticky; top: 0; z-index: 20;
+    backdrop-filter: blur(16px) saturate(140%); -webkit-backdrop-filter: blur(16px) saturate(140%);
+    position: sticky; top: 0; z-index: 20;
+    padding-top: env(safe-area-inset-top, 0px);
     transition: background-color .9s ease; }
   .chrome-stack { display: flex; flex-direction: column; }
   .chrome-bar { display: flex; align-items: center; justify-content: space-between; gap: 16px;
@@ -666,7 +719,7 @@
   .detail { width: min(560px, 100%); height: 100%; background: var(--paper); overflow-y: auto; position: relative;
     box-shadow: -30px 0 80px rgba(0,0,0,.28); animation: slideIn .5s cubic-bezier(.2,.8,.2,1) both; }
   @keyframes slideIn { from { transform: translateX(100%); } to { transform: none; } }
-  .detail-close { position: absolute; top: 18px; right: 18px; z-index: 5; display: grid; place-items: center;
+  .detail-close { position: absolute; top: calc(18px + env(safe-area-inset-top, 0px)); right: 18px; z-index: 5; display: grid; place-items: center;
     width: 42px; height: 42px; border-radius: 50%; background: rgba(20,18,15,.4); backdrop-filter: blur(8px);
     border: .5px solid rgba(255,255,255,.2); color: #f6f2ea; transition: background .3s; }
   .detail-close:hover { background: rgba(20,18,15,.62); }
@@ -1028,6 +1081,15 @@
     .chrome-nav { display: none; }
     .mtab { display: grid; }
     .bk-stage, .stage { padding-bottom: 92px; }
+    /* phones: nav moved to the bottom bar — bring back the day + clock at the top */
+    .chrome-now { display: inline-flex; flex: none; }
+    .chrome-now-date, .chrome-now-sep { display: none; }
+    .chrome-now-day { letter-spacing: .04em; }
+    .clock-chrome .clock-ic { display: none; }
+    .clock-chrome { padding: 4px 9px; }
+    .chrome-bar { gap: 10px; }
+    /* overview already has the big dual clock in its hero — drop the redundant chrome clock there */
+    .chrome-min .clock-chrome { display: none; }
   }
   @media (max-width: 520px) {
     .wwn-full { display: none; }
@@ -1037,7 +1099,7 @@
     .cover-origin { display: none; }
   }
   @media (max-width: 420px) {
-    .clock-chrome { display: none; }
+    .clock-chrome { display: inline-flex; }
   }
 
   /* ───────────────────────── EMBED / FLOW (template board frames) ───────────────────────── */
@@ -1192,6 +1254,27 @@
 </style>
 </head>
 <body>
+  <div id="app-splash" role="status" aria-label="Loading Kyushu Trip">
+    <div class="splash-core">
+      <img src="icon-192.png" alt="" class="splash-icon" width="86" height="86" />
+      <div class="splash-word">WWN</div>
+      <div class="splash-sub">Kyushu · Fukuoka</div>
+      <div class="splash-bar"><span></span></div>
+    </div>
+  </div>
+  <script>
+    /* Fade out + remove the boot splash. App calls this from its first effect;
+       the load-timeout is a safety net so a failed boot can't trap the user. */
+    window.__hideSplash = function () {
+      var s = document.getElementById('app-splash');
+      if (!s || s.__hiding) return;
+      s.__hiding = true;
+      s.classList.add('hide');
+      setTimeout(function () { if (s && s.parentNode) s.parentNode.removeChild(s); }, 600);
+    };
+    window.addEventListener('load', function () { setTimeout(window.__hideSplash, 9000); });
+  </script>
+
   <div id="root"></div>
 
   <script src="vendor/react.production.min.js"></script>
@@ -2618,8 +2701,8 @@ const L = (en, th) => ({ en, th });
 
 const TRIP = {
   title: L('Kyushu', 'คิวชู'),
-  subtitle: L('Ten Nights Around the Southern Island', 'สิบคืนรอบเกาะใต้'),
-  dates: L('4 — 14 Dec 2026', '4 — 14 Dec 2026'),
+  subtitle: L('Eight Nights Around the Southern Island', 'แปดคืนรอบเกาะใต้'),
+  dates: L('4 — 12 Dec 2026', '4 — 12 Dec 2026'),
   meta: L('Early Winter · Onsen & Illuminations', 'ต้นฤดูหนาว · ออนเซนและไฟประดับ'),
   origin: L('A self-drive itinerary', 'แผนการเดินทางขับรถเอง'),
   coverId: 'cover-hero',
@@ -2671,26 +2754,33 @@ const TRIP = {
                    'ยังเช็คอินไม่ได้ — ฝากกระเป๋าแล้วออกไปเที่ยวต่อ'),
           refs: { map: 'https://maps.google.com/?q=Hotel+Monterey+La+Soeur+Fukuoka', notes: L('Too early to check in — bags held at the front desk.', 'ยังเช็คอินไม่ได้ — ฝากกระเป๋าไว้ที่เคาน์เตอร์') } },
 
-        { type: 'feature', time: '10:30', meridiem: 'Morning', kind: 'Coffee', imageId: 'a-d1-imdonut',
-          title: L('I’m Donut & Fuk Coffee', 'I’m Donut & Fuk Coffee'),
+        { type: 'feature', time: '10:30', meridiem: 'Morning', kind: 'Sweets', imageId: 'a-d1-imdonut',
+          title: L('I’m Donut?', 'I’m Donut?'),
           place: L('Daimyo · the original', 'ไดเมียว · ต้นตำรับ'),
-          blurb: L('The fluffy donut born in Fukuoka — go early before it sells out, with a coffee alongside.',
-                   'โดนัทเนื้อนุ่มที่เกิดที่ฟุกุโอกะ ไปเช้าก่อนหมด พร้อมกาแฟสักแก้ว'),
+          blurb: L('The fluffy raised donut born in Fukuoka — go early before it sells out.',
+                   'โดนัทเนื้อนุ่มสไตล์ raised ที่เกิดที่ฟุกุโอกะ ไปเช้าก่อนของหมด'),
           refs: { map: 'https://maps.google.com/?q=I%27m+Donut+Fukuoka', notes: L('Cash and cards; queue builds fast mid-morning.', 'รับเงินสดและบัตร สายๆ คิวยาว') } },
 
+        { type: 'feature', time: '11:15', meridiem: 'Late morning', kind: 'Coffee', imageId: 'a-d1-fukcoffee',
+          title: L('Fuk Coffee', 'Fuk Coffee'),
+          place: L('Latte art · the Fukuoka map', 'ลาเต้อาร์ต · รูปแผนที่ฟุกุโอกะ'),
+          blurb: L('A cosy Fukuoka coffee stand famous for latte art shaped like the map of Fukuoka — a cup and a photo to ease into the morning.',
+                   'ร้านกาแฟฟุกุโอกะอบอุ่น ขึ้นชื่อลาเต้อาร์ตรูปแผนที่ฟุกุโอกะ — จิบกาแฟถ่ายรูปเริ่มเช้าสบายๆ'),
+          refs: { map: 'https://maps.google.com/?q=Fuk+Coffee+Fukuoka', notes: L('Near Gion / Reizenmachi · small shop, may wait at peak.', 'ย่านกิอน / เรเซนมาจิ · ร้านเล็ก ช่วงพีคอาจรอ') } },
+
         { type: 'feature', time: '12:00', meridiem: 'Midday', kind: 'Dining', imageId: 'a-d1-ramen',
-          title: L('Ippudo · Daimyo (original)', 'อิปปุโด · ไดเมียว (ต้นตำรับ)'),
-          place: L('Where the chain began · tonkotsu', 'จุดกำเนิดเชน · ทงคตสึ'),
-          blurb: L('First Hakata tonkotsu at the original Ippudo, opened in Daimyo in 1985 — silky pork broth and thin noodles, the bowl that went global.',
-                   'ราเมงทงคตสึฮากาตะมื้อแรกที่อิปปุโดต้นตำรับ ย่านไดเมียว เปิดปี 1985 — น้ำซุปหมูเนียนนุ่ม เส้นบาง ชามที่ดังไปทั่วโลก'),
-          refs: { map: 'https://maps.google.com/?q=Ippudo+Daimyo+Honten+Fukuoka', official: 'https://www.ippudo.com/en/', notes: L('Try Shiromaru (classic) or Akamaru (miso-garlic). Other great bowls nearby: Hakata Issou, Shin-Shin, Ichiran.', 'ลอง Shiromaru (คลาสสิก) หรือ Akamaru (มิโซะ-กระเทียม) · ร้านเด็ดอื่นแถวนั้น: Hakata Issou, Shin-Shin, Ichiran') } },
+          title: L('Menya Gaga · Tenjin', 'เมนยะ กาก้า · เท็นจิน'),
+          place: L('21-hour tonkotsu · Imaizumi', 'ทงคตสึเคี่ยว 21 ชม. · อิมาอิซุมิ'),
+          blurb: L('A local-loved Hakata tonkotsu shop in Imaizumi, minutes from Tenjin — a creamy, odour-free pork broth simmered over 21 hours, house-made thin noodles, and an optional spicy garlic tare.',
+                   'ร้านทงคตสึฮากาตะที่คนท้องถิ่นรัก ย่านอิมาอิซุมิ ห่างจากเท็นจินไม่กี่นาที — น้ำซุปหมูเนียนไม่คาว เคี่ยวกว่า 21 ชม. เส้นบางทำเอง และเติมซอสเผ็ดกระเทียมได้'),
+          refs: { map: 'https://maps.google.com/?q=Menya+Gaga+Tenjin+Fukuoka', official: 'http://menya-gaga.com/', notes: L('No.1 is the ajitama (soft-egg) ramen; add the house spicy tare, a kaedama noodle refill and a takana onigiri. Small shop in Imaizumi — expect a short queue at lunch.', 'เมนูอันดับ 1 คือราเมงไข่ยางมะตูม; เพิ่มซอสเผ็ดของร้าน สั่งเติมเส้น (คาเอดามะ) และข้าวปั้นทาคานะ · ร้านเล็กย่านอิมาอิซุมิ มื้อเที่ยงอาจต้องต่อคิวเล็กน้อย') } },
 
         { type: 'feature', time: '14:00', meridiem: 'Afternoon', kind: 'Wander', imageId: 'a-d1-canalcity',
-          title: L('Canal City & Tenjin', 'คาแนลซิตี้ & เท็นจิน'),
-          place: L('Easy first afternoon', 'บ่ายแรกแบบสบายๆ'),
-          blurb: L('A gentle browse through the canal mall and the Tenjin shopping streets while the jet lag fades.',
-                   'เดินเล่นสบายๆ ในห้างริมคลองและย่านช้อปเท็นจิน ระหว่างรอหายเพลียจากไฟลต์'),
-          refs: { map: 'https://maps.google.com/?q=Canal+City+Hakata' } },
+          title: L('Shopping in Tenjin', 'ช้อปปิ้งย่านเท็นจิน'),
+          place: L('Malls & shops near the hotel', 'ห้าง & ร้านใกล้โรงแรม'),
+          blurb: L('An easy first afternoon around Tenjin & Daimyo, minutes from the hotel — from UNIQLO/GU to department stores, character goods, homeware and Don Quijote. Tap for the shop list.',
+                   'บ่ายแรกสบายๆ เดินช้อปย่านเท็นจิน & ไดเมียว ใกล้โรงแรม — ตั้งแต่ UNIQLO/GU, ห้างสรรพสินค้า, ของคาแรกเตอร์, ของแต่งบ้าน จนถึง Don Quijote · แตะดูรายชื่อร้าน'),
+          refs: { map: 'https://maps.google.com/?q=Tenjin+Fukuoka', notes: L('All ~5–12 min walk from the hotel (Tenjin/Daimyo). Don Quijote & the department stores are tax-free with your passport.', 'ทั้งหมดเดิน ~5–12 นาทีจากโรงแรม (เท็นจิน/ไดเมียว) · Don Quijote และห้างสรรพสินค้าซื้อปลอดภาษีได้ด้วยพาสปอร์ต') } },
 
         { type: 'step', time: '16:00', meridiem: 'Afternoon', kind: 'Check-in', icon: 'bed',
           title: L('Check in · Hotel Monterey', 'เช็คอิน · โรงแรมมอนเทอเรย์'),
@@ -2707,11 +2797,12 @@ const TRIP = {
           refs: { map: 'https://maps.google.com/?q=Hakata+Station+Illumination', notes: L('Lights switch on around 17:00.', 'ไฟเปิดประมาณ 17:00') } },
 
         { type: 'feature', time: '19:30', meridiem: 'Night', kind: 'Dining', imageId: 'a-d1-motsunabe',
-          title: L('Motsunabe', 'โมทสึนาเบะ'),
-          place: L('Hakata offal hotpot', 'หม้อไฟเครื่องในวัวฮากาตะ'),
-          blurb: L('The signature Hakata hotpot — beef offal, garlic, leek and cabbage in a rich broth.',
-                   'หม้อไฟซิกเนเจอร์ฮากาตะ — เครื่องในวัว กระเทียม ต้นหอม และกะหล่ำในน้ำซุปเข้มข้น'),
-          refs: { map: 'https://maps.google.com/?q=Motsunabe+Hakata',
+          title: L('Motsunabe Rakutenchi', 'โมทสึนาเบะ ราคุเท็นจิ'),
+          place: L('The originator · Imaizumi So-Honten', 'ต้นตำรับโมทสึนาเบะ · สาขาใหญ่อิมาอิซุมิ'),
+          blurb: L('Finish day one at the shop that says it invented motsunabe — a 40-year secret soy broth heaped with a tower of garlic chives and fresh beef offal, on the 2nd floor of the Rakutenchi building in Imaizumi. Cheap, lively and very Hakata.',
+                   'ปิดวันแรกที่ร้านต้นตำรับผู้ให้กำเนิดโมทสึนาเบะ — น้ำซุปซีอิ๊วสูตรลับกว่า 40 ปี โปะใบกุยช่ายเป็นภูเขากับเครื่องในวัวสด ชั้น 2 ตึกราคุเท็นจิ ย่านอิมาอิซุมิ ราคาเป็นกันเอง บรรยากาศคึกคักสไตล์ฮากาตะ'),
+          refs: { map: 'https://maps.google.com/?q=元祖もつ鍋楽天地+天神今泉総本店', official: 'https://rakutenti.com/',
+                  notes: L('“Manzoku” course = motsunabe (1.5 servings) + tofu + a small dish + all-you-can-eat champon shime. Soy is the classic broth; miso is also available. 2F Rakutenchi Bldg, 1-19-18 Imaizumi. Book ahead on a weekend.', 'คอร์ส “Manzoku” = โมทสึนาเบะ 1.5 ที่ + เต้าหู้ + กับแกล้ม + จัมปงเติมไม่อั้น · ซีอิ๊วคือสูตรคลาสสิก มีแบบมิโซะด้วย · ชั้น 2 ตึกราคุเท็นจิ 1-19-18 อิมาอิซุมิ · วันหยุดควรจองล่วงหน้า'),
                   reservation: { time: '19:30', code: 'MOTSU-01', party: L('Dinner · book ahead', 'มื้อค่ำ · จองล่วงหน้า') } } },
 
         { type: 'step', time: '21:00', meridiem: 'Night', kind: 'Walk', icon: 'walk',
@@ -2732,13 +2823,13 @@ const TRIP = {
 
     // ───────────────────────── DAY 2 · ASO / KUROKAWA ─────────────────────────
     {
-      label: 'Day 02', labelTh: 'วันที่ 02', theme: 'hisui',
+      label: 'Day 02', labelTh: 'วันที่ 02', theme: 'kohaku',
       date: L('Saturday · 5 Dec 2026', 'เสาร์ · 5 Dec 2026'),
-      title: L('Mt Aso', 'ภูเขาไฟอาโซ'),
-      subtitle: L('Pick Up the Car · Caldera & Onsen', 'รับรถ · ปากปล่องและออนเซน'),
+      title: L('Kumamoto', 'คุมาโมโตะ'),
+      subtitle: L('Pick Up the Car · Castle City', 'รับรถ · เมืองปราสาท'),
       note: L(
-        'Collect the rental and drive south into the largest caldera in Japan — rim viewpoints, a grassland, the smoking crater — then over to the hidden onsen village of Kurokawa for the night.',
-        'รับรถเช่าแล้วขับลงใต้สู่ปากปล่องภูเขาไฟที่ใหญ่ที่สุดในญี่ปุ่น — จุดชมขอบปล่อง ทุ่งหญ้า ปล่องที่ยังคุกรุ่น แล้วข้ามไปนอนที่หมู่บ้านออนเซนซ่อนตัวคุโรคาวะ'
+        'A dawn run in Fukuoka, then pick up the car and drive south to the castle city of Kumamoto — one of the great fortresses of Japan, a strolling garden, horse sashimi for dinner, and a night in the city.',
+        'วิ่งเช้าในฟุกุโอกะ แล้วรับรถขับลงใต้สู่เมืองปราสาทคุมาโมโตะ — หนึ่งในป้อมปราการยิ่งใหญ่ของญี่ปุ่น สวนเดินเล่น ม้าดิบเป็นมื้อค่ำ และค้างคืนในเมือง'
       ),
       coverId: 'day2-cover',
       activities: [
@@ -2766,96 +2857,10 @@ const TRIP = {
                   notes: L('International Driving Permit (IDP) required to drive.', 'ต้องมีใบขับขี่สากล (IDP) ในการขับ') } },
 
         { type: 'step', time: '09:30', meridiem: 'Morning', kind: 'Transfer', icon: 'car',
-          title: L('Depart for Aso', 'ออกเดินทางไป Aso'),
-          place: L('Kyushu Expressway · ~2.5–3 h', 'ทางด่วนคิวชู · ~2.5–3 ชม.'),
-          blurb: L('South past Kurume and Hita, climbing into the mountains of central Kyushu.',
-                   'ลงใต้ผ่านคุรุเมะและฮิตะ ไต่ขึ้นสู่ภูเขากลางเกาะคิวชู'),
-          refs: { notes: L('In December the high roads can ice over — keep to Route 111 (Panorama Line).', 'เดือนธันวาคมถนนบนเขาอาจมีน้ำแข็ง ใช้เส้น Route 111 (พาโนรามาไลน์)') } },
-
-        { type: 'feature', time: '12:30', meridiem: 'Midday', kind: 'View', imageId: 'a-d3-daikanbo',
-          title: L('Daikanbo viewpoint', 'จุดชมวิวไดคันโบ'),
-          place: L('The caldera rim', 'ขอบปากปล่อง'),
-          blurb: L('Stand on the rim and the whole 25-km caldera opens below — the central cones lined up like a sleeping figure.',
-                   'ยืนบนขอบปล่องแล้วแอ่งปากปล่องกว้าง 25 กม. เปิดออกเบื้องล่าง — กรวยกลางเรียงตัวเหมือนคนนอนหลับ'),
-          refs: { map: 'https://maps.google.com/?q=Daikanbo+Aso', notes: L('Wind is fierce on the rim — bring a layer.', 'ลมแรงบนขอบปล่อง พกเสื้อกันหนาว') } },
-
-        { type: 'feature', time: '13:00', meridiem: 'Midday', kind: 'Dining', imageId: 'a-d3-lunch',
-          title: L('Aso Akaushi-don', 'ข้าวหน้าเนื้ออาโซอากาอุชิ'),
-          place: L('Aso red-wagyu beef bowl', 'ข้าวหน้าเนื้อแดงวากิวอาโซ'),
-          blurb: L('The Aso specialty — grass-fed akaushi (red wagyu) seared and piled over rice with a soft egg. The legendary spot is Imakin Shokudo in Uchinomaki (expect a queue).',
-                   'ของขึ้นชื่ออาโซ — เนื้ออากาอุชิ (วากิวแดง) เลี้ยงปล่อย ย่างวางบนข้าวกับไข่ลวก · ร้านในตำนานคือ Imakin Shokudo ที่อุจิโนมากิ (คิวยาว)'),
-          refs: { map: 'https://maps.google.com/?q=Imakin+Shokudo+Aso', notes: L('Lunch only · very busy — go early or expect a wait.', 'เปิดเฉพาะมื้อเที่ยง · คนเยอะมาก — ไปเช้าหรือเผื่อรอคิว') } },
-
-        { type: 'feature', time: '14:00', meridiem: 'Afternoon', kind: 'Park', imageId: 'a-d3-kusasenri',
-          title: L('Kusasenri & Komezuka', 'คุซะเซนริ & โคเมซึกะ'),
-          place: L('Grassland under the volcano', 'ทุ่งหญ้าใต้ภูเขาไฟ'),
-          blurb: L('A wide meadow with twin crater ponds, and the perfect little grass cone of Komezuka beside the road.',
-                   'ทุ่งหญ้ากว้างมีบ่อปล่องคู่ และภูเขาไฟลูกจิ๋วทรงสวยโคเมซึกะข้างถนน'),
-          refs: { map: 'https://maps.google.com/?q=Kusasenri+Aso' } },
-
-        { type: 'feature', time: '15:00', meridiem: 'Afternoon', kind: 'View', imageId: 'a-d3-nakadake',
-          title: L('Nakadake Crater', 'ปล่องนากาดาเกะ'),
-          place: L('Active smoking crater', 'ปล่องที่ยังคุกรุ่น'),
-          blurb: L('A turquoise crater lake hissing sulphurous steam — access depends on the gas reading that day.',
-                   'ทะเลสาบปากปล่องสีเทอร์คอยซ์พ่นไอกำมะถัน — เข้าได้หรือไม่ขึ้นกับระดับแก๊สในวันนั้น'),
-          refs: { map: 'https://maps.google.com/?q=Nakadake+Crater+Aso', official: 'https://www.aso.ne.jp/~volcano/eng/',
-                  notes: L('Winter access 09:00–16:30; may close on high-gas days — check before driving up.', 'หน้าหนาวเปิด 09:00–16:30 อาจปิดวันแก๊สสูง เช็กก่อนขับขึ้น') } },
-
-        { type: 'feature', time: '15:30', meridiem: 'Afternoon', kind: 'Sweets', imageId: 'a-d3-sweets',
-          title: L('Aso Milk soft serve', 'ซอฟต์ครีมนมอาโซ'),
-          place: L('Aso Milk Factory · dairy soft cream', 'อาโซมิลค์แฟกตอรี · ซอฟต์ครีมนมสด'),
-          blurb: L('Aso is grazing country — stop for a thick, milky soft-serve (or a bottle of Aso milk) before the drive to Kurokawa.',
-                   'อาโซคือเมืองทุ่งเลี้ยงวัว — แวะกินซอฟต์ครีมนมสดเข้มข้น (หรือนมอาโซสักขวด) ก่อนขับไปคุโรคาวะ'),
-          refs: { map: 'https://maps.google.com/?q=Aso+Milk+Factory' } },
-
-        { type: 'step', time: '16:00', meridiem: 'Afternoon', kind: 'Transfer', icon: 'car',
-          title: L('Drive to Kurokawa Onsen', 'ขับสู่คุโรคาวะออนเซน'),
-          place: L('Aso → Kurokawa · ~40 min', 'อาโซ → คุโรคาวะ · ~40 นาที'),
-          blurb: L('North out of the caldera to a village hidden in a wooded gorge.',
-                   'ขับขึ้นเหนือออกจากปากปล่องสู่หมู่บ้านที่ซ่อนอยู่ในหุบเขาป่า'),
-          refs: { map: 'https://maps.google.com/?q=Kurokawa+Onsen' } },
-
-        { type: 'step', time: '16:45', meridiem: 'Evening', kind: 'Check-in', icon: 'bed',
-          title: L('Check in · Kurokawa ryokan', 'เช็คอิน · เรียวกังคุโระคาวะ'),
-          place: L('Traditional onsen village', 'หมู่บ้านออนเซนดั้งเดิม'),
-          blurb: L('Tatami, a yukata, and a wooden open-air bath — buy the nyuto-tegata pass to hop three baths.',
-                   'เสื่อทาทามิ ยูกาตะ และอ่างไม้กลางแจ้ง — ซื้อพาสนิวโตเทกาตะแช่ได้ 3 ออนเซน'),
-          refs: { map: 'https://maps.google.com/?q=Kurokawa+Onsen+ryokan', reservation: { time: '16:45', code: 'KRW-RYO', party: L('2 nights · half board', '2 คืน · รวมสองมื้อ') },
-                  booking: L('Onsen-hop pass · ¥1,500', 'พาสเวียนออนเซน · ¥1,500') } },
-
-        { type: 'feature', time: '19:00', meridiem: 'Evening', kind: 'Dining', imageId: 'a-d3-kaiseki',
-          title: L('Ryokan kaiseki', 'ไคเซกิที่เรียวกัง'),
-          place: L('In-house · seasonal course', 'ในที่พัก · คอร์สตามฤดู'),
-          blurb: L('Course after course of the highlands — Kumamoto wagyu, river fish and winter mountain vegetables.',
-                   'คอร์สแล้วคอร์สแห่งที่ราบสูง — วากิวคุมาโมโตะ ปลาแม่น้ำ และผักภูเขาหน้าหนาว'),
-          refs: { booking: L('Included in stay', 'รวมในค่าที่พัก') } },
-      ],
-    },
-
-    // ───────────────────────── DAY 3 · KUMAMOTO ─────────────────────────
-    {
-      label: 'Day 03', labelTh: 'วันที่ 03', theme: 'kohaku',
-      date: L('Sunday · 6 Dec 2026', 'อาทิตย์ · 6 Dec 2026'),
-      title: L('Kumamoto', 'คุมาโมโตะ'),
-      subtitle: L('Onsen Morning & the Great Castle', 'เช้าออนเซน & ปราสาทยิ่งใหญ่'),
-      note: L(
-        'A slow soak through the morning, then down to the castle city — one of the great fortresses of Japan, a landscape garden, and horse sashimi for dinner — then back to the same Kurokawa ryokan for a second night.',
-        'แช่ออนเซนสบายๆ ทั้งเช้า แล้วลงสู่เมืองปราสาท — หนึ่งในป้อมปราการยิ่งใหญ่ของญี่ปุ่น สวนแบบญี่ปุ่น และม้าดิบเป็นมื้อค่ำ — แล้วกลับเรียวกังคุโรคาวะเดิมค้างคืนที่สอง'
-      ),
-      coverId: 'day3-cover',
-      activities: [
-        { type: 'step', time: '08:00', meridiem: 'Morning', kind: 'Onsen', icon: 'bed',
-          title: L('Morning onsen-hopping', 'เวียนแช่ออนเซนยามเช้า'),
-          place: L('Kurokawa · three baths', 'คุโรคาวะ · สามออนเซน'),
-          blurb: L('Walk the village in a yukata and try the open-air baths before the crowds arrive.',
-                   'เดินเที่ยวหมู่บ้านในชุดยูกาตะ ลองแช่อ่างกลางแจ้งก่อนคนเยอะ'),
-          refs: { notes: L('Use the nyuto-tegata pass from check-in.', 'ใช้พาสนิวโตเทกาตะจากตอนเช็คอิน') } },
-
-        { type: 'step', time: '10:00', meridiem: 'Late morning', kind: 'Transfer', icon: 'car',
-          title: L('Drive Kurokawa → Kumamoto', 'ขับคุโรคาวะ → คุมาโมโตะ'),
-          place: L('~1.5 h down the mountains', '~1.5 ชม. ลงจากภูเขา'),
-          blurb: L('West and down out of the highlands toward the city.',
-                   'มุ่งตะวันตกและลงจากที่ราบสูงสู่ตัวเมือง'),
+          title: L('Depart for Kumamoto', 'ออกเดินทางไป Kumamoto'),
+          place: L('Kyushu Expressway · ~1.5 h', 'ทางด่วนคิวชู · ~1.5 ชม.'),
+          blurb: L('Straight south down the expressway past Kurume to the castle city.',
+                   'ลงใต้ตรงทางด่วนผ่านคุรุเมะสู่เมืองปราสาท'),
           refs: { map: 'https://maps.google.com/?q=Kumamoto+Castle' } },
 
         { type: 'feature', time: '12:00', meridiem: 'Midday', kind: 'Dining', imageId: 'a-d4-katsuretsu',
@@ -2887,6 +2892,13 @@ const TRIP = {
                    'ขนมพื้นบ้านคุมาโมโตะ — แป้งนึ่งห่อมันหวานกับถั่วแดงกวน หาซื้อได้ที่ซากุระโนะบาบะข้างปราสาท'),
           refs: { map: 'https://maps.google.com/?q=Ikinari+Dango+Kumamoto+Sakuranobaba' } },
 
+        { type: 'step', time: '17:30', meridiem: 'Evening', kind: 'Check-in', icon: 'bed',
+          title: L('Check in · Kumamoto hotel', 'เช็คอิน · โรงแรมคุมาโมโตะ'),
+          place: L('City hotel · one night', 'โรงแรมในเมือง · หนึ่งคืน'),
+          blurb: L('Drop the bags downtown for the night — central, near the castle and the Shimotori arcade.',
+                   'เก็บกระเป๋ากลางเมืองค้างหนึ่งคืน — ทำเลกลาง ใกล้ปราสาทและถนนคนเดินชิโมโทริ'),
+          refs: { map: 'https://maps.google.com/?q=Kumamoto+city+hotels+Shimotori', reservation: { time: '17:30', code: 'KMM-CITY', party: L('1 night · to book', '1 คืน · รอจอง') }, notes: L('Pick a central spot (Shimotori/Karashima or by Kumamoto Stn) — hotel still to be decided.', 'เลือกทำเลกลาง (ชิโมโทริ/คาราชิมะ หรือใกล้สถานีคุมาโมโตะ) — ยังไม่ได้เลือกที่พัก') } },
+
         { type: 'feature', time: '19:00', meridiem: 'Night', kind: 'Dining', imageId: 'a-d4-basashi',
           title: L('Basashi dinner', 'มื้อค่ำบาซาชิ'),
           place: L('Horse sashimi · Kumamoto specialty', 'ม้าดิบ · ของขึ้นชื่อคุมาโมโตะ'),
@@ -2894,13 +2906,92 @@ const TRIP = {
                    'ของพื้นเมือง — ม้าดิบทั้งส่วนเนื้อแดงและติดมัน หั่นบางเสิร์ฟกับขิง กระเทียม และซีอิ๊วหวาน'),
           refs: { map: 'https://maps.google.com/?q=Basashi+Kumamoto',
                   reservation: { time: '19:00', code: 'BASA-01', party: L('Dinner · book ahead', 'มื้อค่ำ · จองล่วงหน้า') } } },
+      ],
+    },
 
-        { type: 'step', time: '20:45', meridiem: 'Night', kind: 'Transfer', icon: 'car',
-          title: L('Drive back to Kurokawa', 'ขับกลับคุโรคาวะ'),
-          place: L('~1.5 h · second night', '~1.5 ชม. · คืนที่สอง'),
-          blurb: L('Back up into the hills to the same ryokan for a second night — the room is already yours.',
-                   'ขับขึ้นเขากลับสู่เรียวกังเดิม ค้างคืนที่สอง — ห้องเป็นของเราอยู่แล้ว'),
-          refs: { map: 'https://maps.google.com/?q=Kurokawa+Onsen', notes: L('Same Kurokawa ryokan as last night — no re-check-in.', 'เรียวกังคุโรคาวะเดิมเหมือนเมื่อคืน — ไม่ต้องเช็คอินใหม่') } },
+    // ───────────────────────── DAY 3 · ASO & KUROKAWA ─────────────────────────
+    {
+      label: 'Day 03', labelTh: 'วันที่ 03', theme: 'hisui',
+      date: L('Sunday · 6 Dec 2026', 'อาทิตย์ · 6 Dec 2026'),
+      title: L('Aso & Kurokawa', 'อาโซ & คุโรคาวะ'),
+      subtitle: L('Caldera Drive & Onsen Village', 'ขับชมปากปล่อง & หมู่บ้านออนเซน'),
+      note: L(
+        'Check out and drive up into the largest caldera in Japan — rim viewpoints, grasslands and the smoking crater — then over to the hidden onsen village of Kurokawa for a night in a ryokan.',
+        'เช็คเอาท์แล้วขับขึ้นสู่ปากปล่องภูเขาไฟที่ใหญ่ที่สุดในญี่ปุ่น — จุดชมขอบปล่อง ทุ่งหญ้า และปล่องที่ยังคุกรุ่น แล้วข้ามไปนอนที่หมู่บ้านออนเซนซ่อนตัวคุโรคาวะในเรียวกัง'
+      ),
+      coverId: 'day3-cover',
+      activities: [
+        { type: 'step', time: '08:00', meridiem: 'Morning', kind: 'Check-out', icon: 'luggage',
+          title: L('Check out · Kumamoto hotel', 'เช็คเอาท์ · โรงแรมคุมาโมโตะ'),
+          place: L('Then up to the caldera', 'แล้วขึ้นสู่ปากปล่อง'),
+          blurb: L('Settle up and load the car for the drive up to Mt Aso.',
+                   'เคลียร์บิลแล้วขนของขึ้นรถ ออกเดินทางขึ้นภูเขาไฟอาโซ'),
+          refs: { map: 'https://maps.google.com/?q=Kumamoto+city+hotels+Shimotori' } },
+
+        { type: 'step', time: '08:30', meridiem: 'Morning', kind: 'Transfer', icon: 'car',
+          title: L('Drive Kumamoto → Aso', 'ขับคุมาโมโตะ → อาโซ'),
+          place: L('~1.5 h up the mountains', '~1.5 ชม. ขึ้นภูเขา'),
+          blurb: L('East and up out of the city into the great caldera.',
+                   'มุ่งตะวันออกไต่ขึ้นจากตัวเมืองสู่ปากปล่องยักษ์'),
+          refs: { map: 'https://maps.google.com/?q=Daikanbo+Aso', notes: L('In December the high roads can ice over — keep to Route 111 (Panorama Line).', 'เดือนธันวาคมถนนบนเขาอาจมีน้ำแข็ง ใช้เส้น Route 111 (พาโนรามาไลน์)') } },
+
+        { type: 'feature', time: '10:30', meridiem: 'Morning', kind: 'View', imageId: 'a-d3-daikanbo',
+          title: L('Daikanbo viewpoint', 'จุดชมวิวไดคันโบ'),
+          place: L('The caldera rim', 'ขอบปากปล่อง'),
+          blurb: L('Stand on the rim and the whole 25-km caldera opens below — the central cones lined up like a sleeping figure.',
+                   'ยืนบนขอบปล่องแล้วแอ่งปากปล่องกว้าง 25 กม. เปิดออกเบื้องล่าง — กรวยกลางเรียงตัวเหมือนคนนอนหลับ'),
+          refs: { map: 'https://maps.google.com/?q=Daikanbo+Aso', notes: L('Wind is fierce on the rim — bring a layer.', 'ลมแรงบนขอบปล่อง พกเสื้อกันหนาว') } },
+
+        { type: 'feature', time: '11:30', meridiem: 'Late morning', kind: 'Dining', imageId: 'a-d3-lunch',
+          title: L('Aso Akaushi-don', 'ข้าวหน้าเนื้ออาโซอากาอุชิ'),
+          place: L('Aso red-wagyu beef bowl', 'ข้าวหน้าเนื้อแดงวากิวอาโซ'),
+          blurb: L('The Aso specialty — grass-fed akaushi (red wagyu) seared and piled over rice with a soft egg. The legendary spot is Imakin Shokudo in Uchinomaki (expect a queue).',
+                   'ของขึ้นชื่ออาโซ — เนื้ออากาอุชิ (วากิวแดง) เลี้ยงปล่อย ย่างวางบนข้าวกับไข่ลวก · ร้านในตำนานคือ Imakin Shokudo ที่อุจิโนมากิ (คิวยาว)'),
+          refs: { map: 'https://maps.google.com/?q=Imakin+Shokudo+Aso', notes: L('Lunch only · very busy — go early or expect a wait.', 'เปิดเฉพาะมื้อเที่ยง · คนเยอะมาก — ไปเช้าหรือเผื่อรอคิว') } },
+
+        { type: 'feature', time: '13:00', meridiem: 'Afternoon', kind: 'Park', imageId: 'a-d3-kusasenri',
+          title: L('Kusasenri & Komezuka', 'คุซะเซนริ & โคเมซึกะ'),
+          place: L('Grassland under the volcano', 'ทุ่งหญ้าใต้ภูเขาไฟ'),
+          blurb: L('A wide meadow with twin crater ponds, and the perfect little grass cone of Komezuka beside the road.',
+                   'ทุ่งหญ้ากว้างมีบ่อปล่องคู่ และภูเขาไฟลูกจิ๋วทรงสวยโคเมซึกะข้างถนน'),
+          refs: { map: 'https://maps.google.com/?q=Kusasenri+Aso' } },
+
+        { type: 'feature', time: '14:00', meridiem: 'Afternoon', kind: 'View', imageId: 'a-d3-nakadake',
+          title: L('Nakadake Crater', 'ปล่องนากาดาเกะ'),
+          place: L('Active smoking crater', 'ปล่องที่ยังคุกรุ่น'),
+          blurb: L('A turquoise crater lake hissing sulphurous steam — access depends on the gas reading that day.',
+                   'ทะเลสาบปากปล่องสีเทอร์คอยซ์พ่นไอกำมะถัน — เข้าได้หรือไม่ขึ้นกับระดับแก๊สในวันนั้น'),
+          refs: { map: 'https://maps.google.com/?q=Nakadake+Crater+Aso', official: 'https://www.aso.ne.jp/~volcano/eng/',
+                  notes: L('Winter access 09:00–16:30; may close on high-gas days — check before driving up.', 'หน้าหนาวเปิด 09:00–16:30 อาจปิดวันแก๊สสูง เช็กก่อนขับขึ้น') } },
+
+        { type: 'feature', time: '15:30', meridiem: 'Afternoon', kind: 'Sweets', imageId: 'a-d3-sweets',
+          title: L('Aso Milk soft serve', 'ซอฟต์ครีมนมอาโซ'),
+          place: L('Aso Milk Factory · dairy soft cream', 'อาโซมิลค์แฟกตอรี · ซอฟต์ครีมนมสด'),
+          blurb: L('Aso is grazing country — stop for a thick, milky soft-serve (or a bottle of Aso milk) before the drive to Kurokawa.',
+                   'อาโซคือเมืองทุ่งเลี้ยงวัว — แวะกินซอฟต์ครีมนมสดเข้มข้น (หรือนมอาโซสักขวด) ก่อนขับไปคุโรคาวะ'),
+          refs: { map: 'https://maps.google.com/?q=Aso+Milk+Factory' } },
+
+        { type: 'step', time: '16:00', meridiem: 'Afternoon', kind: 'Transfer', icon: 'car',
+          title: L('Drive to Kurokawa Onsen', 'ขับสู่คุโรคาวะออนเซน'),
+          place: L('Aso → Kurokawa · ~40 min', 'อาโซ → คุโรคาวะ · ~40 นาที'),
+          blurb: L('North out of the caldera to a village hidden in a wooded gorge.',
+                   'ขับขึ้นเหนือออกจากปากปล่องสู่หมู่บ้านที่ซ่อนอยู่ในหุบเขาป่า'),
+          refs: { map: 'https://maps.google.com/?q=Kurokawa+Onsen' } },
+
+        { type: 'step', time: '16:45', meridiem: 'Evening', kind: 'Check-in', icon: 'bed',
+          title: L('Check in · Kurokawa ryokan', 'เช็คอิน · เรียวกังคุโระคาวะ'),
+          place: L('Traditional onsen village', 'หมู่บ้านออนเซนดั้งเดิม'),
+          blurb: L('Tatami, a yukata, and a wooden open-air bath — buy the nyuto-tegata pass to hop three baths.',
+                   'เสื่อทาทามิ ยูกาตะ และอ่างไม้กลางแจ้ง — ซื้อพาสนิวโตเทกาตะแช่ได้ 3 ออนเซน'),
+          refs: { map: 'https://maps.google.com/?q=Kurokawa+Onsen+ryokan', reservation: { time: '16:45', code: 'KRW-RYO', party: L('1 night · half board', '1 คืน · รวมสองมื้อ') },
+                  booking: L('Onsen-hop pass · ¥1,500', 'พาสเวียนออนเซน · ¥1,500') } },
+
+        { type: 'feature', time: '19:00', meridiem: 'Evening', kind: 'Dining', imageId: 'a-d3-kaiseki',
+          title: L('Ryokan kaiseki', 'ไคเซกิที่เรียวกัง'),
+          place: L('In-house · seasonal course', 'ในที่พัก · คอร์สตามฤดู'),
+          blurb: L('Course after course of the highlands — Kumamoto wagyu, river fish and winter mountain vegetables.',
+                   'คอร์สแล้วคอร์สแห่งที่ราบสูง — วากิวคุมาโมโตะ ปลาแม่น้ำ และผักภูเขาหน้าหนาว'),
+          refs: { booking: L('Included in stay', 'รวมในค่าที่พัก') } },
       ],
     },
 
@@ -2918,10 +3009,10 @@ const TRIP = {
       activities: [
         { type: 'step', time: '08:30', meridiem: 'Morning', kind: 'Check-out', icon: 'luggage',
           title: L('Check out · Kurokawa ryokan', 'เช็คเอาท์ · เรียวกังคุโรคาวะ'),
-          place: L('Two nights done · onward to the coast', 'ครบสองคืน · มุ่งสู่ชายฝั่ง'),
+          place: L('One night done · onward to the coast', 'ครบหนึ่งคืน · มุ่งสู่ชายฝั่ง'),
           blurb: L('A last morning soak, then settle up — the scenic Yamanami Highway to Beppu lies ahead.',
                    'แช่ออนเซนเช้าครั้งสุดท้าย แล้วเคลียร์บิล — รออยู่คือยามานามิไฮเวย์วิวสวยสู่เบปปุ'),
-          refs: { map: 'https://maps.google.com/?q=Kurokawa+Onsen+ryokan', notes: L('Check-out ~10:00 · two nights at Kurokawa.', 'เช็คเอาท์ ~10:00 · พักคุโรคาวะ 2 คืน') } },
+          refs: { map: 'https://maps.google.com/?q=Kurokawa+Onsen+ryokan', notes: L('Check-out ~10:00 · one night at Kurokawa.', 'เช็คเอาท์ ~10:00 · พักคุโรคาวะ 1 คืน') } },
 
         { type: 'step', time: '08:30', meridiem: 'Morning', kind: 'Transfer', icon: 'car',
           title: L('Drive via Yamanami Highway', 'ขับผ่านยามานามิไฮเวย์'),
@@ -3057,11 +3148,11 @@ const TRIP = {
     {
       label: 'Day 06', labelTh: 'วันที่ 06', theme: 'kurogane',
       date: L('Wednesday · 9 Dec 2026', 'พุธ · 9 Dec 2026'),
-      title: L('Return to Hakata', 'กลับสู่ฮากาตะ'),
-      subtitle: L('Lake at Dawn & the Drive Back', 'บึงยามเช้า & ขับกลับ'),
+      title: L('Return to Fukuoka', 'กลับสู่ฟุกุโอกะ'),
+      subtitle: L('Drive Back & a Fukuoka Evening', 'ขับกลับ & ค่ำคืนฟุกุโอกะ'),
       note: L(
-        'Catch the lake in its morning mist, then the long drive back north to Fukuoka. Return the car on arrival — the rest of the trip is by train — and close the day with counter tempura.',
-        'เก็บภาพบึงในไอหมอกยามเช้า แล้วขับกลับขึ้นเหนือสู่ฟุกุโอกะ คืนรถทันทีที่ถึง — ช่วงที่เหลือใช้รถไฟ — แล้วปิดวันด้วยเทมปุระเคาน์เตอร์'
+        'Catch the lake in its morning mist, then the drive back to Fukuoka and return the car. The afternoon and evening are free in the city — Ohori Park, the bay tower at sunset, the Tenjin shops and winter lights, counter tempura, then Canal City after dark.',
+        'เก็บภาพบึงในไอหมอกยามเช้า แล้วขับกลับฟุกุโอกะ คืนรถทันทีที่ถึง · บ่ายและค่ำว่างเที่ยวในเมือง — สวนโอโฮริ หอคอยริมอ่าวตอนพระอาทิตย์ตก ช้อปเท็นจินกับไฟประดับ เทมปุระเคาน์เตอร์ แล้วปิดท้ายที่คาแนลซิตี้ยามค่ำ'
       ),
       coverId: 'day6-cover',
       activities: [
@@ -3102,17 +3193,31 @@ const TRIP = {
 
         { type: 'step', time: '14:00', meridiem: 'Afternoon', kind: 'Check-in', icon: 'bed',
           title: L('Check in · city hotel', 'เช็คอิน · โรงแรมในเมือง'),
-          place: L('City hotel · return stay (nights 6–10)', 'โรงแรมในเมือง · ช่วงกลับ (คืน 6–10)'),
+          place: L('City hotel · return stay (nights 6–8)', 'โรงแรมในเมือง · ช่วงกลับ (คืน 6–8)'),
           blurb: L('Check in to the Fukuoka base for the rest of the trip — one hotel, right through to the flight home.',
                    'เช็คอินโรงแรมฐานฟุกุโอกะสำหรับช่วงที่เหลือ — โรงแรมเดียวยาวจนวันบินกลับ'),
-          refs: { map: 'https://maps.google.com/?q=Fukuoka+city+hotels', reservation: { time: '14:00', code: 'FUK-RETURN', party: L('Base nights 6–10 · to book', 'พักคืนที่ 6–10 · รอจอง') }, notes: L('Separate from the Monterey (night 1) — return-stay hotel still to be decided.', 'คนละที่กับ Monterey (คืน 1) — โรงแรมช่วงกลับยังไม่ได้เลือก') } },
+          refs: { map: 'https://maps.google.com/?q=Fukuoka+city+hotels', reservation: { time: '14:00', code: 'FUK-RETURN', party: L('Base nights 6–8 · to book', 'พักคืนที่ 6–8 · รอจอง') }, notes: L('Separate from the Monterey (night 1) — return-stay hotel still to be decided.', 'คนละที่กับ Monterey (คืน 1) — โรงแรมช่วงกลับยังไม่ได้เลือก') } },
 
-        { type: 'feature', time: '15:30', meridiem: 'Afternoon', kind: 'Wander', imageId: 'a-d7-shopping',
-          title: L('Tenjin & Canal City', 'เท็นจิน & คาแนลซิตี้'),
-          place: L('Shopping + the lights', 'ช้อปปิ้ง + ไฟประดับ'),
-          blurb: L('An afternoon of shops, then back through the winter illuminations after dark.',
-                   'บ่ายเดินช้อป แล้ววนกลับผ่านไฟประดับฤดูหนาวหลังพระอาทิตย์ตก'),
-          refs: { map: 'https://maps.google.com/?q=Mina+Tenjin+Fukuoka' } },
+        { type: 'feature', time: '14:45', meridiem: 'Afternoon', kind: 'Park', imageId: 'a-d9-ohori',
+          title: L('Ohori Park', 'สวนโอโฮริ'),
+          place: L('Lake park & Japanese garden', 'สวนริมทะเลสาบ & สวนญี่ปุ่น'),
+          blurb: L('Drop the bags and unwind by the big city lake — a loop of the water and the quiet Japanese garden tucked in one corner.',
+                   'วางกระเป๋าแล้วออกมาเดินเล่นริมทะเลสาบกลางเมือง — เดินรอบบึงและแวะสวนญี่ปุ่นเงียบๆ ที่ซ่อนอยู่มุมหนึ่ง'),
+          refs: { map: 'https://maps.google.com/?q=Ohori+Park+Fukuoka', booking: L('Japanese garden · ¥250', 'สวนญี่ปุ่น · ¥250') } },
+
+        { type: 'feature', time: '16:15', meridiem: 'Afternoon', kind: 'View', imageId: 'a-d9-tower',
+          title: L('Fukuoka Tower & Momochi', 'ฟุกุโอกะทาวเวอร์ & โมโมจิ'),
+          place: L('Bayfront · sunset ~17:10', 'ริมอ่าว · พระอาทิตย์ตก ~17:10'),
+          blurb: L('A mirror-glass tower on the bay — go up for the view, or just walk the seaside at golden hour as the lights come on.',
+                   'หอกระจกริมอ่าว — ขึ้นไปชมวิว หรือเดินเล่นริมทะเลช่วงแสงทองตอนไฟเริ่มติด'),
+          refs: { map: 'https://maps.google.com/?q=Fukuoka+Tower', booking: L('Observatory · ¥800', 'หอชมวิว · ¥800') } },
+
+        { type: 'feature', time: '17:30', meridiem: 'Evening', kind: 'Wander', imageId: 'a-d7-shopping',
+          title: L('Tenjin & Daimyo', 'เท็นจิน & ไดเมียว'),
+          place: L('Shops & winter lights', 'ช้อปปิ้ง & ไฟประดับ'),
+          blurb: L('Back near the hotel — the Tenjin shops and the Daimyo backstreets, then the winter illuminations once it is dark.',
+                   'กลับมาแถวโรงแรม — ร้านค้าย่านเท็นจินและตรอกไดเมียว แล้วชมไฟประดับฤดูหนาวพอฟ้ามืด'),
+          refs: { map: 'https://maps.google.com/?q=Tenjin+Fukuoka' } },
 
         { type: 'feature', time: '18:00', meridiem: 'Evening', kind: 'Dining', imageId: 'a-d7-tempura',
           title: L('Tempura Hirao', 'เทมปุระ ฮิราโอะ'),
@@ -3122,6 +3227,13 @@ const TRIP = {
           refs: { map: 'https://maps.google.com/?q=Tempura+Hirao+Fukuoka',
                   reservation: { time: '18:00', code: 'HIRAO-01', party: L('Dinner · counter', 'มื้อค่ำ · เคาน์เตอร์') },
                   notes: L('Closes around 20:00 — go early.', 'ปิดราว 20:00 ไปแต่หัวค่ำ') } },
+
+        { type: 'feature', time: '20:00', meridiem: 'Night', kind: 'Wander', imageId: 'a-d10-canal',
+          title: L('Canal City Hakata', 'คาแนลซิตี้ ฮากาตะ'),
+          place: L('Fountain show & winter lights', 'โชว์น้ำพุ & ไฟฤดูหนาว'),
+          blurb: L('Wind down at the canal-side mall complex — a fountain-and-light show on the hour and a giant winter tree lit up after dark, with shops and cafés to browse.',
+                   'ปิดท้ายที่คอมเพล็กซ์ห้างริมคลอง — โชว์น้ำพุประกอบไฟทุกชั่วโมงและต้นไม้ฤดูหนาวยักษ์ประดับไฟยามค่ำ พร้อมร้านค้าและคาเฟ่ให้เดินเล่น'),
+          refs: { map: 'https://maps.google.com/?q=Canal+City+Hakata' } },
       ],
     },
 
@@ -3188,7 +3300,7 @@ const TRIP = {
           refs: { map: 'https://maps.google.com/?q=Yanagawa+River+Cruise', booking: L('Boat · ~¥1,800 pp', 'ค่าเรือ · ~¥1,800/ท่าน') } },
 
         { type: 'step', time: '17:30', meridiem: 'Evening', kind: 'Train', icon: 'train',
-          title: L('Return to Hakata', 'กลับสู่ฮากาตะ'),
+          title: L('Return to Fukuoka', 'กลับสู่ฟุกุโอกะ'),
           place: L('Yanagawa → Tenjin · ~50 min', 'ยานางาวะ → เท็นจิน · ~50 นาที'),
           blurb: L('Limited express back to the city as the light fades.',
                    'นั่งรถด่วนกลับเข้าเมืองขณะแสงค่อยจางลง'),
@@ -3215,10 +3327,10 @@ const TRIP = {
       label: 'Day 08', labelTh: 'วันที่ 08', theme: 'ai',
       date: L('Friday · 11 Dec 2026', 'ศุกร์ · 11 Dec 2026'),
       title: L('Itoshima', 'อิโตชิมะ'),
-      subtitle: L('Coast, Cafés & Oyster Huts', 'ชายฝั่ง คาเฟ่ และกระท่อมหอยนางรม'),
+      subtitle: L('Coast, Oysters & the Last Night', 'ชายฝั่ง หอยนางรม และคืนสุดท้าย'),
       note: L(
-        'The last day with the car — out west along the Sunset Road coast for photo spots and seaside cafés, with grilled oysters at a winter oyster hut, then return the car at night.',
-        'วันสุดท้ายที่มีรถ — ออกไปทางตะวันตกเลียบถนน Sunset Road เก็บจุดถ่ายรูปและคาเฟ่ริมทะเล กินหอยนางรมเผาที่กระท่อมหอยหน้าหนาว แล้วคืนรถตอนค่ำ'
+        'No car today — out west to the Itoshima coast by train and local transport: the white sea-torii, seaside cafés along Sunset Road, grilled winter oysters, then back to the city for the last night out.',
+        'วันนี้ไม่มีรถ — นั่งรถไฟ + รถท้องถิ่นไปชายฝั่งอิโตชิมะ: เสาโทริอิขาวกลางทะเล คาเฟ่ริมทะเลเลียบ Sunset Road หอยนางรมเผาหน้าหนาว แล้วกลับเข้าเมืองไปปาร์ตี้คืนสุดท้าย'
       ),
       coverId: 'day8-cover',
       activities: [
@@ -3278,148 +3390,20 @@ const TRIP = {
           blurb: L('A Fukuoka classic you have not had yet — clear, collagen-rich chicken hot pot at Hakata Hanamidori (branches by Hakata Station). Finish with rice porridge in the broth.',
                    'อาหารคลาสสิกฟุกุโอกะที่ยังไม่ได้กิน — หม้อไฟไก่น้ำใสคอลลาเจนเข้มข้นที่ฮานามิโดริ (มีสาขาใกล้สถานีฮากาตะ) · ปิดท้ายด้วยข้าวต้มในน้ำซุป'),
           refs: { map: 'https://maps.google.com/?q=Hakata+Hanamidori+Mizutaki', notes: L('Popular — reserve ahead, especially for a group.', 'ยอดนิยม — จองล่วงหน้า โดยเฉพาะมาเป็นกลุ่ม') } },
-      ],
-    },
 
-    // ───────────────────────── DAY 9 · FUKUOKA · SLOW DAY ─────────────────────────
-    {
-      label: 'Day 09', labelTh: 'วันที่ 09', theme: 'kohaku',
-      date: L('Saturday · 12 Dec 2026', 'เสาร์ · 12 Dec 2026'),
-      title: L('Fukuoka — Slow Day', 'ฟุกุโอกะ — วันชิลล์'),
-      subtitle: L('Parks, Cafés & the City', 'สวน คาเฟ่ และในเมือง'),
-      note: L(
-        'No car, no rush — a lakeside park and the old castle ruins, the cafés and shops of Daimyo, the bay at Momochi, and a good dinner to end.',
-        'ไม่มีรถ ไม่ต้องรีบ — สวนริมทะเลสาบและซากปราสาทเก่า คาเฟ่และร้านค้าย่านไดเมียว อ่าวที่โมโมจิ และมื้อค่ำดีๆ ปิดวัน'
-      ),
-      coverId: 'day9-cover',
-      activities: [
-        { type: 'feature', time: '09:30', meridiem: 'Morning', kind: 'Park', imageId: 'a-d9-ohori',
-          title: L('Ohori Park', 'สวนโอโฮริ'),
-          place: L('Lake park & Japanese garden', 'สวนริมทะเลสาบ & สวนญี่ปุ่น'),
-          blurb: L('A big city lake circled by a walking path, with a quiet formal Japanese garden tucked in one corner.',
-                   'ทะเลสาบใหญ่กลางเมืองมีทางเดินรอบ มีสวนญี่ปุ่นเงียบสงบซ่อนอยู่มุมหนึ่ง'),
-          refs: { map: 'https://maps.google.com/?q=Ohori+Park+Fukuoka', booking: L('Japanese garden · ¥250', 'สวนญี่ปุ่น · ¥250') } },
-
-        { type: 'feature', time: '10:30', meridiem: 'Late morning', kind: 'Castle', imageId: 'a-d9-maizuru',
-          title: L('Fukuoka Castle ruins', 'ซากปราสาทฟุกุโอกะ'),
-          place: L('Maizuru Park', 'สวนไมซุรุ'),
-          blurb: L('Massive stone ramparts and a turret are all that remain of the castle — climb up for a view over the city.',
-                   'เหลือเพียงกำแพงหินมหึมาและป้อมหนึ่งหลังของปราสาท — ขึ้นไปชมวิวเมืองได้'),
-          refs: { map: 'https://maps.google.com/?q=Fukuoka+Castle+Ruins+Maizuru+Park' } },
-
-        { type: 'feature', time: '12:00', meridiem: 'Midday', kind: 'Dining', imageId: 'a-d9-lunch',
-          title: L('Lunch in Daimyo', 'มื้อเที่ยงย่านไดเมียว'),
-          place: L('Hip backstreets', 'ตรอกย่านฮิป'),
-          blurb: L('Pick a small bistro or café in the trendiest quarter of the city.',
-                   'เลือกร้านบิสโทรหรือคาเฟ่เล็กๆ ในย่านที่ฮิปที่สุดของเมือง'),
-          refs: { map: 'https://maps.google.com/?q=Daimyo+Fukuoka' } },
-
-        { type: 'feature', time: '14:00', meridiem: 'Afternoon', kind: 'Wander', imageId: 'a-d9-daimyo',
-          title: L('Daimyo & Tenjin', 'ไดเมียว & เท็นจิน'),
-          place: L('Boutiques & coffee', 'ร้านบูทีก & กาแฟ'),
-          blurb: L('Independent fashion, record shops and specialty coffee through the lanes of Daimyo.',
-                   'ร้านแฟชั่นอิสระ ร้านแผ่นเสียง และกาแฟสเปเชียลตี้ตามตรอกไดเมียว'),
-          refs: { map: 'https://maps.google.com/?q=Daimyo+Fukuoka', guide: 'https://kickswrap.com/en/blogs/all/fukuoka-sneaker' } },
-
-        { type: 'feature', time: '15:30', meridiem: 'Afternoon', kind: 'Sweets', imageId: 'a-d9-sweets',
-          title: L('Campbell Early', 'แคมป์เบล เอิร์ลลี่'),
-          place: L('Famous fruit parfait · Imaizumi', 'พาร์เฟต์ผลไม้ชื่อดัง · อิมาอิซุมิ'),
-          blurb: L('The most famous fruit parfaits in Fukuoka — towers of seasonal fruit, cream and jelly (plus fluffy pancakes) at this Imaizumi cafe near Daimyo.',
-                   'พาร์เฟต์ผลไม้ที่ดังที่สุดของฟุกุโอกะ — ผลไม้ตามฤดู ครีม และเยลลีจัดเป็นชั้นๆ (มีแพนเค้กฟูๆ ด้วย) ที่คาเฟ่ย่านอิมาอิซุมิใกล้ไดเมียว'),
-          refs: { map: 'https://maps.google.com/?q=Campbell+Early+Fukuoka+Imaizumi', notes: L('Very popular — can queue. Seasonal fruit (early Dec: strawberry just starting).', 'ยอดนิยมมาก — อาจต้องรอคิว · ผลไม้ตามฤดู (ต้นธันวา สตรอว์เบอร์รีเพิ่งเริ่ม)') } },
-
-        { type: 'feature', time: '16:00', meridiem: 'Afternoon', kind: 'View', imageId: 'a-d9-tower',
-          title: L('Fukuoka Tower & Momochi', 'ฟุกุโอกะทาวเวอร์ & โมโมจิ'),
-          place: L('Bayfront seaside', 'ริมทะเลโมโมจิ'),
-          blurb: L('A mirror-glass tower on the bay — go up for the view, or just walk the seaside at golden hour.',
-                   'หอกระจกริมอ่าว — ขึ้นไปชมวิว หรือเดินเล่นริมทะเลช่วงแสงทอง'),
-          refs: { map: 'https://maps.google.com/?q=Fukuoka+Tower', booking: L('Observatory · ¥800', 'หอชมวิว · ¥800') } },
-
-        { type: 'feature', time: '19:00', meridiem: 'Night', kind: 'Dining', imageId: 'a-d9-yakiniku',
-          title: L('Yakiniku / sushi dinner', 'มื้อค่ำยากินิคุ / ซูชิ'),
-          place: L('A proper sit-down night', 'มื้อค่ำนั่งสบายๆ'),
-          blurb: L('A relaxed evening over grilled wagyu or a sushi counter — book ahead for the good places.',
-                   'ค่ำคืนสบายๆ กับวากิวย่างหรือเคาน์เตอร์ซูชิ — ร้านดีจองล่วงหน้า'),
-          refs: { map: 'https://maps.google.com/?q=Yakiniku+Fukuoka',
-                  reservation: { time: '19:00', code: 'USHI-01', party: L('Dinner · book ahead', 'มื้อค่ำ · จองล่วงหน้า') } } },
-
-        { type: 'feature', time: '22:00', meridiem: 'Night', kind: 'Nightlife', imageId: 'a-d9-nightlife',
+        { type: 'feature', time: '22:30', meridiem: 'Night', kind: 'Nightlife', imageId: 'a-d9-nightlife',
           title: L('Ibiza FUKUOKA', 'Ibiza FUKUOKA'),
           place: L('Nightclub · Daimyo', 'ไนต์คลับ · ไดเมียว'),
-          blurb: L('Saturday is the big one — hit Ibiza, the Daimyo club on the 5th floor of The Shops, open 21:00 till 5am.',
-                   'คืนเสาร์จัดหนัก — ลุย Ibiza ไนต์คลับย่านไดเมียว ชั้น 5 ตึก The Shops เปิด 21:00 ยันตี 5'),
-          refs: { map: 'https://maps.google.com/?q=Ibiza+Fukuoka+Daimyo', official: 'https://www.ibiza-fukuoka.jp/', notes: L('5F The Shops, 1-12-56 Daimyo · 21:00–05:00 · ~6 min from Tenjin Stn.', 'ชั้น 5 The Shops, 1-12-56 ไดเมียว · 21:00–05:00 · ~6 นาทีจากสถานีเท็นจิน') } },
+          blurb: L('The last night out — close the trip at Ibiza, the Daimyo club on the 5th floor of The Shops (Friday night, open 21:00 till 5am).',
+                   'คืนสุดท้ายจัดเต็ม — ปิดทริปที่ Ibiza ไนต์คลับย่านไดเมียว ชั้น 5 ตึก The Shops (คืนศุกร์ เปิด 21:00 ยันตี 5)'),
+          refs: { map: 'https://maps.google.com/?q=Ibiza+Fukuoka+Daimyo', official: 'https://www.ibiza-fukuoka.jp/', notes: L('5F The Shops, 1-12-56 Daimyo · 21:00–05:00 · ~6 min from Tenjin Stn · flight is 11:40 next day, pace yourself.', 'ชั้น 5 The Shops, 1-12-56 ไดเมียว · 21:00–05:00 · ~6 นาทีจากสถานีเท็นจิน · พรุ่งนี้บิน 11:40 เผื่อแรงด้วย') } },
       ],
     },
 
-    // ───────────────────────── DAY 10 · LAST FULL DAY ─────────────────────────
+    // ───────────────────────── DAY 9 · DEPARTURE ─────────────────────────
     {
-      label: 'Day 10', labelTh: 'วันที่ 10', theme: 'kurogane',
-      date: L('Sunday · 13 Dec 2026', 'อาทิตย์ · 13 Dec 2026'),
-      title: L('Last Day in Fukuoka', 'วันสุดท้ายในฟุกุโอกะ'),
-      subtitle: L('Souvenirs & a Farewell Bowl', 'ของฝาก & ราเมงอำลา'),
-      note: L(
-        'The last full day — mentaiko and sweets to carry home, one more bowl of ramen, and a final walk through the winter lights before packing.',
-        'วันเต็มสุดท้าย — เมนไทโกะและขนมเป็นของฝาก ราเมงอีกหนึ่งชาม และเดินชมไฟประดับฤดูหนาวครั้งสุดท้ายก่อนเก็บกระเป๋า'
-      ),
-      coverId: 'day10-cover',
-      activities: [
-        { type: 'feature', time: '10:00', meridiem: 'Morning', kind: 'Market', imageId: 'a-d10-mentaiko',
-          title: L('Mentaiko & souvenirs', 'เมนไทโกะ & ของฝาก'),
-          place: L('Hakata Stn · Deitos / AMU', 'สถานีฮากาตะ · Deitos / AMU'),
-          blurb: L('Spicy cod roe to take home, plus Hakata sweets — all under one roof at the station.',
-                   'ไข่ปลาดองเผ็ดเป็นของฝาก พร้อมขนมฮากาตะ — ครบในที่เดียวที่สถานี'),
-          refs: { map: 'https://maps.google.com/?q=Hakata+Deitos',
-                  notes: L('The Shokudo Mitsu fish market is closed on Sundays — do it another morning.', 'ตลาดปลา Shokudo Mitsu ปิดวันอาทิตย์ — ไปเช้าวันอื่นแทน') } },
-
-        { type: 'feature', time: '12:30', meridiem: 'Midday', kind: 'Dining', imageId: 'a-d10-ramen',
-          title: L('Farewell ramen', 'ราเมงอำลา'),
-          place: L('Hakata Station ramen street', 'ถนนราเมงในสถานีฮากาตะ'),
-          blurb: L('One last bowl of tonkotsu before the city — the ramen street under the station has plenty to choose from.',
-                   'ราเมงทงคตสึชามสุดท้ายก่อนลาเมือง — ถนนราเมงใต้สถานีมีให้เลือกหลายร้าน'),
-          refs: { map: 'https://maps.google.com/?q=Hakata+Ramen+Stadium' } },
-
-        { type: 'feature', time: '14:30', meridiem: 'Afternoon', kind: 'Wander', imageId: 'a-d10-canal',
-          title: L('Last shopping run', 'ช้อปรอบสุดท้าย'),
-          place: L('Canal City / Tenjin', 'คาแนลซิตี้ / เท็นจิน'),
-          blurb: L('Pick up anything left on the list before the shops shut.',
-                   'เก็บของที่เหลือในลิสต์ก่อนร้านปิด'),
-          refs: { map: 'https://maps.google.com/?q=Canal+City+Hakata' } },
-
-        { type: 'feature', time: '17:30', meridiem: 'Evening', kind: 'View', imageId: 'a-d10-illum',
-          title: L('Final illumination stroll', 'เดินชมไฟประดับครั้งสุดท้าย'),
-          place: L('Hakata Stn + Tenjin', 'สถานีฮากาตะ + เท็นจิน'),
-          blurb: L('One more slow walk through the winter lights to close the trip.',
-                   'เดินชมไฟประดับฤดูหนาวช้าๆ อีกครั้งเพื่อปิดทริป'),
-          refs: { map: 'https://maps.google.com/?q=Tenjin+Illumination+Fukuoka' } },
-
-        { type: 'feature', time: '19:00', meridiem: 'Night', kind: 'Dining', imageId: 'a-d10-dinner',
-          title: L('Hakata Yakitori', 'ยากิโทริฮากาตะ'),
-          place: L('Skewers · tori-kawa & pork belly', 'ไม้ย่าง · โทริคาวะ & หมูสามชั้น'),
-          blurb: L('A lively last dinner — Fukuoka-style yakitori with its signature crispy tori-kawa (rolled chicken skin) and buta-bara pork-belly skewers. Top-rated spots include Tori Kami.',
-                   'มื้อค่ำสุดท้ายแบบครึกครื้น — ยากิโทริสไตล์ฟุกุโอกะ เด่นที่โทริคาวะ (หนังไก่ม้วนย่างกรอบ) และหมูสามชั้นเสียบไม้ · ร้านท็อปเช่น Tori Kami'),
-          refs: { map: 'https://maps.google.com/?q=Hakata+yakitori+torikawa+Fukuoka', notes: L('Pair with a highball before the nightcap at Bar Gentle.', 'ซดไฮบอลคู่ไม้ย่าง ก่อนไปปิดท้ายที่ Bar Gentle') } },
-
-        { type: 'feature', time: '21:00', meridiem: 'Night', kind: 'Nightlife', imageId: 'a-d10-nightlife',
-          title: L('Bar Gentle — a quiet last drink', 'Bar Gentle — ดื่มเบาๆ ส่งท้าย'),
-          place: L('Relaxed cocktail bar · Tenjin', 'บาร์ค็อกเทลชิลล์ · เท็นจิน'),
-          blurb: L('Close the trip softly — a calm, sophisticated Tenjin bar for one well-made cocktail (or a nightcap beer) before the morning flight.',
-                   'ปิดทริปแบบนุ่มๆ — บาร์เท็นจินบรรยากาศสงบ จิบค็อกเทลดีๆ สักแก้ว (หรือเบียร์ส่งท้าย) ก่อนบินเช้าพรุ่งนี้'),
-          refs: { map: 'https://maps.google.com/?q=Bar+Gentle+Tenjin+Fukuoka', notes: L('Tenjin · intimate & relaxed · easy early night before flying.', 'เท็นจิน · เล็กอบอุ่น ชิลล์ · นอนเร็วก่อนบิน') } },
-
-        { type: 'step', time: '23:30', meridiem: 'Night', kind: 'Walk', icon: 'walk',
-          title: L('Pack & rest', 'เก็บกระเป๋า & พักผ่อน'),
-          place: L('City hotel', 'โรงแรมในเมือง'),
-          blurb: L('Pack tonight — the flight home leaves late morning tomorrow.',
-                   'เก็บกระเป๋าคืนนี้ — เที่ยวบินกลับออกสายพรุ่งนี้'),
-          refs: {} },
-      ],
-    },
-
-    // ───────────────────────── DAY 11 · DEPARTURE ─────────────────────────
-    {
-      label: 'Day 11', labelTh: 'วันที่ 11', theme: 'ai',
-      date: L('Monday · 14 Dec 2026', 'จันทร์ · 14 Dec 2026'),
+      label: 'Day 09', labelTh: 'วันที่ 09', theme: 'ai',
+      date: L('Saturday · 12 Dec 2026', 'เสาร์ · 12 Dec 2026'),
       title: L('Homeward', 'เดินทางกลับ'),
       subtitle: L('Last Morning, Flight Home', 'เช้าสุดท้าย บินกลับบ้าน'),
       note: L(
@@ -3452,8 +3436,8 @@ const TRIP = {
         { type: 'step', time: '11:40', meridiem: 'Late morning', kind: 'Flight', icon: 'plane',
           title: L('Depart Fukuoka (FUK)', 'ออกเดินทางจากฟุกุโอกะ (FUK)'),
           place: L('FUK → Bangkok (BKK)', 'FUK → กรุงเทพฯ (BKK)'),
-          blurb: L('Wheels up at midday — ten nights across Kyushu, complete.',
-                   'เครื่องทะยานตอนเที่ยง — สิบคืนรอบคิวชู สมบูรณ์แล้ว'),
+          blurb: L('Wheels up at midday — eight nights across Kyushu, complete.',
+                   'เครื่องทะยานตอนเที่ยง — แปดคืนรอบคิวชู สมบูรณ์แล้ว'),
           refs: { official: 'https://www.thaiairways.com/',
                   notes: L('Thai Airways TG-649, economy, 6h — arrives Bangkok (BKK) 15:40 the same day. 23 kg checked baggage each.', 'การบินไทย TG-649 ชั้นประหยัด บิน 6 ชม. ถึงกรุงเทพฯ (BKK) 15:40 วันเดียวกัน · กระเป๋าโหลดคนละ 23 กก.') } },
       ],
@@ -3499,19 +3483,19 @@ const DESTINATION = {
   islandNative: '九州',
   country: L('Japan', 'ญี่ปุ่น'),
   native: '日本',
-  tagline: L('Volcano calderas, hidden onsen towns and a city of ramen — ten nights driving the southern island.',
-             'ปากปล่องภูเขาไฟ เมืองออนเซนซ่อนตัว และเมืองแห่งราเมง — สิบคืนขับรถรอบเกาะใต้'),
+  tagline: L('Volcano calderas, hidden onsen towns and a city of ramen — eight nights driving the southern island.',
+             'ปากปล่องภูเขาไฟ เมืองออนเซนซ่อนตัว และเมืองแห่งราเมง — แปดคืนขับรถรอบเกาะใต้'),
   facts: [
-    { k: L('Duration', 'ระยะเวลา'), v: L('11 days · 10 nights', '11 วัน · 10 คืน') },
+    { k: L('Duration', 'ระยะเวลา'), v: L('9 days · 8 nights', '9 วัน · 8 คืน') },
     { k: L('Season', 'ฤดูกาล'), v: L('Early winter · December', 'ต้นฤดูหนาว · ธันวาคม') },
     { k: L('Currency', 'สกุลเงิน'), v: L('Japanese Yen · ¥', 'เยนญี่ปุ่น · ¥') },
     { k: L('Travel', 'การเดินทาง'), v: L('Self-drive loop', 'ขับรถวนเอง') },
   ],
   // route stops drive the animated map on the Overview screen; `day` = first day index (0-based)
   route: [
-    { city: L('Fukuoka', 'ฟุกุโอกะ'), days: L('Base · Day 1 & 6–10', 'ฐาน · วันที่ 1 & 6–10'), day: 0, theme: 'kurogane', imageId: 'r-fukuoka', mx: 35.5, my: 13.5 },
-    { city: L('Aso · Kurokawa', 'อาโซ · คุโรคาวะ'), days: L('Days 2–3', 'วันที่ 2–3'), day: 1, theme: 'hisui', imageId: 'r-aso', mx: 55.5, my: 36.5 },
-    { city: L('Kumamoto', 'คุมาโมโตะ'), days: L('Day 3 · day trip', 'วันที่ 3 · ไป-กลับ'), day: 2, theme: 'kohaku', imageId: 'r-kumamoto', mx: 43.5, my: 47 },
+    { city: L('Fukuoka', 'ฟุกุโอกะ'), days: L('Base · Day 1 & 6–8', 'ฐาน · วันที่ 1 & 6–8'), day: 0, theme: 'kurogane', imageId: 'r-fukuoka', mx: 35.5, my: 13.5 },
+    { city: L('Aso · Kurokawa', 'อาโซ · คุโรคาวะ'), days: L('Day 3', 'วันที่ 3'), day: 2, theme: 'hisui', imageId: 'r-aso', mx: 55.5, my: 36.5 },
+    { city: L('Kumamoto', 'คุมาโมโตะ'), days: L('Day 2', 'วันที่ 2'), day: 1, theme: 'kohaku', imageId: 'r-kumamoto', mx: 43.5, my: 47 },
     { city: L('Beppu', 'เบปปุ'), days: L('Day 4', 'วันที่ 4'), day: 3, theme: 'urushi', imageId: 'r-beppu', mx: 77, my: 21 },
     { city: L('Yufuin', 'ยูฟุอิน'), days: L('Days 4–5', 'วันที่ 4–5'), day: 4, theme: 'botan', imageId: 'r-yufuin', mx: 67.5, my: 29.5 },
     { city: L('Itoshima', 'อิโตชิมะ'), days: L('Day 8', 'วันที่ 8'), day: 7, theme: 'ai', imageId: 'r-itoshima', mx: 22, my: 21 },
@@ -3524,13 +3508,13 @@ const TRAVELERS = {
   subtitle: L('Four travellers, one itinerary', 'สี่ผู้เดินทาง หนึ่งแผนการเดินทาง'),
   people: [
     { name: L('Nick', 'นิค'), role: L('Trip lead · planner', 'หัวหน้าทริป · ผู้วางแผน'),
-      home: L('Bangkok', 'กรุงเทพฯ'), detail: L('Driver', 'คนขับ'), imageId: 'p-nick' },
+      home: L('Bangkok', 'กรุงเทพฯ'), detail: L('Itinerary & budget', 'แผนเที่ยว & งบ'), imageId: 'p-nick' },
     { name: L('Bank', 'แบงค์'), role: L('Co-driver · navigator', 'คนขับสำรอง · นำทาง'),
       home: L('Bangkok', 'กรุงเทพฯ'), detail: L('Maps & routes', 'แผนที่ & เส้นทาง'), imageId: 'p-bank' },
     { name: L('Tagot', 'ทาก็อต'), role: L('Food & reservations', 'อาหาร & การจอง'),
       home: L('Bangkok', 'กรุงเทพฯ'), detail: L('Books the restaurants', 'จองร้านอาหาร'), imageId: 'p-tagot' },
-    { name: L('P’Tum', 'พี่ตุ้ม'), role: L('Photographer', 'ช่างภาพ'),
-      home: L('Bangkok', 'กรุงเทพฯ'), detail: L('Budget & memories', 'ดูแลงบ & เก็บภาพ'), imageId: 'p-tum' },
+    { name: L('P’Tam', 'พี่ตั้ม'), role: L('Driver', 'คนขับ'),
+      home: L('Tokyo', 'โตเกียว'), detail: L('Friend joining the trip', 'เพื่อนมาเที่ยวด้วย'), imageId: 'p-tum' },
   ],
 };
 
@@ -3555,13 +3539,13 @@ const BUDGET = {
   currency: '฿',
   items: [
     { label: L('Flights — round trip (TG)', 'ตั๋วเครื่องบิน — ไป-กลับ (TG)'), amount: 30000 },
-    { label: L('Accommodation — 10 nights', 'ที่พัก — 10 คืน'), amount: 45000 },
+    { label: L('Accommodation — 8 nights', 'ที่พัก — 8 คืน'), amount: 36000 },
     { label: L('Car rental, fuel & tolls', 'ค่าเช่ารถ น้ำมัน & ทางด่วน'), amount: 12000 },
     { label: L('Food & dining', 'อาหาร & ร้านอาหาร'), amount: 28000 },
     { label: L('Attractions & onsen', 'สถานที่ & ออนเซน'), amount: 6000 },
     { label: L('Shopping & misc', 'ช้อปปิ้ง & เบ็ดเตล็ด'), amount: 14000 },
   ],
-  total: 135000,
+  total: 126000,
   note: L('Car cost is per person assuming the rental is split across the party. Excludes personal shopping beyond the estimate.',
           'ค่ารถคิดต่อคนโดยหารกันทั้งกลุ่ม ไม่รวมการช้อปปิ้งส่วนตัวที่เกินประมาณการ'),
 };
@@ -3569,39 +3553,44 @@ const BUDGET = {
 // ── Convenience stores (konbini) nearest each stay ──────────────────────
 const KONBINI = {
   title: L('Near Each Stay', 'ของจำเป็นใกล้ที่พัก'),
-  subtitle: L('Konbini · pharmacy · hospital · Don Quijote', 'ร้านสะดวกซื้อ · ร้านยา · โรงพยาบาล · Don Quijote'),
-  note: L('Handy spots within a short walk or drive of each stay — tap any to open in Maps.', 'จุดสำคัญใกล้ที่พักแต่ละคืน (เดินถึงหรือขับนิดเดียว) — แตะเพื่อเปิดในแผนที่'),
+  subtitle: L('Konbini · pharmacy · hospital', 'ร้านสะดวกซื้อ · ร้านยา · โรงพยาบาล'),
+  note: L('Handy spots within a short walk or drive of each stay — tap any to drop a pin in Maps.', 'จุดสำคัญใกล้ที่พักแต่ละคืน (เดินถึงหรือขับนิดเดียว) — แตะเพื่อปักหมุดในแผนที่'),
   areas: [
     { days: L('Day 01', 'วันที่ 01'), area: L('Tenjin · Daimyo', 'เท็นจิน · ไดเมียว'),
       stores: [
-        { brand: '7-Eleven', detail: L('Tenjin / Daimyo · ~150 m', 'เท็นจิน / ไดเมียว · ~150 ม.'), map: 'https://maps.google.com/?q=7-Eleven+Tenjin+Fukuoka' },
-        { brand: 'Lawson', detail: L('Akasaka / Daimyo · ~200 m', 'อากาซากะ / ไดเมียว · ~200 ม.'), map: 'https://maps.google.com/?q=Lawson+Daimyo+Fukuoka' },
+        { brand: '7-Eleven', detail: L('Tenjin / Daimyo · ~150 m', 'เท็นจิน / ไดเมียว · ~150 ม.'), map: 'https://maps.google.com/?q=33.5882,130.3990' },
+        { brand: 'Lawson', detail: L('Akasaka / Daimyo · ~200 m', 'อากาซากะ / ไดเมียว · ~200 ม.'), map: 'https://maps.google.com/?q=33.5870,130.3972' },
       ],
-      pharmacy: [ { brand: 'Matsumoto Kiyoshi', detail: L('Drugstore · Tenjin', 'ร้านขายยา · เท็นจิน'), map: 'https://maps.google.com/?q=Matsumoto+Kiyoshi+Tenjin+Fukuoka' } ],
-      hospital: [ { brand: 'Kyushu Medical Center', detail: L('24h emergency · ~2 km', 'ฉุกเฉิน 24 ชม. · ~2 กม.'), map: 'https://maps.google.com/?q=Kyushu+Medical+Center+Fukuoka' } ],
-      donki: [ { brand: 'Don Quijote', detail: L('Tenjin · 24h', 'เท็นจิน · 24 ชม.'), map: 'https://maps.google.com/?q=Don+Quijote+Tenjin+Fukuoka' } ] },
-    { days: L('Day 02–03', 'วันที่ 02–03'), area: L('Kurokawa · Oguni', 'คุโรคาวะ · โอกุนิ'),
+      pharmacy: [ { brand: 'Matsumoto Kiyoshi', detail: L('Drugstore · Tenjin', 'ร้านขายยา · เท็นจิน'), map: 'https://maps.google.com/?q=33.5905,130.3992' } ],
+      hospital: [ { brand: 'Kyushu Medical Center', detail: L('24h emergency · ~2 km', 'ฉุกเฉิน 24 ชม. · ~2 กม.'), map: 'https://maps.google.com/?q=33.5808,130.3768' } ] },
+    { days: L('Day 02', 'วันที่ 02'), area: L('Kumamoto · downtown', 'คุมาโมโตะ · กลางเมือง'),
       stores: [
-        { brand: '7-Eleven', detail: L('Oguni town · ~10 min by car', 'เมืองโอกุนิ · ~10 นาทีโดยรถ'), map: 'https://maps.google.com/?q=7-Eleven+Oguni+Kumamoto' },
-        { brand: 'Lawson', detail: L('Route 442 · ~12 min by car', 'เส้น 442 · ~12 นาทีโดยรถ'), map: 'https://maps.google.com/?q=Lawson+Oguni+Aso' },
+        { brand: '7-Eleven', detail: L('Shimotori / downtown', 'ชิโมโทริ / กลางเมือง'), map: 'https://maps.google.com/?q=32.8035,130.7075' },
+        { brand: 'Lawson', detail: L('Karashima-cho arcade', 'คาราชิมะ · อาเขต'), map: 'https://maps.google.com/?q=32.8018,130.7058' },
       ],
-      pharmacy: [ { brand: 'Cosmos', detail: L('Drugstore · Oguni · ~12 min', 'ร้านขายยา · โอกุนิ · ~12 นาที'), map: 'https://maps.google.com/?q=Cosmos+drugstore+Oguni+Kumamoto' } ],
-      hospital: [ { brand: 'Oguni Public Hospital', detail: L('Nearest clinic/ER · ~12 min', 'คลินิก/ฉุกเฉินใกล้สุด · ~12 นาที'), map: 'https://maps.google.com/?q=Oguni+Public+Hospital+Kumamoto' } ] },
+      pharmacy: [ { brand: 'Matsumoto Kiyoshi', detail: L('Drugstore · Shimotori arcade', 'ร้านขายยา · อาเขตชิโมโทริ'), map: 'https://maps.google.com/?q=32.8040,130.7068' } ],
+      hospital: [ { brand: 'Kumamoto Chuo Hospital', detail: L('Emergency · central', 'ฉุกเฉิน · กลางเมือง'), map: 'https://maps.google.com/?q=32.7858,130.7012' } ] },
+    { days: L('Day 03', 'วันที่ 03'), area: L('Kurokawa · Oguni', 'คุโรคาวะ · โอกุนิ'),
+      stores: [
+        { brand: '7-Eleven', detail: L('Oguni town · ~10 min by car', 'เมืองโอกุนิ · ~10 นาทีโดยรถ'), map: 'https://maps.google.com/?q=33.1242,131.1335' },
+        { brand: 'Lawson', detail: L('Route 442 · ~12 min by car', 'เส้น 442 · ~12 นาทีโดยรถ'), map: 'https://maps.google.com/?q=33.1310,131.1490' },
+      ],
+      pharmacy: [ { brand: 'Cosmos', detail: L('Drugstore · Oguni · ~12 min', 'ร้านขายยา · โอกุนิ · ~12 นาที'), map: 'https://maps.google.com/?q=33.1238,131.1330' } ],
+      hospital: [ { brand: 'Oguni Public Hospital', detail: L('Nearest clinic/ER · ~12 min', 'คลินิก/ฉุกเฉินใกล้สุด · ~12 นาที'), map: 'https://maps.google.com/?q=33.1255,131.1352' } ] },
     { days: L('Day 04–05', 'วันที่ 04–05'), area: L('Yufuin', 'ยูฟุอิน'),
       stores: [
-        { brand: 'Lawson', detail: L('Yufuin Stn · ~300 m', 'สถานียูฟุอิน · ~300 ม.'), map: 'https://maps.google.com/?q=Lawson+Yufuin+Station' },
-        { brand: '7-Eleven', detail: L('Route 210 · ~600 m', 'เส้น 210 · ~600 ม.'), map: 'https://maps.google.com/?q=7-Eleven+Yufuin' },
+        { brand: 'Lawson', detail: L('Yufuin Stn · ~300 m', 'สถานียูฟุอิน · ~300 ม.'), map: 'https://maps.google.com/?q=33.2638,131.3558' },
+        { brand: '7-Eleven', detail: L('Route 210 · ~600 m', 'เส้น 210 · ~600 ม.'), map: 'https://maps.google.com/?q=33.2665,131.3505' },
       ],
-      pharmacy: [ { brand: 'Drugstore', detail: L('Yufuin centre · limited', 'ใจกลางยูฟุอิน · มีจำกัด'), map: 'https://maps.google.com/?q=drugstore+Yufuin' } ],
-      hospital: [ { brand: 'Yufuin Hospital', detail: L('Nearest hospital', 'โรงพยาบาลใกล้สุด'), map: 'https://maps.google.com/?q=hospital+Yufuin' } ] },
-    { days: L('Day 06–11', 'วันที่ 06–11'), area: L('Hakata · Nakasu', 'ฮากาตะ · นากาสึ'),
+      pharmacy: [ { brand: 'Drugstore', detail: L('Yufuin centre · limited', 'ใจกลางยูฟุอิน · มีจำกัด'), map: 'https://maps.google.com/?q=33.2650,131.3560' } ],
+      hospital: [ { brand: 'Yufuin Hospital', detail: L('Nearest hospital', 'โรงพยาบาลใกล้สุด'), map: 'https://maps.google.com/?q=33.2685,131.3548' } ] },
+    { days: L('Day 06–09', 'วันที่ 06–09'), area: L('Hakata · Nakasu', 'ฮากาตะ · นากาสึ'),
       stores: [
-        { brand: '7-Eleven', detail: L('Hakata Stn · ~150 m', 'สถานีฮากาตะ · ~150 ม.'), map: 'https://maps.google.com/?q=7-Eleven+Hakata+Station' },
-        { brand: 'FamilyMart', detail: L('Canal City · ~200 m', 'คาแนลซิตี้ · ~200 ม.'), map: 'https://maps.google.com/?q=FamilyMart+Canal+City+Hakata' },
+        { brand: '7-Eleven', detail: L('Hakata Stn · ~150 m', 'สถานีฮากาตะ · ~150 ม.'), map: 'https://maps.google.com/?q=33.5898,130.4200' },
+        { brand: 'FamilyMart', detail: L('Canal City · ~200 m', 'คาแนลซิตี้ · ~200 ม.'), map: 'https://maps.google.com/?q=33.5897,130.4110' },
       ],
-      pharmacy: [ { brand: 'Matsumoto Kiyoshi', detail: L('Drugstore · Tenjin', 'ร้านขายยา · เท็นจิน'), map: 'https://maps.google.com/?q=Matsumoto+Kiyoshi+Tenjin+Fukuoka' } ],
-      hospital: [ { brand: 'Kyushu Medical Center', detail: L('24h emergency · ~2 km', 'ฉุกเฉิน 24 ชม. · ~2 กม.'), map: 'https://maps.google.com/?q=Kyushu+Medical+Center+Fukuoka' } ],
-      donki: [ { brand: 'Don Quijote', detail: L('Nakasu / Tenjin · 24h', 'นากาสึ / เท็นจิน · 24 ชม.'), map: 'https://maps.google.com/?q=Don+Quijote+Tenjin+Fukuoka' } ] },
+      pharmacy: [ { brand: 'Matsumoto Kiyoshi', detail: L('Drugstore · Tenjin', 'ร้านขายยา · เท็นจิน'), map: 'https://maps.google.com/?q=33.5905,130.3992' } ],
+      hospital: [ { brand: 'Kyushu Medical Center', detail: L('24h emergency · ~2 km', 'ฉุกเฉิน 24 ชม. · ~2 กม.'), map: 'https://maps.google.com/?q=33.5808,130.3768' } ] },
   ],
 };
 
@@ -3613,21 +3602,27 @@ const WEATHER = {
           'สภาพอากาศโดยทั่วไปต้นเดือน ธ.ค. · บนภูเขาหนาวกว่า · เช็คพยากรณ์ก่อนเดินทาง'),
   days: {
     1:  { icon: 'cloudSun', hi: 14, lo: 7, label: L('Mild, partly cloudy', 'อากาศดี มีเมฆบางส่วน') },
-    2:  { icon: 'cloud',    hi: 8,  lo: 1, label: L('Cold highlands, flurries possible', 'ที่สูงหนาว อาจมีหิมะโปรย') },
-    3:  { icon: 'cloudSun', hi: 13, lo: 4, label: L('Crisp, light cloud', 'เย็นสบาย มีเมฆบาง') },
+    2:  { icon: 'cloudSun', hi: 13, lo: 4, label: L('Crisp city, light cloud', 'เมืองอากาศเย็นสบาย มีเมฆบาง') },
+    3:  { icon: 'cloud',    hi: 8,  lo: 1, label: L('Cold highlands, flurries possible', 'ที่สูงหนาว อาจมีหิมะโปรย') },
     4:  { icon: 'cloudSun', hi: 14, lo: 6, label: L('Mild by the coast', 'อากาศดีริมชายฝั่ง') },
     5:  { icon: 'cloud',    hi: 10, lo: 2, label: L('Cold, misty valley', 'หนาว มีหมอกในหุบเขา') },
     6:  { icon: 'cloudSun', hi: 14, lo: 6, label: L('Mild, partly cloudy', 'อากาศดี มีเมฆบางส่วน') },
     7:  { icon: 'cloudSun', hi: 14, lo: 6, label: L('Mild, partly cloudy', 'อากาศดี มีเมฆบางส่วน') },
     8:  { icon: 'sun',      hi: 14, lo: 6, label: L('Bright by the sea', 'แดดดีริมทะเล') },
-    9:  { icon: 'cloudSun', hi: 13, lo: 6, label: L('Mild, light cloud', 'อากาศดี มีเมฆบาง') },
-    10: { icon: 'cloud',    hi: 13, lo: 7, label: L('Overcast, mild', 'ฟ้าครึ้ม อากาศสบาย') },
-    11: { icon: 'cloudSun', hi: 14, lo: 7, label: L('Mild — travel day', 'อากาศดี — วันเดินทาง') },
+    9:  { icon: 'cloudSun', hi: 13, lo: 6, label: L('Mild — travel day', 'อากาศดี — วันเดินทาง') },
   },
 };
 
 // ── Recommended dishes per dining venue (keyed by activity imageId) ─────
 const MENUS = {
+  'a-d1-canalcity': { items: [
+    { name: L('Mina Tenjin', 'มีนะ เท็นจิน'), note: L('Flagship UNIQLO & GU, plus Loft (lifestyle/stationery) and ABC-Mart shoes.', 'UNIQLO & GU ร้านใหญ่ + Loft (ของไลฟ์สไตล์/เครื่องเขียน) และ ABC-Mart รองเท้า'), map: 'https://maps.google.com/?q=Mina+Tenjin', signature: true },
+    { name: L('Fukuoka PARCO', 'ฟุกุโอกะ พาร์โก'), note: L('Trendy fashion + anime/game & character goods (Pokémon Center, Jump Shop) and cosmetics.', 'แฟชั่นวัยรุ่น + ของอนิเมะ/เกม & คาแรกเตอร์ (Pokémon Center, Jump Shop) และเครื่องสำอาง'), map: 'https://maps.google.com/?q=Fukuoka+PARCO' },
+    { name: L('ONE FUKUOKA BLDG. (ワンビル)', 'ONE FUKUOKA BLDG. (ワンビル)'), note: L('New 2024 Tenjin tower — premium & select-brand fashion, lifestyle and dining (Ritz-Carlton above).', 'ตึกใหม่ปี 2024 ย่านเท็นจิน — แฟชั่นพรีเมียม/เซเลกต์แบรนด์ ไลฟ์สไตล์ และร้านอาหาร (มี Ritz-Carlton ด้านบน)'), map: 'https://maps.google.com/?q=ONE+FUKUOKA+BLDG+Tenjin' },
+    { name: L('Iwataya Main Store', 'อิวาตายะ (ห้างหลัก)'), note: L('Classic department store — luxury fashion & cosmetics, and a superb basement food hall (depachika) for sweets & gifts.', 'ห้างสรรพสินค้าคลาสสิก — แฟชั่นหรู & เครื่องสำอาง และโซนอาหารชั้นใต้ดิน (เดปาจิกะ) ของหวาน & ของฝากเด็ด'), map: 'https://maps.google.com/?q=Iwataya+Honten+Fukuoka' },
+    { name: L('Don Quijote', 'ดองกิโฮเต้'), note: L('Discount mega-store — snacks, cosmetics, electronics, souvenirs; tax-free and open late.', 'ร้านลดราคาสารพัด — ขนม เครื่องสำอาง เครื่องใช้ไฟฟ้า ของฝาก · ปลอดภาษี เปิดดึก'), map: 'https://maps.google.com/?q=Don+Quijote+Tenjin+Fukuoka' },
+    { name: L('B·B·B POTTERS', 'B·B·B POTTERS'), note: L('Stylish homeware select shop — kitchenware, tableware and design goods, with a café upstairs.', 'ร้านของแต่งบ้านสไตล์ดี — เครื่องครัว ภาชนะ ของดีไซน์ มีคาเฟ่ชั้นบน'), map: 'https://maps.google.com/?q=BBB+POTTERS+Fukuoka' },
+  ] },
   'a-d2-cityrun': { items: [
     { name: L('① Start · Hotel Monterey (Daimyo)', '① ออกตัว · โรงแรมมอนเทอเรย์ (ไดเมียว)'), note: L('06:00 — warm up and head west through quiet Akasaka toward the park (~1.3 km).', '06:00 — วอร์มอัพ วิ่งไปทางตะวันตกผ่านอาคาซากะเงียบๆ สู่สวน (~1.3 กม.)'), map: 'https://maps.google.com/?q=Hotel+Monterey+La+Soeur+Fukuoka' },
     { name: L('② Ohori Park · 2 km lake loop', '② สวนโอโฮริ · ลู่วิ่งรอบบึง 2 กม.'), note: L('The flat yellow-rubber jogging track once around the lake — the running heart of the city.', 'ลู่วิ่งยางสีเหลืองทางเรียบ วิ่งรอบบึงหนึ่งรอบ — ลู่วิ่งหัวใจของเมือง'), map: 'https://maps.google.com/?q=Ohori+Park+jogging+course', signature: true },
@@ -3639,19 +3634,23 @@ const MENUS = {
   'a-d1-imdonut': { items: [
     { name: L('Original I’m Donut', 'ไอแอมโดนัทออริจินอล'), note: L('The famous fresh, fluffy raised donut.', 'โดนัทเนื้อนุ่มสดที่โด่งดัง'), signature: true },
     { name: L('Pistachio donut', 'โดนัทพิสตาชิโอ'), note: L('Nutty cream filling.', 'ไส้ครีมถั่วพิสตาชิโอ') },
-    { name: L('Fuk Coffee latte', 'ลาเต้ Fuk Coffee'), note: L('With the Fukuoka latte art.', 'พร้อมลาเต้อาร์ตรูปฟุกุโอกะ') },
+    { name: L('Custard donut', 'โดนัทคัสตาร์ด'), note: L('Silky vanilla custard cream filling.', 'ไส้ครีมคัสตาร์ดวานิลลาเนียนนุ่ม') },
+  ] },
+  'a-d1-fukcoffee': { items: [
+    { name: L('Fukuoka-map latte', 'ลาเต้รูปแผนที่ฟุกุโอกะ'), note: L('Signature latte art shaped like Fukuoka.', 'ลาเต้อาร์ตซิกเนเจอร์รูปฟุกุโอกะ'), signature: true },
+    { name: L('Drip coffee', 'ดริปกาแฟ'), note: L('Single-origin hand pour-over.', 'ดริปมือซิงเกิลออริจิน') },
   ] },
   'a-d1-ramen': { items: [
-    { name: L('Shiromaru Motoaji', 'ชิโรมารุ โมโตอาจิ'), note: L('The original classic tonkotsu — silky broth, ultra-thin noodles.', 'ทงคตสึคลาสสิกดั้งเดิม — น้ำซุปเนียน เส้นบางพิเศษ'), signature: true },
-    { name: L('Akamaru Shinaji', 'อากามารุ ชินอาจิ'), note: L('Tonkotsu refined with special miso paste and fragrant garlic oil.', 'ทงคตสึปรุงด้วยมิโซะพิเศษและน้ำมันกระเทียมหอม'), signature: true },
-    { name: L('Karaka-men', 'คาราคะเม็ง'), note: L('The spicy version with minced pork and miso.', 'เวอร์ชันเผ็ดใส่หมูสับและมิโซะ') },
-    { name: L('Hakata Hitokuchi Gyoza', 'เกี๊ยวฮากาตะคำเล็ก'), note: L('Bite-size pan-fried gyoza on the side.', 'เกี๊ยวทอดคำเล็กกินคู่') },
+    { name: L('Tonkotsu ramen', 'ราเมงทงคตสึ'), note: L('The 21-hour creamy, odour-free pork broth with thin house-made noodles — add the spicy garlic tare.', 'น้ำซุปหมูเนียนไม่คาว เคี่ยว 21 ชม. กับเส้นบางทำเอง — เพิ่มซอสเผ็ดกระเทียมได้'), signature: true },
+    { name: L('Ajitama ramen', 'ราเมงไข่ยางมะตูม'), note: L('The shop’s No.1 — topped with a melty soft-boiled flavoured egg.', 'เมนูอันดับ 1 ของร้าน — ใส่ไข่ต้มยางมะตูมปรุงรสเนื้อเนียน'), signature: true },
+    { name: L('Chashu ramen', 'ราเมงชาชู'), note: L('Loaded with extra braised pork chashu.', 'จัดหมูชาชูตุ๋นเพิ่มเต็มชาม') },
+    { name: L('Gyoza', 'เกี๊ยวซ่า'), note: L('Original pan-fried gyoza, made dim-sum style.', 'เกี๊ยวซ่าทอดสูตรร้าน ทำสไตล์ติ่มซำ') },
   ] },
   'a-d1-motsunabe': { items: [
-    { name: L('Soy-broth motsunabe', 'โมทสึนาเบะน้ำซีอิ๊ว'), note: L('Beef offal hotpot with garlic and leek.', 'หม้อไฟเครื่องในวัว กระเทียม ต้นหอม'), signature: true },
-    { name: L('Miso-broth motsunabe', 'โมทสึนาเบะน้ำมิโซะ'), note: L('Richer, slightly sweet version.', 'รสเข้มข้นหวานเล็กน้อย') },
-    { name: L('Champon noodles', 'เส้นจัมปง'), note: L('Add noodles to the broth at the end.', 'ใส่เส้นลงในน้ำซุปตอนท้าย') },
-    { name: L('Mentaiko tamagoyaki', 'ไข่ม้วนเมนไทโกะ'), note: L('Rolled omelette with spicy cod roe.', 'ไข่ม้วนสอดไส้ไข่ปลาเผ็ด') },
+    { name: L('Motsunabe · soy broth', 'โมทสึนาเบะ · น้ำซีอิ๊ว'), note: L('The 40-year secret soy broth, heaped with a tower of garlic chives and fresh beef offal.', 'น้ำซุปซีอิ๊วสูตรลับ 40 ปี โปะใบกุยช่ายเป็นภูเขากับเครื่องในวัวสด'), signature: true },
+    { name: L('Motsunabe · miso broth', 'โมทสึนาเบะ · น้ำมิโซะ'), note: L('The bolder, slightly sweet miso version.', 'เวอร์ชันมิโซะ รสเข้มข้นหวานเล็กน้อย') },
+    { name: L('Champon shime', 'จัมปงปิดท้าย'), note: L('Old-style champon noodles dropped into the leftover broth to finish — all-you-can-eat on the Manzoku course.', 'เส้นจัมปงสไตล์ดั้งเดิมใส่ในน้ำซุปที่เหลือเพื่อปิดท้าย — เติมไม่อั้นในคอร์ส Manzoku'), signature: true },
+    { name: L('Su-motsu', 'ซึโมทสึ'), note: L('Chilled vinegared offal — a refreshing, tangy starter.', 'เครื่องในคลุกน้ำส้มสายชูเย็นๆ ออเดิร์ฟรสเปรี้ยวสดชื่น') },
   ] },
   'a-d2-starbucks': { items: [
     { name: L('Seasonal latte', 'ลาเต้ตามฤดู'), note: L('Enjoy inside the woven-cedar interior.', 'จิบในร้านไม้ซีดาร์สาน'), signature: true },
@@ -3723,14 +3722,6 @@ const MENUS = {
     { name: L('Spicy mentai ramen', 'ราเมงเมนไทเผ็ด'), note: L('With spicy cod roe.', 'ใส่ไข่ปลาเผ็ด') },
     { name: L('Kaedama', 'คาเอดามะ (เพิ่มเส้น)'), note: L('Extra noodles for the broth.', 'เพิ่มเส้นสำหรับน้ำซุป') },
     { name: L('Gyoza', 'เกี๊ยวซ่า'), note: L('Bite-size Hakata dumplings.', 'เกี๊ยวฮากาตะคำเล็ก') },
-  ] },
-  'a-d1-canalcity': { items: [
-    { name: L('GU · Mina Tenjin 2F', 'GU · มินะ เท็นจิน ชั้น 2'), note: L('Only full-lineup GU in Kyushu (Tenjin).', 'GU เต็มไลน์ที่เดียวในคิวชู (เท็นจิน)'), map: 'https://maps.google.com/?q=GU+Mina+Tenjin+Fukuoka', signature: true },
-    { name: L('On · Super Sports Xebio', 'On · ซูเปอร์สปอร์ต Xebio'), note: L('On / On Cloud running shoes — Tenjin.', 'รองเท้าวิ่ง On / On Cloud — เท็นจิน'), map: 'https://maps.google.com/?q=Super+Sports+Xebio+Tenjin+Fukuoka', signature: true },
-    { name: L('MUJI flagship', 'MUJI แฟลกชิป'), note: L('Two-floor flagship — MUJI BOOKS + Found MUJI.', 'แฟลกชิป 2 ชั้น — MUJI BOOKS + Found MUJI'), map: 'https://maps.google.com/?q=MUJI+Canal+City+Hakata' },
-    { name: L('Uniqlo', 'ยูนิโคล่'), note: L('Large anchor store on 1F.', 'ร้านใหญ่ชั้น 1'), map: 'https://maps.google.com/?q=Uniqlo+Canal+City+Hakata' },
-    { name: L('Ramen Stadium', 'ราเมงสเตเดียม'), note: L('Eight regional ramen shops, 5F.', 'ราเมง 8 เจ้า ชั้น 5'), map: 'https://maps.google.com/?q=Ramen+Stadium+Canal+City+Hakata' },
-    { name: L('Fountain show', 'โชว์น้ำพุ'), note: L('Canal-side water & light show.', 'โชว์น้ำพุ-แสงริมคลอง'), map: 'https://maps.google.com/?q=Canal+City+Hakata' },
   ] },
   'a-d7-shopping': { items: [
     { name: L('GU · Mina Tenjin 2F', 'GU · มินะ เท็นจิน ชั้น 2'), note: L('Only full-lineup GU in Kyushu (Tenjin).', 'GU เต็มไลน์ที่เดียวในคิวชู (เท็นจิน)'), map: 'https://maps.google.com/?q=GU+Mina+Tenjin+Fukuoka', signature: true },
@@ -4209,7 +4200,7 @@ function Clock({ variant = 'chrome' }) {
       <div className="clock-chrome" title="Japan Standard Time">
         <span className="clock-ic"><Icon name="clock" size={13} stroke={1.4} /></span>
         <span className="clock-zone">JP</span>
-        <span className="clock-time mono">{jp}</span>
+        <span className="clock-time mono">{jp.split(':').slice(0, 2).join(':')}</span>
       </div>
     );
   }
@@ -4813,8 +4804,8 @@ function Bookings({ trip, onHome, onItinerary, onPhrases, onParty, onEmergency, 
           <span className="ov-kicker">{x({ en: 'Reference', th: 'ข้อมูลอ้างอิง' })}</span>
           <h1 className="bk-h1">{x({ en: 'Bookings & Reservations', th: 'การจองทั้งหมด' })}</h1>
           <p className="bk-lede">{x({
-            en: 'Every confirmation, ticket and pass for the ten days, gathered in one place. Tick each off as you book it.',
-            th: 'ทุกการยืนยัน ตั๋ว และพาส สำหรับสิบวัน รวมไว้ในที่เดียว ทำเครื่องหมายเมื่อจองแต่ละรายการเสร็จ',
+            en: 'Every confirmation, ticket and pass for the nine days, gathered in one place. Tick each off as you book it.',
+            th: 'ทุกการยืนยัน ตั๋ว และพาส สำหรับเก้าวัน รวมไว้ในที่เดียว ทำเครื่องหมายเมื่อจองแต่ละรายการเสร็จ',
           })}</p>
           <div className="bk-progress" style={{ '--p': pct }}>
             <div className="bk-progress-top">
@@ -5199,6 +5190,8 @@ function App() {
 
   const changeLang = (l) => { setLang(l); try { localStorage.setItem('lookbook-lang', l); } catch (e) {} };
 
+  React.useEffect(() => { if (window.__hideSplash) window.__hideSplash(); }, []);
+
   React.useEffect(() => {
     if (!PARAM.flow) return;
     const post = () => window.parent.postMessage(
@@ -5319,20 +5312,20 @@ function Footer({ trip, day, onPrev, onNext, first, last, lang }) {
             <span className="stage-prev-i"><Icon name="chevronLeft" size={18} stroke={1.4} /></span>
             <span className="stage-prev-txt">
               <span className="stage-prev-k">{x({ en: 'Previous', th: 'ก่อนหน้า' })}</span>
-              <span className="stage-prev-t">{(lang === 'th' ? trip.days[day - 1].labelTh : trip.days[day - 1].label)} · {x(trip.days[day - 1].title)}</span>
+              <span className="stage-prev-t">{(lang === 'th' ? trip.days[day - 1].labelTh : trip.days[day - 1].label)}</span>
             </span>
           </button>
         ) : <span className="stage-foot-spacer"></span>}
         {last ? (
           <div className="stage-foot-end">
             <Icon name="compass" size={20} stroke={1.1} />
-            <p>{x({ en: 'Journey complete — ten days across Japan.', th: 'การเดินทางสิ้นสุดลง — สิบวันทั่วญี่ปุ่น' })}</p>
+            <p>{x({ en: 'Journey complete — nine days across Kyushu.', th: 'การเดินทางสิ้นสุดลง — เก้าวันทั่วคิวชู' })}</p>
           </div>
         ) : (
           <button className="stage-next" onClick={onNext}>
             <span className="stage-next-txt">
               <span className="stage-next-k">{x({ en: 'Next', th: 'ถัดไป' })}</span>
-              <span className="stage-next-t">{(lang === 'th' ? trip.days[day + 1].labelTh : trip.days[day + 1].label)} · {x(trip.days[day + 1].title)}</span>
+              <span className="stage-next-t">{(lang === 'th' ? trip.days[day + 1].labelTh : trip.days[day + 1].label)}</span>
             </span>
             <Icon name="arrowRight" size={18} stroke={1.4} />
           </button>
@@ -5355,7 +5348,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', function () {
       navigator.serviceWorker.register('sw.js').catch(function () {});
-      if (window.caches) caches.open('wwn-kyushu-v1').then(function (c) {
+      if (window.caches) caches.open('wwn-kyushu-v8').then(function (c) {
         c.add(new Request(location.href, { cache: 'reload' })).catch(function () {});
       });
     });

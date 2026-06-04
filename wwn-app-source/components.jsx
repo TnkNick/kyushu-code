@@ -365,7 +365,7 @@ function Clock({ variant = 'chrome' }) {
       <div className="clock-chrome" title="Japan Standard Time">
         <span className="clock-ic"><Icon name="clock" size={13} stroke={1.4} /></span>
         <span className="clock-zone">JP</span>
-        <span className="clock-time mono">{jp}</span>
+        <span className="clock-time mono">{jp.split(':').slice(0, 2).join(':')}</span>
       </div>
     );
   }
@@ -969,8 +969,8 @@ function Bookings({ trip, onHome, onItinerary, onPhrases, onParty, onEmergency, 
           <span className="ov-kicker">{x({ en: 'Reference', th: 'ข้อมูลอ้างอิง' })}</span>
           <h1 className="bk-h1">{x({ en: 'Bookings & Reservations', th: 'การจองทั้งหมด' })}</h1>
           <p className="bk-lede">{x({
-            en: 'Every confirmation, ticket and pass for the ten days, gathered in one place. Tick each off as you book it.',
-            th: 'ทุกการยืนยัน ตั๋ว และพาส สำหรับสิบวัน รวมไว้ในที่เดียว ทำเครื่องหมายเมื่อจองแต่ละรายการเสร็จ',
+            en: 'Every confirmation, ticket and pass for the nine days, gathered in one place. Tick each off as you book it.',
+            th: 'ทุกการยืนยัน ตั๋ว และพาส สำหรับเก้าวัน รวมไว้ในที่เดียว ทำเครื่องหมายเมื่อจองแต่ละรายการเสร็จ',
           })}</p>
           <div className="bk-progress" style={{ '--p': pct }}>
             <div className="bk-progress-top">
