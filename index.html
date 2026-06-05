@@ -75,6 +75,20 @@
     .splash-core, .splash-icon, .splash-bar span { animation: none; }
   }
 
+  /* portrait lock — iOS PWAs ignore the manifest's orientation, so phones held
+     in landscape get a gentle "rotate back to portrait" overlay instead */
+  .rotate-lock { display: none; }
+  @media (orientation: landscape) and (max-height: 520px) and (pointer: coarse) {
+    .rotate-lock { display: flex; position: fixed; inset: 0; z-index: 2147483646;
+      flex-direction: column; align-items: center; justify-content: center; gap: 15px;
+      background: #14100b; color: #f2e7d5; text-align: center;
+      background-image: radial-gradient(120% 90% at 80% -10%, rgba(217,170,92,.18), transparent 55%);
+      padding: calc(18px + env(safe-area-inset-top,0px)) 28px calc(18px + env(safe-area-inset-bottom,0px)); }
+    .rotate-lock svg { color: #d9aa5c; }
+    .rotate-lock-th { font-family: "Sukhumvit Set","IBM Plex Sans Thai",system-ui,sans-serif; font-size: 18px; font-weight: 600; }
+    .rotate-lock-en { font-size: 11px; letter-spacing: .22em; text-transform: uppercase; color: #b2a288; }
+  }
+
   /* ───────────────────────── theme tokens ───────────────────────── */
   .lookbook {
     --sans: "Sukhumvit Set", "IBM Plex Sans Thai", "Hanken Grotesk", system-ui, sans-serif;
@@ -539,7 +553,7 @@
   .chrome-bar { display: flex; align-items: center; justify-content: space-between; gap: 16px;
     padding: 0 clamp(16px, 3vw, 40px); height: 58px; }
   .chrome-min { display: flex; align-items: center; justify-content: space-between; gap: 16px;
-    padding: 0 clamp(16px, 3vw, 40px); height: 60px; }
+    padding: env(safe-area-inset-top, 0px) clamp(16px, 3vw, 40px) 0; height: 60px; }
   .chrome-home { display: inline-flex; align-items: center; gap: 9px; background: none; border: none;
     font-size: 14px; letter-spacing: .14em; text-transform: uppercase; font-weight: 600; color: var(--ink); flex: none; }
   .chrome-home svg { color: var(--accent); }
@@ -580,6 +594,7 @@
 
   .stage { flex: 1; overflow-y: auto; scroll-behavior: smooth; }
   .stage-inner { max-width: 1180px; margin: 0 auto; padding: clamp(40px,6vw,90px) clamp(20px,4vw,56px) 40px;
+    min-height: 100%; display: flex; flex-direction: column;
     animation: fadeUp .7s ease both; }
   @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
 
@@ -700,7 +715,7 @@
 
   /* ───────────────────────── TIMELINE END / FOOTER ───────────────────────── */
   .tl-end { grid-column: 1 / -1; display: none; }
-  .stage-foot { margin-top: clamp(30px,5vw,60px); }
+  .stage-foot { margin-top: auto; padding-top: clamp(30px,5vw,60px); }
   .stage-foot-line { height: 1px; background: var(--line); margin-bottom: 28px; }
   .stage-next { display: flex; align-items: center; gap: 16px; width: 100%; background: none; border: none;
     padding: 18px 0; text-align: left; }
@@ -719,6 +734,10 @@
   .detail { width: min(560px, 100%); height: 100%; background: var(--paper); overflow-y: auto; position: relative;
     box-shadow: -30px 0 80px rgba(0,0,0,.28); animation: slideIn .5s cubic-bezier(.2,.8,.2,1) both; }
   @keyframes slideIn { from { transform: translateX(100%); } to { transform: none; } }
+  @keyframes slideOut { from { transform: none; } to { transform: translateX(100%); } }
+  @keyframes detailFadeOut { from { opacity: 1; } to { opacity: 0; } }
+  .detail-scrim.closing { animation: detailFadeOut .34s ease forwards; }
+  .detail-scrim.closing .detail { animation: slideOut .38s cubic-bezier(.4,0,.7,.9) forwards; }
   .detail-close { position: absolute; top: calc(18px + env(safe-area-inset-top, 0px)); right: 18px; z-index: 5; display: grid; place-items: center;
     width: 42px; height: 42px; border-radius: 50%; background: rgba(20,18,15,.4); backdrop-filter: blur(8px);
     border: .5px solid rgba(255,255,255,.2); color: #f6f2ea; transition: background .3s; }
@@ -1058,6 +1077,10 @@
   .mtab-lb { font-size: 10px; font-weight: 600; letter-spacing: 0; white-space: nowrap; max-width: 100%; overflow: hidden; text-overflow: ellipsis; }
   .mtab-item.active { color: var(--accent); }
   .mtab-item.active .mtab-ic { background: var(--chip); color: var(--accent); }
+  /* iOS PWA: paint the home-indicator strip beneath the bar so it never shows a gap.
+     If the bar already reaches the physical bottom this sits off-screen (harmless). */
+  .mtab::after { content: ''; position: absolute; left: 0; right: 0; top: 100%;
+    height: env(safe-area-inset-bottom, 0px); background: var(--paper); }
 
   /* ───────────────────────── RESPONSIVE ───────────────────────── */
   @media (max-width: 760px) {
@@ -1276,6 +1299,12 @@
   </script>
 
   <div id="root"></div>
+
+  <div class="rotate-lock" aria-hidden="true">
+    <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="8.5" y="2.5" width="7" height="19" rx="1.5"/><line x1="11" y1="18.5" x2="13" y2="18.5"/><path d="M3.8 8.2a9 9 0 0 1 3.4-4.4"/><polyline points="3 4.6 3.8 8.2 7.3 7.1"/></svg>
+    <p class="rotate-lock-th">หมุนกลับเป็นแนวตั้ง</p>
+    <p class="rotate-lock-en">Rotate to portrait</p>
+  </div>
 
   <script src="vendor/react.production.min.js"></script>
   <script src="vendor/react-dom.production.min.js"></script>
@@ -4587,12 +4616,14 @@ function DayNav({ days, current, onSelect, onHome, onBookings, onPhrases, onPart
 function ActivityDetail({ a, onClose }) {
   const { x, r } = useT();
   const [dish, setDish] = useState(null);
+  const [closing, setClosing] = useState(false);
+  const close = () => { if (closing) return; setClosing(true); setTimeout(onClose, 380); };
   useEffect(() => {
     document.body.style.overflow = 'hidden';
     return () => { document.body.style.overflow = ''; };
   }, []);
   useEffect(() => {
-    const onKey = (e) => { if (e.key !== 'Escape') return; if (dish) setDish(null); else onClose(); };
+    const onKey = (e) => { if (e.key !== 'Escape') return; if (dish) setDish(null); else close(); };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
   }, [onClose, dish]);
@@ -4601,9 +4632,9 @@ function ActivityDetail({ a, onClose }) {
   const menu = window.MENUS && window.MENUS[a.imageId];
       const isFood = (a.kind === 'Dining' || a.kind === 'Coffee' || a.kind === 'Sweets') && !(menu && menu.items && menu.items.some(it => it.map));
   return (
-    <div className="detail-scrim" onClick={onClose}>
+    <div className={'detail-scrim' + (closing ? ' closing' : '')} onClick={close}>
       <aside className="detail" onClick={(e) => e.stopPropagation()}>
-        <button className="detail-close" onClick={onClose} aria-label="Close">
+        <button className="detail-close" onClick={close} aria-label="Close">
           <Icon name="close" size={18} stroke={1.3} />
         </button>
 
@@ -5348,7 +5379,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', function () {
       navigator.serviceWorker.register('sw.js').catch(function () {});
-      if (window.caches) caches.open('wwn-kyushu-v8').then(function (c) {
+      if (window.caches) caches.open('wwn-kyushu-v9').then(function (c) {
         c.add(new Request(location.href, { cache: 'reload' })).catch(function () {});
       });
     });

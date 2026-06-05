@@ -752,12 +752,14 @@ function DayNav({ days, current, onSelect, onHome, onBookings, onPhrases, onPart
 function ActivityDetail({ a, onClose }) {
   const { x, r } = useT();
   const [dish, setDish] = useState(null);
+  const [closing, setClosing] = useState(false);
+  const close = () => { if (closing) return; setClosing(true); setTimeout(onClose, 380); };
   useEffect(() => {
     document.body.style.overflow = 'hidden';
     return () => { document.body.style.overflow = ''; };
   }, []);
   useEffect(() => {
-    const onKey = (e) => { if (e.key !== 'Escape') return; if (dish) setDish(null); else onClose(); };
+    const onKey = (e) => { if (e.key !== 'Escape') return; if (dish) setDish(null); else close(); };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
   }, [onClose, dish]);
@@ -766,9 +768,9 @@ function ActivityDetail({ a, onClose }) {
   const menu = window.MENUS && window.MENUS[a.imageId];
       const isFood = (a.kind === 'Dining' || a.kind === 'Coffee' || a.kind === 'Sweets') && !(menu && menu.items && menu.items.some(it => it.map));
   return (
-    <div className="detail-scrim" onClick={onClose}>
+    <div className={'detail-scrim' + (closing ? ' closing' : '')} onClick={close}>
       <aside className="detail" onClick={(e) => e.stopPropagation()}>
-        <button className="detail-close" onClick={onClose} aria-label="Close">
+        <button className="detail-close" onClick={close} aria-label="Close">
           <Icon name="close" size={18} stroke={1.3} />
         </button>
 
