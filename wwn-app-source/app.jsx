@@ -97,6 +97,29 @@ function App() {
   };
 
   const begin = () => { setView('itinerary'); };
+  // "Begin the journey" — jump to today's day: before the trip → first day,
+  // after it → last day, during it → the matching day.
+  const beginJourney = () => {
+    const today = new Date(); today.setHours(0, 0, 0, 0);
+    const dates = TRIP.days.map((d) => {
+      const s = (d && d.date && d.date.en) || '';
+      const m = s.match(/(\d{1,2})\s+([A-Za-z]{3,})\s+(\d{4})/);
+      if (!m) return null;
+      const dt = new Date(m[2] + ' ' + m[1] + ' ' + m[3]);
+      return isNaN(dt.getTime()) ? null : dt;
+    });
+    let target = 0;
+    const first = dates.find(Boolean);
+    const last = [...dates].reverse().find(Boolean);
+    if (first && today < first) target = 0;
+    else if (last && today > last) target = TRIP.days.length - 1;
+    else {
+      for (let i = dates.length - 1; i >= 0; i--) {
+        if (dates[i] && today >= dates[i]) { target = i; break; }
+      }
+    }
+    setDay(target); setDayKey((k) => k + 1); setView('itinerary');
+  };
   const home = () => { setDetail(null); setView('overview'); };
   const openBookings = () => { setDetail(null); setView('bookings'); };
   const openPhrases = () => { setDetail(null); setView('phrases'); };
@@ -146,7 +169,7 @@ function App() {
         {view === 'overview' ? (
           <div className="view-overview">
             <Overview trip={TRIP} dest={DESTINATION} travelers={TRAVELERS}
-              onBegin={begin} onJump={jumpTo} onHome={ovTop} onBookings={openBookings} onPhrases={openPhrases} onParty={openParty} onEmergency={() => setEmgOpen(true)}
+              onBegin={beginJourney} onJump={jumpTo} onHome={ovTop} onBookings={openBookings} onPhrases={openPhrases} onParty={openParty} onEmergency={() => setEmgOpen(true)}
               lang={lang} onLang={changeLang} />
           </div>
         ) : view === 'bookings' ? (

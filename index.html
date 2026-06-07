@@ -571,11 +571,12 @@
   .chrome-now-date { font-size: 13px; font-weight: 500; color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
   /* live clock */
-  .clock-chrome { display: inline-flex; align-items: center; gap: 7px; padding: 5px 11px; border-radius: 100px;
-    border: 1px solid var(--line); color: var(--ink-soft); }
+  .clock-chrome { display: inline-flex; flex-direction: column; align-items: flex-end; gap: 0; padding: 4px 11px; border-radius: 13px;
+    border: 1px solid var(--line); color: var(--ink-soft); line-height: 1.18; }
   .clock-chrome .clock-ic { display: inline-flex; color: var(--accent); }
-  .clock-zone { font-size: 10px; letter-spacing: .14em; font-weight: 600; }
-  .clock-time { font-size: 12.5px; letter-spacing: .02em; color: var(--ink); font-variant-numeric: tabular-nums; }
+  .clock-date { font-size: 9.5px; letter-spacing: .03em; font-weight: 600; color: var(--ink-soft); white-space: nowrap; }
+  .clock-zone { font-size: 9px; letter-spacing: .1em; font-weight: 700; color: var(--accent); margin-right: 4px; }
+  .clock-time { font-size: 13px; letter-spacing: .02em; color: var(--ink); font-variant-numeric: tabular-nums; font-weight: 600; }
 
   /* scrollable day rail */
   .chrome-days { display: flex; align-items: stretch; gap: clamp(4px, 0.8vw, 12px); height: 64px;
@@ -1066,19 +1067,17 @@
     line-height: 1.15; display: inline-flex; align-items: baseline; gap: 11px; flex-wrap: wrap; }
   .dish-note { font-size: 14px; color: var(--ink-soft); line-height: 1.5; text-wrap: pretty; }
 
-  /* ───────────────────── MOBILE TAB BAR — floating pill ───────────────────── */
+  /* ───────────────────── MOBILE TAB BAR — docked expanding pill ───────────────────── */
   .mtab { display: none; }
-  /* centering shell pinned to the bottom; .mtab-inner is the floating frosted pill bar.
-     Active tab = accent pill that expands its label in; inactive tabs = icon only. */
-  .mtab { position: fixed; left: 0; right: 0; bottom: 0; z-index: 55;
-    justify-content: center; align-items: flex-end; pointer-events: none; }
-  .mtab-inner { display: flex; align-items: center; gap: 4px; pointer-events: auto;
-    margin-bottom: calc(9px + env(safe-area-inset-bottom, 0px));
-    max-width: calc(100vw - 20px); padding: 6px;
-    background: color-mix(in srgb, var(--paper-2) 82%, transparent);
+  /* full-width bar flush to the left / right / bottom edges; active tab = accent pill
+     that expands its label in, inactive tabs = icon only. */
+  .mtab { position: fixed; left: 0; right: 0; bottom: 0; z-index: 55; pointer-events: none; }
+  .mtab-inner { display: flex; align-items: center; justify-content: space-between; gap: 4px;
+    width: 100%; pointer-events: auto;
+    padding: 8px 16px calc(8px + env(safe-area-inset-bottom, 0px));
+    background: color-mix(in srgb, var(--paper-2) 88%, transparent);
     backdrop-filter: blur(22px) saturate(150%); -webkit-backdrop-filter: blur(22px) saturate(150%);
-    border: 1px solid var(--line); border-radius: 100px;
-    box-shadow: 0 16px 38px -12px rgba(0,0,0,.5), 0 4px 12px -6px rgba(0,0,0,.35); }
+    border-top: 1px solid var(--line); }
   .mtab-item { display: flex; align-items: center; justify-content: center; flex: 0 0 auto;
     height: 44px; min-width: 44px; padding: 0; border: none; border-radius: 100px; overflow: hidden;
     background: transparent; color: var(--ink-soft); cursor: pointer;
@@ -4321,11 +4320,11 @@ function Clock({ variant = 'chrome' }) {
   const jp = fmtTime(now, 'Asia/Tokyo');
   const bkk = fmtTime(now, 'Asia/Bangkok');
   if (variant === 'chrome') {
+    const dateStr = now.toLocaleDateString('en-GB', { timeZone: 'Asia/Tokyo', day: 'numeric', month: 'short', year: 'numeric' });
     return (
       <div className="clock-chrome" title="Japan Standard Time">
-        <span className="clock-ic"><Icon name="clock" size={13} stroke={1.4} /></span>
-        <span className="clock-zone">JP</span>
-        <span className="clock-time mono">{jp.split(':').slice(0, 2).join(':')}</span>
+        <span className="clock-date">{dateStr}</span>
+        <span className="clock-time mono"><span className="clock-zone">JP</span>{jp.split(':').slice(0, 2).join(':')}</span>
       </div>
     );
   }
@@ -5425,6 +5424,29 @@ function App() {
   };
 
   const begin = () => { setView('itinerary'); };
+  // "Begin the journey" — jump to today's day: before the trip → first day,
+  // after it → last day, during it → the matching day.
+  const beginJourney = () => {
+    const today = new Date(); today.setHours(0, 0, 0, 0);
+    const dates = TRIP.days.map((d) => {
+      const s = (d && d.date && d.date.en) || '';
+      const m = s.match(/(\d{1,2})\s+([A-Za-z]{3,})\s+(\d{4})/);
+      if (!m) return null;
+      const dt = new Date(m[2] + ' ' + m[1] + ' ' + m[3]);
+      return isNaN(dt.getTime()) ? null : dt;
+    });
+    let target = 0;
+    const first = dates.find(Boolean);
+    const last = [...dates].reverse().find(Boolean);
+    if (first && today < first) target = 0;
+    else if (last && today > last) target = TRIP.days.length - 1;
+    else {
+      for (let i = dates.length - 1; i >= 0; i--) {
+        if (dates[i] && today >= dates[i]) { target = i; break; }
+      }
+    }
+    setDay(target); setDayKey((k) => k + 1); setView('itinerary');
+  };
   const home = () => { setDetail(null); setView('overview'); };
   const openBookings = () => { setDetail(null); setView('bookings'); };
   const openPhrases = () => { setDetail(null); setView('phrases'); };
@@ -5474,7 +5496,7 @@ function App() {
         {view === 'overview' ? (
           <div className="view-overview">
             <Overview trip={TRIP} dest={DESTINATION} travelers={TRAVELERS}
-              onBegin={begin} onJump={jumpTo} onHome={ovTop} onBookings={openBookings} onPhrases={openPhrases} onParty={openParty} onEmergency={() => setEmgOpen(true)}
+              onBegin={beginJourney} onJump={jumpTo} onHome={ovTop} onBookings={openBookings} onPhrases={openPhrases} onParty={openParty} onEmergency={() => setEmgOpen(true)}
               lang={lang} onLang={changeLang} />
           </div>
         ) : view === 'bookings' ? (
@@ -5581,7 +5603,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', function () {
       navigator.serviceWorker.register('sw.js').catch(function () {});
-      if (window.caches) caches.open('wwn-kyushu-v25').then(function (c) {
+      if (window.caches) caches.open('wwn-kyushu-v26').then(function (c) {
         c.add(new Request(location.href, { cache: 'reload' })).catch(function () {});
       });
     });

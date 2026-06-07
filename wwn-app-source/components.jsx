@@ -361,11 +361,11 @@ function Clock({ variant = 'chrome' }) {
   const jp = fmtTime(now, 'Asia/Tokyo');
   const bkk = fmtTime(now, 'Asia/Bangkok');
   if (variant === 'chrome') {
+    const dateStr = now.toLocaleDateString('en-GB', { timeZone: 'Asia/Tokyo', day: 'numeric', month: 'short', year: 'numeric' });
     return (
       <div className="clock-chrome" title="Japan Standard Time">
-        <span className="clock-ic"><Icon name="clock" size={13} stroke={1.4} /></span>
-        <span className="clock-zone">JP</span>
-        <span className="clock-time mono">{jp.split(':').slice(0, 2).join(':')}</span>
+        <span className="clock-date">{dateStr}</span>
+        <span className="clock-time mono"><span className="clock-zone">JP</span>{jp.split(':').slice(0, 2).join(':')}</span>
       </div>
     );
   }
