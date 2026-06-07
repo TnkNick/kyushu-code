@@ -470,7 +470,7 @@
   .ov-ess-fx:hover { border-color: var(--line); background: var(--paper-2); transform: none; }
 
   /* begin — floating action, always tappable on the Overview */
-  .ov-stage { padding-bottom: clamp(96px, 12vw, 132px); }
+  .ov-stage { padding-bottom: clamp(24px, 5vw, 40px); }
   .ov-begin-float { position: fixed; left: 50%; bottom: clamp(20px, 3.5vh, 36px); transform: translateX(-50%);
     z-index: 40; display: inline-flex; align-items: center; gap: 14px; padding: 13px 16px 13px 26px;
     background: var(--ink); color: var(--paper); border: none; border-radius: 100px;
@@ -749,7 +749,7 @@
   .detail-close:hover { background: rgba(20,18,15,.62); }
   .detail-media { position: relative; height: 44vh; min-height: 280px; }
   .detail-img.img-frame { position: absolute; inset: 0; height: 100%; width: 100%; }
-  .detail-body { padding: clamp(26px,4vw,44px); padding-bottom: calc(clamp(26px,4vw,44px) + env(safe-area-inset-bottom, 0px)); }
+  .detail-body { padding: clamp(26px,4vw,44px); }
   .detail-time { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; letter-spacing: .18em;
     text-transform: uppercase; color: var(--accent); font-weight: 600; }
   .detail-title { font-family: var(--serif); font-weight: 500; line-height: 1.02; letter-spacing: -.02em;
@@ -1108,7 +1108,7 @@
     /* primary view nav relocates to the bottom tab bar on mobile */
     .chrome-nav { display: none; }
     .mtab { display: flex; }
-    .bk-stage, .stage { padding-bottom: 92px; }
+    .bk-stage, .stage { padding-bottom: 72px; }
     /* phones: nav moved to the bottom bar — bring back the day + clock at the top */
     .chrome-now { display: inline-flex; flex: none; }
     .chrome-now-date, .chrome-now-sep { display: none; }
@@ -5386,7 +5386,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', function () {
       navigator.serviceWorker.register('sw.js').catch(function () {});
-      if (window.caches) caches.open('wwn-kyushu-v16').then(function (c) {
+      if (window.caches) caches.open('wwn-kyushu-v17').then(function (c) {
         c.add(new Request(location.href, { cache: 'reload' })).catch(function () {});
       });
     });
