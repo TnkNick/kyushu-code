@@ -29,7 +29,7 @@
 <style>
   /* ───────────────────────── reset ───────────────────────── */
   * { margin: 0; padding: 0; box-sizing: border-box; touch-action: manipulation; }
-  html, body { height: 100%; -webkit-text-size-adjust: 100%; }
+  html, body { height: 100%; height: 100dvh; -webkit-text-size-adjust: 100%; }
   /* installed PWA only: lock the document so the top bar can't rubber-band away on overscroll */
   @media (display-mode: standalone) { html, body { overflow: hidden; overscroll-behavior: none; } }
   body {
@@ -38,7 +38,7 @@
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
   }
-  #root { height: 100%; }
+  #root { height: 100%; height: 100dvh; }
   button { font-family: inherit; cursor: pointer; color: inherit; }
   a { color: inherit; }
 
@@ -97,6 +97,7 @@
     --serif: "Sukhumvit Set", "IBM Plex Sans Thai", "Hanken Grotesk", system-ui, sans-serif;
     --scale: 1;
     height: 100%;
+    height: 100dvh;
     font-family: var(--sans);
     background: var(--paper);
     color: var(--ink);
@@ -6217,7 +6218,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', function () {
       navigator.serviceWorker.register('sw.js').catch(function () {});
-      if (window.caches) caches.open('wwn-kyushu-v41').then(function (c) {
+      if (window.caches) caches.open('wwn-kyushu-v42').then(function (c) {
         c.add(new Request(location.href, { cache: 'reload' })).catch(function () {});
       });
     });
