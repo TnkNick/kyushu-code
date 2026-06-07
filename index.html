@@ -179,7 +179,7 @@
       repeating-linear-gradient(45deg, var(--paper-2), var(--paper-2) 11px, transparent 11px, transparent 22px); }
 
   /* ───────────────────────── AMBIENT ANIMATED BACKGROUND ───────────────────────── */
-  .bg-fx { position: fixed; top: 0; left: 0; right: 0; bottom: calc(-1 * env(safe-area-inset-bottom, 0px)); z-index: 0; overflow: hidden; pointer-events: none; }
+  .bg-fx { position: fixed; top: 0; left: 0; right: 0; bottom: calc(-1 * env(safe-area-inset-bottom, 0px) - 40px); z-index: 0; overflow: hidden; pointer-events: none; background: var(--paper); }
   .view-cover, .view-itinerary { position: relative; z-index: 1; }
   .bg-fx .orb { position: absolute; border-radius: 50%; filter: blur(64px); opacity: .42;
     mix-blend-mode: screen; will-change: transform; }
@@ -5386,7 +5386,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', function () {
       navigator.serviceWorker.register('sw.js').catch(function () {});
-      if (window.caches) caches.open('wwn-kyushu-v20').then(function (c) {
+      if (window.caches) caches.open('wwn-kyushu-v21').then(function (c) {
         c.add(new Request(location.href, { cache: 'reload' })).catch(function () {});
       });
     });
