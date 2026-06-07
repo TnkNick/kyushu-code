@@ -941,11 +941,90 @@
   .bookings { height: 100%; display: flex; flex-direction: column; animation: coverIn .7s ease both; }
   .bk-stage { flex: 1; overflow-y: auto; scroll-behavior: smooth; }
   .bk-hero, .bk-sec { max-width: 1100px; margin: 0 auto; width: 100%; }
-  .bk-hero { padding: clamp(40px,7vh,84px) clamp(22px,4vw,56px) clamp(28px,4vw,40px); }
+  .bk-hero { padding: clamp(34px,6vh,72px) clamp(22px,4vw,56px) clamp(16px,2.4vw,22px); }
   .bk-h1 { font-family: var(--serif); font-weight: 700; letter-spacing: -.02em; line-height: 1; margin-top: 14px;
     font-size: calc(clamp(40px,6.5vw,84px) * var(--scale)); animation: rise 1s .1s ease both; }
   .bk-lede { font-size: clamp(16px,1.7vw,21px); line-height: 1.5; color: var(--ink-soft); max-width: 50ch;
     margin-top: 16px; text-wrap: pretty; }
+
+  /* Prep — sub-nav chips + sectioned content */
+  .bk-subnav { max-width: 1100px; margin: 0 auto; width: 100%; display: flex; gap: 8px; overflow-x: auto;
+    padding: 2px clamp(22px,4vw,56px); scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+  .bk-subnav::-webkit-scrollbar { display: none; }
+  .bk-sub { flex: none; display: inline-flex; align-items: center; gap: 7px; padding: 9px 15px; border-radius: 100px;
+    border: 1px solid var(--line); background: var(--paper-2); color: var(--ink-soft); font-size: 14px; font-weight: 600;
+    cursor: pointer; transition: background .25s, border-color .25s, color .25s, transform .12s; white-space: nowrap; }
+  .bk-sub svg { opacity: .7; }
+  .bk-sub:active { transform: scale(.95); }
+  .bk-sub:not(.on):hover { color: var(--ink); border-color: var(--ink-soft); }
+  .bk-sub.on { background: var(--accent); border-color: var(--accent); color: var(--paper); box-shadow: 0 4px 14px -7px var(--accent); }
+  .bk-sub.on svg { opacity: 1; }
+
+  .bk-section { max-width: 1100px; margin: 0 auto; width: 100%;
+    padding: clamp(20px,3vw,32px) clamp(22px,4vw,56px) clamp(40px,6vw,72px); animation: rise .4s ease both; }
+  .bk-section .bk-sec, .bk-section .party { max-width: none; margin: 0; padding-left: 0; padding-right: 0; }
+  .bk-section .party { padding-top: 0; padding-bottom: 0; }
+  .bk-section .bk-sec:first-child .bk-sec-head { border-top: none; padding-top: 0; }
+  .bk-list .bk-progress { margin: 0 0 clamp(22px,3.2vw,34px); max-width: none; }
+
+  /* Money — converter */
+  .money-tools { display: flex; flex-direction: column; gap: clamp(30px,4.5vw,48px); }
+  .conv-card { display: flex; align-items: stretch; gap: 12px; margin-top: 6px; }
+  .conv-side { flex: 1; min-width: 0; display: flex; align-items: center; gap: 9px; padding: 15px 18px; border-radius: 16px;
+    border: 1px solid var(--line); background: var(--paper-2); }
+  .conv-out { background: var(--chip); border-color: color-mix(in srgb, var(--accent) 30%, var(--line)); }
+  .conv-cur { font-family: var(--serif); font-size: 25px; font-weight: 600; color: var(--accent); line-height: 1; flex: none; }
+  .conv-in { flex: 1; min-width: 0; width: 100%; border: none; background: none; outline: none; font-family: var(--serif);
+    font-size: clamp(23px,4vw,33px); font-weight: 600; color: var(--ink); font-variant-numeric: tabular-nums; -moz-appearance: textfield; }
+  .conv-in::-webkit-outer-spin-button, .conv-in::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+  .conv-val { font-family: var(--serif); font-size: clamp(23px,4vw,33px); font-weight: 600; color: var(--ink);
+    font-variant-numeric: tabular-nums; line-height: 1; overflow: hidden; text-overflow: ellipsis; }
+  .conv-eq { align-self: center; font-size: 20px; color: var(--ink-soft); font-weight: 500; flex: none; }
+  .conv-quick { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+  .conv-chip { padding: 7px 13px; border-radius: 100px; border: 1px solid var(--line); background: none; color: var(--ink-soft);
+    font-size: 13px; font-weight: 600; cursor: pointer; font-variant-numeric: tabular-nums; transition: all .2s; }
+  .conv-chip:hover { color: var(--ink); border-color: var(--ink-soft); }
+  .conv-chip:active { transform: scale(.94); }
+  .conv-note { display: block; margin-top: 12px; font-size: 12.5px; color: var(--ink-soft); }
+
+  /* Money — expenses */
+  .exp-totals { display: flex; gap: 12px; margin-top: 6px; }
+  .exp-tot { flex: 1; min-width: 0; padding: 15px 18px; border-radius: 16px; border: 1px solid var(--line);
+    background: var(--paper-2); display: flex; flex-direction: column; gap: 4px; }
+  .exp-tot-split { background: var(--chip); border-color: color-mix(in srgb, var(--accent) 30%, var(--line)); }
+  .exp-tot-k { font-size: 12px; font-weight: 600; color: var(--ink-soft); }
+  .exp-tot-v { font-family: var(--serif); font-size: clamp(21px,3vw,27px); font-weight: 700; color: var(--ink); font-variant-numeric: tabular-nums; }
+  .exp-tot-split .exp-tot-v { color: var(--accent); }
+  .exp-add { display: flex; gap: 8px; margin-top: 14px; }
+  .exp-in { border: 1px solid var(--line); background: var(--paper-2); border-radius: 12px; padding: 12px 14px;
+    font-size: 15px; color: var(--ink); outline: none; transition: border-color .2s; font-family: inherit; }
+  .exp-in:focus { border-color: var(--accent); }
+  .exp-amt { width: 92px; flex: none; font-variant-numeric: tabular-nums; font-weight: 600; -moz-appearance: textfield; }
+  .exp-amt::-webkit-outer-spin-button, .exp-amt::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+  .exp-note { flex: 1; min-width: 0; }
+  .exp-add-btn { flex: none; width: 46px; border-radius: 12px; border: none; background: var(--accent); color: var(--paper);
+    display: grid; place-items: center; cursor: pointer; transition: transform .12s, filter .2s; }
+  .exp-add-btn:hover { filter: brightness(1.06); }
+  .exp-add-btn:active { transform: scale(.92); }
+  .exp-list { list-style: none; margin: 16px 0 0; padding: 0; }
+  .exp-row { display: flex; align-items: center; gap: 12px; padding: 12px 2px; border-bottom: 1px solid var(--line); }
+  .exp-row:first-child { border-top: 1px solid var(--line); }
+  .exp-row-n { flex: 1; min-width: 0; font-size: 15px; color: var(--ink); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .exp-row-a { font-variant-numeric: tabular-nums; font-weight: 700; color: var(--ink); font-size: 15px; flex: none; }
+  .exp-row-x { flex: none; width: 26px; height: 26px; border-radius: 50%; border: 1px solid var(--line); background: none;
+    color: var(--ink-soft); display: grid; place-items: center; cursor: pointer; transition: all .2s; }
+  .exp-row-x:hover { color: var(--accent-2); border-color: var(--accent-2); }
+  .exp-empty { margin-top: 16px; font-size: 14px; color: var(--ink-soft); }
+
+  /* Driving cheat-sheet */
+  .drive-list { display: flex; flex-direction: column; gap: 10px; margin-top: 6px; }
+  .drive-tip { display: flex; gap: 14px; padding: 15px 17px; border-radius: 16px; border: 1px solid var(--line);
+    background: var(--paper-2); animation: rise .5s ease both; animation-delay: calc(var(--i) * .05s); }
+  .drive-ic { flex: none; display: grid; place-items: center; width: 42px; height: 42px; border-radius: 12px;
+    background: var(--chip); color: var(--accent); }
+  .drive-body { display: flex; flex-direction: column; gap: 4px; }
+  .drive-label { font-family: var(--serif); font-size: 17px; font-weight: 600; color: var(--ink); }
+  .drive-note { font-size: 14px; line-height: 1.5; color: var(--ink-soft); text-wrap: pretty; }
 
   .bk-progress { margin-top: clamp(26px,4vw,40px); max-width: 540px; }
   .bk-progress-top { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-bottom: 12px; }
@@ -3942,6 +4021,48 @@ const PACKING = {
 };
 
 // ── Useful Japanese phrases (Overview) ──────────────────────────────────
+const SOUVENIRS = {
+  title: L('Souvenirs to grab', 'ของฝากที่ต้องซื้อ', 'お土産'),
+  subtitle: L('Kyushu picks · tick as you buy', 'ของเด็ดคิวชู · ติ๊กตอนซื้อ', '九州のおすすめ'),
+  groups: [
+    { label: L('Sweets', 'ขนม', 'お菓子'), items: [
+      L('Hakata Torimon (博多通りもん)', 'ฮากาตะ โทริมง'),
+      L('Tsuru-no-ko / Hiyoko', 'สึรุโนะโกะ / ฮิโยโกะ'),
+      L('Regional Kit-Kat (matcha · sake)', 'คิทแคทรสภูมิภาค (มัทฉะ · สาเก)'),
+      L('Ikinari dango (Kumamoto)', 'อิคินาริดังโงะ (คุมาโมโตะ)'),
+    ] },
+    { label: L('Food', 'ของกิน', '食品'), items: [
+      L('Mentaiko (spicy cod roe)', 'เมนไทโกะ (ไข่ปลาเผ็ด)'),
+      L('Instant tonkotsu ramen', 'ราเมงทงคตสึสำเร็จรูป'),
+      L('Yuzu kosho (citrus chili paste)', 'ยุซุโคโช (พริกส้ม)'),
+      L('Aso milk · caramel / cookies', 'นมอาโซ · คาราเมล / คุกกี้'),
+    ] },
+    { label: L('Drinks', 'เครื่องดื่ม', '飲み物'), items: [
+      L('Kyushu shochu / local sake', 'โชจู / สาเกคิวชู'),
+      L('Matcha / hojicha', 'มัทฉะ / โฮจิฉะ'),
+    ] },
+    { label: L('Goods & beauty', 'ของใช้ & ความงาม', '雑貨・コスメ'), items: [
+      L('Kumamon goods', 'ของคุมามง'),
+      L('Drugstore haul (Matsukiyo · Don Quijote)', 'ของร้านยา (มัตสึคิโยะ · ดองกี้)'),
+      L('Onsen skincare / bath salts', 'สกินแคร์ออนเซน / เกลือแช่'),
+    ] },
+  ],
+};
+
+const DRIVING = {
+  title: L('Driving in Japan', 'ขับรถในญี่ปุ่น', '日本での運転'),
+  subtitle: L('Self-drive cheat-sheet', 'สรุปสำหรับขับรถเอง', 'セルフドライブのコツ'),
+  tips: [
+    { icon: 'car', label: L('Keep LEFT', 'ขับเลนซ้าย'), note: L('Left-hand traffic, wheel on the right. Slow lane = left, overtake on the right.', 'จราจรชิดซ้าย พวงมาลัยขวา · เลนช้า = ซ้าย แซงทางขวา') },
+    { icon: 'alert', label: L('IDP + licence', 'IDP + ใบขับขี่'), note: L('Always carry the International Driving Permit, your Thai licence and passport when driving.', 'พกใบขับขี่สากล (IDP) + ใบขับขี่ไทย + พาสปอร์ต ทุกครั้งที่ขับ') },
+    { icon: 'ticket', label: L('ETC for tolls', 'ETC ผ่านทางด่วน'), note: L('Use the ETC card from the rental — drive through the purple ETC lanes, no stopping at booths.', 'ใช้บัตร ETC จากร้านเช่า · ขับผ่านเลนสีม่วง ไม่ต้องจอดจ่าย') },
+    { icon: 'pin', label: L('Navigate by MAPCODE', 'นำทางด้วย MAPCODE'), note: L('Car GPS takes a phone number or MAPCODE — set the destination before you set off; Google Maps works too.', 'GPS รถใช้เบอร์โทรหรือ MAPCODE · ตั้งจุดหมายก่อนออก หรือใช้ Google Maps ก็ได้') },
+    { icon: 'store', label: L('Self-serve fuel', 'ปั๊มเซลฟ์เซอร์วิส'), note: L('"Self" (セルフ) pumps: pay at the machine, touch the static pad, レギュラー = regular petrol.', 'ปั๊ม "セルフ": จ่ายที่ตู้ แตะแผ่นไล่ไฟฟ้าสถิต · レギュラー = น้ำมันธรรมดา') },
+    { icon: 'wallet', label: L('Paid parking', 'ที่จอดเก็บเงิน'), note: L('Coin lots lock a plate under the car — pay the machine before driving off. Hotels often charge parking separately.', 'ที่จอดหยอดเหรียญมีแผ่นล็อกใต้รถ · จ่ายตู้ก่อนถอยออก · โรงแรมมักคิดค่าจอดแยก') },
+    { icon: 'cloud', label: L('Winter & snow', 'หน้าหนาว & หิมะ'), note: L('December in Aso/highlands can ice over — ask for snow tyres, keep to Route 111 (Panorama Line), ease off on bridges.', 'ธันวาคมแถบอาโซ/ที่สูงอาจมีน้ำแข็ง · ขอยางหิมะ ใช้เส้น 111 (พาโนรามาไลน์) ชะลอบนสะพาน') },
+  ],
+};
+
 const PHRASES = {
   title: L('Useful Phrases', 'ประโยคที่ใช้บ่อย'),
   subtitle: L('A few words go a long way', 'พูดได้นิดหน่อยก็ช่วยได้มาก'),
@@ -3957,8 +4078,8 @@ const PHRASES = {
   ],
 };
 
-Object.assign(window, { TRIP, REF_TYPES, TR, tx, tr, DESTINATION, TRAVELERS, EMERGENCY, BUDGET, KONBINI, ESSENTIALS, WEATHER, MENUS, PACKING, PHRASES, CREDIT });
-  </script>
+Object.assign(window, { TRIP, REF_TYPES, TR, tx, tr, DESTINATION, TRAVELERS, EMERGENCY, BUDGET, KONBINI, ESSENTIALS, WEATHER, MENUS, PACKING, SOUVENIRS, DRIVING, PHRASES, CREDIT });
+</script>
   <script type="text/babel">
 // components.jsx — lookbook UI (bilingual). Depends on window.Icon, REF_TYPES, tx, tr.
 const { useState, useEffect, useRef, useContext, createContext } = React;
@@ -4218,7 +4339,7 @@ function DayKonbini({ area }) {
   );
 }
 
-// ── Per-day weather chip ────────────────────────────────────────────────
+// ── Per-day weather chip ───────────────────────────────────
 function weatherForDay(day) {
   if (!window.WEATHER) return null;
   const n = parseInt((day.label.match(/\d+/) || [])[0], 10);
@@ -4881,18 +5002,14 @@ function BookingCard({ item, booked, onToggle, lang }) {
 
 function Bookings({ trip, onHome, onItinerary, onPhrases, onParty, onEmergency, lang, onLang }) {
   const { x } = useT();
-  const { reservations, passes } = collectBookings(trip);
-  const [booked, setBooked] = useState(() => {
-    try { return JSON.parse(localStorage.getItem('jp-booked') || '{}'); } catch (e) { return {}; }
-  });
-  const toggle = (code) => setBooked((prev) => {
-    const n = { ...prev, [code]: !prev[code] };
-    try { localStorage.setItem('jp-booked', JSON.stringify(n)); } catch (e) {}
-    return n;
-  });
-  const total = reservations.length;
-  const doneCount = reservations.filter((it) => booked[it.a.refs.reservation.code]).length;
-  const pct = total ? doneCount / total : 0;
+  const [sec, setSec] = useState('book');
+  const SECTIONS = [
+    { key: 'book',  icon: 'ticket',  label: { en: 'Bookings', th: 'การจอง', ja: '予約' } },
+    { key: 'pack',  icon: 'luggage', label: { en: 'Packing', th: 'แพ็คของ', ja: '荷物' } },
+    { key: 'gift',  icon: 'store',   label: { en: 'Souvenirs', th: 'ของฝาก', ja: 'お土産' } },
+    { key: 'money', icon: 'wallet',  label: { en: 'Money', th: 'เงิน', ja: 'お金' } },
+    { key: 'drive', icon: 'car',     label: { en: 'Driving', th: 'ขับรถ', ja: '運転' } },
+  ];
 
   return (
     <div className="bookings">
@@ -4923,63 +5040,33 @@ function Bookings({ trip, onHome, onItinerary, onPhrases, onParty, onEmergency, 
 
       <main className="bk-stage">
         <section className="bk-hero">
-          <span className="ov-kicker">{x({ en: 'Reference', th: 'ข้อมูลอ้างอิง' })}</span>
+          <span className="ov-kicker">{x({ en: 'Reference', th: 'เตรียมตัว', ja: '準備' })}</span>
           <h1 className="bk-h1">{x({ en: 'Bookings & Prep', th: 'การจอง & เตรียมตัว', ja: '予約と準備' })}</h1>
           <p className="bk-lede">{x({
-            en: 'Everything to sort before and during the trip — bookings, passes, what to pack and souvenirs to grab — in one place. Tick each off as you go.',
-            th: 'ทุกอย่างที่ต้องจัดการก่อนและระหว่างทริป — การจอง ตั๋ว ของที่ต้องแพ็ค และของฝากที่ต้องซื้อ — รวมไว้ในที่เดียว ทำเครื่องหมายไปเรื่อยๆ',
+            en: 'Everything to sort before and during the trip, in one place — pick a tab below.',
+            th: 'ทุกอย่างที่ต้องจัดการก่อนและระหว่างทริป รวมไว้ที่เดียว — เลือกแท็บด้านล่าง',
+            ja: '旅行の準備をひとまとめに — 下のタブから選んでね。',
           })}</p>
-          <div className="bk-progress" style={{ '--p': pct }}>
-            <div className="bk-progress-top">
-              <span className="bk-progress-k">{x({ en: 'Booking progress', th: 'ความคืบหน้าการจอง' })}</span>
-              <span className="bk-progress-v"><b>{doneCount}</b> / {total} {x({ en: 'confirmed', th: 'จองแล้ว' })}</span>
-            </div>
-            <span className="bk-progress-bar"><span className="bk-progress-fill"></span></span>
-          </div>
         </section>
 
-        {BK_CATS.map((cat) => {
-          const items = reservations.filter((it) => it.cat === cat.key);
-          if (!items.length) return null;
-          return (
-            <section className="bk-sec" key={cat.key}>
-              <div className="bk-sec-head">
-                <span className="bk-sec-ic"><Icon name={cat.icon} size={18} stroke={1.3} /></span>
-                <h2 className="bk-sec-title">{x(cat.label)}</h2>
-                <span className="bk-sec-count">{items.length}</span>
-              </div>
-              <div className="bk-grid">
-                {items.map((it, i) => (
-                  <BookingCard key={it.a.refs.reservation.code + i} item={it} booked={booked} onToggle={toggle} lang={lang} />
-                ))}
-              </div>
-            </section>
-          );
-        })}
+        <nav className="bk-subnav" role="tablist" aria-label="Prep sections">
+          {SECTIONS.map((s) => (
+            <button key={s.key} className={'bk-sub' + (sec === s.key ? ' on' : '')}
+              role="tab" aria-selected={sec === s.key}
+              onClick={(e) => { setSec(s.key); const nav = e.currentTarget.parentElement, btn = e.currentTarget; nav.scrollTo({ left: nav.scrollLeft + btn.getBoundingClientRect().left - nav.getBoundingClientRect().left - (nav.clientWidth - btn.offsetWidth) / 2, behavior: 'smooth' }); }}>
+              <Icon name={s.icon} size={15} stroke={1.6} />
+              <span>{x(s.label)}</span>
+            </button>
+          ))}
+        </nav>
 
-        {passes.length ? (
-          <section className="bk-sec">
-            <div className="bk-sec-head">
-              <span className="bk-sec-ic"><Icon name="ticket" size={18} stroke={1.3} /></span>
-              <h2 className="bk-sec-title">{x({ en: 'Tickets, Passes & Entry', th: 'ตั๋ว พาส และค่าเข้า' })}</h2>
-              <span className="bk-sec-count">{passes.length}</span>
-            </div>
-            <div className="bk-pass-grid">
-              {passes.map((it, i) => (
-                <div className="bk-pass" key={i}>
-                  <span className="bk-pass-ic"><Icon name={it.a.icon || 'ticket'} size={16} stroke={1.3} /></span>
-                  <span className="bk-pass-text">
-                    <span className="bk-pass-title">{x(it.a.title)}</span>
-                    <span className="bk-pass-place">{(lang === 'th' ? it.day.labelTh : it.day.label)} · {x(it.a.place)}</span>
-                  </span>
-                  <span className="bk-pass-price">{x(it.a.refs.booking)}</span>
-                </div>
-              ))}
-            </div>
-          </section>
-        ) : null}
-
-        <Packing data={window.PACKING} />
+        <div className="bk-section" key={sec}>
+          {sec === 'book' ? <BookingsList trip={trip} lang={lang} /> :
+           sec === 'pack' ? <Packing data={window.PACKING} storeKey="jp-packed" /> :
+           sec === 'gift' ? <Packing data={window.SOUVENIRS} storeKey="jp-souvenirs" /> :
+           sec === 'money' ? <MoneyTools /> :
+           <DrivingTips data={window.DRIVING} />}
+        </div>
 
         <div className="ov-credit">
           <span className="ov-credit-rule" aria-hidden="true"></span>
@@ -4987,6 +5074,193 @@ function Bookings({ trip, onHome, onItinerary, onPhrases, onParty, onEmergency, 
         </div>
       </main>
     </div>
+  );
+}
+
+// ── BookingsList — reservations + passes (Bookings → "Bookings" tab) ────
+function BookingsList({ trip, lang }) {
+  const { x } = useT();
+  const { reservations, passes } = collectBookings(trip);
+  const [booked, setBooked] = useState(() => {
+    try { return JSON.parse(localStorage.getItem('jp-booked') || '{}'); } catch (e) { return {}; }
+  });
+  const toggle = (code) => setBooked((prev) => {
+    const n = { ...prev, [code]: !prev[code] };
+    try { localStorage.setItem('jp-booked', JSON.stringify(n)); } catch (e) {}
+    return n;
+  });
+  const total = reservations.length;
+  const doneCount = reservations.filter((it) => booked[it.a.refs.reservation.code]).length;
+  const pct = total ? doneCount / total : 0;
+  return (
+    <div className="bk-list">
+      <div className="bk-progress" style={{ '--p': pct }}>
+        <div className="bk-progress-top">
+          <span className="bk-progress-k">{x({ en: 'Booking progress', th: 'ความคืบหน้าการจอง' })}</span>
+          <span className="bk-progress-v"><b>{doneCount}</b> / {total} {x({ en: 'confirmed', th: 'จองแล้ว' })}</span>
+        </div>
+        <span className="bk-progress-bar"><span className="bk-progress-fill"></span></span>
+      </div>
+      {BK_CATS.map((cat) => {
+        const items = reservations.filter((it) => it.cat === cat.key);
+        if (!items.length) return null;
+        return (
+          <section className="bk-sec" key={cat.key}>
+            <div className="bk-sec-head">
+              <span className="bk-sec-ic"><Icon name={cat.icon} size={18} stroke={1.3} /></span>
+              <h2 className="bk-sec-title">{x(cat.label)}</h2>
+              <span className="bk-sec-count">{items.length}</span>
+            </div>
+            <div className="bk-grid">
+              {items.map((it, i) => (
+                <BookingCard key={it.a.refs.reservation.code + i} item={it} booked={booked} onToggle={toggle} lang={lang} />
+              ))}
+            </div>
+          </section>
+        );
+      })}
+      {passes.length ? (
+        <section className="bk-sec">
+          <div className="bk-sec-head">
+            <span className="bk-sec-ic"><Icon name="ticket" size={18} stroke={1.3} /></span>
+            <h2 className="bk-sec-title">{x({ en: 'Tickets, Passes & Entry', th: 'ตั๋ว พาส และค่าเข้า' })}</h2>
+            <span className="bk-sec-count">{passes.length}</span>
+          </div>
+          <div className="bk-pass-grid">
+            {passes.map((it, i) => (
+              <div className="bk-pass" key={i}>
+                <span className="bk-pass-ic"><Icon name={it.a.icon || 'ticket'} size={16} stroke={1.3} /></span>
+                <span className="bk-pass-text">
+                  <span className="bk-pass-title">{x(it.a.title)}</span>
+                  <span className="bk-pass-place">{(lang === 'th' ? it.day.labelTh : it.day.label)} · {x(it.a.place)}</span>
+                </span>
+                <span className="bk-pass-price">{x(it.a.refs.booking)}</span>
+              </div>
+            ))}
+          </div>
+        </section>
+      ) : null}
+    </div>
+  );
+}
+
+// ── Converter — quick ¥ → ฿ ─────────────────────────────────────────────
+function Converter() {
+  const { x } = useT();
+  const [yen, setYen] = useState('1000');
+  const rate = 22.6 / 100;
+  const n = parseFloat((yen || '').toString().replace(/,/g, '')) || 0;
+  const baht = n * rate;
+  return (
+    <section className="party conv">
+      <div className="party-head">
+        <span className="ov-kicker">{x({ en: 'Converter', th: 'แปลงเงิน', ja: '両替' })}</span>
+        <h2 className="ov-h2">{x({ en: 'Yen → Baht', th: 'เยน → บาท', ja: '円 → バーツ' })}</h2>
+      </div>
+      <div className="conv-card">
+        <label className="conv-side">
+          <span className="conv-cur">¥</span>
+          <input className="conv-in" type="number" inputMode="numeric" value={yen} onChange={(e) => setYen(e.target.value)} aria-label="Yen" />
+        </label>
+        <span className="conv-eq" aria-hidden="true">=</span>
+        <div className="conv-side conv-out">
+          <span className="conv-cur">฿</span>
+          <span className="conv-val">{baht.toLocaleString('en-US', { maximumFractionDigits: 0 })}</span>
+        </div>
+      </div>
+      <div className="conv-quick">
+        {[100, 500, 1000, 5000, 10000].map((v) => (
+          <button key={v} className="conv-chip" onClick={() => setYen(String(v))}>¥{v.toLocaleString('en-US')}</button>
+        ))}
+      </div>
+      <span className="conv-note">{x({ en: 'Rate ¥100 = ฿22.6 · indicative', th: 'เรต ¥100 = ฿22.6 · โดยประมาณ', ja: '¥100 = ฿22.6 · 目安' })}</span>
+    </section>
+  );
+}
+
+// ── Expenses — shared-trip spending log (÷4) ────────────────────────────
+function Expenses() {
+  const { x } = useT();
+  const [items, setItems] = useState(() => {
+    try { return JSON.parse(localStorage.getItem('jp-expenses') || '[]'); } catch (e) { return []; }
+  });
+  const [amt, setAmt] = useState('');
+  const [note, setNote] = useState('');
+  const save = (list) => { setItems(list); try { localStorage.setItem('jp-expenses', JSON.stringify(list)); } catch (e) {} };
+  const add = () => {
+    const a = parseFloat((amt || '').toString().replace(/,/g, ''));
+    if (!a || a <= 0) return;
+    save([{ id: 'e' + Date.now(), a, n: (note || '').trim() || '—' }, ...items]);
+    setAmt(''); setNote('');
+  };
+  const remove = (id) => save(items.filter((it) => it.id !== id));
+  const total = items.reduce((s, it) => s + it.a, 0);
+  const per = total / 4;
+  const fmt = (v) => '฿' + v.toLocaleString('en-US', { maximumFractionDigits: 0 });
+  return (
+    <section className="party exp">
+      <div className="party-head">
+        <span className="ov-kicker">{x({ en: 'Expenses', th: 'ค่าใช้จ่าย', ja: '支出' })}</span>
+        <h2 className="ov-h2">{x({ en: 'Trip spending', th: 'บันทึกค่าใช้จ่าย', ja: '支出メモ' })}</h2>
+      </div>
+      <div className="exp-totals">
+        <div className="exp-tot"><span className="exp-tot-k">{x({ en: 'Total', th: 'รวมทั้งหมด', ja: '合計' })}</span><span className="exp-tot-v">{fmt(total)}</span></div>
+        <div className="exp-tot exp-tot-split"><span className="exp-tot-k">{x({ en: 'Each ÷ 4', th: 'หาร 4 คน', ja: '1人 ÷4' })}</span><span className="exp-tot-v">{fmt(per)}</span></div>
+      </div>
+      <div className="exp-add">
+        <input className="exp-in exp-amt" type="number" inputMode="numeric" placeholder="฿0" value={amt} onChange={(e) => setAmt(e.target.value)} aria-label="Amount" />
+        <input className="exp-in exp-note" type="text" placeholder={x({ en: 'What for?', th: 'ค่าอะไร?', ja: '何に?' })} value={note} onChange={(e) => setNote(e.target.value)} onKeyDown={(e) => { if (e.key === 'Enter') add(); }} aria-label="Note" />
+        <button className="exp-add-btn" onClick={add} aria-label="Add"><Icon name="plus" size={17} stroke={2} /></button>
+      </div>
+      {items.length ? (
+        <ul className="exp-list">
+          {items.map((it) => (
+            <li className="exp-row" key={it.id}>
+              <span className="exp-row-n">{it.n}</span>
+              <span className="exp-row-a">{fmt(it.a)}</span>
+              <button className="exp-row-x" onClick={() => remove(it.id)} aria-label="Remove"><Icon name="close" size={13} stroke={2} /></button>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p className="exp-empty">{x({ en: 'No expenses yet — add one above.', th: 'ยังไม่มีรายการ — เพิ่มด้านบนได้เลย', ja: 'まだ記録なし' })}</p>
+      )}
+    </section>
+  );
+}
+
+// ── MoneyTools — converter + expense log together ───────────────────────
+function MoneyTools() {
+  return (
+    <div className="money-tools">
+      <Converter />
+      <Expenses />
+    </div>
+  );
+}
+
+// ── DrivingTips — self-drive cheat-sheet ────────────────────────────────
+function DrivingTips({ data }) {
+  const { x } = useT();
+  const ref = useInView();
+  return (
+    <section className="party drive" ref={ref}>
+      <div className="party-head">
+        <span className="ov-kicker">{x(data.subtitle)}</span>
+        <h2 className="ov-h2">{x(data.title)}</h2>
+      </div>
+      <div className="drive-list">
+        {data.tips.map((t, i) => (
+          <div className="drive-tip" key={i} style={{ '--i': i }}>
+            <span className="drive-ic"><Icon name={t.icon} size={19} stroke={1.4} /></span>
+            <div className="drive-body">
+              <span className="drive-label">{x(t.label)}</span>
+              <span className="drive-note">{x(t.note)}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
   );
 }
 
@@ -5101,15 +5375,15 @@ function MobileTabBar({ view, onItinerary, onBookings, onParty, onPhrases, onSet
 }
 
 // ── Packing / before-you-fly checklist ──────────────────────────────────
-function Packing({ data }) {
+function Packing({ data, storeKey = 'jp-packed' }) {
   const { x } = useT();
   const ref = useInView();
   const [done, setDone] = useState(() => {
-    try { return JSON.parse(localStorage.getItem('jp-packed') || '{}'); } catch (e) { return {}; }
+    try { return JSON.parse(localStorage.getItem(storeKey) || '{}'); } catch (e) { return {}; }
   });
   const toggle = (k) => setDone((prev) => {
     const n = { ...prev, [k]: !prev[k] };
-    try { localStorage.setItem('jp-packed', JSON.stringify(n)); } catch (e) {}
+    try { localStorage.setItem(storeKey, JSON.stringify(n)); } catch (e) {}
     return n;
   });
   return (
@@ -5322,8 +5596,8 @@ Object.assign(window, {
   Clock, RouteMap, Travelers, Overview, Emergency, Budget, Bookings,
   Konbini, EmergencySheet, DayKonbini, OvEssentials, DayWeather, MobileTabBar,
   Packing, Phrases, TravelersPage, SettingsPage,
+  BookingsList, Converter, Expenses, MoneyTools, DrivingTips,
 });
-
 </script>
   <script type="text/babel">
 // app.jsx — composition root: state, transitions, language, tweaks, embed params.
@@ -5616,7 +5890,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', function () {
       navigator.serviceWorker.register('sw.js').catch(function () {});
-      if (window.caches) caches.open('wwn-kyushu-v37').then(function (c) {
+      if (window.caches) caches.open('wwn-kyushu-v38').then(function (c) {
         c.add(new Request(location.href, { cache: 'reload' })).catch(function () {});
       });
     });

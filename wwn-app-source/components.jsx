@@ -919,18 +919,14 @@ function BookingCard({ item, booked, onToggle, lang }) {
 
 function Bookings({ trip, onHome, onItinerary, onPhrases, onParty, onEmergency, lang, onLang }) {
   const { x } = useT();
-  const { reservations, passes } = collectBookings(trip);
-  const [booked, setBooked] = useState(() => {
-    try { return JSON.parse(localStorage.getItem('jp-booked') || '{}'); } catch (e) { return {}; }
-  });
-  const toggle = (code) => setBooked((prev) => {
-    const n = { ...prev, [code]: !prev[code] };
-    try { localStorage.setItem('jp-booked', JSON.stringify(n)); } catch (e) {}
-    return n;
-  });
-  const total = reservations.length;
-  const doneCount = reservations.filter((it) => booked[it.a.refs.reservation.code]).length;
-  const pct = total ? doneCount / total : 0;
+  const [sec, setSec] = useState('book');
+  const SECTIONS = [
+    { key: 'book',  icon: 'ticket',  label: { en: 'Bookings', th: 'การจอง', ja: '予約' } },
+    { key: 'pack',  icon: 'luggage', label: { en: 'Packing', th: 'แพ็คของ', ja: '荷物' } },
+    { key: 'gift',  icon: 'store',   label: { en: 'Souvenirs', th: 'ของฝาก', ja: 'お土産' } },
+    { key: 'money', icon: 'wallet',  label: { en: 'Money', th: 'เงิน', ja: 'お金' } },
+    { key: 'drive', icon: 'car',     label: { en: 'Driving', th: 'ขับรถ', ja: '運転' } },
+  ];
 
   return (
     <div className="bookings">
@@ -961,63 +957,33 @@ function Bookings({ trip, onHome, onItinerary, onPhrases, onParty, onEmergency, 
 
       <main className="bk-stage">
         <section className="bk-hero">
-          <span className="ov-kicker">{x({ en: 'Reference', th: 'ข้อมูลอ้างอิง' })}</span>
+          <span className="ov-kicker">{x({ en: 'Reference', th: 'เตรียมตัว', ja: '準備' })}</span>
           <h1 className="bk-h1">{x({ en: 'Bookings & Prep', th: 'การจอง & เตรียมตัว', ja: '予約と準備' })}</h1>
           <p className="bk-lede">{x({
-            en: 'Everything to sort before and during the trip — bookings, passes, what to pack and souvenirs to grab — in one place. Tick each off as you go.',
-            th: 'ทุกอย่างที่ต้องจัดการก่อนและระหว่างทริป — การจอง ตั๋ว ของที่ต้องแพ็ค และของฝากที่ต้องซื้อ — รวมไว้ในที่เดียว ทำเครื่องหมายไปเรื่อยๆ',
+            en: 'Everything to sort before and during the trip, in one place — pick a tab below.',
+            th: 'ทุกอย่างที่ต้องจัดการก่อนและระหว่างทริป รวมไว้ที่เดียว — เลือกแท็บด้านล่าง',
+            ja: '旅行の準備をひとまとめに — 下のタブから選んでね。',
           })}</p>
-          <div className="bk-progress" style={{ '--p': pct }}>
-            <div className="bk-progress-top">
-              <span className="bk-progress-k">{x({ en: 'Booking progress', th: 'ความคืบหน้าการจอง' })}</span>
-              <span className="bk-progress-v"><b>{doneCount}</b> / {total} {x({ en: 'confirmed', th: 'จองแล้ว' })}</span>
-            </div>
-            <span className="bk-progress-bar"><span className="bk-progress-fill"></span></span>
-          </div>
         </section>
 
-        {BK_CATS.map((cat) => {
-          const items = reservations.filter((it) => it.cat === cat.key);
-          if (!items.length) return null;
-          return (
-            <section className="bk-sec" key={cat.key}>
-              <div className="bk-sec-head">
-                <span className="bk-sec-ic"><Icon name={cat.icon} size={18} stroke={1.3} /></span>
-                <h2 className="bk-sec-title">{x(cat.label)}</h2>
-                <span className="bk-sec-count">{items.length}</span>
-              </div>
-              <div className="bk-grid">
-                {items.map((it, i) => (
-                  <BookingCard key={it.a.refs.reservation.code + i} item={it} booked={booked} onToggle={toggle} lang={lang} />
-                ))}
-              </div>
-            </section>
-          );
-        })}
+        <nav className="bk-subnav" role="tablist" aria-label="Prep sections">
+          {SECTIONS.map((s) => (
+            <button key={s.key} className={'bk-sub' + (sec === s.key ? ' on' : '')}
+              role="tab" aria-selected={sec === s.key}
+              onClick={(e) => { setSec(s.key); const nav = e.currentTarget.parentElement, btn = e.currentTarget; nav.scrollTo({ left: nav.scrollLeft + btn.getBoundingClientRect().left - nav.getBoundingClientRect().left - (nav.clientWidth - btn.offsetWidth) / 2, behavior: 'smooth' }); }}>
+              <Icon name={s.icon} size={15} stroke={1.6} />
+              <span>{x(s.label)}</span>
+            </button>
+          ))}
+        </nav>
 
-        {passes.length ? (
-          <section className="bk-sec">
-            <div className="bk-sec-head">
-              <span className="bk-sec-ic"><Icon name="ticket" size={18} stroke={1.3} /></span>
-              <h2 className="bk-sec-title">{x({ en: 'Tickets, Passes & Entry', th: 'ตั๋ว พาส และค่าเข้า' })}</h2>
-              <span className="bk-sec-count">{passes.length}</span>
-            </div>
-            <div className="bk-pass-grid">
-              {passes.map((it, i) => (
-                <div className="bk-pass" key={i}>
-                  <span className="bk-pass-ic"><Icon name={it.a.icon || 'ticket'} size={16} stroke={1.3} /></span>
-                  <span className="bk-pass-text">
-                    <span className="bk-pass-title">{x(it.a.title)}</span>
-                    <span className="bk-pass-place">{(lang === 'th' ? it.day.labelTh : it.day.label)} · {x(it.a.place)}</span>
-                  </span>
-                  <span className="bk-pass-price">{x(it.a.refs.booking)}</span>
-                </div>
-              ))}
-            </div>
-          </section>
-        ) : null}
-
-        <Packing data={window.PACKING} />
+        <div className="bk-section" key={sec}>
+          {sec === 'book' ? <BookingsList trip={trip} lang={lang} /> :
+           sec === 'pack' ? <Packing data={window.PACKING} storeKey="jp-packed" /> :
+           sec === 'gift' ? <Packing data={window.SOUVENIRS} storeKey="jp-souvenirs" /> :
+           sec === 'money' ? <MoneyTools /> :
+           <DrivingTips data={window.DRIVING} />}
+        </div>
 
         <div className="ov-credit">
           <span className="ov-credit-rule" aria-hidden="true"></span>
@@ -1025,6 +991,193 @@ function Bookings({ trip, onHome, onItinerary, onPhrases, onParty, onEmergency, 
         </div>
       </main>
     </div>
+  );
+}
+
+// ── BookingsList — reservations + passes (Bookings → "Bookings" tab) ────
+function BookingsList({ trip, lang }) {
+  const { x } = useT();
+  const { reservations, passes } = collectBookings(trip);
+  const [booked, setBooked] = useState(() => {
+    try { return JSON.parse(localStorage.getItem('jp-booked') || '{}'); } catch (e) { return {}; }
+  });
+  const toggle = (code) => setBooked((prev) => {
+    const n = { ...prev, [code]: !prev[code] };
+    try { localStorage.setItem('jp-booked', JSON.stringify(n)); } catch (e) {}
+    return n;
+  });
+  const total = reservations.length;
+  const doneCount = reservations.filter((it) => booked[it.a.refs.reservation.code]).length;
+  const pct = total ? doneCount / total : 0;
+  return (
+    <div className="bk-list">
+      <div className="bk-progress" style={{ '--p': pct }}>
+        <div className="bk-progress-top">
+          <span className="bk-progress-k">{x({ en: 'Booking progress', th: 'ความคืบหน้าการจอง' })}</span>
+          <span className="bk-progress-v"><b>{doneCount}</b> / {total} {x({ en: 'confirmed', th: 'จองแล้ว' })}</span>
+        </div>
+        <span className="bk-progress-bar"><span className="bk-progress-fill"></span></span>
+      </div>
+      {BK_CATS.map((cat) => {
+        const items = reservations.filter((it) => it.cat === cat.key);
+        if (!items.length) return null;
+        return (
+          <section className="bk-sec" key={cat.key}>
+            <div className="bk-sec-head">
+              <span className="bk-sec-ic"><Icon name={cat.icon} size={18} stroke={1.3} /></span>
+              <h2 className="bk-sec-title">{x(cat.label)}</h2>
+              <span className="bk-sec-count">{items.length}</span>
+            </div>
+            <div className="bk-grid">
+              {items.map((it, i) => (
+                <BookingCard key={it.a.refs.reservation.code + i} item={it} booked={booked} onToggle={toggle} lang={lang} />
+              ))}
+            </div>
+          </section>
+        );
+      })}
+      {passes.length ? (
+        <section className="bk-sec">
+          <div className="bk-sec-head">
+            <span className="bk-sec-ic"><Icon name="ticket" size={18} stroke={1.3} /></span>
+            <h2 className="bk-sec-title">{x({ en: 'Tickets, Passes & Entry', th: 'ตั๋ว พาส และค่าเข้า' })}</h2>
+            <span className="bk-sec-count">{passes.length}</span>
+          </div>
+          <div className="bk-pass-grid">
+            {passes.map((it, i) => (
+              <div className="bk-pass" key={i}>
+                <span className="bk-pass-ic"><Icon name={it.a.icon || 'ticket'} size={16} stroke={1.3} /></span>
+                <span className="bk-pass-text">
+                  <span className="bk-pass-title">{x(it.a.title)}</span>
+                  <span className="bk-pass-place">{(lang === 'th' ? it.day.labelTh : it.day.label)} · {x(it.a.place)}</span>
+                </span>
+                <span className="bk-pass-price">{x(it.a.refs.booking)}</span>
+              </div>
+            ))}
+          </div>
+        </section>
+      ) : null}
+    </div>
+  );
+}
+
+// ── Converter — quick ¥ → ฿ ─────────────────────────────────────────────
+function Converter() {
+  const { x } = useT();
+  const [yen, setYen] = useState('1000');
+  const rate = 22.6 / 100;
+  const n = parseFloat((yen || '').toString().replace(/,/g, '')) || 0;
+  const baht = n * rate;
+  return (
+    <section className="party conv">
+      <div className="party-head">
+        <span className="ov-kicker">{x({ en: 'Converter', th: 'แปลงเงิน', ja: '両替' })}</span>
+        <h2 className="ov-h2">{x({ en: 'Yen → Baht', th: 'เยน → บาท', ja: '円 → バーツ' })}</h2>
+      </div>
+      <div className="conv-card">
+        <label className="conv-side">
+          <span className="conv-cur">¥</span>
+          <input className="conv-in" type="number" inputMode="numeric" value={yen} onChange={(e) => setYen(e.target.value)} aria-label="Yen" />
+        </label>
+        <span className="conv-eq" aria-hidden="true">=</span>
+        <div className="conv-side conv-out">
+          <span className="conv-cur">฿</span>
+          <span className="conv-val">{baht.toLocaleString('en-US', { maximumFractionDigits: 0 })}</span>
+        </div>
+      </div>
+      <div className="conv-quick">
+        {[100, 500, 1000, 5000, 10000].map((v) => (
+          <button key={v} className="conv-chip" onClick={() => setYen(String(v))}>¥{v.toLocaleString('en-US')}</button>
+        ))}
+      </div>
+      <span className="conv-note">{x({ en: 'Rate ¥100 = ฿22.6 · indicative', th: 'เรต ¥100 = ฿22.6 · โดยประมาณ', ja: '¥100 = ฿22.6 · 目安' })}</span>
+    </section>
+  );
+}
+
+// ── Expenses — shared-trip spending log (÷4) ────────────────────────────
+function Expenses() {
+  const { x } = useT();
+  const [items, setItems] = useState(() => {
+    try { return JSON.parse(localStorage.getItem('jp-expenses') || '[]'); } catch (e) { return []; }
+  });
+  const [amt, setAmt] = useState('');
+  const [note, setNote] = useState('');
+  const save = (list) => { setItems(list); try { localStorage.setItem('jp-expenses', JSON.stringify(list)); } catch (e) {} };
+  const add = () => {
+    const a = parseFloat((amt || '').toString().replace(/,/g, ''));
+    if (!a || a <= 0) return;
+    save([{ id: 'e' + Date.now(), a, n: (note || '').trim() || '—' }, ...items]);
+    setAmt(''); setNote('');
+  };
+  const remove = (id) => save(items.filter((it) => it.id !== id));
+  const total = items.reduce((s, it) => s + it.a, 0);
+  const per = total / 4;
+  const fmt = (v) => '฿' + v.toLocaleString('en-US', { maximumFractionDigits: 0 });
+  return (
+    <section className="party exp">
+      <div className="party-head">
+        <span className="ov-kicker">{x({ en: 'Expenses', th: 'ค่าใช้จ่าย', ja: '支出' })}</span>
+        <h2 className="ov-h2">{x({ en: 'Trip spending', th: 'บันทึกค่าใช้จ่าย', ja: '支出メモ' })}</h2>
+      </div>
+      <div className="exp-totals">
+        <div className="exp-tot"><span className="exp-tot-k">{x({ en: 'Total', th: 'รวมทั้งหมด', ja: '合計' })}</span><span className="exp-tot-v">{fmt(total)}</span></div>
+        <div className="exp-tot exp-tot-split"><span className="exp-tot-k">{x({ en: 'Each ÷ 4', th: 'หาร 4 คน', ja: '1人 ÷4' })}</span><span className="exp-tot-v">{fmt(per)}</span></div>
+      </div>
+      <div className="exp-add">
+        <input className="exp-in exp-amt" type="number" inputMode="numeric" placeholder="฿0" value={amt} onChange={(e) => setAmt(e.target.value)} aria-label="Amount" />
+        <input className="exp-in exp-note" type="text" placeholder={x({ en: 'What for?', th: 'ค่าอะไร?', ja: '何に?' })} value={note} onChange={(e) => setNote(e.target.value)} onKeyDown={(e) => { if (e.key === 'Enter') add(); }} aria-label="Note" />
+        <button className="exp-add-btn" onClick={add} aria-label="Add"><Icon name="plus" size={17} stroke={2} /></button>
+      </div>
+      {items.length ? (
+        <ul className="exp-list">
+          {items.map((it) => (
+            <li className="exp-row" key={it.id}>
+              <span className="exp-row-n">{it.n}</span>
+              <span className="exp-row-a">{fmt(it.a)}</span>
+              <button className="exp-row-x" onClick={() => remove(it.id)} aria-label="Remove"><Icon name="close" size={13} stroke={2} /></button>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p className="exp-empty">{x({ en: 'No expenses yet — add one above.', th: 'ยังไม่มีรายการ — เพิ่มด้านบนได้เลย', ja: 'まだ記録なし' })}</p>
+      )}
+    </section>
+  );
+}
+
+// ── MoneyTools — converter + expense log together ───────────────────────
+function MoneyTools() {
+  return (
+    <div className="money-tools">
+      <Converter />
+      <Expenses />
+    </div>
+  );
+}
+
+// ── DrivingTips — self-drive cheat-sheet ────────────────────────────────
+function DrivingTips({ data }) {
+  const { x } = useT();
+  const ref = useInView();
+  return (
+    <section className="party drive" ref={ref}>
+      <div className="party-head">
+        <span className="ov-kicker">{x(data.subtitle)}</span>
+        <h2 className="ov-h2">{x(data.title)}</h2>
+      </div>
+      <div className="drive-list">
+        {data.tips.map((t, i) => (
+          <div className="drive-tip" key={i} style={{ '--i': i }}>
+            <span className="drive-ic"><Icon name={t.icon} size={19} stroke={1.4} /></span>
+            <div className="drive-body">
+              <span className="drive-label">{x(t.label)}</span>
+              <span className="drive-note">{x(t.note)}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
   );
 }
 
@@ -1139,15 +1292,15 @@ function MobileTabBar({ view, onItinerary, onBookings, onParty, onPhrases, onSet
 }
 
 // ── Packing / before-you-fly checklist ──────────────────────────────────
-function Packing({ data }) {
+function Packing({ data, storeKey = 'jp-packed' }) {
   const { x } = useT();
   const ref = useInView();
   const [done, setDone] = useState(() => {
-    try { return JSON.parse(localStorage.getItem('jp-packed') || '{}'); } catch (e) { return {}; }
+    try { return JSON.parse(localStorage.getItem(storeKey) || '{}'); } catch (e) { return {}; }
   });
   const toggle = (k) => setDone((prev) => {
     const n = { ...prev, [k]: !prev[k] };
-    try { localStorage.setItem('jp-packed', JSON.stringify(n)); } catch (e) {}
+    try { localStorage.setItem(storeKey, JSON.stringify(n)); } catch (e) {}
     return n;
   });
   return (
@@ -1360,4 +1513,5 @@ Object.assign(window, {
   Clock, RouteMap, Travelers, Overview, Emergency, Budget, Bookings,
   Konbini, EmergencySheet, DayKonbini, OvEssentials, DayWeather, MobileTabBar,
   Packing, Phrases, TravelersPage, SettingsPage,
+  BookingsList, Converter, Expenses, MoneyTools, DrivingTips,
 });

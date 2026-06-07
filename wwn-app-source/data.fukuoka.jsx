@@ -1114,6 +1114,48 @@ const PACKING = {
 };
 
 // ── Useful Japanese phrases (Overview) ──────────────────────────────────
+const SOUVENIRS = {
+  title: L('Souvenirs to grab', 'ของฝากที่ต้องซื้อ', 'お土産'),
+  subtitle: L('Kyushu picks · tick as you buy', 'ของเด็ดคิวชู · ติ๊กตอนซื้อ', '九州のおすすめ'),
+  groups: [
+    { label: L('Sweets', 'ขนม', 'お菓子'), items: [
+      L('Hakata Torimon (博多通りもん)', 'ฮากาตะ โทริมง'),
+      L('Tsuru-no-ko / Hiyoko', 'สึรุโนะโกะ / ฮิโยโกะ'),
+      L('Regional Kit-Kat (matcha · sake)', 'คิทแคทรสภูมิภาค (มัทฉะ · สาเก)'),
+      L('Ikinari dango (Kumamoto)', 'อิคินาริดังโงะ (คุมาโมโตะ)'),
+    ] },
+    { label: L('Food', 'ของกิน', '食品'), items: [
+      L('Mentaiko (spicy cod roe)', 'เมนไทโกะ (ไข่ปลาเผ็ด)'),
+      L('Instant tonkotsu ramen', 'ราเมงทงคตสึสำเร็จรูป'),
+      L('Yuzu kosho (citrus chili paste)', 'ยุซุโคโช (พริกส้ม)'),
+      L('Aso milk · caramel / cookies', 'นมอาโซ · คาราเมล / คุกกี้'),
+    ] },
+    { label: L('Drinks', 'เครื่องดื่ม', '飲み物'), items: [
+      L('Kyushu shochu / local sake', 'โชจู / สาเกคิวชู'),
+      L('Matcha / hojicha', 'มัทฉะ / โฮจิฉะ'),
+    ] },
+    { label: L('Goods & beauty', 'ของใช้ & ความงาม', '雑貨・コスメ'), items: [
+      L('Kumamon goods', 'ของคุมามง'),
+      L('Drugstore haul (Matsukiyo · Don Quijote)', 'ของร้านยา (มัตสึคิโยะ · ดองกี้)'),
+      L('Onsen skincare / bath salts', 'สกินแคร์ออนเซน / เกลือแช่'),
+    ] },
+  ],
+};
+
+const DRIVING = {
+  title: L('Driving in Japan', 'ขับรถในญี่ปุ่น', '日本での運転'),
+  subtitle: L('Self-drive cheat-sheet', 'สรุปสำหรับขับรถเอง', 'セルフドライブのコツ'),
+  tips: [
+    { icon: 'car', label: L('Keep LEFT', 'ขับเลนซ้าย'), note: L('Left-hand traffic, wheel on the right. Slow lane = left, overtake on the right.', 'จราจรชิดซ้าย พวงมาลัยขวา · เลนช้า = ซ้าย แซงทางขวา') },
+    { icon: 'alert', label: L('IDP + licence', 'IDP + ใบขับขี่'), note: L('Always carry the International Driving Permit, your Thai licence and passport when driving.', 'พกใบขับขี่สากล (IDP) + ใบขับขี่ไทย + พาสปอร์ต ทุกครั้งที่ขับ') },
+    { icon: 'ticket', label: L('ETC for tolls', 'ETC ผ่านทางด่วน'), note: L('Use the ETC card from the rental — drive through the purple ETC lanes, no stopping at booths.', 'ใช้บัตร ETC จากร้านเช่า · ขับผ่านเลนสีม่วง ไม่ต้องจอดจ่าย') },
+    { icon: 'pin', label: L('Navigate by MAPCODE', 'นำทางด้วย MAPCODE'), note: L('Car GPS takes a phone number or MAPCODE — set the destination before you set off; Google Maps works too.', 'GPS รถใช้เบอร์โทรหรือ MAPCODE · ตั้งจุดหมายก่อนออก หรือใช้ Google Maps ก็ได้') },
+    { icon: 'store', label: L('Self-serve fuel', 'ปั๊มเซลฟ์เซอร์วิส'), note: L('"Self" (セルフ) pumps: pay at the machine, touch the static pad, レギュラー = regular petrol.', 'ปั๊ม "セルフ": จ่ายที่ตู้ แตะแผ่นไล่ไฟฟ้าสถิต · レギュラー = น้ำมันธรรมดา') },
+    { icon: 'wallet', label: L('Paid parking', 'ที่จอดเก็บเงิน'), note: L('Coin lots lock a plate under the car — pay the machine before driving off. Hotels often charge parking separately.', 'ที่จอดหยอดเหรียญมีแผ่นล็อกใต้รถ · จ่ายตู้ก่อนถอยออก · โรงแรมมักคิดค่าจอดแยก') },
+    { icon: 'cloud', label: L('Winter & snow', 'หน้าหนาว & หิมะ'), note: L('December in Aso/highlands can ice over — ask for snow tyres, keep to Route 111 (Panorama Line), ease off on bridges.', 'ธันวาคมแถบอาโซ/ที่สูงอาจมีน้ำแข็ง · ขอยางหิมะ ใช้เส้น 111 (พาโนรามาไลน์) ชะลอบนสะพาน') },
+  ],
+};
+
 const PHRASES = {
   title: L('Useful Phrases', 'ประโยคที่ใช้บ่อย'),
   subtitle: L('A few words go a long way', 'พูดได้นิดหน่อยก็ช่วยได้มาก'),
@@ -1129,4 +1171,4 @@ const PHRASES = {
   ],
 };
 
-Object.assign(window, { TRIP, REF_TYPES, TR, tx, tr, DESTINATION, TRAVELERS, EMERGENCY, BUDGET, KONBINI, ESSENTIALS, WEATHER, MENUS, PACKING, PHRASES, CREDIT });
+Object.assign(window, { TRIP, REF_TYPES, TR, tx, tr, DESTINATION, TRAVELERS, EMERGENCY, BUDGET, KONBINI, ESSENTIALS, WEATHER, MENUS, PACKING, SOUVENIRS, DRIVING, PHRASES, CREDIT });
