@@ -275,6 +275,29 @@ function DayWeather({ wx, note }) {
   );
 }
 
+// ── Visit Japan Web — emphasised pre-arrival callout (Day 1) ─────────────
+function VisitJapanBox() {
+  const { x } = useT();
+  const d = window.VISITJAPAN;
+  if (!d) return null;
+  return (
+    <a className="vjw-box" href={d.href} target="_blank" rel="noopener noreferrer">
+      <div className="vjw-box-head">
+        <span className="vjw-box-badge"><Icon name="alert" size={13} stroke={1.9} />{x(d.badge)}</span>
+        <span className="vjw-box-go"><Icon name="arrowUpRight" size={16} stroke={1.6} /></span>
+      </div>
+      <h3 className="vjw-box-title">{d.title}</h3>
+      <p className="vjw-box-desc">{x(d.desc)}</p>
+      <ul className="vjw-box-points">
+        {d.points.map((p, i) => (
+          <li key={i}><span className="vjw-box-tick"><Icon name="check" size={12} stroke={2.6} /></span><span>{x(p)}</span></li>
+        ))}
+      </ul>
+      <span className="vjw-box-cta">{x(d.cta)}<Icon name="arrowRight" size={15} stroke={1.7} /></span>
+    </a>
+  );
+}
+
 function Timeline({ day, onOpen }) {
   const { x, lang } = useT();
   return (
@@ -290,6 +313,8 @@ function Timeline({ day, onOpen }) {
         <p className="day-sub">{x(day.subtitle)}</p>
         <p className="day-note">{x(day.note)}</p>
       </header>
+
+      {day.visitJapan ? <VisitJapanBox /> : null}
 
       <DayKonbini area={konbiniForDay(day)} />
 
@@ -1513,5 +1538,5 @@ Object.assign(window, {
   Clock, RouteMap, Travelers, Overview, Emergency, Budget, Bookings,
   Konbini, EmergencySheet, DayKonbini, OvEssentials, DayWeather, MobileTabBar,
   Packing, Phrases, TravelersPage, SettingsPage,
-  BookingsList, Converter, Expenses, MoneyTools, DrivingTips,
+  BookingsList, Converter, Expenses, MoneyTools, DrivingTips, VisitJapanBox,
 });

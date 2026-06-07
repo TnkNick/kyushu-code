@@ -1026,6 +1026,27 @@
   .drive-label { font-family: var(--serif); font-size: 17px; font-weight: 600; color: var(--ink); }
   .drive-note { font-size: 14px; line-height: 1.5; color: var(--ink-soft); text-wrap: pretty; }
 
+  /* Visit Japan Web — Day 1 emphasised callout (before "near the stay") */
+  .vjw-box { display: block; text-decoration: none; color: inherit; margin: 0 0 clamp(18px,2.8vw,26px); padding: clamp(18px,2.5vw,24px) clamp(18px,2.5vw,26px);
+    border-radius: 18px; border: 1.5px solid color-mix(in srgb, var(--accent) 55%, var(--line));
+    background: linear-gradient(180deg, color-mix(in srgb, var(--accent) 13%, var(--paper)), var(--paper-2));
+    box-shadow: 0 12px 32px -20px var(--accent); position: relative; overflow: hidden;
+    transition: transform .15s, box-shadow .3s; -webkit-tap-highlight-color: transparent; }
+  .vjw-box:active { transform: scale(.99); }
+  .vjw-box-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .vjw-box-badge { display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px; border-radius: 100px;
+    background: var(--accent); color: var(--paper); font-size: 11.5px; font-weight: 700; letter-spacing: .03em; text-transform: uppercase; }
+  .lookbook[data-lang="th"] .vjw-box-badge { text-transform: none; font-size: 12.5px; letter-spacing: normal; }
+  .vjw-box-go { color: var(--accent); display: grid; place-items: center; flex: none; }
+  .vjw-box-title { font-family: var(--serif); font-size: clamp(22px,2.8vw,28px); font-weight: 700; margin-top: 14px; letter-spacing: -.01em; color: var(--ink); }
+  .vjw-box-desc { font-size: 14.5px; line-height: 1.55; color: var(--ink-soft); margin-top: 7px; text-wrap: pretty; }
+  .vjw-box-points { list-style: none; margin: 14px 0 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+  .vjw-box-points li { display: flex; align-items: flex-start; gap: 9px; font-size: 14px; color: var(--ink); line-height: 1.4; }
+  .vjw-box-tick { flex: none; display: grid; place-items: center; width: 19px; height: 19px; border-radius: 50%;
+    background: color-mix(in srgb, var(--accent) 18%, transparent); color: var(--accent); margin-top: 1px; }
+  .vjw-box-cta { display: inline-flex; align-items: center; gap: 7px; margin-top: 16px; padding: 9px 17px; border-radius: 100px;
+    background: var(--accent); color: var(--paper); font-size: 14px; font-weight: 700; }
+
   .bk-progress { margin-top: clamp(26px,4vw,40px); max-width: 540px; }
   .bk-progress-top { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-bottom: 12px; }
   .bk-progress-k { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; font-weight: 600; color: var(--ink-soft); }
@@ -2932,6 +2953,7 @@ const TRIP = {
         'เที่ยวบินกลางคืนจากกรุงเทพฯ ถึงตอนเช้า ค่อยๆ เริ่มวันแรกที่ฮากาตะแบบไม่รีบ — โดนัทร้านดัง ราเมงทงคตสึ ไฟประดับยามค่ำ และปิดท้ายด้วยโมทสึนาเบะ'
       ),
       coverId: 'day1-cover',
+      visitJapan: true,
       activities: [
         { type: 'step', time: '01:00', meridiem: 'Pre-dawn', kind: 'Flight', icon: 'plane',
           title: L('Depart Bangkok (BKK)', 'ออกเดินทางจากกรุงเทพฯ (BKK)'),
@@ -2948,11 +2970,11 @@ const TRIP = {
           refs: { notes: L('23 kg checked baggage each. Have the Visit Japan Web QR ready before the hall.', 'กระเป๋าโหลดคนละ 23 กก. เตรียม QR จาก Visit Japan Web ให้พร้อมก่อนถึงห้องตรวจ') } },
 
         { type: 'step', time: '08:40', meridiem: 'Morning', kind: 'Immigration', icon: 'passport',
-          title: L('Immigration · Visit Japan Web', 'ตม. · Visit Japan Web'),
+          title: L('Pass immigration', 'ผ่านด่านตรวจคนเข้าเมือง', '入国審査'),
           place: L('FUK Arrivals Hall · scan the QR', 'ห้องผู้โดยสารขาเข้า FUK · สแกน QR'),
-          blurb: L('Register on Visit Japan Web before you fly — immigration + customs in one QR. At FUK just scan it, collect bags and clear the green channel.',
-                   'ลงทะเบียน Visit Japan Web ก่อนบิน — รวม ตม. + ศุลกากร ใน QR เดียว · ที่ FUK แค่สแกน รับกระเป๋า แล้วผ่านช่องเขียว'),
-          refs: { official: 'https://www.vjw.digital.go.jp/', notes: L('Open Visit Japan Web (the tap link) and set up the QR before you fly. FUK is small — usually clear within 30 minutes.', 'เปิด Visit Japan Web (ปุ่มลิงก์) แล้วตั้งค่า QR ให้พร้อมก่อนบิน · FUK เล็ก ปกติผ่านได้ใน 30 นาที') } },
+          blurb: L('Scan your Visit Japan Web QR, collect your bags, then clear the green customs channel. FUK is small — usually under 30 minutes.',
+                   'สแกน QR จาก Visit Japan Web รับกระเป๋า แล้วผ่านช่องศุลกากรสีเขียว · FUK เล็ก ปกติไม่ถึง 30 นาที'),
+          refs: { notes: L('Set up your Visit Japan Web QR before you fly — see the box at the top of the day.', 'ตั้งค่า QR จาก Visit Japan Web ให้พร้อมก่อนบิน — ดูกล่องด้านบนสุดของวัน') } },
 
         { type: 'step', time: '09:15', meridiem: 'Morning', kind: 'Train', icon: 'train',
           title: L('Subway → Tenjin', 'รถไฟใต้ดิน → เท็นจิน'),
@@ -4021,6 +4043,21 @@ const PACKING = {
 };
 
 // ── Useful Japanese phrases (Overview) ──────────────────────────────────
+const VISITJAPAN = {
+  badge: L('Important · do before you fly', 'สำคัญ · ทำก่อนบิน', '重要'),
+  title: 'Visit Japan Web',
+  desc: L('Register before you fly — immigration + customs become one QR. At FUK you just scan it and walk through.',
+          'ลงทะเบียนก่อนบิน — รวม ตม. + ศุลกากร เป็น QR เดียว · ที่ FUK แค่สแกนแล้วเดินผ่าน',
+          '出発前に登録 — 入国と税関がQR1つに。'),
+  points: [
+    L('Do it a few days before departure', 'ทำล่วงหน้าก่อนบินสัก 2-3 วัน'),
+    L('One QR for immigration & customs', 'QR เดียว ใช้ทั้ง ตม. และศุลกากร'),
+    L('Screenshot the QR in case of no signal', 'แคปหน้าจอ QR ไว้ เผื่อเน็ตไม่มี'),
+  ],
+  cta: L('Open Visit Japan Web', 'เปิด Visit Japan Web', 'Visit Japan Web を開く'),
+  href: 'https://www.vjw.digital.go.jp/',
+};
+
 const SOUVENIRS = {
   title: L('Souvenirs to grab', 'ของฝากที่ต้องซื้อ', 'お土産'),
   subtitle: L('Kyushu picks · tick as you buy', 'ของเด็ดคิวชู · ติ๊กตอนซื้อ', '九州のおすすめ'),
@@ -4078,7 +4115,7 @@ const PHRASES = {
   ],
 };
 
-Object.assign(window, { TRIP, REF_TYPES, TR, tx, tr, DESTINATION, TRAVELERS, EMERGENCY, BUDGET, KONBINI, ESSENTIALS, WEATHER, MENUS, PACKING, SOUVENIRS, DRIVING, PHRASES, CREDIT });
+Object.assign(window, { TRIP, REF_TYPES, TR, tx, tr, DESTINATION, TRAVELERS, EMERGENCY, BUDGET, KONBINI, ESSENTIALS, WEATHER, MENUS, PACKING, SOUVENIRS, DRIVING, VISITJAPAN, PHRASES, CREDIT });
 </script>
   <script type="text/babel">
 // components.jsx — lookbook UI (bilingual). Depends on window.Icon, REF_TYPES, tx, tr.
@@ -4358,6 +4395,29 @@ function DayWeather({ wx, note }) {
   );
 }
 
+// ── Visit Japan Web — emphasised pre-arrival callout (Day 1) ─────────────
+function VisitJapanBox() {
+  const { x } = useT();
+  const d = window.VISITJAPAN;
+  if (!d) return null;
+  return (
+    <a className="vjw-box" href={d.href} target="_blank" rel="noopener noreferrer">
+      <div className="vjw-box-head">
+        <span className="vjw-box-badge"><Icon name="alert" size={13} stroke={1.9} />{x(d.badge)}</span>
+        <span className="vjw-box-go"><Icon name="arrowUpRight" size={16} stroke={1.6} /></span>
+      </div>
+      <h3 className="vjw-box-title">{d.title}</h3>
+      <p className="vjw-box-desc">{x(d.desc)}</p>
+      <ul className="vjw-box-points">
+        {d.points.map((p, i) => (
+          <li key={i}><span className="vjw-box-tick"><Icon name="check" size={12} stroke={2.6} /></span><span>{x(p)}</span></li>
+        ))}
+      </ul>
+      <span className="vjw-box-cta">{x(d.cta)}<Icon name="arrowRight" size={15} stroke={1.7} /></span>
+    </a>
+  );
+}
+
 function Timeline({ day, onOpen }) {
   const { x, lang } = useT();
   return (
@@ -4373,6 +4433,8 @@ function Timeline({ day, onOpen }) {
         <p className="day-sub">{x(day.subtitle)}</p>
         <p className="day-note">{x(day.note)}</p>
       </header>
+
+      {day.visitJapan ? <VisitJapanBox /> : null}
 
       <DayKonbini area={konbiniForDay(day)} />
 
@@ -5596,7 +5658,7 @@ Object.assign(window, {
   Clock, RouteMap, Travelers, Overview, Emergency, Budget, Bookings,
   Konbini, EmergencySheet, DayKonbini, OvEssentials, DayWeather, MobileTabBar,
   Packing, Phrases, TravelersPage, SettingsPage,
-  BookingsList, Converter, Expenses, MoneyTools, DrivingTips,
+  BookingsList, Converter, Expenses, MoneyTools, DrivingTips, VisitJapanBox,
 });
 </script>
   <script type="text/babel">
@@ -5890,7 +5952,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', function () {
       navigator.serviceWorker.register('sw.js').catch(function () {});
-      if (window.caches) caches.open('wwn-kyushu-v38').then(function (c) {
+      if (window.caches) caches.open('wwn-kyushu-v39').then(function (c) {
         c.add(new Request(location.href, { cache: 'reload' })).catch(function () {});
       });
     });

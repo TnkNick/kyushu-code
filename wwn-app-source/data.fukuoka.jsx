@@ -25,6 +25,7 @@ const TRIP = {
         'เที่ยวบินกลางคืนจากกรุงเทพฯ ถึงตอนเช้า ค่อยๆ เริ่มวันแรกที่ฮากาตะแบบไม่รีบ — โดนัทร้านดัง ราเมงทงคตสึ ไฟประดับยามค่ำ และปิดท้ายด้วยโมทสึนาเบะ'
       ),
       coverId: 'day1-cover',
+      visitJapan: true,
       activities: [
         { type: 'step', time: '01:00', meridiem: 'Pre-dawn', kind: 'Flight', icon: 'plane',
           title: L('Depart Bangkok (BKK)', 'ออกเดินทางจากกรุงเทพฯ (BKK)'),
@@ -41,11 +42,11 @@ const TRIP = {
           refs: { notes: L('23 kg checked baggage each. Have the Visit Japan Web QR ready before the hall.', 'กระเป๋าโหลดคนละ 23 กก. เตรียม QR จาก Visit Japan Web ให้พร้อมก่อนถึงห้องตรวจ') } },
 
         { type: 'step', time: '08:40', meridiem: 'Morning', kind: 'Immigration', icon: 'passport',
-          title: L('Immigration · Visit Japan Web', 'ตม. · Visit Japan Web'),
+          title: L('Pass immigration', 'ผ่านด่านตรวจคนเข้าเมือง', '入国審査'),
           place: L('FUK Arrivals Hall · scan the QR', 'ห้องผู้โดยสารขาเข้า FUK · สแกน QR'),
-          blurb: L('Register on Visit Japan Web before you fly — immigration + customs in one QR. At FUK just scan it, collect bags and clear the green channel.',
-                   'ลงทะเบียน Visit Japan Web ก่อนบิน — รวม ตม. + ศุลกากร ใน QR เดียว · ที่ FUK แค่สแกน รับกระเป๋า แล้วผ่านช่องเขียว'),
-          refs: { official: 'https://www.vjw.digital.go.jp/', notes: L('Open Visit Japan Web (the tap link) and set up the QR before you fly. FUK is small — usually clear within 30 minutes.', 'เปิด Visit Japan Web (ปุ่มลิงก์) แล้วตั้งค่า QR ให้พร้อมก่อนบิน · FUK เล็ก ปกติผ่านได้ใน 30 นาที') } },
+          blurb: L('Scan your Visit Japan Web QR, collect your bags, then clear the green customs channel. FUK is small — usually under 30 minutes.',
+                   'สแกน QR จาก Visit Japan Web รับกระเป๋า แล้วผ่านช่องศุลกากรสีเขียว · FUK เล็ก ปกติไม่ถึง 30 นาที'),
+          refs: { notes: L('Set up your Visit Japan Web QR before you fly — see the box at the top of the day.', 'ตั้งค่า QR จาก Visit Japan Web ให้พร้อมก่อนบิน — ดูกล่องด้านบนสุดของวัน') } },
 
         { type: 'step', time: '09:15', meridiem: 'Morning', kind: 'Train', icon: 'train',
           title: L('Subway → Tenjin', 'รถไฟใต้ดิน → เท็นจิน'),
@@ -1114,6 +1115,21 @@ const PACKING = {
 };
 
 // ── Useful Japanese phrases (Overview) ──────────────────────────────────
+const VISITJAPAN = {
+  badge: L('Important · do before you fly', 'สำคัญ · ทำก่อนบิน', '重要'),
+  title: 'Visit Japan Web',
+  desc: L('Register before you fly — immigration + customs become one QR. At FUK you just scan it and walk through.',
+          'ลงทะเบียนก่อนบิน — รวม ตม. + ศุลกากร เป็น QR เดียว · ที่ FUK แค่สแกนแล้วเดินผ่าน',
+          '出発前に登録 — 入国と税関がQR1つに。'),
+  points: [
+    L('Do it a few days before departure', 'ทำล่วงหน้าก่อนบินสัก 2-3 วัน'),
+    L('One QR for immigration & customs', 'QR เดียว ใช้ทั้ง ตม. และศุลกากร'),
+    L('Screenshot the QR in case of no signal', 'แคปหน้าจอ QR ไว้ เผื่อเน็ตไม่มี'),
+  ],
+  cta: L('Open Visit Japan Web', 'เปิด Visit Japan Web', 'Visit Japan Web を開く'),
+  href: 'https://www.vjw.digital.go.jp/',
+};
+
 const SOUVENIRS = {
   title: L('Souvenirs to grab', 'ของฝากที่ต้องซื้อ', 'お土産'),
   subtitle: L('Kyushu picks · tick as you buy', 'ของเด็ดคิวชู · ติ๊กตอนซื้อ', '九州のおすすめ'),
@@ -1171,4 +1187,4 @@ const PHRASES = {
   ],
 };
 
-Object.assign(window, { TRIP, REF_TYPES, TR, tx, tr, DESTINATION, TRAVELERS, EMERGENCY, BUDGET, KONBINI, ESSENTIALS, WEATHER, MENUS, PACKING, SOUVENIRS, DRIVING, PHRASES, CREDIT });
+Object.assign(window, { TRIP, REF_TYPES, TR, tx, tr, DESTINATION, TRAVELERS, EMERGENCY, BUDGET, KONBINI, ESSENTIALS, WEATHER, MENUS, PACKING, SOUVENIRS, DRIVING, VISITJAPAN, PHRASES, CREDIT });
