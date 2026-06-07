@@ -1091,18 +1091,40 @@
   .mtab-item.active .mtab-lb { transform: translateY(-1px); }
 
   /* ───────────────────────── LIGHT MODE ─────────────────────────
-     A single cohesive light palette that overrides ANY per-day theme.
-     Must follow the [data-theme] blocks so it wins on equal specificity. */
-  .lookbook[data-mode="light"] {
-    --paper: #f6f1e8; --paper-2: #fffdf8; --ink: #2a2118; --ink-soft: #6e6051;
-    --taupe: #9c7b4e; --sand: #ece2d2; --accent: #b1762a; --accent-2: #c0602f;
-    --line: rgba(42,33,24,.15); --line-soft: rgba(42,33,24,.06); --chip: rgba(177,118,42,.15);
-    --grain: radial-gradient(130% 90% at 82% -15%, rgba(177,118,42,.12), transparent 55%),
-             radial-gradient(120% 95% at -12% 112%, rgba(192,96,47,.09), transparent 50%);
-  }
+     Per-day light variants — each mirrors its dark theme's hue on a light base.
+     [data-theme][data-mode="light"] = specificity (0,3,0), beats the dark (0,2,0). */
+  .lookbook[data-theme="kurogane"][data-mode="light"] {
+    --paper:#f6f1e8; --paper-2:#fffdf8; --ink:#241c12; --ink-soft:#6f6151; --taupe:#9c7b4e; --sand:#ece2d2;
+    --accent:#a9722a; --accent-2:#bd5f30; --line:rgba(36,28,18,.14); --line-soft:rgba(36,28,18,.06); --chip:rgba(169,114,42,.14);
+    --grain:radial-gradient(130% 90% at 82% -15%, rgba(169,114,42,.12), transparent 55%), radial-gradient(120% 95% at -12% 112%, rgba(189,95,48,.08), transparent 50%); }
+  .lookbook[data-theme="sumi"][data-mode="light"] {
+    --paper:#f1f2f3; --paper-2:#fcfdfe; --ink:#1d1f21; --ink-soft:#5f6266; --taupe:#897f61; --sand:#e3e5e7;
+    --accent:#8d7d4f; --accent-2:#5d6f84; --line:rgba(29,31,33,.13); --line-soft:rgba(29,31,33,.06); --chip:rgba(141,125,79,.13);
+    --grain:radial-gradient(130% 90% at 82% -15%, rgba(141,125,79,.10), transparent 55%), radial-gradient(120% 95% at -12% 112%, rgba(93,111,132,.09), transparent 50%); }
+  .lookbook[data-theme="urushi"][data-mode="light"] {
+    --paper:#f7eee8; --paper-2:#fffaf6; --ink:#281612; --ink-soft:#7a584c; --taupe:#a87b4e; --sand:#ead9cf;
+    --accent:#a0702c; --accent-2:#a5392f; --line:rgba(40,22,18,.14); --line-soft:rgba(40,22,18,.06); --chip:rgba(165,57,47,.13);
+    --grain:radial-gradient(130% 90% at 82% -15%, rgba(160,112,44,.12), transparent 55%), radial-gradient(120% 95% at -12% 112%, rgba(165,57,47,.10), transparent 50%); }
+  .lookbook[data-theme="hisui"][data-mode="light"] {
+    --paper:#edf3ee; --paper-2:#fafefb; --ink:#15231c; --ink-soft:#587065; --taupe:#5f8470; --sand:#dce8df;
+    --accent:#3c8f64; --accent-2:#a4863c; --line:rgba(21,35,28,.13); --line-soft:rgba(21,35,28,.06); --chip:rgba(60,143,100,.13);
+    --grain:radial-gradient(130% 90% at 82% -15%, rgba(60,143,100,.12), transparent 55%), radial-gradient(120% 95% at -12% 112%, rgba(164,134,60,.09), transparent 50%); }
+  .lookbook[data-theme="ai"][data-mode="light"] {
+    --paper:#eef1f7; --paper-2:#fbfdff; --ink:#151b27; --ink-soft:#59637e; --taupe:#5e6d90; --sand:#dde3ef;
+    --accent:#3f63b0; --accent-2:#94794c; --line:rgba(21,27,39,.13); --line-soft:rgba(21,27,39,.06); --chip:rgba(63,99,176,.12);
+    --grain:radial-gradient(130% 90% at 82% -15%, rgba(63,99,176,.13), transparent 55%), radial-gradient(120% 95% at -12% 112%, rgba(148,121,76,.09), transparent 50%); }
+  .lookbook[data-theme="kohaku"][data-mode="light"] {
+    --paper:#f8efe4; --paper-2:#fffbf4; --ink:#281b0d; --ink-soft:#7c603c; --taupe:#b07e32; --sand:#eddbc5;
+    --accent:#bd6e2b; --accent-2:#bf4329; --line:rgba(40,27,13,.14); --line-soft:rgba(40,27,13,.06); --chip:rgba(189,110,43,.14);
+    --grain:radial-gradient(130% 90% at 82% -15%, rgba(189,110,43,.13), transparent 55%), radial-gradient(120% 95% at -12% 112%, rgba(191,67,41,.10), transparent 50%); }
+  .lookbook[data-theme="botan"][data-mode="light"] {
+    --paper:#f7edf2; --paper-2:#fff9fc; --ink:#291522; --ink-soft:#7a566f; --taupe:#a06088; --sand:#ecd9e4;
+    --accent:#ad3b71; --accent-2:#ab773a; --line:rgba(41,21,34,.14); --line-soft:rgba(41,21,34,.06); --chip:rgba(173,59,113,.13);
+    --grain:radial-gradient(130% 90% at 82% -15%, rgba(173,59,113,.12), transparent 55%), radial-gradient(120% 95% at -12% 112%, rgba(171,119,58,.09), transparent 50%); }
+  /* shared light-mode tweaks (all variants) */
   .lookbook[data-mode="light"] .bg-grain {
-    background: radial-gradient(125% 125% at 50% 38%, transparent 60%, rgba(120,96,60,.10) 100%); }
-  .lookbook[data-mode="light"] .bg-fx .orb { opacity: .26; mix-blend-mode: multiply; }
+    background: radial-gradient(125% 125% at 50% 38%, transparent 62%, rgba(90,72,54,.08) 100%); }
+  .lookbook[data-mode="light"] .bg-fx .orb { opacity: .22; mix-blend-mode: multiply; }
 
   /* ───────────────────────── SETTINGS PAGE ───────────────────────── */
   .settings-page { width: 100%; max-width: 640px; margin: 0 auto; }
@@ -2747,8 +2769,8 @@ const ICON_PATHS = {
   // ── Settings / theme / language ─────────────────────────────────
   gear: (
     <>
-      <circle cx="12" cy="12" r="3.4" />
-      <path d="M19.4 13.5a7.5 7.5 0 0 0 0-3l1.8-1.4-1.5-2.6-2.1.8a7.5 7.5 0 0 0-2.6-1.5L14.6 3h-3l-.4 2.3A7.5 7.5 0 0 0 8.6 6.8L6.5 6 5 8.6l1.8 1.4a7.5 7.5 0 0 0 0 3L5 14.4 6.5 17l2.1-.8a7.5 7.5 0 0 0 2.6 1.5l.4 2.3h3l.4-2.3a7.5 7.5 0 0 0 2.6-1.5l2.1.8 1.5-2.6Z" />
+      <circle cx="12" cy="12" r="3" />
+      <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z" />
     </>
   ),
   moon: <path d="M20 14.5A8 8 0 0 1 9.5 4 7 7 0 1 0 20 14.5Z" />,
@@ -5351,12 +5373,12 @@ function initialTweaks() {
 function readLang() {
   if (PARAM.lang === 'th' || PARAM.lang === 'en' || PARAM.lang === 'ja') return PARAM.lang;
   try { const s = localStorage.getItem('lookbook-lang'); if (s) return s; } catch (e) {}
-  return 'en';
+  return 'th';
 }
 
 function readMode() {
   try { const s = localStorage.getItem('lookbook-mode'); if (s) return s; } catch (e) {}
-  return 'system';
+  return 'dark';
 }
 
 function App() {
@@ -5430,6 +5452,20 @@ function App() {
 
   // Cover & overview borrow Day 1's palette; itinerary uses the active day's.
   const activeTheme = PARAM.theme || (view === 'itinerary' ? TRIP.days[day].theme : TRIP.days[0].theme);
+
+  // Paint the page CANVAS (html/body) with the active theme's --paper so the iOS
+  // home-indicator strip — which shows the canvas background, NOT any fixed layer —
+  // matches the content instead of leaving a dark dead-zone band.
+  React.useEffect(() => {
+    const lb = document.querySelector('.lookbook');
+    if (!lb) return;
+    const paper = getComputedStyle(lb).getPropertyValue('--paper').trim();
+    if (!paper) return;
+    document.documentElement.style.backgroundColor = paper;
+    document.body.style.backgroundColor = paper;
+    const meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) meta.setAttribute('content', paper);
+  }, [activeTheme, resolvedMode]);
 
   return (
     <LangCtx.Provider value={lang}>
@@ -5550,7 +5586,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', function () {
       navigator.serviceWorker.register('sw.js').catch(function () {});
-      if (window.caches) caches.open('wwn-kyushu-v23').then(function (c) {
+      if (window.caches) caches.open('wwn-kyushu-v24').then(function (c) {
         c.add(new Request(location.href, { cache: 'reload' })).catch(function () {});
       });
     });

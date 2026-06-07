@@ -40,12 +40,12 @@ function initialTweaks() {
 function readLang() {
   if (PARAM.lang === 'th' || PARAM.lang === 'en' || PARAM.lang === 'ja') return PARAM.lang;
   try { const s = localStorage.getItem('lookbook-lang'); if (s) return s; } catch (e) {}
-  return 'en';
+  return 'th';
 }
 
 function readMode() {
   try { const s = localStorage.getItem('lookbook-mode'); if (s) return s; } catch (e) {}
-  return 'system';
+  return 'dark';
 }
 
 function App() {
@@ -119,6 +119,20 @@ function App() {
 
   // Cover & overview borrow Day 1's palette; itinerary uses the active day's.
   const activeTheme = PARAM.theme || (view === 'itinerary' ? TRIP.days[day].theme : TRIP.days[0].theme);
+
+  // Paint the page CANVAS (html/body) with the active theme's --paper so the iOS
+  // home-indicator strip — which shows the canvas background, NOT any fixed layer —
+  // matches the content instead of leaving a dark dead-zone band.
+  React.useEffect(() => {
+    const lb = document.querySelector('.lookbook');
+    if (!lb) return;
+    const paper = getComputedStyle(lb).getPropertyValue('--paper').trim();
+    if (!paper) return;
+    document.documentElement.style.backgroundColor = paper;
+    document.body.style.backgroundColor = paper;
+    const meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) meta.setAttribute('content', paper);
+  }, [activeTheme, resolvedMode]);
 
   return (
     <LangCtx.Provider value={lang}>
