@@ -1124,11 +1124,11 @@ function OvEssentials({ data }) {
 function MobileTabBar({ view, onItinerary, onBookings, onParty, onPhrases, onSettings }) {
   const { x } = useT();
   const tabs = [
-    { key: 'itinerary', icon: 'compass', size: 21, stroke: 1.5,  label: { en: 'Itinerary', th: 'แผนการเดินทาง', ja: '旅程' }, on: onItinerary },
-    { key: 'bookings',  icon: 'book',    size: 23, stroke: 1.45, label: { en: 'Bookings',  th: 'การจอง', ja: '予約' },         on: onBookings },
-    { key: 'party',     icon: 'passport',size: 22, stroke: 1.5,  label: { en: 'Party',     th: 'ทีมงาน', ja: 'メンバー' },     on: onParty },
-    { key: 'phrases',   icon: 'note',    size: 22, stroke: 1.5,  label: { en: 'Phrases',   th: 'ประโยค', ja: '会話' },         on: onPhrases },
-    { key: 'settings',  icon: 'gear',    size: 15, stroke: 2.2,  label: { en: 'Settings',  th: 'ตั้งค่า', ja: '設定' },         on: onSettings },
+    { key: 'itinerary', icon: 'compass', size: 28, stroke: 1.3,  label: { en: 'Itinerary', th: 'แผนการเดินทาง', ja: '旅程' }, on: onItinerary },
+    { key: 'bookings',  icon: 'book',    size: 31, stroke: 1.2,  label: { en: 'Bookings',  th: 'การจอง', ja: '予約' },         on: onBookings },
+    { key: 'party',     icon: 'passport',size: 30, stroke: 1.25, label: { en: 'Party',     th: 'ทีมงาน', ja: 'メンバー' },     on: onParty },
+    { key: 'phrases',   icon: 'note',    size: 30, stroke: 1.25, label: { en: 'Phrases',   th: 'ประโยค', ja: '会話' },         on: onPhrases },
+    { key: 'settings',  icon: 'gear',    size: 20, stroke: 1.7,  label: { en: 'Settings',  th: 'ตั้งค่า', ja: '設定' },         on: onSettings },
   ];
   return (
     <nav className="mtab" role="tablist" aria-label="Sections">
