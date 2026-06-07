@@ -1155,6 +1155,13 @@
   .set-link-ic { color: var(--accent); display: grid; place-items: center; }
   .set-link-tx { flex: 1; text-align: left; }
   .set-link > svg:last-child { color: var(--ink-soft); }
+  .set-credit { display: flex; flex-direction: column; align-items: center; gap: 5px;
+    margin-top: 34px; padding-top: 24px; border-top: 1px solid var(--line-soft); text-align: center; }
+  .set-credit-mark { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 700;
+    letter-spacing: .1em; color: var(--ink-soft); }
+  .set-credit-mark svg { color: var(--accent); }
+  .set-credit-mark b { color: var(--accent); font-weight: 800; }
+  .set-credit-by { font-size: 11px; letter-spacing: .04em; color: var(--ink-soft); opacity: .65; }
 
   /* ───────────────────────── RESPONSIVE ───────────────────────── */
   @media (max-width: 760px) {
@@ -1185,8 +1192,8 @@
     .clock-chrome .clock-ic { display: none; }
     .clock-chrome { padding: 4px 9px; }
     .chrome-bar { gap: 10px; }
-    /* overview already has the big dual clock in its hero — drop the redundant chrome clock there */
-    .view-overview .clock-chrome { display: none; }
+    /* overview also shows the top-right date/time clock now (matches every other page) */
+    .view-overview .clock-chrome { display: inline-flex; }
   }
   @media (max-width: 520px) {
     .wwn-full { display: none; }
@@ -5309,6 +5316,11 @@ function SettingsPage({ onHome, onItinerary, onBookings, onParty, onPhrases, onE
               ))}
             </div>
           </div>
+
+          <div className="set-credit">
+            <span className="set-credit-mark"><Icon name="feather" size={15} stroke={1.3} /> <b>WWN</b> · World Wide Nick</span>
+            <span className="set-credit-by">{window.CREDIT}</span>
+          </div>
         </section>
       </main>
     </div>
@@ -5603,7 +5615,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', function () {
       navigator.serviceWorker.register('sw.js').catch(function () {});
-      if (window.caches) caches.open('wwn-kyushu-v26').then(function (c) {
+      if (window.caches) caches.open('wwn-kyushu-v27').then(function (c) {
         c.add(new Request(location.href, { cache: 'reload' })).catch(function () {});
       });
     });

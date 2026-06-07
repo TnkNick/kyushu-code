@@ -1350,6 +1350,11 @@ function SettingsPage({ onHome, onItinerary, onBookings, onParty, onPhrases, onE
               ))}
             </div>
           </div>
+
+          <div className="set-credit">
+            <span className="set-credit-mark"><Icon name="feather" size={15} stroke={1.3} /> <b>WWN</b> · World Wide Nick</span>
+            <span className="set-credit-by">{window.CREDIT}</span>
+          </div>
         </section>
       </main>
     </div>
