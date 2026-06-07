@@ -962,10 +962,10 @@ function Bookings({ trip, onHome, onItinerary, onPhrases, onParty, onEmergency, 
       <main className="bk-stage">
         <section className="bk-hero">
           <span className="ov-kicker">{x({ en: 'Reference', th: 'ข้อมูลอ้างอิง' })}</span>
-          <h1 className="bk-h1">{x({ en: 'Bookings & Reservations', th: 'การจองทั้งหมด' })}</h1>
+          <h1 className="bk-h1">{x({ en: 'Bookings & Prep', th: 'การจอง & เตรียมตัว', ja: '予約と準備' })}</h1>
           <p className="bk-lede">{x({
-            en: 'Every confirmation, ticket and pass for the nine days, gathered in one place. Tick each off as you book it.',
-            th: 'ทุกการยืนยัน ตั๋ว และพาส สำหรับเก้าวัน รวมไว้ในที่เดียว ทำเครื่องหมายเมื่อจองแต่ละรายการเสร็จ',
+            en: 'Everything to sort before and during the trip — bookings, passes, what to pack and souvenirs to grab — in one place. Tick each off as you go.',
+            th: 'ทุกอย่างที่ต้องจัดการก่อนและระหว่างทริป — การจอง ตั๋ว ของที่ต้องแพ็ค และของฝากที่ต้องซื้อ — รวมไว้ในที่เดียว ทำเครื่องหมายไปเรื่อยๆ',
           })}</p>
           <div className="bk-progress" style={{ '--p': pct }}>
             <div className="bk-progress-top">
@@ -1109,14 +1109,6 @@ function OvEssentials({ data }) {
           <span className="ov-ess-note">{x(data.currency.note)}</span>
         </span>
       </div>
-      <a className="ov-ess-card ov-ess-vjw" href={data.visitJapan.href} target="_blank" rel="noopener noreferrer">
-        <span className="ov-ess-ic"><Icon name="passport" size={18} stroke={1.3} /></span>
-        <span className="ov-ess-body">
-          <span className="ov-ess-label">{data.visitJapan.label}</span>
-          <span className="ov-ess-desc">{x(data.visitJapan.desc)}</span>
-        </span>
-        <span className="ov-ess-go"><Icon name="external" size={15} stroke={1.5} /></span>
-      </a>
     </div>
   );
 }
@@ -1126,7 +1118,7 @@ function MobileTabBar({ view, onItinerary, onBookings, onParty, onPhrases, onSet
   const { x } = useT();
   const tabs = [
     { key: 'itinerary', icon: 'compass', size: 28, stroke: 1.3,  label: { en: 'Itinerary', th: 'แผนการเดินทาง', ja: '旅程' }, on: onItinerary },
-    { key: 'bookings',  icon: 'book',    size: 31, stroke: 1.2,  label: { en: 'Bookings',  th: 'การจอง', ja: '予約' },         on: onBookings },
+    { key: 'bookings',  icon: 'book',    size: 31, stroke: 1.2,  label: { en: 'Prep',  th: 'เตรียมตัว', ja: '準備' },         on: onBookings },
     { key: 'party',     icon: 'passport',size: 30, stroke: 1.25, label: { en: 'Party',     th: 'ทีมงาน', ja: 'メンバー' },     on: onParty },
     { key: 'phrases',   icon: 'note',    size: 30, stroke: 1.25, label: { en: 'Phrases',   th: 'ประโยค', ja: '会話' },         on: onPhrases },
     { key: 'settings',  icon: 'gear',    size: 20, stroke: 1.7,  label: { en: 'Settings',  th: 'ตั้งค่า', ja: '設定' },         on: onSettings },

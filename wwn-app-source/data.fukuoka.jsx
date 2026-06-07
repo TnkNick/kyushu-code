@@ -41,11 +41,11 @@ const TRIP = {
           refs: { notes: L('23 kg checked baggage each. Have the Visit Japan Web QR ready before the hall.', 'กระเป๋าโหลดคนละ 23 กก. เตรียม QR จาก Visit Japan Web ให้พร้อมก่อนถึงห้องตรวจ') } },
 
         { type: 'step', time: '08:40', meridiem: 'Morning', kind: 'Immigration', icon: 'passport',
-          title: L('Immigration & Customs', 'ตรวจคนเข้าเมือง & ศุลกากร'),
-          place: L('FUK Arrivals Hall', 'ห้องผู้โดยสารขาเข้า FUK'),
-          blurb: L('Scan the QR, collect bags, clear the green channel.',
-                   'สแกน QR รับกระเป๋า แล้วผ่านช่องเขียว'),
-          refs: { notes: L('FUK is small and quick — usually clear within 30 minutes.', 'FUK เล็กและเร็ว ปกติผ่านได้ใน 30 นาที') } },
+          title: L('Immigration · Visit Japan Web', 'ตม. · Visit Japan Web'),
+          place: L('FUK Arrivals Hall · scan the QR', 'ห้องผู้โดยสารขาเข้า FUK · สแกน QR'),
+          blurb: L('Register on Visit Japan Web before you fly — immigration + customs in one QR. At FUK just scan it, collect bags and clear the green channel.',
+                   'ลงทะเบียน Visit Japan Web ก่อนบิน — รวม ตม. + ศุลกากร ใน QR เดียว · ที่ FUK แค่สแกน รับกระเป๋า แล้วผ่านช่องเขียว'),
+          refs: { official: 'https://www.vjw.digital.go.jp/', notes: L('Open Visit Japan Web (the tap link) and set up the QR before you fly. FUK is small — usually clear within 30 minutes.', 'เปิด Visit Japan Web (ปุ่มลิงก์) แล้วตั้งค่า QR ให้พร้อมก่อนบิน · FUK เล็ก ปกติผ่านได้ใน 30 นาที') } },
 
         { type: 'step', time: '09:15', meridiem: 'Morning', kind: 'Train', icon: 'train',
           title: L('Subway → Tenjin', 'รถไฟใต้ดิน → เท็นจิน'),
