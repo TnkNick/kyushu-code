@@ -30,8 +30,10 @@
   /* ───────────────────────── reset ───────────────────────── */
   * { margin: 0; padding: 0; box-sizing: border-box; touch-action: manipulation; }
   html, body { height: 100%; -webkit-text-size-adjust: 100%; }
+  /* installed PWA only: lock the document so the top bar can't rubber-band away on overscroll */
+  @media (display-mode: standalone) { html, body { overflow: hidden; overscroll-behavior: none; } }
   body {
-    background: #0e0b07;
+    background: #14100b;
     font-family: "Sukhumvit Set", "IBM Plex Sans Thai", "Hanken Grotesk", system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
@@ -730,7 +732,7 @@
   /* ───────────────────────── DETAIL OVERLAY ───────────────────────── */
   .detail-scrim { position: fixed; inset: 0; z-index: 60; display: flex; justify-content: flex-end;
     background: rgba(14,12,9,.42); backdrop-filter: blur(7px); animation: fadeIn .35s ease both; }
-  .detail { width: min(560px, 100%); height: 100%; background: var(--paper); overflow-y: auto; position: relative;
+  .detail { width: min(560px, 100%); height: 100%; min-height: 100dvh; background: var(--paper); overflow-y: auto; position: relative;
     box-shadow: -30px 0 80px rgba(0,0,0,.28); animation: slideIn .5s cubic-bezier(.2,.8,.2,1) both; }
   @keyframes slideIn { from { transform: translateX(100%); } to { transform: none; } }
   @keyframes slideOut { from { transform: none; } to { transform: translateX(100%); } }
@@ -743,7 +745,7 @@
   .detail-close:hover { background: rgba(20,18,15,.62); }
   .detail-media { position: relative; height: 44vh; min-height: 280px; }
   .detail-img.img-frame { position: absolute; inset: 0; height: 100%; width: 100%; }
-  .detail-body { padding: clamp(26px,4vw,44px); }
+  .detail-body { padding: clamp(26px,4vw,44px); padding-bottom: calc(clamp(26px,4vw,44px) + env(safe-area-inset-bottom, 0px)); }
   .detail-time { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; letter-spacing: .18em;
     text-transform: uppercase; color: var(--accent); font-weight: 600; }
   .detail-title { font-family: var(--serif); font-weight: 500; line-height: 1.02; letter-spacing: -.02em;
@@ -1076,9 +1078,9 @@
   .mtab-lb { font-size: 10px; font-weight: 600; letter-spacing: 0; white-space: nowrap; max-width: 100%; overflow: hidden; text-overflow: ellipsis; }
   .mtab-item.active { color: var(--accent); }
   .mtab-item.active .mtab-ic { background: var(--chip); color: var(--accent); }
-  /* iOS PWA: a viewport-fixed strip (placed on .lookbook, OUTSIDE the bar's backdrop-filter
-     containing block) paints the home-indicator area so the bottom bar never shows a gap below it. */
-  .lookbook:has(.mtab)::after { content: ''; position: fixed; left: 0; right: 0; bottom: 0;
+  /* iOS PWA: a viewport-fixed strip on .lookbook (OUTSIDE any backdrop-filter containing block)
+     paints the home-indicator area on EVERY screen, so the bottom never shows an unfilled gap. */
+  .lookbook::after { content: ''; position: fixed; left: 0; right: 0; bottom: 0;
     height: env(safe-area-inset-bottom, 0px); background: var(--paper); z-index: 54; pointer-events: none; }
 
   /* ───────────────────────── RESPONSIVE ───────────────────────── */
@@ -5378,7 +5380,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', function () {
       navigator.serviceWorker.register('sw.js').catch(function () {});
-      if (window.caches) caches.open('wwn-kyushu-v12').then(function (c) {
+      if (window.caches) caches.open('wwn-kyushu-v13').then(function (c) {
         c.add(new Request(location.href, { cache: 'reload' })).catch(function () {});
       });
     });
