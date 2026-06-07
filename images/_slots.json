@@ -1111,5 +1111,33 @@
     "cat": "dish",
     "w": 1080,
     "h": 810
+  },
+  {
+    "id": "a-d2-milkroad",
+    "label": "Milk Road",
+    "cat": "activity",
+    "w": 1280,
+    "h": 800
+  },
+  {
+    "id": "a-d2-nishiyu",
+    "label": "Nishiyunoura Observatory",
+    "cat": "activity",
+    "w": 1280,
+    "h": 800
+  },
+  {
+    "id": "a-d2-komezuka",
+    "label": "Komezuka Observatory",
+    "cat": "activity",
+    "w": 1280,
+    "h": 800
+  },
+  {
+    "id": "a-d2-dinner",
+    "label": "Kumamoto ramen",
+    "cat": "activity",
+    "w": 1280,
+    "h": 800
   }
 ]
