@@ -182,7 +182,7 @@ function App() {
         {emgOpen ? <EmergencySheet data={window.EMERGENCY} onClose={() => setEmgOpen(false)} /> : null}
 
         {view === 'itinerary' || view === 'bookings' || view === 'party' || view === 'phrases' || view === 'settings' ? (
-          <MobileTabBar view={view} onItinerary={begin} onBookings={openBookings} onParty={openParty} onSettings={openSettings} />
+          <MobileTabBar view={view} onItinerary={begin} onBookings={openBookings} onParty={openParty} onPhrases={openPhrases} onSettings={openSettings} />
         ) : null}
 
         {!PARAM.embed ? (

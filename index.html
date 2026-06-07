@@ -1066,29 +1066,31 @@
     line-height: 1.15; display: inline-flex; align-items: baseline; gap: 11px; flex-wrap: wrap; }
   .dish-note { font-size: 14px; color: var(--ink-soft); line-height: 1.5; text-wrap: pretty; }
 
-  /* ───────────────────────── MOBILE TAB BAR ───────────────────────── */
+  /* ───────────────────── MOBILE TAB BAR — floating pill ───────────────────── */
   .mtab { display: none; }
-  /* full-height transparent shell so the bar sits at the REAL screen bottom on iOS PWA
-     (fixed bottom:0 only reaches the safe-area line; 100dvh + flex-end reaches the physical edge) */
-  .mtab { position: fixed; top: 0; left: 0; right: 0; bottom: calc(-1 * env(safe-area-inset-bottom, 0px)); z-index: 55;
-    flex-direction: column; justify-content: flex-end; pointer-events: none; }
-  .mtab-inner { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px;
-    padding: 4px 8px calc(10px + env(safe-area-inset-bottom, 0px)); pointer-events: auto;
-    background: color-mix(in srgb, var(--paper) 90%, transparent);
-    backdrop-filter: blur(18px) saturate(140%); -webkit-backdrop-filter: blur(18px) saturate(140%);
-    border-top: 1px solid var(--line); }
-  .mtab-item { display: flex; flex-direction: column; align-items: center; gap: 2px;
-    padding: 2px 4px 0px; background: none; border: none; color: var(--ink-soft);
-    transition: color .25s, transform .22s cubic-bezier(.34, 1.56, .64, 1);
+  /* centering shell pinned to the bottom; .mtab-inner is the floating frosted pill bar.
+     Active tab = accent pill that expands its label in; inactive tabs = icon only. */
+  .mtab { position: fixed; left: 0; right: 0; bottom: 0; z-index: 55;
+    justify-content: center; align-items: flex-end; pointer-events: none; }
+  .mtab-inner { display: flex; align-items: center; gap: 4px; pointer-events: auto;
+    margin-bottom: calc(9px + env(safe-area-inset-bottom, 0px));
+    max-width: calc(100vw - 20px); padding: 6px;
+    background: color-mix(in srgb, var(--paper-2) 82%, transparent);
+    backdrop-filter: blur(22px) saturate(150%); -webkit-backdrop-filter: blur(22px) saturate(150%);
+    border: 1px solid var(--line); border-radius: 100px;
+    box-shadow: 0 16px 38px -12px rgba(0,0,0,.5), 0 4px 12px -6px rgba(0,0,0,.35); }
+  .mtab-item { display: flex; align-items: center; justify-content: center; flex: 0 0 auto;
+    height: 44px; min-width: 44px; padding: 0; border: none; border-radius: 100px; overflow: hidden;
+    background: transparent; color: var(--ink-soft); cursor: pointer;
+    transition: background .4s cubic-bezier(.4,0,.2,1), color .3s ease, padding .4s cubic-bezier(.4,0,.2,1), transform .14s ease;
     -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
-  .mtab-item:active { transform: scale(.8); }
-  .mtab-ic { display: grid; place-items: center; width: 50px; height: 22px; border-radius: 100px;
-    transition: background .3s ease, color .25s, transform .34s cubic-bezier(.34, 1.56, .64, 1); }
-  .mtab-lb { font-size: 10px; font-weight: 600; letter-spacing: 0; white-space: nowrap; max-width: 100%; overflow: hidden; text-overflow: ellipsis;
-    transition: transform .25s ease; }
-  .mtab-item.active { color: var(--accent); }
-  .mtab-item.active .mtab-ic { background: var(--chip); color: var(--accent); transform: scale(1.16); }
-  .mtab-item.active .mtab-lb { transform: translateY(-1px); }
+  .mtab-item:active { transform: scale(.88); }
+  .mtab-item.active { background: var(--accent); color: var(--paper); padding: 0 16px; }
+  .mtab-ic { display: grid; place-items: center; flex: 0 0 auto; }
+  .mtab-lb { max-width: 0; opacity: 0; overflow: hidden; white-space: nowrap;
+    font-size: 13px; font-weight: 700; letter-spacing: 0;
+    transition: max-width .4s cubic-bezier(.4,0,.2,1), opacity .28s ease, margin-left .4s cubic-bezier(.4,0,.2,1); }
+  .mtab-item.active .mtab-lb { max-width: 140px; opacity: 1; margin-left: 6px; }
 
   /* ───────────────────────── LIGHT MODE ─────────────────────────
      Per-day light variants — each mirrors its dark theme's hue on a light base.
@@ -1176,7 +1178,7 @@
     /* primary view nav relocates to the bottom tab bar on mobile */
     .chrome-nav { display: none; }
     .mtab { display: flex; }
-    .bk-stage, .stage { padding-bottom: 72px; }
+    .bk-stage, .stage { padding-bottom: calc(82px + env(safe-area-inset-bottom, 0px)); }
     /* phones: nav moved to the bottom bar — bring back the day + clock at the top */
     .chrome-now { display: inline-flex; flex: none; }
     .chrome-now-date, .chrome-now-sep { display: none; }
@@ -5079,13 +5081,14 @@ function OvEssentials({ data }) {
 }
 
 // ── Mobile bottom tab bar — primary view switcher (mobile only) ─────────
-function MobileTabBar({ view, onItinerary, onBookings, onParty, onSettings }) {
+function MobileTabBar({ view, onItinerary, onBookings, onParty, onPhrases, onSettings }) {
   const { x } = useT();
   const tabs = [
     { key: 'itinerary', icon: 'compass', label: { en: 'Itinerary', th: 'แผนการเดินทาง', ja: '旅程' }, on: onItinerary },
     { key: 'bookings',  icon: 'book',    label: { en: 'Bookings',  th: 'การจอง', ja: '予約' },         on: onBookings },
-    { key: 'party', icon: 'passport', label: { en: 'Party', th: 'ทีมงาน', ja: 'メンバー' }, on: onParty },
-    { key: 'settings', icon: 'gear', label: { en: 'Settings', th: 'ตั้งค่า', ja: '設定' }, on: onSettings },
+    { key: 'party',     icon: 'passport',label: { en: 'Party',     th: 'ทีมงาน', ja: 'メンバー' },     on: onParty },
+    { key: 'phrases',   icon: 'note',    label: { en: 'Phrases',   th: 'ประโยค', ja: '会話' },         on: onPhrases },
+    { key: 'settings',  icon: 'gear',    label: { en: 'Settings',  th: 'ตั้งค่า', ja: '設定' },         on: onSettings },
   ];
   return (
     <nav className="mtab" role="tablist" aria-label="Sections">
@@ -5093,7 +5096,7 @@ function MobileTabBar({ view, onItinerary, onBookings, onParty, onSettings }) {
       {tabs.map((t) => (
         <button key={t.key} className={'mtab-item' + (view === t.key ? ' active' : '')}
           role="tab" aria-selected={view === t.key} onClick={t.on}>
-          <span className="mtab-ic"><Icon name={t.icon} size={20} stroke={1.4} /></span>
+          <span className="mtab-ic"><Icon name={t.icon} size={21} stroke={1.5} /></span>
           <span className="mtab-lb">{x(t.label)}</span>
         </button>
       ))}
@@ -5307,14 +5310,6 @@ function SettingsPage({ onHome, onItinerary, onBookings, onParty, onPhrases, onE
               ))}
             </div>
           </div>
-
-          <div className="set-group">
-            <button className="set-link" onClick={onPhrases}>
-              <span className="set-link-ic"><Icon name="note" size={17} stroke={1.4} /></span>
-              <span className="set-link-tx">{x({ en: 'Japanese phrases', th: 'ประโยคใช้บ่อย', ja: '日本語フレーズ' })}</span>
-              <Icon name="chevronRight" size={16} stroke={1.5} />
-            </button>
-          </div>
         </section>
       </main>
     </div>
@@ -5515,7 +5510,7 @@ function App() {
         {emgOpen ? <EmergencySheet data={window.EMERGENCY} onClose={() => setEmgOpen(false)} /> : null}
 
         {view === 'itinerary' || view === 'bookings' || view === 'party' || view === 'phrases' || view === 'settings' ? (
-          <MobileTabBar view={view} onItinerary={begin} onBookings={openBookings} onParty={openParty} onSettings={openSettings} />
+          <MobileTabBar view={view} onItinerary={begin} onBookings={openBookings} onParty={openParty} onPhrases={openPhrases} onSettings={openSettings} />
         ) : null}
 
         {false ? (
@@ -5586,7 +5581,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', function () {
       navigator.serviceWorker.register('sw.js').catch(function () {});
-      if (window.caches) caches.open('wwn-kyushu-v24').then(function (c) {
+      if (window.caches) caches.open('wwn-kyushu-v25').then(function (c) {
         c.add(new Request(location.href, { cache: 'reload' })).catch(function () {});
       });
     });

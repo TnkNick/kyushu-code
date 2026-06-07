@@ -1121,13 +1121,14 @@ function OvEssentials({ data }) {
 }
 
 // ── Mobile bottom tab bar — primary view switcher (mobile only) ─────────
-function MobileTabBar({ view, onItinerary, onBookings, onParty, onSettings }) {
+function MobileTabBar({ view, onItinerary, onBookings, onParty, onPhrases, onSettings }) {
   const { x } = useT();
   const tabs = [
     { key: 'itinerary', icon: 'compass', label: { en: 'Itinerary', th: 'แผนการเดินทาง', ja: '旅程' }, on: onItinerary },
     { key: 'bookings',  icon: 'book',    label: { en: 'Bookings',  th: 'การจอง', ja: '予約' },         on: onBookings },
-    { key: 'party', icon: 'passport', label: { en: 'Party', th: 'ทีมงาน', ja: 'メンバー' }, on: onParty },
-    { key: 'settings', icon: 'gear', label: { en: 'Settings', th: 'ตั้งค่า', ja: '設定' }, on: onSettings },
+    { key: 'party',     icon: 'passport',label: { en: 'Party',     th: 'ทีมงาน', ja: 'メンバー' },     on: onParty },
+    { key: 'phrases',   icon: 'note',    label: { en: 'Phrases',   th: 'ประโยค', ja: '会話' },         on: onPhrases },
+    { key: 'settings',  icon: 'gear',    label: { en: 'Settings',  th: 'ตั้งค่า', ja: '設定' },         on: onSettings },
   ];
   return (
     <nav className="mtab" role="tablist" aria-label="Sections">
@@ -1135,7 +1136,7 @@ function MobileTabBar({ view, onItinerary, onBookings, onParty, onSettings }) {
       {tabs.map((t) => (
         <button key={t.key} className={'mtab-item' + (view === t.key ? ' active' : '')}
           role="tab" aria-selected={view === t.key} onClick={t.on}>
-          <span className="mtab-ic"><Icon name={t.icon} size={20} stroke={1.4} /></span>
+          <span className="mtab-ic"><Icon name={t.icon} size={21} stroke={1.5} /></span>
           <span className="mtab-lb">{x(t.label)}</span>
         </button>
       ))}
@@ -1348,14 +1349,6 @@ function SettingsPage({ onHome, onItinerary, onBookings, onParty, onPhrases, onE
                 </button>
               ))}
             </div>
-          </div>
-
-          <div className="set-group">
-            <button className="set-link" onClick={onPhrases}>
-              <span className="set-link-ic"><Icon name="note" size={17} stroke={1.4} /></span>
-              <span className="set-link-tx">{x({ en: 'Japanese phrases', th: 'ประโยคใช้บ่อย', ja: '日本語フレーズ' })}</span>
-              <Icon name="chevronRight" size={16} stroke={1.5} />
-            </button>
           </div>
         </section>
       </main>
