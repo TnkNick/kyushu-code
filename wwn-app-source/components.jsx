@@ -631,23 +631,8 @@ function Overview({ trip, dest, travelers, onBegin, onJump, onHome, onBookings, 
           <span className="wwn"><b>WWN</b> <span className="wwn-full">World Wide Nick</span></span>
         </button>
         <div className="chrome-bar-r">
-          <button className="chrome-sos" onClick={onEmergency}>
-            <Icon name="alert" size={15} stroke={1.5} />
-            <span>{x({ en: 'Emergency', th: 'ฉุกเฉิน' })}</span>
-          </button>
-          <button className="chrome-nav" onClick={onBookings}>
-            <Icon name="book" size={15} stroke={1.4} />
-            <span>{x({ en: 'Bookings', th: 'การจอง' })}</span>
-          </button>
-          <button className="chrome-nav" onClick={onParty}>
-            <Icon name="passport" size={15} stroke={1.4} />
-            <span>{x({ en: 'Party', th: 'ทีมงาน' })}</span>
-          </button>
-          <button className="chrome-nav" onClick={onPhrases}>
-            <Icon name="note" size={15} stroke={1.4} />
-            <span>{x({ en: 'Phrases', th: 'ประโยคใช้บ่อย' })}</span>
-          </button>
-          <Clock variant="chrome" />        </div>
+          <Clock variant="chrome" />
+        </div>
       </header>
 
       <main className="ov-stage">
@@ -697,6 +682,28 @@ function Overview({ trip, dest, travelers, onBegin, onJump, onHome, onBookings, 
 }
 
 // ── DayNav ─────────────────────────────────────────────────────────────
+// ── Shared minimal page chrome — home (left) + optional back + clock ─────
+function Chrome({ onHome, onBack, backLabel }) {
+  const { x } = useT();
+  return (
+    <header className="chrome chrome-min">
+      <button className="chrome-home" onClick={onHome}>
+        <Icon name="feather" size={16} stroke={1.3} />
+        <span className="wwn"><b>WWN</b> <span className="wwn-full">World Wide Nick</span></span>
+      </button>
+      <div className="chrome-bar-r">
+        {onBack ? (
+          <button className="chrome-nav chrome-back" onClick={onBack}>
+            <Icon name="chevronLeft" size={16} stroke={1.7} />
+            <span>{backLabel || x({ en: 'More', th: 'อื่นๆ', ja: 'その他' })}</span>
+          </button>
+        ) : null}
+        <Clock variant="chrome" />
+      </div>
+    </header>
+  );
+}
+
 function DayNav({ days, current, onSelect, onHome, onBookings, onPhrases, onParty, onEmergency, lang, onLang }) {
   const { x } = useT();
   const railRef = useRef(null);
@@ -730,23 +737,8 @@ function DayNav({ days, current, onSelect, onHome, onBookings, onPhrases, onPart
           <span className="chrome-now-date">{x(days[current].date)}</span>
         </div>
         <div className="chrome-bar-r">
-          <button className="chrome-sos" onClick={onEmergency}>
-            <Icon name="alert" size={15} stroke={1.5} />
-            <span>{x({ en: 'Emergency', th: 'ฉุกเฉิน' })}</span>
-          </button>
-          <button className="chrome-nav" onClick={onBookings}>
-            <Icon name="book" size={15} stroke={1.4} />
-            <span>{x({ en: 'Bookings', th: 'การจอง' })}</span>
-          </button>
-          <button className="chrome-nav" onClick={onParty}>
-            <Icon name="passport" size={15} stroke={1.4} />
-            <span>{x({ en: 'Party', th: 'ทีมงาน' })}</span>
-          </button>
-          <button className="chrome-nav" onClick={onPhrases}>
-            <Icon name="note" size={15} stroke={1.4} />
-            <span>{x({ en: 'Phrases', th: 'ประโยคใช้บ่อย' })}</span>
-          </button>
-          <Clock variant="chrome" />        </div>
+          <Clock variant="chrome" />
+        </div>
       </div>
 
       <nav className="chrome-days" ref={railRef}>
@@ -949,36 +941,11 @@ function Bookings({ trip, onHome, onItinerary, onPhrases, onParty, onEmergency, 
     { key: 'book',  icon: 'ticket',  label: { en: 'Bookings', th: 'การจอง', ja: '予約' } },
     { key: 'pack',  icon: 'luggage', label: { en: 'Packing', th: 'แพ็คของ', ja: '荷物' } },
     { key: 'gift',  icon: 'store',   label: { en: 'Souvenirs', th: 'ของฝาก', ja: 'お土産' } },
-    { key: 'money', icon: 'wallet',  label: { en: 'Money', th: 'เงิน', ja: 'お金' } },
-    { key: 'drive', icon: 'car',     label: { en: 'Driving', th: 'ขับรถ', ja: '運転' } },
   ];
 
   return (
     <div className="bookings">
-      <header className="chrome chrome-min">
-        <button className="chrome-home" onClick={onHome}>
-          <Icon name="feather" size={16} stroke={1.3} />
-          <span className="wwn"><b>WWN</b> <span className="wwn-full">World Wide Nick</span></span>
-        </button>
-        <div className="chrome-bar-r">
-          <button className="chrome-sos" onClick={onEmergency}>
-            <Icon name="alert" size={15} stroke={1.5} />
-            <span>{x({ en: 'Emergency', th: 'ฉุกเฉิน' })}</span>
-          </button>
-          <button className="chrome-nav" onClick={onItinerary}>
-            <Icon name="compass" size={15} stroke={1.4} />
-            <span>{x({ en: 'Itinerary', th: 'แผนการเดินทาง' })}</span>
-          </button>
-          <button className="chrome-nav" onClick={onParty}>
-            <Icon name="passport" size={15} stroke={1.4} />
-            <span>{x({ en: 'Party', th: 'ทีมงาน' })}</span>
-          </button>
-          <button className="chrome-nav" onClick={onPhrases}>
-            <Icon name="note" size={15} stroke={1.4} />
-            <span>{x({ en: 'Phrases', th: 'ประโยคใช้บ่อย' })}</span>
-          </button>
-          <Clock variant="chrome" />        </div>
-      </header>
+      <Chrome onHome={onHome} />
 
       <main className="bk-stage">
         <section className="bk-hero">
@@ -1005,9 +972,7 @@ function Bookings({ trip, onHome, onItinerary, onPhrases, onParty, onEmergency, 
         <div className="bk-section" key={sec}>
           {sec === 'book' ? <BookingsList trip={trip} lang={lang} /> :
            sec === 'pack' ? <Packing data={window.PACKING} storeKey="jp-packed" /> :
-           sec === 'gift' ? <Packing data={window.SOUVENIRS} storeKey="jp-souvenirs" /> :
-           sec === 'money' ? <MoneyTools /> :
-           <DrivingTips data={window.DRIVING} />}
+           <Packing data={window.SOUVENIRS} storeKey="jp-souvenirs" />}
         </div>
 
         <div className="ov-credit">
@@ -1292,21 +1257,21 @@ function OvEssentials({ data }) {
 }
 
 // ── Mobile bottom tab bar — primary view switcher (mobile only) ─────────
-function MobileTabBar({ view, onItinerary, onBookings, onParty, onPhrases, onSettings }) {
+function MobileTabBar({ view, onItinerary, onBookings, onWallet, onMore }) {
   const { x } = useT();
+  const active = (view === 'settings' || view === 'guides' || view === 'party' || view === 'phrases' || view === 'more') ? 'more' : view;
   const tabs = [
-    { key: 'itinerary', icon: 'compass', size: 28, stroke: 1.3,  label: { en: 'Itinerary', th: 'แผนการเดินทาง', ja: '旅程' }, on: onItinerary },
-    { key: 'bookings',  icon: 'book',    size: 31, stroke: 1.2,  label: { en: 'Prep',  th: 'เตรียมตัว', ja: '準備' },         on: onBookings },
-    { key: 'party',     icon: 'passport',size: 30, stroke: 1.25, label: { en: 'Party',     th: 'ทีมงาน', ja: 'メンバー' },     on: onParty },
-    { key: 'phrases',   icon: 'note',    size: 30, stroke: 1.25, label: { en: 'Phrases',   th: 'ประโยค', ja: '会話' },         on: onPhrases },
-    { key: 'settings',  icon: 'gear',    size: 20, stroke: 1.7,  label: { en: 'Settings',  th: 'ตั้งค่า', ja: '設定' },         on: onSettings },
+    { key: 'itinerary', icon: 'compass', size: 27, stroke: 1.3,  label: { en: 'Itinerary', th: 'แผนการเดินทาง', ja: '旅程' }, on: onItinerary },
+    { key: 'bookings',  icon: 'book',    size: 29, stroke: 1.2,  label: { en: 'Prep',  th: 'เตรียมตัว', ja: '準備' },          on: onBookings },
+    { key: 'wallet',    icon: 'wallet',  size: 27, stroke: 1.3,  label: { en: 'Expenses',  th: 'ค่าใช้จ่าย', ja: '費用' },     on: onWallet },
+    { key: 'more',      icon: 'grid',    size: 23, stroke: 1.5,  label: { en: 'More',      th: 'อื่นๆ', ja: 'その他' },        on: onMore },
   ];
   return (
     <nav className="mtab" role="tablist" aria-label="Sections">
       <div className="mtab-inner">
       {tabs.map((t) => (
-        <button key={t.key} className={'mtab-item' + (view === t.key ? ' active' : '')}
-          role="tab" aria-selected={view === t.key} onClick={t.on}>
+        <button key={t.key} className={'mtab-item' + (active === t.key ? ' active' : '')}
+          role="tab" aria-selected={active === t.key} onClick={t.on}>
           <span className="mtab-ic"><Icon name={t.icon} size={t.size} stroke={t.stroke} /></span>
           <span className="mtab-lb">{x(t.label)}</span>
         </button>
@@ -1382,69 +1347,56 @@ function Phrases({ data }) {
   );
 }
 
-function PhrasesPage({ onHome, onItinerary, onBookings, onParty, onEmergency, lang, onLang }) {
+// ── Guides — driving · phrases · etiquette (sub-nav, under "More") ───────
+function GuidesPage({ onHome, onMore, lang }) {
   const { x } = useT();
+  const [sec, setSec] = useState('drive');
+  const SECTIONS = [
+    { key: 'drive',   icon: 'car',   label: { en: 'Driving', th: 'ขับรถ', ja: '運転' } },
+    { key: 'phrases', icon: 'note',  label: { en: 'Phrases', th: 'ประโยค', ja: '会話' } },
+    { key: 'culture', icon: 'globe', label: { en: 'Etiquette', th: 'มารยาท', ja: 'マナー' } },
+  ];
   return (
     <div className="bookings">
-      <header className="chrome chrome-min">
-        <button className="chrome-home" onClick={onHome}>
-          <Icon name="feather" size={16} stroke={1.3} />
-          <span className="wwn"><b>WWN</b> <span className="wwn-full">World Wide Nick</span></span>
-        </button>
-        <div className="chrome-bar-r">
-          <button className="chrome-sos" onClick={onEmergency}>
-            <Icon name="alert" size={15} stroke={1.5} />
-            <span>{x({ en: 'Emergency', th: 'ฉุกเฉิน' })}</span>
-          </button>
-          <button className="chrome-nav" onClick={onItinerary}>
-            <Icon name="compass" size={15} stroke={1.4} />
-            <span>{x({ en: 'Itinerary', th: 'แผนการเดินทาง' })}</span>
-          </button>
-          <button className="chrome-nav" onClick={onBookings}>
-            <Icon name="book" size={15} stroke={1.4} />
-            <span>{x({ en: 'Bookings', th: 'การจอง' })}</span>
-          </button>
-          <button className="chrome-nav" onClick={onParty}>
-            <Icon name="passport" size={15} stroke={1.4} />
-            <span>{x({ en: 'Party', th: 'ทีมงาน' })}</span>
-          </button>
-          <Clock variant="chrome" />        </div>
-      </header>
+      <Chrome onHome={onHome} onBack={onMore} />
       <main className="bk-stage">
-        <Phrases data={window.PHRASES} />
+        <section className="bk-hero">
+          <span className="ov-kicker">{x({ en: 'Good to know', th: 'น่ารู้', ja: '豆知識' })}</span>
+          <h1 className="bk-h1">{x({ en: 'Tips & Guides', th: 'คำแนะนำต่างๆ', ja: 'ガイド' })}</h1>
+          <p className="bk-lede">{x({
+            en: 'Driving rules, handy phrases and etiquette for Japan — pick a tab.',
+            th: 'การขับรถ ประโยคที่ใช้บ่อย และมารยาทในญี่ปุ่น — เลือกแท็บด้านล่าง',
+            ja: '運転・会話・マナー — タブを選んでね。',
+          })}</p>
+        </section>
+        <nav className="bk-subnav" role="tablist" aria-label="Guide sections">
+          {SECTIONS.map((s) => (
+            <button key={s.key} className={'bk-sub' + (sec === s.key ? ' on' : '')}
+              role="tab" aria-selected={sec === s.key}
+              onClick={(e) => { setSec(s.key); const nav = e.currentTarget.parentElement, btn = e.currentTarget; nav.scrollTo({ left: nav.scrollLeft + btn.getBoundingClientRect().left - nav.getBoundingClientRect().left - (nav.clientWidth - btn.offsetWidth) / 2, behavior: 'smooth' }); }}>
+              <Icon name={s.icon} size={15} stroke={1.6} />
+              <span>{x(s.label)}</span>
+            </button>
+          ))}
+        </nav>
+        <div className="bk-section" key={sec}>
+          {sec === 'drive' ? <DrivingTips data={window.DRIVING} /> :
+           sec === 'phrases' ? <Phrases data={window.PHRASES} /> :
+           <DrivingTips data={window.CULTURE} />}
+        </div>
+        <div className="ov-credit">
+          <span className="ov-credit-rule" aria-hidden="true"></span>
+          <span className="ov-credit-text">{x(window.CREDIT)}</span>
+        </div>
       </main>
     </div>
   );
 }
 
-function TravelersPage({ onHome, onItinerary, onBookings, onPhrases, onEmergency, lang, onLang }) {
-  const { x } = useT();
+function TravelersPage({ onHome, onMore, lang }) {
   return (
     <div className="bookings">
-      <header className="chrome chrome-min">
-        <button className="chrome-home" onClick={onHome}>
-          <Icon name="feather" size={16} stroke={1.3} />
-          <span className="wwn"><b>WWN</b> <span className="wwn-full">World Wide Nick</span></span>
-        </button>
-        <div className="chrome-bar-r">
-          <button className="chrome-sos" onClick={onEmergency}>
-            <Icon name="alert" size={15} stroke={1.5} />
-            <span>{x({ en: 'Emergency', th: 'ฉุกเฉิน' })}</span>
-          </button>
-          <button className="chrome-nav" onClick={onItinerary}>
-            <Icon name="compass" size={15} stroke={1.4} />
-            <span>{x({ en: 'Itinerary', th: 'แผนการเดินทาง' })}</span>
-          </button>
-          <button className="chrome-nav" onClick={onBookings}>
-            <Icon name="book" size={15} stroke={1.4} />
-            <span>{x({ en: 'Bookings', th: 'การจอง' })}</span>
-          </button>
-          <button className="chrome-nav" onClick={onPhrases}>
-            <Icon name="note" size={15} stroke={1.4} />
-            <span>{x({ en: 'Phrases', th: 'ประโยคใช้บ่อย' })}</span>
-          </button>
-          <Clock variant="chrome" />        </div>
-      </header>
+      <Chrome onHome={onHome} onBack={onMore} />
       <main className="bk-stage">
         <Travelers data={window.TRAVELERS} />
       </main>
@@ -1452,7 +1404,7 @@ function TravelersPage({ onHome, onItinerary, onBookings, onPhrases, onEmergency
   );
 }
 
-function SettingsPage({ onHome, onItinerary, onBookings, onParty, onPhrases, onEmergency, lang, onLang, mode, onMode }) {
+function SettingsPage({ onHome, onMore, lang, onLang, mode, onMode }) {
   const { x } = useT();
   const langs = [
     { v: 'en', main: 'English', sub: 'EN' },
@@ -1466,31 +1418,7 @@ function SettingsPage({ onHome, onItinerary, onBookings, onParty, onPhrases, onE
   ];
   return (
     <div className="bookings">
-      <header className="chrome chrome-min">
-        <button className="chrome-home" onClick={onHome}>
-          <Icon name="feather" size={16} stroke={1.3} />
-          <span className="wwn"><b>WWN</b> <span className="wwn-full">World Wide Nick</span></span>
-        </button>
-        <div className="chrome-bar-r">
-          <button className="chrome-sos" onClick={onEmergency}>
-            <Icon name="alert" size={15} stroke={1.5} />
-            <span>{x({ en: 'Emergency', th: 'ฉุกเฉิน', ja: '緊急' })}</span>
-          </button>
-          <button className="chrome-nav" onClick={onItinerary}>
-            <Icon name="compass" size={15} stroke={1.4} />
-            <span>{x({ en: 'Itinerary', th: 'แผนการเดินทาง', ja: '旅程' })}</span>
-          </button>
-          <button className="chrome-nav" onClick={onBookings}>
-            <Icon name="book" size={15} stroke={1.4} />
-            <span>{x({ en: 'Bookings', th: 'การจอง', ja: '予約' })}</span>
-          </button>
-          <button className="chrome-nav" onClick={onParty}>
-            <Icon name="passport" size={15} stroke={1.4} />
-            <span>{x({ en: 'Party', th: 'ทีมงาน', ja: 'メンバー' })}</span>
-          </button>
-          <Clock variant="chrome" />
-        </div>
-      </header>
+      <Chrome onHome={onHome} onBack={onMore} />
       <main className="bk-stage">
         <section className="party settings-page">
           <div className="party-head">
@@ -1532,6 +1460,157 @@ function SettingsPage({ onHome, onItinerary, onBookings, onParty, onPhrases, onE
   );
 }
 
+// ── Wallet — converter + shared-expense splitter (by traveller) ─────────
+const THB_PER_YEN = 22.6 / 100;
+
+function WalletPage({ onHome, lang }) {
+  const { x } = useT();
+  const people = (window.TRAVELERS && window.TRAVELERS.people) || [];
+  const names = people.map((p) => x(p.name));
+
+  const [items, setItems] = useState(() => { try { return JSON.parse(localStorage.getItem('jp-wallet') || '[]'); } catch (e) { return []; } });
+  const save = (list) => { setItems(list); try { localStorage.setItem('jp-wallet', JSON.stringify(list)); } catch (e) {} };
+
+  const [amt, setAmt] = useState('');
+  const [cur, setCur] = useState('jpy');
+  const [label, setLabel] = useState('');
+  const [payers, setPayers] = useState(() => names.map((_, i) => i));
+
+  const yenOf = (it) => it.cur === 'jpy' ? it.amt : it.amt / THB_PER_YEN;
+  const thbOf = (it) => it.cur === 'thb' ? it.amt : it.amt * THB_PER_YEN;
+  const fmtY = (v) => '¥' + Math.round(v).toLocaleString('en-US');
+  const fmtB = (v) => '฿' + Math.round(v).toLocaleString('en-US');
+
+  const togglePayer = (i) => setPayers((p) => p.includes(i) ? p.filter((k) => k !== i) : [...p, i].sort((a, b) => a - b));
+  const add = () => {
+    const a = parseFloat((amt || '').toString().replace(/,/g, ''));
+    if (!a || a <= 0 || !payers.length) return;
+    save([{ id: 'w' + Date.now(), amt: a, cur, label: (label || '').trim() || x({ en: 'Expense', th: 'รายการ', ja: '支出' }), payers: [...payers] }, ...items]);
+    setAmt(''); setLabel('');
+  };
+  const remove = (id) => save(items.filter((it) => it.id !== id));
+
+  const perPersonYen = names.map((_, i) => items.reduce((s, it) => s + (it.payers.includes(i) ? yenOf(it) / it.payers.length : 0), 0));
+  const totalYen = items.reduce((s, it) => s + yenOf(it), 0);
+
+  return (
+    <div className="bookings">
+      <Chrome onHome={onHome} />
+      <main className="bk-stage">
+        <section className="bk-hero">
+          <span className="ov-kicker">{x({ en: 'Money', th: 'การเงิน', ja: 'お金' })}</span>
+          <h1 className="bk-h1">{x({ en: 'Expenses', th: 'ค่าใช้จ่าย', ja: '費用' })}</h1>
+          <p className="bk-lede">{x({
+            en: 'Log spending in yen or baht, tag who shares it, and see each person’s split — in both currencies.',
+            th: 'บันทึกค่าใช้จ่ายเป็นเยนหรือบาท เลือกคนที่หารด้วย แล้วดูส่วนแบ่งของแต่ละคน — ทั้งสองสกุลเงิน',
+            ja: '円かバーツで記録し、割り勘する人を選ぶと各自の負担がわかります。',
+          })}</p>
+        </section>
+        <div className="bk-section wallet">
+          <Converter />
+
+          {names.length ? (
+            <section className="party wal-sum">
+              <div className="party-head"><span className="ov-kicker">{x({ en: 'Who owes what', th: 'ใครจ่ายเท่าไหร่', ja: '各自の負担' })}</span><h2 className="ov-h2">{x({ en: 'Per person', th: 'สรุปรายคน', ja: '一人ずつ' })}</h2></div>
+              <div className="wal-people">
+                {names.map((n, i) => (
+                  <div className="wal-person" key={i}>
+                    <span className="wal-person-name">{n}</span>
+                    <span className="wal-person-thb">{fmtB(perPersonYen[i] * THB_PER_YEN)}</span>
+                    <span className="wal-person-yen">{fmtY(perPersonYen[i])}</span>
+                  </div>
+                ))}
+              </div>
+              <div className="wal-total"><span>{x({ en: 'Trip total', th: 'รวมทั้งทริป', ja: '合計' })}</span><b>{fmtB(totalYen * THB_PER_YEN)} · {fmtY(totalYen)}</b></div>
+            </section>
+          ) : null}
+
+          <section className="party wal-add-wrap">
+            <div className="party-head"><span className="ov-kicker">{x({ en: 'Add', th: 'เพิ่ม', ja: '追加' })}</span><h2 className="ov-h2">{x({ en: 'New expense', th: 'รายการใหม่', ja: '新規' })}</h2></div>
+            <div className="wal-cur-toggle">
+              <button className={'wal-cur' + (cur === 'jpy' ? ' on' : '')} onClick={() => setCur('jpy')}>¥ {x({ en: 'Yen', th: 'เยน', ja: '円' })}</button>
+              <button className={'wal-cur' + (cur === 'thb' ? ' on' : '')} onClick={() => setCur('thb')}>฿ {x({ en: 'Baht', th: 'บาท', ja: 'バーツ' })}</button>
+            </div>
+            <div className="wal-add">
+              <input className="exp-in wal-amt" type="number" inputMode="numeric" placeholder={cur === 'jpy' ? '¥0' : '฿0'} value={amt} onChange={(e) => setAmt(e.target.value)} aria-label="Amount" />
+              <input className="exp-in wal-label" type="text" placeholder={x({ en: 'What for?', th: 'ค่าอะไร?', ja: '何に?' })} value={label} onChange={(e) => setLabel(e.target.value)} onKeyDown={(e) => { if (e.key === 'Enter') add(); }} aria-label="Label" />
+            </div>
+            <div className="wal-payers">
+              <span className="wal-payers-lb">{x({ en: 'Split between', th: 'หารกับใคร', ja: '割り勘する人' })}</span>
+              <div className="wal-payer-chips">
+                {names.map((n, i) => (
+                  <button key={i} className={'wal-payer' + (payers.includes(i) ? ' on' : '')} onClick={() => togglePayer(i)} aria-pressed={payers.includes(i)}>{n}</button>
+                ))}
+              </div>
+            </div>
+            <button className="wal-add-btn" onClick={add}><Icon name="plus" size={16} stroke={2.2} /><span>{x({ en: 'Add expense', th: 'เพิ่มรายการ', ja: '追加' })}</span></button>
+          </section>
+
+          {items.length ? (
+            <section className="party wal-list-wrap">
+              <div className="party-head"><span className="ov-kicker">{x({ en: 'Log', th: 'รายการ', ja: '記録' })}</span><h2 className="ov-h2">{x({ en: 'All expenses', th: 'ทั้งหมด', ja: '一覧' })}</h2></div>
+              <ul className="wal-list">
+                {items.map((it) => (
+                  <li className="wal-item" key={it.id}>
+                    <div className="wal-item-top">
+                      <span className="wal-item-label">{it.label}</span>
+                      <span className="wal-item-amt">{fmtB(thbOf(it))}<span className="wal-item-yen"> · {fmtY(yenOf(it))}</span></span>
+                      <button className="exp-row-x" onClick={() => remove(it.id)} aria-label="Remove"><Icon name="close" size={13} stroke={2} /></button>
+                    </div>
+                    <div className="wal-item-payers">
+                      {it.payers.map((pi) => (
+                        <span className="wal-item-payer" key={pi}>{names[pi] || '?'} <b>{fmtB(thbOf(it) / it.payers.length)}</b></span>
+                      ))}
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          ) : null}
+        </div>
+        <div className="ov-credit"><span className="ov-credit-rule" aria-hidden="true"></span><span className="ov-credit-text">{x(window.CREDIT)}</span></div>
+      </main>
+    </div>
+  );
+}
+
+// ── More — hub linking Guides, Party, Emergency, Settings ───────────────
+function MorePage({ onHome, onSettings, onGuides, onParty, onEmergency, lang }) {
+  const { x } = useT();
+  const links = [
+    { icon: 'globe', title: { en: 'Tips & Guides', th: 'คำแนะนำต่างๆ', ja: 'ガイド' }, desc: { en: 'Driving · phrases · etiquette', th: 'ขับรถ · ประโยค · มารยาท', ja: '運転・会話・マナー' }, on: onGuides },
+    { icon: 'passport', title: { en: 'The Party', th: 'ทีมงาน', ja: 'メンバー' }, desc: { en: 'Who’s on the trip', th: 'ผู้ร่วมเดินทาง', ja: '参加メンバー' }, on: onParty },
+    { icon: 'alert', title: { en: 'Emergency', th: 'เบอร์ติดต่อฉุกเฉิน', ja: '緊急連絡先' }, desc: { en: 'Police · ambulance · embassy', th: 'ตำรวจ · รถพยาบาล · สถานทูต', ja: '警察・救急・大使館' }, on: onEmergency, urgent: true },
+    { icon: 'gear', title: { en: 'Settings', th: 'ตั้งค่า', ja: '設定' }, desc: { en: 'Language · theme', th: 'ภาษา · ธีม', ja: '言語・テーマ' }, on: onSettings },
+  ];
+  return (
+    <div className="bookings">
+      <Chrome onHome={onHome} />
+      <main className="bk-stage">
+        <section className="bk-hero">
+          <span className="ov-kicker">{x({ en: 'Menu', th: 'เมนู', ja: 'メニュー' })}</span>
+          <h1 className="bk-h1">{x({ en: 'More', th: 'อื่นๆ', ja: 'その他' })}</h1>
+        </section>
+        <div className="bk-section">
+          <div className="more-list">
+            {links.map((l, i) => (
+              <button key={i} className={'more-link' + (l.urgent ? ' more-urgent' : '')} onClick={l.on} style={{ '--i': i }}>
+                <span className="more-ic"><Icon name={l.icon} size={20} stroke={1.4} /></span>
+                <span className="more-body">
+                  <span className="more-title">{x(l.title)}</span>
+                  <span className="more-desc">{x(l.desc)}</span>
+                </span>
+                <span className="more-go"><Icon name="chevronRight" size={18} stroke={1.6} /></span>
+              </button>
+            ))}
+          </div>
+        </div>
+        <div className="ov-credit"><span className="ov-credit-rule" aria-hidden="true"></span><span className="ov-credit-text">{x(window.CREDIT)}</span></div>
+      </main>
+    </div>
+  );
+}
+
 Object.assign(window, {
   LangCtx, useT, LangToggle, ImageFrame, ReferenceDock,
   ActivityBlock, Timeline, Cover, DayNav, ActivityDetail,
@@ -1539,4 +1618,5 @@ Object.assign(window, {
   Konbini, EmergencySheet, DayKonbini, OvEssentials, DayWeather, MobileTabBar,
   Packing, Phrases, TravelersPage, SettingsPage,
   BookingsList, Converter, Expenses, MoneyTools, DrivingTips, VisitJapanBox,
+  Chrome, GuidesPage, WalletPage, MorePage,
 });

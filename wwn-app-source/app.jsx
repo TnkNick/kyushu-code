@@ -134,9 +134,12 @@ function App() {
   };
   const home = () => { setDetail(null); setView('overview'); };
   const openBookings = () => { setDetail(null); setView('bookings'); };
-  const openPhrases = () => { setDetail(null); setView('phrases'); };
+  const openWallet = () => { setDetail(null); setView('wallet'); };
+  const openMore = () => { setDetail(null); setView('more'); };
+  const openGuides = () => { setDetail(null); setView('guides'); };
   const openParty = () => { setDetail(null); setView('party'); };
   const openSettings = () => { setDetail(null); setView('settings'); };
+  const openPhrases = openGuides;
   const ovTop = () => { const s = document.querySelector('.ov-stage'); if (s) s.scrollTo({ top: 0, behavior: 'smooth' }); };
   const jumpTo = (i) => { setDay(i); setDayKey((k) => k + 1); setView('itinerary'); };
   const selectDay = (i) => {
@@ -188,17 +191,25 @@ function App() {
           <div className="view-bookings">
             <Bookings trip={TRIP} onHome={home} onItinerary={begin} onPhrases={openPhrases} onParty={openParty} onEmergency={() => setEmgOpen(true)} lang={lang} onLang={changeLang} />
           </div>
-        ) : view === 'phrases' ? (
-          <div className="view-phrases">
-            <PhrasesPage onHome={home} onItinerary={begin} onBookings={openBookings} onParty={openParty} onEmergency={() => setEmgOpen(true)} lang={lang} onLang={changeLang} />
+        ) : view === 'wallet' ? (
+          <div className="view-wallet">
+            <WalletPage onHome={home} lang={lang} />
+          </div>
+        ) : view === 'more' ? (
+          <div className="view-more">
+            <MorePage onHome={home} onSettings={openSettings} onGuides={openGuides} onParty={openParty} onEmergency={() => setEmgOpen(true)} lang={lang} />
+          </div>
+        ) : view === 'guides' ? (
+          <div className="view-guides">
+            <GuidesPage onHome={home} onMore={openMore} lang={lang} />
           </div>
         ) : view === 'party' ? (
           <div className="view-party">
-            <TravelersPage onHome={home} onItinerary={begin} onBookings={openBookings} onPhrases={openPhrases} onEmergency={() => setEmgOpen(true)} lang={lang} onLang={changeLang} />
+            <TravelersPage onHome={home} onMore={openMore} lang={lang} />
           </div>
         ) : view === 'settings' ? (
           <div className="view-settings">
-            <SettingsPage onHome={home} onItinerary={begin} onBookings={openBookings} onParty={openParty} onPhrases={openPhrases} onEmergency={() => setEmgOpen(true)} lang={lang} onLang={changeLang} mode={mode} onMode={changeMode} />
+            <SettingsPage onHome={home} onMore={openMore} lang={lang} onLang={changeLang} mode={mode} onMode={changeMode} />
           </div>
         ) : (
           <div className="view-itinerary">
@@ -216,8 +227,8 @@ function App() {
 
         {emgOpen ? <EmergencySheet data={window.EMERGENCY} onClose={() => setEmgOpen(false)} /> : null}
 
-        {view === 'itinerary' || view === 'bookings' || view === 'party' || view === 'phrases' || view === 'settings' ? (
-          <MobileTabBar view={view} onItinerary={begin} onBookings={openBookings} onParty={openParty} onPhrases={openPhrases} onSettings={openSettings} />
+        {view !== 'overview' ? (
+          <MobileTabBar view={view} onItinerary={begin} onBookings={openBookings} onWallet={openWallet} onMore={openMore} />
         ) : null}
 
         {!PARAM.embed ? (

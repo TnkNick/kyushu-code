@@ -3,6 +3,14 @@
 // fill:none, round caps/joins, 24×24 grid. Tuned hairline weight (1.25).
 
 const ICON_PATHS = {
+  grid: (
+    <>
+      <rect x="4" y="4" width="6.5" height="6.5" rx="1.6" />
+      <rect x="13.5" y="4" width="6.5" height="6.5" rx="1.6" />
+      <rect x="4" y="13.5" width="6.5" height="6.5" rx="1.6" />
+      <rect x="13.5" y="13.5" width="6.5" height="6.5" rx="1.6" />
+    </>
+  ),
   // ── Reference dock ──────────────────────────────────────────────
   map: (
     <>

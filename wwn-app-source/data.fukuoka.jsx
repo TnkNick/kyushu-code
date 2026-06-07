@@ -1172,6 +1172,20 @@ const DRIVING = {
   ],
 };
 
+const CULTURE = {
+  title: L('Culture & etiquette', 'วัฒนธรรม & มารยาท', '文化とマナー'),
+  subtitle: L('Good manners to know in Japan', 'มารยาทที่ควรรู้ในญี่ปุ่น', '日本で知っておきたいマナー'),
+  tips: [
+    { icon: 'walk', label: L('Quiet on trains', 'เงียบบนรถไฟ'), note: L('Phones on silent, no calls on trains, talk softly. Don’t eat on local trains.', 'เปิดมือถือระบบสั่น ไม่คุยโทรศัพท์บนรถไฟ พูดเบาๆ · ไม่กินบนรถไฟท้องถิ่น') },
+    { icon: 'wallet', label: L('Cash & no tipping', 'เงินสด & ไม่ต้องทิป'), note: L('Carry cash — tipping isn’t a thing and can confuse. Place money on the little tray, not in hands.', 'พกเงินสด · ญี่ปุ่นไม่มีวัฒนธรรมทิป · วางเงินบนถาดรับเงิน ไม่ยื่นมือต่อมือ') },
+    { icon: 'bowl', label: L('Don’t eat & walk', 'ไม่กินเดินไป'), note: L('Finish food/drinks standing by the shop or a konbini rather than walking the street.', 'กิน/ดื่มให้เสร็จยืนข้างร้านหรือคอนบินิ ไม่เดินกินไปตามถนน') },
+    { icon: 'store', label: L('Shoes off', 'ถอดรองเท้า'), note: L('Take shoes off at ryokan, some restaurants and homes — watch for a raised step or slippers.', 'ถอดรองเท้าที่เรียวกัง บางร้าน และบ้าน — สังเกตพื้นยกระดับหรือรองเท้าแตะ') },
+    { icon: 'cloud', label: L('Onsen manners', 'มารยาทออนเซน'), note: L('Wash & rinse fully before the bath; no swimwear or towels in the water; tattoos may be restricted.', 'อาบ-ล้างตัวให้สะอาดก่อนลงบ่อ · ห้ามใส่ชุดว่ายน้ำ/ผ้าเช็ดตัวลงน้ำ · รอยสักอาจถูกห้าม') },
+    { icon: 'check', label: L('Queue & escalators', 'ต่อแถว & บันไดเลื่อน'), note: L('Line up neatly. In Kyushu/west Japan stand on the LEFT of escalators, pass on the right.', 'ต่อแถวเป็นระเบียบ · คิวชู/ญี่ปุ่นตะวันตก ยืนชิดซ้ายบนบันไดเลื่อน เดินแซงทางขวา') },
+    { icon: 'alert', label: L('Trash & sorting', 'ขยะ & แยกประเภท'), note: L('Public bins are rare — carry rubbish until you find one (often by konbini); sort burnable / PET / cans.', 'ถังขยะสาธารณะหายาก พกขยะติดตัวจนเจอถัง (มักอยู่หน้าคอนบินิ) · แยกเผาได้/ขวด PET/กระป๋อง') },
+  ],
+};
+
 const PHRASES = {
   title: L('Useful Phrases', 'ประโยคที่ใช้บ่อย'),
   subtitle: L('A few words go a long way', 'พูดได้นิดหน่อยก็ช่วยได้มาก'),
@@ -1187,4 +1201,4 @@ const PHRASES = {
   ],
 };
 
-Object.assign(window, { TRIP, REF_TYPES, TR, tx, tr, DESTINATION, TRAVELERS, EMERGENCY, BUDGET, KONBINI, ESSENTIALS, WEATHER, MENUS, PACKING, SOUVENIRS, DRIVING, VISITJAPAN, PHRASES, CREDIT });
+Object.assign(window, { TRIP, REF_TYPES, TR, tx, tr, DESTINATION, TRAVELERS, EMERGENCY, BUDGET, KONBINI, ESSENTIALS, WEATHER, MENUS, PACKING, SOUVENIRS, DRIVING, VISITJAPAN, CULTURE, PHRASES, CREDIT });

@@ -1047,6 +1047,61 @@
   .vjw-box-cta { display: inline-flex; align-items: center; gap: 7px; margin-top: 16px; padding: 9px 17px; border-radius: 100px;
     background: var(--accent); color: var(--paper); font-size: 14px; font-weight: 700; }
 
+  /* More — hub list */
+  .chrome-back svg { margin-right: -2px; }
+  .more-list { display: flex; flex-direction: column; gap: 12px; }
+  .more-link { display: flex; align-items: center; gap: 15px; width: 100%; text-align: left; padding: 17px 18px; border-radius: 16px;
+    border: 1px solid var(--line); background: var(--paper-2); cursor: pointer; transition: border-color .25s, transform .12s, background .25s;
+    animation: rise .5s ease both; animation-delay: calc(var(--i) * .05s); }
+  .more-link:hover { border-color: var(--ink-soft); }
+  .more-link:active { transform: scale(.99); }
+  .more-ic { flex: none; display: grid; place-items: center; width: 46px; height: 46px; border-radius: 13px; background: var(--chip); color: var(--accent); }
+  .more-urgent .more-ic { background: color-mix(in srgb, var(--accent-2) 16%, transparent); color: var(--accent-2); }
+  .more-body { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px; }
+  .more-title { font-family: var(--serif); font-size: 18px; font-weight: 600; color: var(--ink); }
+  .more-desc { font-size: 13.5px; color: var(--ink-soft); }
+  .more-go { flex: none; color: var(--ink-soft); }
+
+  /* Wallet — converter + expense splitter */
+  .wallet { display: flex; flex-direction: column; gap: clamp(28px,4vw,42px); }
+  .wal-sum .wal-people { display: flex; flex-direction: column; gap: 8px; margin-top: 4px; }
+  .wal-person { display: grid; grid-template-columns: 1fr auto auto; align-items: baseline; gap: 12px; padding: 12px 16px;
+    border: 1px solid var(--line); border-radius: 13px; background: var(--paper-2); }
+  .wal-person-name { font-weight: 600; color: var(--ink); font-size: 15px; }
+  .wal-person-thb { font-family: var(--serif); font-weight: 700; color: var(--accent); font-size: 17px; font-variant-numeric: tabular-nums; }
+  .wal-person-yen { font-size: 12.5px; color: var(--ink-soft); font-variant-numeric: tabular-nums; min-width: 62px; text-align: right; }
+  .wal-total { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-top: 12px; padding-top: 14px;
+    border-top: 1px solid var(--line); font-size: 14px; color: var(--ink-soft); }
+  .wal-total b { color: var(--ink); font-variant-numeric: tabular-nums; font-size: 15px; }
+  .wal-cur-toggle { display: flex; gap: 8px; margin-top: 4px; }
+  .wal-cur { flex: 1; padding: 11px; border-radius: 12px; border: 1px solid var(--line); background: var(--paper-2); color: var(--ink-soft);
+    font-size: 14.5px; font-weight: 600; cursor: pointer; transition: all .2s; }
+  .wal-cur.on { background: var(--accent); border-color: var(--accent); color: var(--paper); }
+  .wal-add { display: flex; gap: 8px; margin-top: 10px; }
+  .wal-amt { width: 108px; flex: none; font-variant-numeric: tabular-nums; font-weight: 600; -moz-appearance: textfield; }
+  .wal-amt::-webkit-outer-spin-button, .wal-amt::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+  .wal-label { flex: 1; min-width: 0; }
+  .wal-payers { margin-top: 14px; }
+  .wal-payers-lb { font-size: 12.5px; font-weight: 600; color: var(--ink-soft); }
+  .wal-payer-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 9px; }
+  .wal-payer { padding: 8px 15px; border-radius: 100px; border: 1px solid var(--line); background: none; color: var(--ink-soft);
+    font-size: 14px; font-weight: 600; cursor: pointer; transition: all .2s; }
+  .wal-payer.on { background: color-mix(in srgb, var(--accent) 16%, transparent); border-color: var(--accent); color: var(--accent); }
+  .wal-add-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; width: 100%; margin-top: 16px; padding: 13px;
+    border-radius: 13px; border: none; background: var(--accent); color: var(--paper); font-size: 15px; font-weight: 700; cursor: pointer;
+    transition: filter .2s, transform .12s; }
+  .wal-add-btn:active { transform: scale(.99); }
+  .wal-add-btn:hover { filter: brightness(1.06); }
+  .wal-list { list-style: none; margin: 4px 0 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+  .wal-item { padding: 13px 16px; border: 1px solid var(--line); border-radius: 14px; background: var(--paper-2); }
+  .wal-item-top { display: flex; align-items: baseline; gap: 10px; }
+  .wal-item-label { flex: 1; min-width: 0; font-weight: 600; color: var(--ink); font-size: 15px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .wal-item-amt { font-variant-numeric: tabular-nums; font-weight: 700; color: var(--accent); font-size: 15px; flex: none; }
+  .wal-item-yen { color: var(--ink-soft); font-weight: 500; font-size: 12.5px; }
+  .wal-item-payers { display: flex; flex-wrap: wrap; gap: 6px 14px; margin-top: 9px; padding-top: 10px; border-top: 1px dotted var(--line); }
+  .wal-item-payer { font-size: 12.5px; color: var(--ink-soft); }
+  .wal-item-payer b { color: var(--ink); font-weight: 700; font-variant-numeric: tabular-nums; }
+
   .bk-progress { margin-top: clamp(26px,4vw,40px); max-width: 540px; }
   .bk-progress-top { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-bottom: 12px; }
   .bk-progress-k { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; font-weight: 600; color: var(--ink-soft); }
@@ -1287,6 +1342,9 @@
     .clock-chrome .clock-zone { display: none; }
     /* primary view nav relocates to the bottom tab bar on mobile */
     .chrome-nav { display: none; }
+    /* keep the back button (under "More") visible + labelled on phones */
+    .chrome-nav.chrome-back { display: inline-flex; padding: 6px 13px; }
+    .chrome-nav.chrome-back span { display: inline; }
     .mtab { display: flex; }
     .bk-stage, .stage { padding-bottom: 72px; }
     /* phones: nav moved to the bottom bar — bring back the day + clock at the top */
@@ -2689,6 +2747,14 @@ Object.assign(window, {
 // fill:none, round caps/joins, 24×24 grid. Tuned hairline weight (1.25).
 
 const ICON_PATHS = {
+  grid: (
+    <>
+      <rect x="4" y="4" width="6.5" height="6.5" rx="1.6" />
+      <rect x="13.5" y="4" width="6.5" height="6.5" rx="1.6" />
+      <rect x="4" y="13.5" width="6.5" height="6.5" rx="1.6" />
+      <rect x="13.5" y="13.5" width="6.5" height="6.5" rx="1.6" />
+    </>
+  ),
   // ── Reference dock ──────────────────────────────────────────────
   map: (
     <>
@@ -2923,7 +2989,6 @@ function Icon({ name, size = 18, stroke = 1.25, style, className }) {
 }
 
 Object.assign(window, { Icon, ICON_PATHS });
-
 </script>
   <script type="text/babel">
 // data.jsx — Fukuoka × Kyushu itinerary (bilingual EN / TH), self-drive.
@@ -4100,6 +4165,20 @@ const DRIVING = {
   ],
 };
 
+const CULTURE = {
+  title: L('Culture & etiquette', 'วัฒนธรรม & มารยาท', '文化とマナー'),
+  subtitle: L('Good manners to know in Japan', 'มารยาทที่ควรรู้ในญี่ปุ่น', '日本で知っておきたいマナー'),
+  tips: [
+    { icon: 'walk', label: L('Quiet on trains', 'เงียบบนรถไฟ'), note: L('Phones on silent, no calls on trains, talk softly. Don’t eat on local trains.', 'เปิดมือถือระบบสั่น ไม่คุยโทรศัพท์บนรถไฟ พูดเบาๆ · ไม่กินบนรถไฟท้องถิ่น') },
+    { icon: 'wallet', label: L('Cash & no tipping', 'เงินสด & ไม่ต้องทิป'), note: L('Carry cash — tipping isn’t a thing and can confuse. Place money on the little tray, not in hands.', 'พกเงินสด · ญี่ปุ่นไม่มีวัฒนธรรมทิป · วางเงินบนถาดรับเงิน ไม่ยื่นมือต่อมือ') },
+    { icon: 'bowl', label: L('Don’t eat & walk', 'ไม่กินเดินไป'), note: L('Finish food/drinks standing by the shop or a konbini rather than walking the street.', 'กิน/ดื่มให้เสร็จยืนข้างร้านหรือคอนบินิ ไม่เดินกินไปตามถนน') },
+    { icon: 'store', label: L('Shoes off', 'ถอดรองเท้า'), note: L('Take shoes off at ryokan, some restaurants and homes — watch for a raised step or slippers.', 'ถอดรองเท้าที่เรียวกัง บางร้าน และบ้าน — สังเกตพื้นยกระดับหรือรองเท้าแตะ') },
+    { icon: 'cloud', label: L('Onsen manners', 'มารยาทออนเซน'), note: L('Wash & rinse fully before the bath; no swimwear or towels in the water; tattoos may be restricted.', 'อาบ-ล้างตัวให้สะอาดก่อนลงบ่อ · ห้ามใส่ชุดว่ายน้ำ/ผ้าเช็ดตัวลงน้ำ · รอยสักอาจถูกห้าม') },
+    { icon: 'check', label: L('Queue & escalators', 'ต่อแถว & บันไดเลื่อน'), note: L('Line up neatly. In Kyushu/west Japan stand on the LEFT of escalators, pass on the right.', 'ต่อแถวเป็นระเบียบ · คิวชู/ญี่ปุ่นตะวันตก ยืนชิดซ้ายบนบันไดเลื่อน เดินแซงทางขวา') },
+    { icon: 'alert', label: L('Trash & sorting', 'ขยะ & แยกประเภท'), note: L('Public bins are rare — carry rubbish until you find one (often by konbini); sort burnable / PET / cans.', 'ถังขยะสาธารณะหายาก พกขยะติดตัวจนเจอถัง (มักอยู่หน้าคอนบินิ) · แยกเผาได้/ขวด PET/กระป๋อง') },
+  ],
+};
+
 const PHRASES = {
   title: L('Useful Phrases', 'ประโยคที่ใช้บ่อย'),
   subtitle: L('A few words go a long way', 'พูดได้นิดหน่อยก็ช่วยได้มาก'),
@@ -4115,7 +4194,7 @@ const PHRASES = {
   ],
 };
 
-Object.assign(window, { TRIP, REF_TYPES, TR, tx, tr, DESTINATION, TRAVELERS, EMERGENCY, BUDGET, KONBINI, ESSENTIALS, WEATHER, MENUS, PACKING, SOUVENIRS, DRIVING, VISITJAPAN, PHRASES, CREDIT });
+Object.assign(window, { TRIP, REF_TYPES, TR, tx, tr, DESTINATION, TRAVELERS, EMERGENCY, BUDGET, KONBINI, ESSENTIALS, WEATHER, MENUS, PACKING, SOUVENIRS, DRIVING, VISITJAPAN, CULTURE, PHRASES, CREDIT });
 </script>
   <script type="text/babel">
 // components.jsx — lookbook UI (bilingual). Depends on window.Icon, REF_TYPES, tx, tr.
@@ -4751,23 +4830,8 @@ function Overview({ trip, dest, travelers, onBegin, onJump, onHome, onBookings, 
           <span className="wwn"><b>WWN</b> <span className="wwn-full">World Wide Nick</span></span>
         </button>
         <div className="chrome-bar-r">
-          <button className="chrome-sos" onClick={onEmergency}>
-            <Icon name="alert" size={15} stroke={1.5} />
-            <span>{x({ en: 'Emergency', th: 'ฉุกเฉิน' })}</span>
-          </button>
-          <button className="chrome-nav" onClick={onBookings}>
-            <Icon name="book" size={15} stroke={1.4} />
-            <span>{x({ en: 'Bookings', th: 'การจอง' })}</span>
-          </button>
-          <button className="chrome-nav" onClick={onParty}>
-            <Icon name="passport" size={15} stroke={1.4} />
-            <span>{x({ en: 'Party', th: 'ทีมงาน' })}</span>
-          </button>
-          <button className="chrome-nav" onClick={onPhrases}>
-            <Icon name="note" size={15} stroke={1.4} />
-            <span>{x({ en: 'Phrases', th: 'ประโยคใช้บ่อย' })}</span>
-          </button>
-          <Clock variant="chrome" />        </div>
+          <Clock variant="chrome" />
+        </div>
       </header>
 
       <main className="ov-stage">
@@ -4817,6 +4881,28 @@ function Overview({ trip, dest, travelers, onBegin, onJump, onHome, onBookings, 
 }
 
 // ── DayNav ─────────────────────────────────────────────────────────────
+// ── Shared minimal page chrome — home (left) + optional back + clock ─────
+function Chrome({ onHome, onBack, backLabel }) {
+  const { x } = useT();
+  return (
+    <header className="chrome chrome-min">
+      <button className="chrome-home" onClick={onHome}>
+        <Icon name="feather" size={16} stroke={1.3} />
+        <span className="wwn"><b>WWN</b> <span className="wwn-full">World Wide Nick</span></span>
+      </button>
+      <div className="chrome-bar-r">
+        {onBack ? (
+          <button className="chrome-nav chrome-back" onClick={onBack}>
+            <Icon name="chevronLeft" size={16} stroke={1.7} />
+            <span>{backLabel || x({ en: 'More', th: 'อื่นๆ', ja: 'その他' })}</span>
+          </button>
+        ) : null}
+        <Clock variant="chrome" />
+      </div>
+    </header>
+  );
+}
+
 function DayNav({ days, current, onSelect, onHome, onBookings, onPhrases, onParty, onEmergency, lang, onLang }) {
   const { x } = useT();
   const railRef = useRef(null);
@@ -4850,23 +4936,8 @@ function DayNav({ days, current, onSelect, onHome, onBookings, onPhrases, onPart
           <span className="chrome-now-date">{x(days[current].date)}</span>
         </div>
         <div className="chrome-bar-r">
-          <button className="chrome-sos" onClick={onEmergency}>
-            <Icon name="alert" size={15} stroke={1.5} />
-            <span>{x({ en: 'Emergency', th: 'ฉุกเฉิน' })}</span>
-          </button>
-          <button className="chrome-nav" onClick={onBookings}>
-            <Icon name="book" size={15} stroke={1.4} />
-            <span>{x({ en: 'Bookings', th: 'การจอง' })}</span>
-          </button>
-          <button className="chrome-nav" onClick={onParty}>
-            <Icon name="passport" size={15} stroke={1.4} />
-            <span>{x({ en: 'Party', th: 'ทีมงาน' })}</span>
-          </button>
-          <button className="chrome-nav" onClick={onPhrases}>
-            <Icon name="note" size={15} stroke={1.4} />
-            <span>{x({ en: 'Phrases', th: 'ประโยคใช้บ่อย' })}</span>
-          </button>
-          <Clock variant="chrome" />        </div>
+          <Clock variant="chrome" />
+        </div>
       </div>
 
       <nav className="chrome-days" ref={railRef}>
@@ -5069,36 +5140,11 @@ function Bookings({ trip, onHome, onItinerary, onPhrases, onParty, onEmergency, 
     { key: 'book',  icon: 'ticket',  label: { en: 'Bookings', th: 'การจอง', ja: '予約' } },
     { key: 'pack',  icon: 'luggage', label: { en: 'Packing', th: 'แพ็คของ', ja: '荷物' } },
     { key: 'gift',  icon: 'store',   label: { en: 'Souvenirs', th: 'ของฝาก', ja: 'お土産' } },
-    { key: 'money', icon: 'wallet',  label: { en: 'Money', th: 'เงิน', ja: 'お金' } },
-    { key: 'drive', icon: 'car',     label: { en: 'Driving', th: 'ขับรถ', ja: '運転' } },
   ];
 
   return (
     <div className="bookings">
-      <header className="chrome chrome-min">
-        <button className="chrome-home" onClick={onHome}>
-          <Icon name="feather" size={16} stroke={1.3} />
-          <span className="wwn"><b>WWN</b> <span className="wwn-full">World Wide Nick</span></span>
-        </button>
-        <div className="chrome-bar-r">
-          <button className="chrome-sos" onClick={onEmergency}>
-            <Icon name="alert" size={15} stroke={1.5} />
-            <span>{x({ en: 'Emergency', th: 'ฉุกเฉิน' })}</span>
-          </button>
-          <button className="chrome-nav" onClick={onItinerary}>
-            <Icon name="compass" size={15} stroke={1.4} />
-            <span>{x({ en: 'Itinerary', th: 'แผนการเดินทาง' })}</span>
-          </button>
-          <button className="chrome-nav" onClick={onParty}>
-            <Icon name="passport" size={15} stroke={1.4} />
-            <span>{x({ en: 'Party', th: 'ทีมงาน' })}</span>
-          </button>
-          <button className="chrome-nav" onClick={onPhrases}>
-            <Icon name="note" size={15} stroke={1.4} />
-            <span>{x({ en: 'Phrases', th: 'ประโยคใช้บ่อย' })}</span>
-          </button>
-          <Clock variant="chrome" />        </div>
-      </header>
+      <Chrome onHome={onHome} />
 
       <main className="bk-stage">
         <section className="bk-hero">
@@ -5125,9 +5171,7 @@ function Bookings({ trip, onHome, onItinerary, onPhrases, onParty, onEmergency, 
         <div className="bk-section" key={sec}>
           {sec === 'book' ? <BookingsList trip={trip} lang={lang} /> :
            sec === 'pack' ? <Packing data={window.PACKING} storeKey="jp-packed" /> :
-           sec === 'gift' ? <Packing data={window.SOUVENIRS} storeKey="jp-souvenirs" /> :
-           sec === 'money' ? <MoneyTools /> :
-           <DrivingTips data={window.DRIVING} />}
+           <Packing data={window.SOUVENIRS} storeKey="jp-souvenirs" />}
         </div>
 
         <div className="ov-credit">
@@ -5412,21 +5456,21 @@ function OvEssentials({ data }) {
 }
 
 // ── Mobile bottom tab bar — primary view switcher (mobile only) ─────────
-function MobileTabBar({ view, onItinerary, onBookings, onParty, onPhrases, onSettings }) {
+function MobileTabBar({ view, onItinerary, onBookings, onWallet, onMore }) {
   const { x } = useT();
+  const active = (view === 'settings' || view === 'guides' || view === 'party' || view === 'phrases' || view === 'more') ? 'more' : view;
   const tabs = [
-    { key: 'itinerary', icon: 'compass', size: 28, stroke: 1.3,  label: { en: 'Itinerary', th: 'แผนการเดินทาง', ja: '旅程' }, on: onItinerary },
-    { key: 'bookings',  icon: 'book',    size: 31, stroke: 1.2,  label: { en: 'Prep',  th: 'เตรียมตัว', ja: '準備' },         on: onBookings },
-    { key: 'party',     icon: 'passport',size: 30, stroke: 1.25, label: { en: 'Party',     th: 'ทีมงาน', ja: 'メンバー' },     on: onParty },
-    { key: 'phrases',   icon: 'note',    size: 30, stroke: 1.25, label: { en: 'Phrases',   th: 'ประโยค', ja: '会話' },         on: onPhrases },
-    { key: 'settings',  icon: 'gear',    size: 20, stroke: 1.7,  label: { en: 'Settings',  th: 'ตั้งค่า', ja: '設定' },         on: onSettings },
+    { key: 'itinerary', icon: 'compass', size: 27, stroke: 1.3,  label: { en: 'Itinerary', th: 'แผนการเดินทาง', ja: '旅程' }, on: onItinerary },
+    { key: 'bookings',  icon: 'book',    size: 29, stroke: 1.2,  label: { en: 'Prep',  th: 'เตรียมตัว', ja: '準備' },          on: onBookings },
+    { key: 'wallet',    icon: 'wallet',  size: 27, stroke: 1.3,  label: { en: 'Expenses',  th: 'ค่าใช้จ่าย', ja: '費用' },     on: onWallet },
+    { key: 'more',      icon: 'grid',    size: 23, stroke: 1.5,  label: { en: 'More',      th: 'อื่นๆ', ja: 'その他' },        on: onMore },
   ];
   return (
     <nav className="mtab" role="tablist" aria-label="Sections">
       <div className="mtab-inner">
       {tabs.map((t) => (
-        <button key={t.key} className={'mtab-item' + (view === t.key ? ' active' : '')}
-          role="tab" aria-selected={view === t.key} onClick={t.on}>
+        <button key={t.key} className={'mtab-item' + (active === t.key ? ' active' : '')}
+          role="tab" aria-selected={active === t.key} onClick={t.on}>
           <span className="mtab-ic"><Icon name={t.icon} size={t.size} stroke={t.stroke} /></span>
           <span className="mtab-lb">{x(t.label)}</span>
         </button>
@@ -5502,69 +5546,56 @@ function Phrases({ data }) {
   );
 }
 
-function PhrasesPage({ onHome, onItinerary, onBookings, onParty, onEmergency, lang, onLang }) {
+// ── Guides — driving · phrases · etiquette (sub-nav, under "More") ───────
+function GuidesPage({ onHome, onMore, lang }) {
   const { x } = useT();
+  const [sec, setSec] = useState('drive');
+  const SECTIONS = [
+    { key: 'drive',   icon: 'car',   label: { en: 'Driving', th: 'ขับรถ', ja: '運転' } },
+    { key: 'phrases', icon: 'note',  label: { en: 'Phrases', th: 'ประโยค', ja: '会話' } },
+    { key: 'culture', icon: 'globe', label: { en: 'Etiquette', th: 'มารยาท', ja: 'マナー' } },
+  ];
   return (
     <div className="bookings">
-      <header className="chrome chrome-min">
-        <button className="chrome-home" onClick={onHome}>
-          <Icon name="feather" size={16} stroke={1.3} />
-          <span className="wwn"><b>WWN</b> <span className="wwn-full">World Wide Nick</span></span>
-        </button>
-        <div className="chrome-bar-r">
-          <button className="chrome-sos" onClick={onEmergency}>
-            <Icon name="alert" size={15} stroke={1.5} />
-            <span>{x({ en: 'Emergency', th: 'ฉุกเฉิน' })}</span>
-          </button>
-          <button className="chrome-nav" onClick={onItinerary}>
-            <Icon name="compass" size={15} stroke={1.4} />
-            <span>{x({ en: 'Itinerary', th: 'แผนการเดินทาง' })}</span>
-          </button>
-          <button className="chrome-nav" onClick={onBookings}>
-            <Icon name="book" size={15} stroke={1.4} />
-            <span>{x({ en: 'Bookings', th: 'การจอง' })}</span>
-          </button>
-          <button className="chrome-nav" onClick={onParty}>
-            <Icon name="passport" size={15} stroke={1.4} />
-            <span>{x({ en: 'Party', th: 'ทีมงาน' })}</span>
-          </button>
-          <Clock variant="chrome" />        </div>
-      </header>
+      <Chrome onHome={onHome} onBack={onMore} />
       <main className="bk-stage">
-        <Phrases data={window.PHRASES} />
+        <section className="bk-hero">
+          <span className="ov-kicker">{x({ en: 'Good to know', th: 'น่ารู้', ja: '豆知識' })}</span>
+          <h1 className="bk-h1">{x({ en: 'Tips & Guides', th: 'คำแนะนำต่างๆ', ja: 'ガイド' })}</h1>
+          <p className="bk-lede">{x({
+            en: 'Driving rules, handy phrases and etiquette for Japan — pick a tab.',
+            th: 'การขับรถ ประโยคที่ใช้บ่อย และมารยาทในญี่ปุ่น — เลือกแท็บด้านล่าง',
+            ja: '運転・会話・マナー — タブを選んでね。',
+          })}</p>
+        </section>
+        <nav className="bk-subnav" role="tablist" aria-label="Guide sections">
+          {SECTIONS.map((s) => (
+            <button key={s.key} className={'bk-sub' + (sec === s.key ? ' on' : '')}
+              role="tab" aria-selected={sec === s.key}
+              onClick={(e) => { setSec(s.key); const nav = e.currentTarget.parentElement, btn = e.currentTarget; nav.scrollTo({ left: nav.scrollLeft + btn.getBoundingClientRect().left - nav.getBoundingClientRect().left - (nav.clientWidth - btn.offsetWidth) / 2, behavior: 'smooth' }); }}>
+              <Icon name={s.icon} size={15} stroke={1.6} />
+              <span>{x(s.label)}</span>
+            </button>
+          ))}
+        </nav>
+        <div className="bk-section" key={sec}>
+          {sec === 'drive' ? <DrivingTips data={window.DRIVING} /> :
+           sec === 'phrases' ? <Phrases data={window.PHRASES} /> :
+           <DrivingTips data={window.CULTURE} />}
+        </div>
+        <div className="ov-credit">
+          <span className="ov-credit-rule" aria-hidden="true"></span>
+          <span className="ov-credit-text">{x(window.CREDIT)}</span>
+        </div>
       </main>
     </div>
   );
 }
 
-function TravelersPage({ onHome, onItinerary, onBookings, onPhrases, onEmergency, lang, onLang }) {
-  const { x } = useT();
+function TravelersPage({ onHome, onMore, lang }) {
   return (
     <div className="bookings">
-      <header className="chrome chrome-min">
-        <button className="chrome-home" onClick={onHome}>
-          <Icon name="feather" size={16} stroke={1.3} />
-          <span className="wwn"><b>WWN</b> <span className="wwn-full">World Wide Nick</span></span>
-        </button>
-        <div className="chrome-bar-r">
-          <button className="chrome-sos" onClick={onEmergency}>
-            <Icon name="alert" size={15} stroke={1.5} />
-            <span>{x({ en: 'Emergency', th: 'ฉุกเฉิน' })}</span>
-          </button>
-          <button className="chrome-nav" onClick={onItinerary}>
-            <Icon name="compass" size={15} stroke={1.4} />
-            <span>{x({ en: 'Itinerary', th: 'แผนการเดินทาง' })}</span>
-          </button>
-          <button className="chrome-nav" onClick={onBookings}>
-            <Icon name="book" size={15} stroke={1.4} />
-            <span>{x({ en: 'Bookings', th: 'การจอง' })}</span>
-          </button>
-          <button className="chrome-nav" onClick={onPhrases}>
-            <Icon name="note" size={15} stroke={1.4} />
-            <span>{x({ en: 'Phrases', th: 'ประโยคใช้บ่อย' })}</span>
-          </button>
-          <Clock variant="chrome" />        </div>
-      </header>
+      <Chrome onHome={onHome} onBack={onMore} />
       <main className="bk-stage">
         <Travelers data={window.TRAVELERS} />
       </main>
@@ -5572,7 +5603,7 @@ function TravelersPage({ onHome, onItinerary, onBookings, onPhrases, onEmergency
   );
 }
 
-function SettingsPage({ onHome, onItinerary, onBookings, onParty, onPhrases, onEmergency, lang, onLang, mode, onMode }) {
+function SettingsPage({ onHome, onMore, lang, onLang, mode, onMode }) {
   const { x } = useT();
   const langs = [
     { v: 'en', main: 'English', sub: 'EN' },
@@ -5586,31 +5617,7 @@ function SettingsPage({ onHome, onItinerary, onBookings, onParty, onPhrases, onE
   ];
   return (
     <div className="bookings">
-      <header className="chrome chrome-min">
-        <button className="chrome-home" onClick={onHome}>
-          <Icon name="feather" size={16} stroke={1.3} />
-          <span className="wwn"><b>WWN</b> <span className="wwn-full">World Wide Nick</span></span>
-        </button>
-        <div className="chrome-bar-r">
-          <button className="chrome-sos" onClick={onEmergency}>
-            <Icon name="alert" size={15} stroke={1.5} />
-            <span>{x({ en: 'Emergency', th: 'ฉุกเฉิน', ja: '緊急' })}</span>
-          </button>
-          <button className="chrome-nav" onClick={onItinerary}>
-            <Icon name="compass" size={15} stroke={1.4} />
-            <span>{x({ en: 'Itinerary', th: 'แผนการเดินทาง', ja: '旅程' })}</span>
-          </button>
-          <button className="chrome-nav" onClick={onBookings}>
-            <Icon name="book" size={15} stroke={1.4} />
-            <span>{x({ en: 'Bookings', th: 'การจอง', ja: '予約' })}</span>
-          </button>
-          <button className="chrome-nav" onClick={onParty}>
-            <Icon name="passport" size={15} stroke={1.4} />
-            <span>{x({ en: 'Party', th: 'ทีมงาน', ja: 'メンバー' })}</span>
-          </button>
-          <Clock variant="chrome" />
-        </div>
-      </header>
+      <Chrome onHome={onHome} onBack={onMore} />
       <main className="bk-stage">
         <section className="party settings-page">
           <div className="party-head">
@@ -5652,6 +5659,157 @@ function SettingsPage({ onHome, onItinerary, onBookings, onParty, onPhrases, onE
   );
 }
 
+// ── Wallet — converter + shared-expense splitter (by traveller) ─────────
+const THB_PER_YEN = 22.6 / 100;
+
+function WalletPage({ onHome, lang }) {
+  const { x } = useT();
+  const people = (window.TRAVELERS && window.TRAVELERS.people) || [];
+  const names = people.map((p) => x(p.name));
+
+  const [items, setItems] = useState(() => { try { return JSON.parse(localStorage.getItem('jp-wallet') || '[]'); } catch (e) { return []; } });
+  const save = (list) => { setItems(list); try { localStorage.setItem('jp-wallet', JSON.stringify(list)); } catch (e) {} };
+
+  const [amt, setAmt] = useState('');
+  const [cur, setCur] = useState('jpy');
+  const [label, setLabel] = useState('');
+  const [payers, setPayers] = useState(() => names.map((_, i) => i));
+
+  const yenOf = (it) => it.cur === 'jpy' ? it.amt : it.amt / THB_PER_YEN;
+  const thbOf = (it) => it.cur === 'thb' ? it.amt : it.amt * THB_PER_YEN;
+  const fmtY = (v) => '¥' + Math.round(v).toLocaleString('en-US');
+  const fmtB = (v) => '฿' + Math.round(v).toLocaleString('en-US');
+
+  const togglePayer = (i) => setPayers((p) => p.includes(i) ? p.filter((k) => k !== i) : [...p, i].sort((a, b) => a - b));
+  const add = () => {
+    const a = parseFloat((amt || '').toString().replace(/,/g, ''));
+    if (!a || a <= 0 || !payers.length) return;
+    save([{ id: 'w' + Date.now(), amt: a, cur, label: (label || '').trim() || x({ en: 'Expense', th: 'รายการ', ja: '支出' }), payers: [...payers] }, ...items]);
+    setAmt(''); setLabel('');
+  };
+  const remove = (id) => save(items.filter((it) => it.id !== id));
+
+  const perPersonYen = names.map((_, i) => items.reduce((s, it) => s + (it.payers.includes(i) ? yenOf(it) / it.payers.length : 0), 0));
+  const totalYen = items.reduce((s, it) => s + yenOf(it), 0);
+
+  return (
+    <div className="bookings">
+      <Chrome onHome={onHome} />
+      <main className="bk-stage">
+        <section className="bk-hero">
+          <span className="ov-kicker">{x({ en: 'Money', th: 'การเงิน', ja: 'お金' })}</span>
+          <h1 className="bk-h1">{x({ en: 'Expenses', th: 'ค่าใช้จ่าย', ja: '費用' })}</h1>
+          <p className="bk-lede">{x({
+            en: 'Log spending in yen or baht, tag who shares it, and see each person’s split — in both currencies.',
+            th: 'บันทึกค่าใช้จ่ายเป็นเยนหรือบาท เลือกคนที่หารด้วย แล้วดูส่วนแบ่งของแต่ละคน — ทั้งสองสกุลเงิน',
+            ja: '円かバーツで記録し、割り勘する人を選ぶと各自の負担がわかります。',
+          })}</p>
+        </section>
+        <div className="bk-section wallet">
+          <Converter />
+
+          {names.length ? (
+            <section className="party wal-sum">
+              <div className="party-head"><span className="ov-kicker">{x({ en: 'Who owes what', th: 'ใครจ่ายเท่าไหร่', ja: '各自の負担' })}</span><h2 className="ov-h2">{x({ en: 'Per person', th: 'สรุปรายคน', ja: '一人ずつ' })}</h2></div>
+              <div className="wal-people">
+                {names.map((n, i) => (
+                  <div className="wal-person" key={i}>
+                    <span className="wal-person-name">{n}</span>
+                    <span className="wal-person-thb">{fmtB(perPersonYen[i] * THB_PER_YEN)}</span>
+                    <span className="wal-person-yen">{fmtY(perPersonYen[i])}</span>
+                  </div>
+                ))}
+              </div>
+              <div className="wal-total"><span>{x({ en: 'Trip total', th: 'รวมทั้งทริป', ja: '合計' })}</span><b>{fmtB(totalYen * THB_PER_YEN)} · {fmtY(totalYen)}</b></div>
+            </section>
+          ) : null}
+
+          <section className="party wal-add-wrap">
+            <div className="party-head"><span className="ov-kicker">{x({ en: 'Add', th: 'เพิ่ม', ja: '追加' })}</span><h2 className="ov-h2">{x({ en: 'New expense', th: 'รายการใหม่', ja: '新規' })}</h2></div>
+            <div className="wal-cur-toggle">
+              <button className={'wal-cur' + (cur === 'jpy' ? ' on' : '')} onClick={() => setCur('jpy')}>¥ {x({ en: 'Yen', th: 'เยน', ja: '円' })}</button>
+              <button className={'wal-cur' + (cur === 'thb' ? ' on' : '')} onClick={() => setCur('thb')}>฿ {x({ en: 'Baht', th: 'บาท', ja: 'バーツ' })}</button>
+            </div>
+            <div className="wal-add">
+              <input className="exp-in wal-amt" type="number" inputMode="numeric" placeholder={cur === 'jpy' ? '¥0' : '฿0'} value={amt} onChange={(e) => setAmt(e.target.value)} aria-label="Amount" />
+              <input className="exp-in wal-label" type="text" placeholder={x({ en: 'What for?', th: 'ค่าอะไร?', ja: '何に?' })} value={label} onChange={(e) => setLabel(e.target.value)} onKeyDown={(e) => { if (e.key === 'Enter') add(); }} aria-label="Label" />
+            </div>
+            <div className="wal-payers">
+              <span className="wal-payers-lb">{x({ en: 'Split between', th: 'หารกับใคร', ja: '割り勘する人' })}</span>
+              <div className="wal-payer-chips">
+                {names.map((n, i) => (
+                  <button key={i} className={'wal-payer' + (payers.includes(i) ? ' on' : '')} onClick={() => togglePayer(i)} aria-pressed={payers.includes(i)}>{n}</button>
+                ))}
+              </div>
+            </div>
+            <button className="wal-add-btn" onClick={add}><Icon name="plus" size={16} stroke={2.2} /><span>{x({ en: 'Add expense', th: 'เพิ่มรายการ', ja: '追加' })}</span></button>
+          </section>
+
+          {items.length ? (
+            <section className="party wal-list-wrap">
+              <div className="party-head"><span className="ov-kicker">{x({ en: 'Log', th: 'รายการ', ja: '記録' })}</span><h2 className="ov-h2">{x({ en: 'All expenses', th: 'ทั้งหมด', ja: '一覧' })}</h2></div>
+              <ul className="wal-list">
+                {items.map((it) => (
+                  <li className="wal-item" key={it.id}>
+                    <div className="wal-item-top">
+                      <span className="wal-item-label">{it.label}</span>
+                      <span className="wal-item-amt">{fmtB(thbOf(it))}<span className="wal-item-yen"> · {fmtY(yenOf(it))}</span></span>
+                      <button className="exp-row-x" onClick={() => remove(it.id)} aria-label="Remove"><Icon name="close" size={13} stroke={2} /></button>
+                    </div>
+                    <div className="wal-item-payers">
+                      {it.payers.map((pi) => (
+                        <span className="wal-item-payer" key={pi}>{names[pi] || '?'} <b>{fmtB(thbOf(it) / it.payers.length)}</b></span>
+                      ))}
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          ) : null}
+        </div>
+        <div className="ov-credit"><span className="ov-credit-rule" aria-hidden="true"></span><span className="ov-credit-text">{x(window.CREDIT)}</span></div>
+      </main>
+    </div>
+  );
+}
+
+// ── More — hub linking Guides, Party, Emergency, Settings ───────────────
+function MorePage({ onHome, onSettings, onGuides, onParty, onEmergency, lang }) {
+  const { x } = useT();
+  const links = [
+    { icon: 'globe', title: { en: 'Tips & Guides', th: 'คำแนะนำต่างๆ', ja: 'ガイド' }, desc: { en: 'Driving · phrases · etiquette', th: 'ขับรถ · ประโยค · มารยาท', ja: '運転・会話・マナー' }, on: onGuides },
+    { icon: 'passport', title: { en: 'The Party', th: 'ทีมงาน', ja: 'メンバー' }, desc: { en: 'Who’s on the trip', th: 'ผู้ร่วมเดินทาง', ja: '参加メンバー' }, on: onParty },
+    { icon: 'alert', title: { en: 'Emergency', th: 'เบอร์ติดต่อฉุกเฉิน', ja: '緊急連絡先' }, desc: { en: 'Police · ambulance · embassy', th: 'ตำรวจ · รถพยาบาล · สถานทูต', ja: '警察・救急・大使館' }, on: onEmergency, urgent: true },
+    { icon: 'gear', title: { en: 'Settings', th: 'ตั้งค่า', ja: '設定' }, desc: { en: 'Language · theme', th: 'ภาษา · ธีม', ja: '言語・テーマ' }, on: onSettings },
+  ];
+  return (
+    <div className="bookings">
+      <Chrome onHome={onHome} />
+      <main className="bk-stage">
+        <section className="bk-hero">
+          <span className="ov-kicker">{x({ en: 'Menu', th: 'เมนู', ja: 'メニュー' })}</span>
+          <h1 className="bk-h1">{x({ en: 'More', th: 'อื่นๆ', ja: 'その他' })}</h1>
+        </section>
+        <div className="bk-section">
+          <div className="more-list">
+            {links.map((l, i) => (
+              <button key={i} className={'more-link' + (l.urgent ? ' more-urgent' : '')} onClick={l.on} style={{ '--i': i }}>
+                <span className="more-ic"><Icon name={l.icon} size={20} stroke={1.4} /></span>
+                <span className="more-body">
+                  <span className="more-title">{x(l.title)}</span>
+                  <span className="more-desc">{x(l.desc)}</span>
+                </span>
+                <span className="more-go"><Icon name="chevronRight" size={18} stroke={1.6} /></span>
+              </button>
+            ))}
+          </div>
+        </div>
+        <div className="ov-credit"><span className="ov-credit-rule" aria-hidden="true"></span><span className="ov-credit-text">{x(window.CREDIT)}</span></div>
+      </main>
+    </div>
+  );
+}
+
 Object.assign(window, {
   LangCtx, useT, LangToggle, ImageFrame, ReferenceDock,
   ActivityBlock, Timeline, Cover, DayNav, ActivityDetail,
@@ -5659,6 +5817,7 @@ Object.assign(window, {
   Konbini, EmergencySheet, DayKonbini, OvEssentials, DayWeather, MobileTabBar,
   Packing, Phrases, TravelersPage, SettingsPage,
   BookingsList, Converter, Expenses, MoneyTools, DrivingTips, VisitJapanBox,
+  Chrome, GuidesPage, WalletPage, MorePage,
 });
 </script>
   <script type="text/babel">
@@ -5798,9 +5957,12 @@ function App() {
   };
   const home = () => { setDetail(null); setView('overview'); };
   const openBookings = () => { setDetail(null); setView('bookings'); };
-  const openPhrases = () => { setDetail(null); setView('phrases'); };
+  const openWallet = () => { setDetail(null); setView('wallet'); };
+  const openMore = () => { setDetail(null); setView('more'); };
+  const openGuides = () => { setDetail(null); setView('guides'); };
   const openParty = () => { setDetail(null); setView('party'); };
   const openSettings = () => { setDetail(null); setView('settings'); };
+  const openPhrases = openGuides;
   const ovTop = () => { const s = document.querySelector('.ov-stage'); if (s) s.scrollTo({ top: 0, behavior: 'smooth' }); };
   const jumpTo = (i) => { setDay(i); setDayKey((k) => k + 1); setView('itinerary'); };
   const selectDay = (i) => {
@@ -5852,17 +6014,25 @@ function App() {
           <div className="view-bookings">
             <Bookings trip={TRIP} onHome={home} onItinerary={begin} onPhrases={openPhrases} onParty={openParty} onEmergency={() => setEmgOpen(true)} lang={lang} onLang={changeLang} />
           </div>
-        ) : view === 'phrases' ? (
-          <div className="view-phrases">
-            <PhrasesPage onHome={home} onItinerary={begin} onBookings={openBookings} onParty={openParty} onEmergency={() => setEmgOpen(true)} lang={lang} onLang={changeLang} />
+        ) : view === 'wallet' ? (
+          <div className="view-wallet">
+            <WalletPage onHome={home} lang={lang} />
+          </div>
+        ) : view === 'more' ? (
+          <div className="view-more">
+            <MorePage onHome={home} onSettings={openSettings} onGuides={openGuides} onParty={openParty} onEmergency={() => setEmgOpen(true)} lang={lang} />
+          </div>
+        ) : view === 'guides' ? (
+          <div className="view-guides">
+            <GuidesPage onHome={home} onMore={openMore} lang={lang} />
           </div>
         ) : view === 'party' ? (
           <div className="view-party">
-            <TravelersPage onHome={home} onItinerary={begin} onBookings={openBookings} onPhrases={openPhrases} onEmergency={() => setEmgOpen(true)} lang={lang} onLang={changeLang} />
+            <TravelersPage onHome={home} onMore={openMore} lang={lang} />
           </div>
         ) : view === 'settings' ? (
           <div className="view-settings">
-            <SettingsPage onHome={home} onItinerary={begin} onBookings={openBookings} onParty={openParty} onPhrases={openPhrases} onEmergency={() => setEmgOpen(true)} lang={lang} onLang={changeLang} mode={mode} onMode={changeMode} />
+            <SettingsPage onHome={home} onMore={openMore} lang={lang} onLang={changeLang} mode={mode} onMode={changeMode} />
           </div>
         ) : (
           <div className="view-itinerary">
@@ -5880,8 +6050,8 @@ function App() {
 
         {emgOpen ? <EmergencySheet data={window.EMERGENCY} onClose={() => setEmgOpen(false)} /> : null}
 
-        {view === 'itinerary' || view === 'bookings' || view === 'party' || view === 'phrases' || view === 'settings' ? (
-          <MobileTabBar view={view} onItinerary={begin} onBookings={openBookings} onParty={openParty} onPhrases={openPhrases} onSettings={openSettings} />
+        {view !== 'overview' ? (
+          <MobileTabBar view={view} onItinerary={begin} onBookings={openBookings} onWallet={openWallet} onMore={openMore} />
         ) : null}
 
         {false ? (
@@ -5952,7 +6122,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', function () {
       navigator.serviceWorker.register('sw.js').catch(function () {});
-      if (window.caches) caches.open('wwn-kyushu-v39').then(function (c) {
+      if (window.caches) caches.open('wwn-kyushu-v40').then(function (c) {
         c.add(new Request(location.href, { cache: 'reload' })).catch(function () {});
       });
     });
