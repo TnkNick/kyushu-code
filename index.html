@@ -1079,13 +1079,16 @@
     border-top: 1px solid var(--line); }
   .mtab-item { display: flex; flex-direction: column; align-items: center; gap: 2px;
     padding: 2px 4px 0px; background: none; border: none; color: var(--ink-soft);
-    transition: color .25s; }
+    transition: color .25s, transform .22s cubic-bezier(.34, 1.56, .64, 1);
+    -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+  .mtab-item:active { transform: scale(.8); }
   .mtab-ic { display: grid; place-items: center; width: 50px; height: 22px; border-radius: 100px;
-    transition: background .25s, color .25s; }
-  .mtab-lb { font-size: 10px; font-weight: 600; letter-spacing: 0; white-space: nowrap; max-width: 100%; overflow: hidden; text-overflow: ellipsis; }
+    transition: background .3s ease, color .25s, transform .34s cubic-bezier(.34, 1.56, .64, 1); }
+  .mtab-lb { font-size: 10px; font-weight: 600; letter-spacing: 0; white-space: nowrap; max-width: 100%; overflow: hidden; text-overflow: ellipsis;
+    transition: transform .25s ease; }
   .mtab-item.active { color: var(--accent); }
-  .mtab-item.active .mtab-ic { background: var(--chip); color: var(--accent); }
-  /* (home-indicator strip is filled by .bg-fx, which now spans the full physical screen via height:100dvh) */
+  .mtab-item.active .mtab-ic { background: var(--chip); color: var(--accent); transform: scale(1.16); }
+  .mtab-item.active .mtab-lb { transform: translateY(-1px); }
 
   /* ───────────────────────── RESPONSIVE ───────────────────────── */
   @media (max-width: 760px) {
@@ -5386,7 +5389,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', function () {
       navigator.serviceWorker.register('sw.js').catch(function () {});
-      if (window.caches) caches.open('wwn-kyushu-v21').then(function (c) {
+      if (window.caches) caches.open('wwn-kyushu-v22').then(function (c) {
         c.add(new Request(location.href, { cache: 'reload' })).catch(function () {});
       });
     });
