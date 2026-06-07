@@ -561,7 +561,6 @@
     padding: env(safe-area-inset-top, 0px) clamp(16px, 3vw, 40px) 0; min-height: calc(60px + env(safe-area-inset-top, 0px)); }
   /* overview (Kyushu landing): no top chrome bar — content starts at the top (clear the notch) */
   .view-overview .chrome-min { display: none; }
-  .view-overview .ov-stage { padding-top: env(safe-area-inset-top, 0px); }
   .chrome-home { display: inline-flex; align-items: center; gap: 9px; background: none; border: none;
     font-size: 14px; letter-spacing: .14em; text-transform: uppercase; font-weight: 600; color: var(--ink); flex: none; }
   .chrome-home svg { color: var(--accent); }
@@ -3913,8 +3912,8 @@ const ESSENTIALS = {
 
 // ── Before-you-fly checklist (Overview) ─────────────────────────────────
 const PACKING = {
-  title: L('Before You Fly', 'เตรียมตัวก่อนเดินทาง'),
-  subtitle: L('Pack & prepare', 'จัดกระเป๋าและเตรียมพร้อม'),
+  title: L('Pre-Trip Checklist', 'เช็กลิสต์ก่อนเดินทาง', '出発前チェックリスト'),
+  subtitle: L('Pack & prepare before you fly', 'จัดกระเป๋าและเตรียมตัวให้พร้อม', '荷造りと準備'),
   groups: [
     { label: L('Documents', 'เอกสาร'), items: [
       L('Passport · 6+ months valid', 'พาสปอร์ต · เหลืออายุ 6 เดือนขึ้นไป'),
@@ -4616,7 +4615,6 @@ function Overview({ trip, dest, travelers, onBegin, onJump, onHome, onBookings, 
         </section>
 
         <Budget data={window.BUDGET} />
-        <Packing data={window.PACKING} />
 
         <div className="ov-credit">
           <span className="ov-credit-rule" aria-hidden="true"></span>
@@ -4977,6 +4975,8 @@ function Bookings({ trip, onHome, onItinerary, onPhrases, onParty, onEmergency, 
             </div>
           </section>
         ) : null}
+
+        <Packing data={window.PACKING} />
 
         <div className="ov-credit">
           <span className="ov-credit-rule" aria-hidden="true"></span>
@@ -5381,11 +5381,40 @@ function readMode() {
   return 'dark';
 }
 
+// has the user already tapped "Begin the journey" once? (then skip the overview on launch)
+function readBegan() {
+  try { return localStorage.getItem('lookbook-began') === 'yes'; } catch (e) { return false; }
+}
+
+// which day index does today fall on: before the trip → 0, after → last, during → that day
+function computeTodayDay() {
+  const today = new Date(); today.setHours(0, 0, 0, 0);
+  const dates = TRIP.days.map((d) => {
+    const s = (d && d.date && d.date.en) || '';
+    const m = s.match(/(\d{1,2})\s+([A-Za-z]{3,})\s+(\d{4})/);
+    if (!m) return null;
+    const dt = new Date(m[2] + ' ' + m[1] + ' ' + m[3]);
+    return isNaN(dt.getTime()) ? null : dt;
+  });
+  let target = 0;
+  const first = dates.find(Boolean);
+  const last = [...dates].reverse().find(Boolean);
+  if (first && today < first) target = 0;
+  else if (last && today > last) target = TRIP.days.length - 1;
+  else {
+    for (let i = dates.length - 1; i >= 0; i--) {
+      if (dates[i] && today >= dates[i]) { target = i; break; }
+    }
+  }
+  return target;
+}
+
 function App() {
   const [t, setTweak] = useTweaks(initialTweaks());
   const [lang, setLang] = React.useState(readLang());
-  const [view, setView] = React.useState(PARAM.view === 'day' ? 'itinerary' : 'overview');
-  const [day, setDay] = React.useState(PARAM.day || 0);
+  const began = PARAM.view !== 'day' && readBegan();
+  const [view, setView] = React.useState((PARAM.view === 'day' || began) ? 'itinerary' : 'overview');
+  const [day, setDay] = React.useState(PARAM.view === 'day' ? PARAM.day : (began ? computeTodayDay() : 0));
   const [dayKey, setDayKey] = React.useState(0);
   const [detail, setDetail] = React.useState(
     PARAM.detail != null ? TRIP.days[PARAM.day || 0].activities[PARAM.detail] : null
@@ -5433,25 +5462,8 @@ function App() {
   // "Begin the journey" — jump to today's day: before the trip → first day,
   // after it → last day, during it → the matching day.
   const beginJourney = () => {
-    const today = new Date(); today.setHours(0, 0, 0, 0);
-    const dates = TRIP.days.map((d) => {
-      const s = (d && d.date && d.date.en) || '';
-      const m = s.match(/(\d{1,2})\s+([A-Za-z]{3,})\s+(\d{4})/);
-      if (!m) return null;
-      const dt = new Date(m[2] + ' ' + m[1] + ' ' + m[3]);
-      return isNaN(dt.getTime()) ? null : dt;
-    });
-    let target = 0;
-    const first = dates.find(Boolean);
-    const last = [...dates].reverse().find(Boolean);
-    if (first && today < first) target = 0;
-    else if (last && today > last) target = TRIP.days.length - 1;
-    else {
-      for (let i = dates.length - 1; i >= 0; i--) {
-        if (dates[i] && today >= dates[i]) { target = i; break; }
-      }
-    }
-    setDay(target); setDayKey((k) => k + 1); setView('itinerary');
+    try { localStorage.setItem('lookbook-began', 'yes'); } catch (e) {}
+    setDay(computeTodayDay()); setDayKey((k) => k + 1); setView('itinerary');
   };
   const home = () => { setDetail(null); setView('overview'); };
   const openBookings = () => { setDetail(null); setView('bookings'); };
@@ -5609,7 +5621,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', function () {
       navigator.serviceWorker.register('sw.js').catch(function () {});
-      if (window.caches) caches.open('wwn-kyushu-v35').then(function (c) {
+      if (window.caches) caches.open('wwn-kyushu-v36').then(function (c) {
         c.add(new Request(location.href, { cache: 'reload' })).catch(function () {});
       });
     });

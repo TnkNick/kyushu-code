@@ -1087,8 +1087,8 @@ const ESSENTIALS = {
 
 // ── Before-you-fly checklist (Overview) ─────────────────────────────────
 const PACKING = {
-  title: L('Before You Fly', 'เตรียมตัวก่อนเดินทาง'),
-  subtitle: L('Pack & prepare', 'จัดกระเป๋าและเตรียมพร้อม'),
+  title: L('Pre-Trip Checklist', 'เช็กลิสต์ก่อนเดินทาง', '出発前チェックリスト'),
+  subtitle: L('Pack & prepare before you fly', 'จัดกระเป๋าและเตรียมตัวให้พร้อม', '荷造りと準備'),
   groups: [
     { label: L('Documents', 'เอกสาร'), items: [
       L('Passport · 6+ months valid', 'พาสปอร์ต · เหลืออายุ 6 เดือนขึ้นไป'),

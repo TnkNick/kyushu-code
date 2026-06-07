@@ -48,11 +48,40 @@ function readMode() {
   return 'dark';
 }
 
+// has the user already tapped "Begin the journey" once? (then skip the overview on launch)
+function readBegan() {
+  try { return localStorage.getItem('lookbook-began') === 'yes'; } catch (e) { return false; }
+}
+
+// which day index does today fall on: before the trip → 0, after → last, during → that day
+function computeTodayDay() {
+  const today = new Date(); today.setHours(0, 0, 0, 0);
+  const dates = TRIP.days.map((d) => {
+    const s = (d && d.date && d.date.en) || '';
+    const m = s.match(/(\d{1,2})\s+([A-Za-z]{3,})\s+(\d{4})/);
+    if (!m) return null;
+    const dt = new Date(m[2] + ' ' + m[1] + ' ' + m[3]);
+    return isNaN(dt.getTime()) ? null : dt;
+  });
+  let target = 0;
+  const first = dates.find(Boolean);
+  const last = [...dates].reverse().find(Boolean);
+  if (first && today < first) target = 0;
+  else if (last && today > last) target = TRIP.days.length - 1;
+  else {
+    for (let i = dates.length - 1; i >= 0; i--) {
+      if (dates[i] && today >= dates[i]) { target = i; break; }
+    }
+  }
+  return target;
+}
+
 function App() {
   const [t, setTweak] = useTweaks(initialTweaks());
   const [lang, setLang] = React.useState(readLang());
-  const [view, setView] = React.useState(PARAM.view === 'day' ? 'itinerary' : 'overview');
-  const [day, setDay] = React.useState(PARAM.day || 0);
+  const began = PARAM.view !== 'day' && readBegan();
+  const [view, setView] = React.useState((PARAM.view === 'day' || began) ? 'itinerary' : 'overview');
+  const [day, setDay] = React.useState(PARAM.view === 'day' ? PARAM.day : (began ? computeTodayDay() : 0));
   const [dayKey, setDayKey] = React.useState(0);
   const [detail, setDetail] = React.useState(
     PARAM.detail != null ? TRIP.days[PARAM.day || 0].activities[PARAM.detail] : null
@@ -100,25 +129,8 @@ function App() {
   // "Begin the journey" — jump to today's day: before the trip → first day,
   // after it → last day, during it → the matching day.
   const beginJourney = () => {
-    const today = new Date(); today.setHours(0, 0, 0, 0);
-    const dates = TRIP.days.map((d) => {
-      const s = (d && d.date && d.date.en) || '';
-      const m = s.match(/(\d{1,2})\s+([A-Za-z]{3,})\s+(\d{4})/);
-      if (!m) return null;
-      const dt = new Date(m[2] + ' ' + m[1] + ' ' + m[3]);
-      return isNaN(dt.getTime()) ? null : dt;
-    });
-    let target = 0;
-    const first = dates.find(Boolean);
-    const last = [...dates].reverse().find(Boolean);
-    if (first && today < first) target = 0;
-    else if (last && today > last) target = TRIP.days.length - 1;
-    else {
-      for (let i = dates.length - 1; i >= 0; i--) {
-        if (dates[i] && today >= dates[i]) { target = i; break; }
-      }
-    }
-    setDay(target); setDayKey((k) => k + 1); setView('itinerary');
+    try { localStorage.setItem('lookbook-began', 'yes'); } catch (e) {}
+    setDay(computeTodayDay()); setDayKey((k) => k + 1); setView('itinerary');
   };
   const home = () => { setDetail(null); setView('overview'); };
   const openBookings = () => { setDetail(null); setView('bookings'); };

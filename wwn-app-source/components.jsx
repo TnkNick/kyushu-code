@@ -656,7 +656,6 @@ function Overview({ trip, dest, travelers, onBegin, onJump, onHome, onBookings, 
         </section>
 
         <Budget data={window.BUDGET} />
-        <Packing data={window.PACKING} />
 
         <div className="ov-credit">
           <span className="ov-credit-rule" aria-hidden="true"></span>
@@ -1017,6 +1016,8 @@ function Bookings({ trip, onHome, onItinerary, onPhrases, onParty, onEmergency, 
             </div>
           </section>
         ) : null}
+
+        <Packing data={window.PACKING} />
 
         <div className="ov-credit">
           <span className="ov-credit-rule" aria-hidden="true"></span>
