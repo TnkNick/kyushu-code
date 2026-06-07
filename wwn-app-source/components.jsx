@@ -685,6 +685,20 @@ function Overview({ trip, dest, travelers, onBegin, onJump, onHome, onBookings, 
 // ── Shared minimal page chrome — home (left) + optional back + clock ─────
 function Chrome({ onHome, onBack, backLabel }) {
   const { x } = useT();
+  if (onBack) {
+    // sub-page: back button replaces the WWN logo on the top-left
+    return (
+      <header className="chrome chrome-min chrome-sub">
+        <button className="chrome-back-l" onClick={onBack}>
+          <Icon name="chevronLeft" size={21} stroke={1.8} />
+          <span>{backLabel || x({ en: 'More', th: 'อื่นๆ', ja: 'その他' })}</span>
+        </button>
+        <div className="chrome-bar-r">
+          <Clock variant="chrome" />
+        </div>
+      </header>
+    );
+  }
   return (
     <header className="chrome chrome-min">
       <button className="chrome-home" onClick={onHome}>
@@ -692,12 +706,6 @@ function Chrome({ onHome, onBack, backLabel }) {
         <span className="wwn"><b>WWN</b> <span className="wwn-full">World Wide Nick</span></span>
       </button>
       <div className="chrome-bar-r">
-        {onBack ? (
-          <button className="chrome-nav chrome-back" onClick={onBack}>
-            <Icon name="chevronLeft" size={16} stroke={1.7} />
-            <span>{backLabel || x({ en: 'More', th: 'อื่นๆ', ja: 'その他' })}</span>
-          </button>
-        ) : null}
         <Clock variant="chrome" />
       </div>
     </header>
@@ -934,31 +942,55 @@ function BookingCard({ item, booked, onToggle, lang }) {
   );
 }
 
-function Bookings({ trip, onHome, onItinerary, onPhrases, onParty, onEmergency, lang, onLang }) {
+function Bookings({ trip, onHome, lang }) {
   const { x } = useT();
-  const [sec, setSec] = useState('book');
-  const SECTIONS = [
-    { key: 'book',  icon: 'ticket',  label: { en: 'Bookings', th: 'การจอง', ja: '予約' } },
-    { key: 'pack',  icon: 'luggage', label: { en: 'Packing', th: 'แพ็คของ', ja: '荷物' } },
-    { key: 'gift',  icon: 'store',   label: { en: 'Souvenirs', th: 'ของฝาก', ja: 'お土産' } },
-  ];
-
   return (
     <div className="bookings">
       <Chrome onHome={onHome} />
-
       <main className="bk-stage">
         <section className="bk-hero">
-          <span className="ov-kicker">{x({ en: 'Reference', th: 'เตรียมตัว', ja: '準備' })}</span>
-          <h1 className="bk-h1">{x({ en: 'Bookings & Prep', th: 'การจอง & เตรียมตัว', ja: '予約と準備' })}</h1>
+          <span className="ov-kicker">{x({ en: 'Reservations', th: 'การจอง', ja: '予約' })}</span>
+          <h1 className="bk-h1">{x({ en: 'Bookings', th: 'การจอง', ja: '予約' })}</h1>
           <p className="bk-lede">{x({
-            en: 'Everything to sort before and during the trip, in one place — pick a tab below.',
-            th: 'ทุกอย่างที่ต้องจัดการก่อนและระหว่างทริป รวมไว้ที่เดียว — เลือกแท็บด้านล่าง',
-            ja: '旅行の準備をひとまとめに — 下のタブから選んでね。',
+            en: 'Flights, hotels, cars and tickets — tick each off as it’s confirmed.',
+            th: 'เที่ยวบิน โรงแรม รถเช่า และตั๋ว — ติ๊กเมื่อจองเรียบร้อยแล้ว',
+            ja: 'フライト・ホテル・レンタカー・チケット — 予約できたらチェック。',
           })}</p>
         </section>
+        <div className="bk-section">
+          <BookingsList trip={trip} lang={lang} />
+        </div>
+        <div className="ov-credit">
+          <span className="ov-credit-rule" aria-hidden="true"></span>
+          <span className="ov-credit-text">{x(window.CREDIT)}</span>
+        </div>
+      </main>
+    </div>
+  );
+}
 
-        <nav className="bk-subnav" role="tablist" aria-label="Prep sections">
+// ── Checklist — packing + souvenirs (own bottom tab) ────────────────────
+function ChecklistPage({ onHome, lang }) {
+  const { x } = useT();
+  const [sec, setSec] = useState('pack');
+  const SECTIONS = [
+    { key: 'pack', icon: 'luggage', label: { en: 'Packing', th: 'แพ็คของ', ja: '荷物' } },
+    { key: 'gift', icon: 'store',   label: { en: 'Souvenirs', th: 'ของฝาก', ja: 'お土産' } },
+  ];
+  return (
+    <div className="bookings">
+      <Chrome onHome={onHome} />
+      <main className="bk-stage">
+        <section className="bk-hero">
+          <span className="ov-kicker">{x({ en: 'Checklist', th: 'เช็กลิสต์', ja: 'チェックリスト' })}</span>
+          <h1 className="bk-h1">{x({ en: 'Checklist', th: 'เช็กลิสต์', ja: 'チェックリスト' })}</h1>
+          <p className="bk-lede">{x({
+            en: 'What to pack and the souvenirs to grab — tick as you go.',
+            th: 'ของที่ต้องแพ็ค และของฝากที่ต้องซื้อ — ติ๊กไปเรื่อยๆ',
+            ja: '荷物とお土産のチェックリスト — チェックしていこう。',
+          })}</p>
+        </section>
+        <nav className="bk-subnav" role="tablist" aria-label="Checklist sections">
           {SECTIONS.map((s) => (
             <button key={s.key} className={'bk-sub' + (sec === s.key ? ' on' : '')}
               role="tab" aria-selected={sec === s.key}
@@ -968,13 +1000,9 @@ function Bookings({ trip, onHome, onItinerary, onPhrases, onParty, onEmergency, 
             </button>
           ))}
         </nav>
-
         <div className="bk-section" key={sec}>
-          {sec === 'book' ? <BookingsList trip={trip} lang={lang} /> :
-           sec === 'pack' ? <Packing data={window.PACKING} storeKey="jp-packed" /> :
-           <Packing data={window.SOUVENIRS} storeKey="jp-souvenirs" />}
+          {sec === 'pack' ? <Packing data={window.PACKING} storeKey="jp-packed" /> : <Packing data={window.SOUVENIRS} storeKey="jp-souvenirs" />}
         </div>
-
         <div className="ov-credit">
           <span className="ov-credit-rule" aria-hidden="true"></span>
           <span className="ov-credit-text">{x(window.CREDIT)}</span>
@@ -1257,21 +1285,21 @@ function OvEssentials({ data }) {
 }
 
 // ── Mobile bottom tab bar — primary view switcher (mobile only) ─────────
-function MobileTabBar({ view, onItinerary, onBookings, onWallet, onMore }) {
+function MobileTabBar({ view, onItinerary, onBookings, onChecklist, onWallet, onMore }) {
   const { x } = useT();
-  const active = (view === 'settings' || view === 'guides' || view === 'party' || view === 'phrases' || view === 'more') ? 'more' : view;
   const tabs = [
-    { key: 'itinerary', icon: 'compass', size: 27, stroke: 1.3,  label: { en: 'Itinerary', th: 'แผนการเดินทาง', ja: '旅程' }, on: onItinerary },
-    { key: 'bookings',  icon: 'book',    size: 29, stroke: 1.2,  label: { en: 'Prep',  th: 'เตรียมตัว', ja: '準備' },          on: onBookings },
-    { key: 'wallet',    icon: 'wallet',  size: 27, stroke: 1.3,  label: { en: 'Expenses',  th: 'ค่าใช้จ่าย', ja: '費用' },     on: onWallet },
-    { key: 'more',      icon: 'grid',    size: 23, stroke: 1.5,  label: { en: 'More',      th: 'อื่นๆ', ja: 'その他' },        on: onMore },
+    { key: 'itinerary', icon: 'compass',   size: 26, stroke: 1.3, label: { en: 'Itinerary', th: 'แผนการเดินทาง', ja: '旅程' }, on: onItinerary },
+    { key: 'bookings',  icon: 'ticket',    size: 25, stroke: 1.3, label: { en: 'Bookings',  th: 'การจอง', ja: '予約' },         on: onBookings },
+    { key: 'checklist', icon: 'checklist', size: 24, stroke: 1.5, label: { en: 'Checklist', th: 'เช็กลิสต์', ja: 'リスト' },     on: onChecklist },
+    { key: 'wallet',    icon: 'wallet',    size: 25, stroke: 1.3, label: { en: 'Expenses',  th: 'บันทึกรายจ่าย', ja: '費用' },   on: onWallet },
+    { key: 'more',      icon: 'grid',      size: 22, stroke: 1.5, label: { en: 'More',      th: 'อื่นๆ', ja: 'その他' },         on: onMore },
   ];
   return (
     <nav className="mtab" role="tablist" aria-label="Sections">
       <div className="mtab-inner">
       {tabs.map((t) => (
-        <button key={t.key} className={'mtab-item' + (active === t.key ? ' active' : '')}
-          role="tab" aria-selected={active === t.key} onClick={t.on}>
+        <button key={t.key} className={'mtab-item' + (view === t.key ? ' active' : '')}
+          role="tab" aria-selected={view === t.key} onClick={t.on}>
           <span className="mtab-ic"><Icon name={t.icon} size={t.size} stroke={t.stroke} /></span>
           <span className="mtab-lb">{x(t.label)}</span>
         </button>
@@ -1499,7 +1527,7 @@ function WalletPage({ onHome, lang }) {
       <main className="bk-stage">
         <section className="bk-hero">
           <span className="ov-kicker">{x({ en: 'Money', th: 'การเงิน', ja: 'お金' })}</span>
-          <h1 className="bk-h1">{x({ en: 'Expenses', th: 'ค่าใช้จ่าย', ja: '費用' })}</h1>
+          <h1 className="bk-h1">{x({ en: 'Expenses', th: 'บันทึกรายจ่าย', ja: '費用' })}</h1>
           <p className="bk-lede">{x({
             en: 'Log spending in yen or baht, tag who shares it, and see each person’s split — in both currencies.',
             th: 'บันทึกค่าใช้จ่ายเป็นเยนหรือบาท เลือกคนที่หารด้วย แล้วดูส่วนแบ่งของแต่ละคน — ทั้งสองสกุลเงิน',
@@ -1578,10 +1606,10 @@ function WalletPage({ onHome, lang }) {
 function MorePage({ onHome, onSettings, onGuides, onParty, onEmergency, lang }) {
   const { x } = useT();
   const links = [
+    { icon: 'gear', title: { en: 'Settings', th: 'ตั้งค่า', ja: '設定' }, desc: { en: 'Language · theme', th: 'ภาษา · ธีม', ja: '言語・テーマ' }, on: onSettings },
     { icon: 'globe', title: { en: 'Tips & Guides', th: 'คำแนะนำต่างๆ', ja: 'ガイド' }, desc: { en: 'Driving · phrases · etiquette', th: 'ขับรถ · ประโยค · มารยาท', ja: '運転・会話・マナー' }, on: onGuides },
     { icon: 'passport', title: { en: 'The Party', th: 'ทีมงาน', ja: 'メンバー' }, desc: { en: 'Who’s on the trip', th: 'ผู้ร่วมเดินทาง', ja: '参加メンバー' }, on: onParty },
     { icon: 'alert', title: { en: 'Emergency', th: 'เบอร์ติดต่อฉุกเฉิน', ja: '緊急連絡先' }, desc: { en: 'Police · ambulance · embassy', th: 'ตำรวจ · รถพยาบาล · สถานทูต', ja: '警察・救急・大使館' }, on: onEmergency, urgent: true },
-    { icon: 'gear', title: { en: 'Settings', th: 'ตั้งค่า', ja: '設定' }, desc: { en: 'Language · theme', th: 'ภาษา · ธีม', ja: '言語・テーマ' }, on: onSettings },
   ];
   return (
     <div className="bookings">
@@ -1611,6 +1639,42 @@ function MorePage({ onHome, onSettings, onGuides, onParty, onEmergency, lang }) 
   );
 }
 
+// ── Emergency — full page of contacts (reached from "More") ─────────────
+function EmergencyPage({ onHome, onMore, lang }) {
+  const { x } = useT();
+  const data = window.EMERGENCY;
+  const telHref = (v) => 'tel:' + v.replace(/[^+\d]/g, '');
+  return (
+    <div className="bookings">
+      <Chrome onHome={onHome} onBack={onMore} />
+      <main className="bk-stage">
+        <section className="bk-hero">
+          <span className="ov-kicker ov-kicker-alert">{x(data.subtitle)}</span>
+          <h1 className="bk-h1">{x(data.title)}</h1>
+        </section>
+        <div className="bk-section">
+          <div className="emg-page-grid">
+            {data.items.map((it, i) => (
+              <a className={'emg' + (it.urgent ? ' emg-urgent' : '')} key={i} href={telHref(it.value)} style={{ '--i': i }}>
+                <span className="emg-ic"><Icon name={it.icon} size={18} stroke={1.4} /></span>
+                <span className="emg-text">
+                  <span className="emg-label">{x(it.label)}</span>
+                  <span className="emg-value mono">{it.value}</span>
+                </span>
+                <span className="emg-go"><Icon name="phone" size={15} stroke={1.5} /></span>
+              </a>
+            ))}
+          </div>
+        </div>
+        <div className="ov-credit">
+          <span className="ov-credit-rule" aria-hidden="true"></span>
+          <span className="ov-credit-text">{x(window.CREDIT)}</span>
+        </div>
+      </main>
+    </div>
+  );
+}
+
 Object.assign(window, {
   LangCtx, useT, LangToggle, ImageFrame, ReferenceDock,
   ActivityBlock, Timeline, Cover, DayNav, ActivityDetail,
@@ -1618,5 +1682,5 @@ Object.assign(window, {
   Konbini, EmergencySheet, DayKonbini, OvEssentials, DayWeather, MobileTabBar,
   Packing, Phrases, TravelersPage, SettingsPage,
   BookingsList, Converter, Expenses, MoneyTools, DrivingTips, VisitJapanBox,
-  Chrome, GuidesPage, WalletPage, MorePage,
+  Chrome, GuidesPage, WalletPage, MorePage, ChecklistPage, EmergencyPage,
 });

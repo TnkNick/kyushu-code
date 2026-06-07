@@ -134,11 +134,13 @@ function App() {
   };
   const home = () => { setDetail(null); setView('overview'); };
   const openBookings = () => { setDetail(null); setView('bookings'); };
+  const openChecklist = () => { setDetail(null); setView('checklist'); };
   const openWallet = () => { setDetail(null); setView('wallet'); };
   const openMore = () => { setDetail(null); setView('more'); };
   const openGuides = () => { setDetail(null); setView('guides'); };
   const openParty = () => { setDetail(null); setView('party'); };
   const openSettings = () => { setDetail(null); setView('settings'); };
+  const openEmergency = () => { setDetail(null); setView('emergency'); };
   const openPhrases = openGuides;
   const ovTop = () => { const s = document.querySelector('.ov-stage'); if (s) s.scrollTo({ top: 0, behavior: 'smooth' }); };
   const jumpTo = (i) => { setDay(i); setDayKey((k) => k + 1); setView('itinerary'); };
@@ -184,12 +186,16 @@ function App() {
         {view === 'overview' ? (
           <div className="view-overview">
             <Overview trip={TRIP} dest={DESTINATION} travelers={TRAVELERS}
-              onBegin={beginJourney} onJump={jumpTo} onHome={ovTop} onBookings={openBookings} onPhrases={openPhrases} onParty={openParty} onEmergency={() => setEmgOpen(true)}
+              onBegin={beginJourney} onJump={jumpTo} onHome={ovTop} onBookings={openBookings} onPhrases={openPhrases} onParty={openParty} onEmergency={openEmergency}
               lang={lang} onLang={changeLang} />
           </div>
         ) : view === 'bookings' ? (
           <div className="view-bookings">
-            <Bookings trip={TRIP} onHome={home} onItinerary={begin} onPhrases={openPhrases} onParty={openParty} onEmergency={() => setEmgOpen(true)} lang={lang} onLang={changeLang} />
+            <Bookings trip={TRIP} onHome={home} lang={lang} />
+          </div>
+        ) : view === 'checklist' ? (
+          <div className="view-checklist">
+            <ChecklistPage onHome={home} lang={lang} />
           </div>
         ) : view === 'wallet' ? (
           <div className="view-wallet">
@@ -197,7 +203,7 @@ function App() {
           </div>
         ) : view === 'more' ? (
           <div className="view-more">
-            <MorePage onHome={home} onSettings={openSettings} onGuides={openGuides} onParty={openParty} onEmergency={() => setEmgOpen(true)} lang={lang} />
+            <MorePage onHome={home} onSettings={openSettings} onGuides={openGuides} onParty={openParty} onEmergency={openEmergency} lang={lang} />
           </div>
         ) : view === 'guides' ? (
           <div className="view-guides">
@@ -211,9 +217,13 @@ function App() {
           <div className="view-settings">
             <SettingsPage onHome={home} onMore={openMore} lang={lang} onLang={changeLang} mode={mode} onMode={changeMode} />
           </div>
+        ) : view === 'emergency' ? (
+          <div className="view-emergency">
+            <EmergencyPage onHome={home} onMore={openMore} lang={lang} />
+          </div>
         ) : (
           <div className="view-itinerary">
-            <DayNav days={TRIP.days} current={day} onSelect={selectDay} onHome={home} onBookings={openBookings} onPhrases={openPhrases} onParty={openParty} onEmergency={() => setEmgOpen(true)} lang={lang} onLang={changeLang} />
+            <DayNav days={TRIP.days} current={day} onSelect={selectDay} onHome={home} onBookings={openBookings} onPhrases={openPhrases} onParty={openParty} onEmergency={openEmergency} lang={lang} onLang={changeLang} />
             <main className="stage" ref={scrollRef}>
               <div className="stage-inner" key={dayKey + '-' + lang}>
                 <Timeline day={TRIP.days[day]} onOpen={setDetail} />
@@ -225,10 +235,8 @@ function App() {
 
         {detail ? <ActivityDetail a={detail} onClose={() => setDetail(null)} /> : null}
 
-        {emgOpen ? <EmergencySheet data={window.EMERGENCY} onClose={() => setEmgOpen(false)} /> : null}
-
-        {view !== 'overview' ? (
-          <MobileTabBar view={view} onItinerary={begin} onBookings={openBookings} onWallet={openWallet} onMore={openMore} />
+        {['itinerary', 'bookings', 'checklist', 'wallet', 'more'].includes(view) ? (
+          <MobileTabBar view={view} onItinerary={begin} onBookings={openBookings} onChecklist={openChecklist} onWallet={openWallet} onMore={openMore} />
         ) : null}
 
         {!PARAM.embed ? (
