@@ -553,7 +553,7 @@
   .chrome-bar { display: flex; align-items: center; justify-content: space-between; gap: 16px;
     padding: 0 clamp(16px, 3vw, 40px); height: 58px; }
   .chrome-min { display: flex; align-items: center; justify-content: space-between; gap: 16px;
-    padding: env(safe-area-inset-top, 0px) clamp(16px, 3vw, 40px) 0; min-height: 60px; }
+    padding: env(safe-area-inset-top, 0px) clamp(16px, 3vw, 40px) 0; min-height: calc(60px + env(safe-area-inset-top, 0px)); }
   .chrome-home { display: inline-flex; align-items: center; gap: 9px; background: none; border: none;
     font-size: 14px; letter-spacing: .14em; text-transform: uppercase; font-weight: 600; color: var(--ink); flex: none; }
   .chrome-home svg { color: var(--accent); }
@@ -1067,8 +1067,7 @@
     padding: 7px 10px calc(7px + env(safe-area-inset-bottom, 0px));
     background: color-mix(in srgb, var(--paper) 90%, transparent);
     backdrop-filter: blur(18px) saturate(140%); -webkit-backdrop-filter: blur(18px) saturate(140%);
-    border-top: 1px solid var(--line);
-    box-shadow: 0 env(safe-area-inset-bottom, 0px) 0 var(--paper); }
+    border-top: 1px solid var(--line); }
   .mtab-item { display: flex; flex-direction: column; align-items: center; gap: 4px;
     padding: 5px 4px 3px; background: none; border: none; color: var(--ink-soft);
     transition: color .25s; }
@@ -1077,10 +1076,10 @@
   .mtab-lb { font-size: 10px; font-weight: 600; letter-spacing: 0; white-space: nowrap; max-width: 100%; overflow: hidden; text-overflow: ellipsis; }
   .mtab-item.active { color: var(--accent); }
   .mtab-item.active .mtab-ic { background: var(--chip); color: var(--accent); }
-  /* iOS PWA: paint the home-indicator strip beneath the bar so it never shows a gap.
-     If the bar already reaches the physical bottom this sits off-screen (harmless). */
-  .mtab::after { content: ''; position: absolute; left: 0; right: 0; top: 100%;
-    height: env(safe-area-inset-bottom, 0px); background: var(--paper); }
+  /* iOS PWA: a viewport-fixed strip (placed on .lookbook, OUTSIDE the bar's backdrop-filter
+     containing block) paints the home-indicator area so the bottom bar never shows a gap below it. */
+  .lookbook:has(.mtab)::after { content: ''; position: fixed; left: 0; right: 0; bottom: 0;
+    height: env(safe-area-inset-bottom, 0px); background: var(--paper); z-index: 54; pointer-events: none; }
 
   /* ───────────────────────── RESPONSIVE ───────────────────────── */
   @media (max-width: 760px) {
@@ -1112,7 +1111,7 @@
     .clock-chrome { padding: 4px 9px; }
     .chrome-bar { gap: 10px; }
     /* overview already has the big dual clock in its hero — drop the redundant chrome clock there */
-    .chrome-min .clock-chrome { display: none; }
+    .view-overview .clock-chrome { display: none; }
   }
   @media (max-width: 520px) {
     .wwn-full { display: none; }
@@ -5379,7 +5378,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', function () {
       navigator.serviceWorker.register('sw.js').catch(function () {});
-      if (window.caches) caches.open('wwn-kyushu-v11').then(function (c) {
+      if (window.caches) caches.open('wwn-kyushu-v12').then(function (c) {
         c.add(new Request(location.href, { cache: 'reload' })).catch(function () {});
       });
     });
