@@ -1124,11 +1124,11 @@ function OvEssentials({ data }) {
 function MobileTabBar({ view, onItinerary, onBookings, onParty, onPhrases, onSettings }) {
   const { x } = useT();
   const tabs = [
-    { key: 'itinerary', icon: 'compass', label: { en: 'Itinerary', th: 'แผนการเดินทาง', ja: '旅程' }, on: onItinerary },
-    { key: 'bookings',  icon: 'book',    label: { en: 'Bookings',  th: 'การจอง', ja: '予約' },         on: onBookings },
-    { key: 'party',     icon: 'passport',label: { en: 'Party',     th: 'ทีมงาน', ja: 'メンバー' },     on: onParty },
-    { key: 'phrases',   icon: 'note',    label: { en: 'Phrases',   th: 'ประโยค', ja: '会話' },         on: onPhrases },
-    { key: 'settings',  icon: 'gear',    label: { en: 'Settings',  th: 'ตั้งค่า', ja: '設定' },         on: onSettings },
+    { key: 'itinerary', icon: 'compass', size: 21, stroke: 1.5,  label: { en: 'Itinerary', th: 'แผนการเดินทาง', ja: '旅程' }, on: onItinerary },
+    { key: 'bookings',  icon: 'book',    size: 23, stroke: 1.45, label: { en: 'Bookings',  th: 'การจอง', ja: '予約' },         on: onBookings },
+    { key: 'party',     icon: 'passport',size: 22, stroke: 1.5,  label: { en: 'Party',     th: 'ทีมงาน', ja: 'メンバー' },     on: onParty },
+    { key: 'phrases',   icon: 'note',    size: 22, stroke: 1.5,  label: { en: 'Phrases',   th: 'ประโยค', ja: '会話' },         on: onPhrases },
+    { key: 'settings',  icon: 'gear',    size: 15, stroke: 2.2,  label: { en: 'Settings',  th: 'ตั้งค่า', ja: '設定' },         on: onSettings },
   ];
   return (
     <nav className="mtab" role="tablist" aria-label="Sections">
@@ -1136,7 +1136,7 @@ function MobileTabBar({ view, onItinerary, onBookings, onParty, onPhrases, onSet
       {tabs.map((t) => (
         <button key={t.key} className={'mtab-item' + (view === t.key ? ' active' : '')}
           role="tab" aria-selected={view === t.key} onClick={t.on}>
-          <span className="mtab-ic"><Icon name={t.icon} size={21} stroke={1.5} /></span>
+          <span className="mtab-ic"><Icon name={t.icon} size={t.size} stroke={t.stroke} /></span>
           <span className="mtab-lb">{x(t.label)}</span>
         </button>
       ))}
