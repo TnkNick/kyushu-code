@@ -179,7 +179,7 @@
       repeating-linear-gradient(45deg, var(--paper-2), var(--paper-2) 11px, transparent 11px, transparent 22px); }
 
   /* ───────────────────────── AMBIENT ANIMATED BACKGROUND ───────────────────────── */
-  .bg-fx { position: fixed; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
+  .bg-fx { position: fixed; top: 0; left: 0; right: 0; height: 100dvh; z-index: 0; overflow: hidden; pointer-events: none; }
   .view-cover, .view-itinerary { position: relative; z-index: 1; }
   .bg-fx .orb { position: absolute; border-radius: 50%; filter: blur(64px); opacity: .42;
     mix-blend-mode: screen; will-change: transform; }
@@ -733,7 +733,7 @@
   .stage-foot-end p { font-family: var(--serif); font-style: italic; font-size: clamp(18px,2vw,24px); }
 
   /* ───────────────────────── DETAIL OVERLAY ───────────────────────── */
-  .detail-scrim { position: fixed; inset: 0; z-index: 60; display: flex; justify-content: flex-end;
+  .detail-scrim { position: fixed; top: 0; left: 0; right: 0; height: 100dvh; z-index: 60; display: flex; justify-content: flex-end;
     background: rgba(14,12,9,.42); backdrop-filter: blur(7px); animation: fadeIn .35s ease both; }
   .detail { width: min(560px, 100%); height: 100%; min-height: 100dvh; background: var(--paper); overflow-y: auto; position: relative;
     padding-top: env(safe-area-inset-top, 0px);
@@ -1070,22 +1070,19 @@
   .mtab { display: none; }
   .mtab { grid-template-columns: repeat(4, 1fr); gap: 4px;
     position: fixed; left: 0; right: 0; bottom: 0; z-index: 55;
-    padding: 4px 10px calc(4px + env(safe-area-inset-bottom, 0px));
+    padding: 3px 8px calc(2px + env(safe-area-inset-bottom, 0px));
     background: color-mix(in srgb, var(--paper) 90%, transparent);
     backdrop-filter: blur(18px) saturate(140%); -webkit-backdrop-filter: blur(18px) saturate(140%);
     border-top: 1px solid var(--line); }
-  .mtab-item { display: flex; flex-direction: column; align-items: center; gap: 3px;
-    padding: 3px 4px 1px; background: none; border: none; color: var(--ink-soft);
+  .mtab-item { display: flex; flex-direction: column; align-items: center; gap: 2px;
+    padding: 2px 4px 0px; background: none; border: none; color: var(--ink-soft);
     transition: color .25s; }
-  .mtab-ic { display: grid; place-items: center; width: 50px; height: 26px; border-radius: 100px;
+  .mtab-ic { display: grid; place-items: center; width: 50px; height: 22px; border-radius: 100px;
     transition: background .25s, color .25s; }
   .mtab-lb { font-size: 10px; font-weight: 600; letter-spacing: 0; white-space: nowrap; max-width: 100%; overflow: hidden; text-overflow: ellipsis; }
   .mtab-item.active { color: var(--accent); }
   .mtab-item.active .mtab-ic { background: var(--chip); color: var(--accent); }
-  /* iOS PWA: a viewport-fixed strip on .lookbook (OUTSIDE any backdrop-filter containing block)
-     paints the home-indicator area on EVERY screen, so the bottom never shows an unfilled gap. */
-  .lookbook::after { content: ''; position: fixed; left: 0; right: 0; bottom: 0;
-    height: env(safe-area-inset-bottom, 0px); background: var(--paper); z-index: 54; pointer-events: none; }
+  /* (home-indicator strip is filled by .bg-fx, which now spans the full physical screen via height:100dvh) */
 
   /* ───────────────────────── RESPONSIVE ───────────────────────── */
   @media (max-width: 760px) {
@@ -5384,7 +5381,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', function () {
       navigator.serviceWorker.register('sw.js').catch(function () {});
-      if (window.caches) caches.open('wwn-kyushu-v14').then(function (c) {
+      if (window.caches) caches.open('wwn-kyushu-v15').then(function (c) {
         c.add(new Request(location.href, { cache: 'reload' })).catch(function () {});
       });
     });
