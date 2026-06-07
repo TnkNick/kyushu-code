@@ -243,18 +243,11 @@ const TRIP = {
       title: L('Kumamoto', 'คุมาโมโตะ'),
       subtitle: L('Castle City', 'เมืองปราสาท'),
       note: L(
-        'A full day in the castle city — a morning run, one of the great fortresses of Japan, a strolling garden, the local sweet, and horse sashimi for dinner. Second night at the VESSEL.',
-        'เต็มวันในเมืองปราสาท — วิ่งเช้า หนึ่งในป้อมปราการยิ่งใหญ่ของญี่ปุ่น สวนเดินเล่น ขนมพื้นเมือง และม้าดิบเป็นมื้อค่ำ · นอน VESSEL คืนที่สอง'
+        'A full day in the castle city — one of the great fortresses of Japan, a strolling garden, the local sweet, and horse sashimi for dinner. Second night at the VESSEL.',
+        'เต็มวันในเมืองปราสาท — หนึ่งในป้อมปราการยิ่งใหญ่ของญี่ปุ่น สวนเดินเล่น ขนมพื้นเมือง และม้าดิบเป็นมื้อค่ำ · นอน VESSEL คืนที่สอง'
       ),
       coverId: 'day3-cover',
       activities: [
-        { type: 'feature', time: '06:30', meridiem: 'Morning', kind: 'Run', imageId: 'a-d2-cityrun',
-          title: L('Morning castle run', 'วิ่งเช้ารอบปราสาท'),
-          place: L('Castle moat loop · ~5 km', 'ลูปคูเมืองปราสาท · ~5 กม.'),
-          blurb: L('An easy dawn loop from the hotel around the Kumamoto Castle moat and Ninomaru lawn — the black keep floodlit then catching the sunrise. Quiet and cold at 6:30 — perfect for the vlog.',
-                   'ลูปเช้าชิลล์ๆ จากโรงแรมรอบคูปราสาทคุมาโมโตะและสนามนิโนมารุ — หอปราสาทดำต้องแสงไฟแล้วรับอาทิตย์ขึ้น · ตอน 6:30 เงียบและหนาว เหมาะถ่าย vlog'),
-          refs: { map: 'https://maps.google.com/?q=Kumamoto+Castle', notes: L('Run before breakfast · flat & easy · grab a konbini coffee on the way back.', 'วิ่งก่อนมื้อเช้า · ทางเรียบ วิ่งง่าย · ซื้อกาแฟคอนบินิตอนวิ่งกลับ') } },
-
         { type: 'feature', time: '09:30', meridiem: 'Morning', kind: 'Castle', imageId: 'a-d4-castle',
           title: L('Kumamoto Castle', 'ปราสาทคุมาโมโตะ'),
           place: L('One of Japan’s great keeps', 'หนึ่งในปราสาทยิ่งใหญ่ของญี่ปุ่น'),
@@ -548,6 +541,13 @@ const TRIP = {
       ),
       coverId: 'day7-cover',
       activities: [
+        { type: 'feature', time: '06:30', meridiem: 'Morning', kind: 'Run', imageId: 'a-d2-cityrun',
+          title: L('Morning city run', 'วิ่งเช้าในเมือง'),
+          place: L('Ohori Park + Castle loop · ~6.5 km', 'ลูปสวนโอโฮริ + ปราสาท · ~6.5 กม.'),
+          blurb: L('A gentle ~6.5 km dawn loop from the hotel — the lake at Ohori Park (its flat 2 km jogging track and the red Ukimido pavilion), up to the Fukuoka Castle ruins for a sunrise city view, then back near the hotel for coffee. Quiet and misty at 6 am — perfect for the vlog.',
+                   'ลูปเช้า ~6.5 กม. ชิลล์ๆ จากโรงแรม — บึงสวนโอโฮริ (ลู่วิ่งทางเรียบ 2 กม. กับศาลาแดงอุคิมิโด) ขึ้นซากปราสาทฟุกุโอกะชมวิวเมืองยามอาทิตย์ขึ้น แล้ววนกลับใกล้โรงแรมจิบกาแฟ · ตอน 6 โมงคนน้อย มีไอหมอก เหมาะถ่าย vlog สุดๆ'),
+          refs: { map: 'https://maps.google.com/?q=Ohori+Park+Fukuoka', notes: L('Run 06:30–07:30 before the Dazaifu train · flat & easy · tap each stop below for the map.', 'วิ่ง 06:30–07:30 ก่อนนั่งรถไฟไปดาไซฟุ · ทางเรียบ วิ่งง่าย · แตะจุดแวะด้านล่างเพื่อดูแผนที่') } },
+
         { type: 'step', time: '09:00', meridiem: 'Morning', kind: 'Train', icon: 'train',
           title: L('Nishitetsu → Dazaifu', 'นิชิเท็ตสึ → ดาไซฟุ'),
           place: L('Tenjin → Dazaifu · ~40 min', 'เท็นจิน → ดาไซฟุ · ~40 นาที'),
