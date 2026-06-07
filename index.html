@@ -1068,9 +1068,12 @@
 
   /* ───────────────────────── MOBILE TAB BAR ───────────────────────── */
   .mtab { display: none; }
-  .mtab { grid-template-columns: repeat(4, 1fr); gap: 4px;
-    position: fixed; left: 0; right: 0; bottom: 0; z-index: 55;
-    padding: 3px 8px calc(2px + env(safe-area-inset-bottom, 0px));
+  /* full-height transparent shell so the bar sits at the REAL screen bottom on iOS PWA
+     (fixed bottom:0 only reaches the safe-area line; 100dvh + flex-end reaches the physical edge) */
+  .mtab { position: fixed; top: 0; left: 0; right: 0; height: 100dvh; z-index: 55;
+    flex-direction: column; justify-content: flex-end; pointer-events: none; }
+  .mtab-inner { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px;
+    padding: 4px 8px 10px; pointer-events: auto;
     background: color-mix(in srgb, var(--paper) 90%, transparent);
     backdrop-filter: blur(18px) saturate(140%); -webkit-backdrop-filter: blur(18px) saturate(140%);
     border-top: 1px solid var(--line); }
@@ -1104,7 +1107,7 @@
     .clock-chrome .clock-zone { display: none; }
     /* primary view nav relocates to the bottom tab bar on mobile */
     .chrome-nav { display: none; }
-    .mtab { display: grid; }
+    .mtab { display: flex; }
     .bk-stage, .stage { padding-bottom: 92px; }
     /* phones: nav moved to the bottom bar — bring back the day + clock at the top */
     .chrome-now { display: inline-flex; flex: none; }
@@ -5003,6 +5006,7 @@ function MobileTabBar({ view, onItinerary, onBookings, onPhrases, onParty }) {
   ];
   return (
     <nav className="mtab" role="tablist" aria-label="Sections">
+      <div className="mtab-inner">
       {tabs.map((t) => (
         <button key={t.key} className={'mtab-item' + (view === t.key ? ' active' : '')}
           role="tab" aria-selected={view === t.key} onClick={t.on}>
@@ -5010,6 +5014,7 @@ function MobileTabBar({ view, onItinerary, onBookings, onPhrases, onParty }) {
           <span className="mtab-lb">{x(t.label)}</span>
         </button>
       ))}
+      </div>
     </nav>
   );
 }
@@ -5381,7 +5386,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', function () {
       navigator.serviceWorker.register('sw.js').catch(function () {});
-      if (window.caches) caches.open('wwn-kyushu-v15').then(function (c) {
+      if (window.caches) caches.open('wwn-kyushu-v16').then(function (c) {
         c.add(new Request(location.href, { cache: 'reload' })).catch(function () {});
       });
     });

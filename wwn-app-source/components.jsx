@@ -1137,6 +1137,7 @@ function MobileTabBar({ view, onItinerary, onBookings, onPhrases, onParty }) {
   ];
   return (
     <nav className="mtab" role="tablist" aria-label="Sections">
+      <div className="mtab-inner">
       {tabs.map((t) => (
         <button key={t.key} className={'mtab-item' + (view === t.key ? ' active' : '')}
           role="tab" aria-selected={view === t.key} onClick={t.on}>
@@ -1144,6 +1145,7 @@ function MobileTabBar({ view, onItinerary, onBookings, onPhrases, onParty }) {
           <span className="mtab-lb">{x(t.label)}</span>
         </button>
       ))}
+      </div>
     </nav>
   );
 }
