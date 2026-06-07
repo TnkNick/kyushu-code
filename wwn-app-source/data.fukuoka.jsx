@@ -4,7 +4,7 @@
 //   • feature → big hero image + caption + reference dock (sightseeing, dining)
 //   • step    → compact logistics row with a line-icon (flights, car, transit, check-in)
 // Each day carries its own dark `theme` and a `date`. Built to the Content Template.
-const L = (en, th) => ({ en, th });
+const L = (en, th, ja) => ({ en, th, ja });
 
 const TRIP = {
   title: L('Kyushu', 'คิวชู'),

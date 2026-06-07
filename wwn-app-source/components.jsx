@@ -622,9 +622,7 @@ function Overview({ trip, dest, travelers, onBegin, onJump, onHome, onBookings, 
             <Icon name="note" size={15} stroke={1.4} />
             <span>{x({ en: 'Phrases', th: 'ประโยคใช้บ่อย' })}</span>
           </button>
-          <Clock variant="chrome" />
-          <LangToggle lang={lang} onChange={onLang} tone="ink" />
-        </div>
+          <Clock variant="chrome" />        </div>
       </header>
 
       <main className="ov-stage">
@@ -724,9 +722,7 @@ function DayNav({ days, current, onSelect, onHome, onBookings, onPhrases, onPart
             <Icon name="note" size={15} stroke={1.4} />
             <span>{x({ en: 'Phrases', th: 'ประโยคใช้บ่อย' })}</span>
           </button>
-          <Clock variant="chrome" />
-          <LangToggle lang={lang} onChange={onLang} tone="ink" />
-        </div>
+          <Clock variant="chrome" />        </div>
       </div>
 
       <nav className="chrome-days" ref={railRef}>
@@ -961,9 +957,7 @@ function Bookings({ trip, onHome, onItinerary, onPhrases, onParty, onEmergency, 
             <Icon name="note" size={15} stroke={1.4} />
             <span>{x({ en: 'Phrases', th: 'ประโยคใช้บ่อย' })}</span>
           </button>
-          <Clock variant="chrome" />
-          <LangToggle lang={lang} onChange={onLang} tone="ink" />
-        </div>
+          <Clock variant="chrome" />        </div>
       </header>
 
       <main className="bk-stage">
@@ -1127,13 +1121,13 @@ function OvEssentials({ data }) {
 }
 
 // ── Mobile bottom tab bar — primary view switcher (mobile only) ─────────
-function MobileTabBar({ view, onItinerary, onBookings, onPhrases, onParty }) {
+function MobileTabBar({ view, onItinerary, onBookings, onParty, onSettings }) {
   const { x } = useT();
   const tabs = [
-    { key: 'itinerary', icon: 'compass', label: { en: 'Itinerary', th: 'แผนการเดินทาง' }, on: onItinerary },
-    { key: 'bookings',  icon: 'book',    label: { en: 'Bookings',  th: 'การจอง' },         on: onBookings },
-    { key: 'party', icon: 'passport', label: { en: 'Party', th: 'ทีมงาน' }, on: onParty },
-    { key: 'phrases', icon: 'note', label: { en: 'Phrases', th: 'ประโยคใช้บ่อย' }, on: onPhrases },
+    { key: 'itinerary', icon: 'compass', label: { en: 'Itinerary', th: 'แผนการเดินทาง', ja: '旅程' }, on: onItinerary },
+    { key: 'bookings',  icon: 'book',    label: { en: 'Bookings',  th: 'การจอง', ja: '予約' },         on: onBookings },
+    { key: 'party', icon: 'passport', label: { en: 'Party', th: 'ทีมงาน', ja: 'メンバー' }, on: onParty },
+    { key: 'settings', icon: 'gear', label: { en: 'Settings', th: 'ตั้งค่า', ja: '設定' }, on: onSettings },
   ];
   return (
     <nav className="mtab" role="tablist" aria-label="Sections">
@@ -1242,9 +1236,7 @@ function PhrasesPage({ onHome, onItinerary, onBookings, onParty, onEmergency, la
             <Icon name="passport" size={15} stroke={1.4} />
             <span>{x({ en: 'Party', th: 'ทีมงาน' })}</span>
           </button>
-          <Clock variant="chrome" />
-          <LangToggle lang={lang} onChange={onLang} tone="ink" />
-        </div>
+          <Clock variant="chrome" />        </div>
       </header>
       <main className="bk-stage">
         <Phrases data={window.PHRASES} />
@@ -1279,12 +1271,93 @@ function TravelersPage({ onHome, onItinerary, onBookings, onPhrases, onEmergency
             <Icon name="note" size={15} stroke={1.4} />
             <span>{x({ en: 'Phrases', th: 'ประโยคใช้บ่อย' })}</span>
           </button>
-          <Clock variant="chrome" />
-          <LangToggle lang={lang} onChange={onLang} tone="ink" />
-        </div>
+          <Clock variant="chrome" />        </div>
       </header>
       <main className="bk-stage">
         <Travelers data={window.TRAVELERS} />
+      </main>
+    </div>
+  );
+}
+
+function SettingsPage({ onHome, onItinerary, onBookings, onParty, onPhrases, onEmergency, lang, onLang, mode, onMode }) {
+  const { x } = useT();
+  const langs = [
+    { v: 'en', main: 'English', sub: 'EN' },
+    { v: 'th', main: 'ไทย', sub: 'TH' },
+    { v: 'ja', main: '日本語', sub: 'JA' },
+  ];
+  const modes = [
+    { v: 'light', icon: 'sun', label: { en: 'Light', th: 'สว่าง', ja: 'ライト' } },
+    { v: 'dark', icon: 'moon', label: { en: 'Dark', th: 'มืด', ja: 'ダーク' } },
+    { v: 'system', icon: 'monitor', label: { en: 'System', th: 'ตามเครื่อง', ja: 'システム' } },
+  ];
+  return (
+    <div className="bookings">
+      <header className="chrome chrome-min">
+        <button className="chrome-home" onClick={onHome}>
+          <Icon name="feather" size={16} stroke={1.3} />
+          <span className="wwn"><b>WWN</b> <span className="wwn-full">World Wide Nick</span></span>
+        </button>
+        <div className="chrome-bar-r">
+          <button className="chrome-sos" onClick={onEmergency}>
+            <Icon name="alert" size={15} stroke={1.5} />
+            <span>{x({ en: 'Emergency', th: 'ฉุกเฉิน', ja: '緊急' })}</span>
+          </button>
+          <button className="chrome-nav" onClick={onItinerary}>
+            <Icon name="compass" size={15} stroke={1.4} />
+            <span>{x({ en: 'Itinerary', th: 'แผนการเดินทาง', ja: '旅程' })}</span>
+          </button>
+          <button className="chrome-nav" onClick={onBookings}>
+            <Icon name="book" size={15} stroke={1.4} />
+            <span>{x({ en: 'Bookings', th: 'การจอง', ja: '予約' })}</span>
+          </button>
+          <button className="chrome-nav" onClick={onParty}>
+            <Icon name="passport" size={15} stroke={1.4} />
+            <span>{x({ en: 'Party', th: 'ทีมงาน', ja: 'メンバー' })}</span>
+          </button>
+          <Clock variant="chrome" />
+        </div>
+      </header>
+      <main className="bk-stage">
+        <section className="party settings-page">
+          <div className="party-head">
+            <span className="ov-kicker">{x({ en: 'Preferences', th: 'การตั้งค่า', ja: '環境設定' })}</span>
+            <h2 className="ov-h2">{x({ en: 'Settings', th: 'ตั้งค่า', ja: '設定' })}</h2>
+          </div>
+
+          <div className="set-group">
+            <div className="set-label"><Icon name="globe" size={16} stroke={1.4} /><span>{x({ en: 'Language', th: 'ภาษา', ja: '言語' })}</span></div>
+            <div className="set-seg set-seg-3">
+              {langs.map((l) => (
+                <button key={l.v} className={'set-seg-btn' + (lang === l.v ? ' on' : '')} onClick={() => onLang(l.v)}>
+                  <span className="set-seg-main">{l.main}</span>
+                  <span className="set-seg-sub">{l.sub}</span>
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className="set-group">
+            <div className="set-label"><Icon name="sun" size={16} stroke={1.4} /><span>{x({ en: 'Appearance', th: 'ธีม', ja: 'テーマ' })}</span></div>
+            <div className="set-seg set-seg-3">
+              {modes.map((m) => (
+                <button key={m.v} className={'set-seg-btn set-seg-ic' + (mode === m.v ? ' on' : '')} onClick={() => onMode(m.v)}>
+                  <Icon name={m.icon} size={19} stroke={1.4} />
+                  <span className="set-seg-main">{x(m.label)}</span>
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className="set-group">
+            <button className="set-link" onClick={onPhrases}>
+              <span className="set-link-ic"><Icon name="note" size={17} stroke={1.4} /></span>
+              <span className="set-link-tx">{x({ en: 'Japanese phrases', th: 'ประโยคใช้บ่อย', ja: '日本語フレーズ' })}</span>
+              <Icon name="chevronRight" size={16} stroke={1.5} />
+            </button>
+          </div>
+        </section>
       </main>
     </div>
   );
@@ -1295,5 +1368,5 @@ Object.assign(window, {
   ActivityBlock, Timeline, Cover, DayNav, ActivityDetail,
   Clock, RouteMap, Travelers, Overview, Emergency, Budget, Bookings,
   Konbini, EmergencySheet, DayKonbini, OvEssentials, DayWeather, MobileTabBar,
-  Packing, Phrases, TravelersPage,
+  Packing, Phrases, TravelersPage, SettingsPage,
 });

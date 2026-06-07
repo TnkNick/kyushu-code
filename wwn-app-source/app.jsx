@@ -38,9 +38,14 @@ function initialTweaks() {
 }
 
 function readLang() {
-  if (PARAM.lang === 'th' || PARAM.lang === 'en') return PARAM.lang;
+  if (PARAM.lang === 'th' || PARAM.lang === 'en' || PARAM.lang === 'ja') return PARAM.lang;
   try { const s = localStorage.getItem('lookbook-lang'); if (s) return s; } catch (e) {}
   return 'en';
+}
+
+function readMode() {
+  try { const s = localStorage.getItem('lookbook-mode'); if (s) return s; } catch (e) {}
+  return 'system';
 }
 
 function App() {
@@ -56,6 +61,20 @@ function App() {
   const scrollRef = React.useRef(null);
 
   const changeLang = (l) => { setLang(l); try { localStorage.setItem('lookbook-lang', l); } catch (e) {} };
+
+  const [mode, setMode] = React.useState(readMode());
+  const changeMode = (m) => { setMode(m); try { localStorage.setItem('lookbook-mode', m); } catch (e) {} };
+  const [sysDark, setSysDark] = React.useState(() => {
+    try { return window.matchMedia('(prefers-color-scheme: dark)').matches; } catch (e) { return true; }
+  });
+  React.useEffect(() => {
+    let mq;
+    try { mq = window.matchMedia('(prefers-color-scheme: dark)'); } catch (e) { return; }
+    const on = (e) => setSysDark(e.matches);
+    mq.addEventListener ? mq.addEventListener('change', on) : mq.addListener(on);
+    return () => { mq.removeEventListener ? mq.removeEventListener('change', on) : mq.removeListener(on); };
+  }, []);
+  const resolvedMode = mode === 'system' ? (sysDark ? 'dark' : 'light') : mode;
 
   React.useEffect(() => { if (window.__hideSplash) window.__hideSplash(); }, []);
 
@@ -82,6 +101,7 @@ function App() {
   const openBookings = () => { setDetail(null); setView('bookings'); };
   const openPhrases = () => { setDetail(null); setView('phrases'); };
   const openParty = () => { setDetail(null); setView('party'); };
+  const openSettings = () => { setDetail(null); setView('settings'); };
   const ovTop = () => { const s = document.querySelector('.ov-stage'); if (s) s.scrollTo({ top: 0, behavior: 'smooth' }); };
   const jumpTo = (i) => { setDay(i); setDayKey((k) => k + 1); setView('itinerary'); };
   const selectDay = (i) => {
@@ -102,7 +122,7 @@ function App() {
 
   return (
     <LangCtx.Provider value={lang}>
-      <div className={cls.join(' ')} data-theme={activeTheme} data-lang={lang} style={rootStyle}>
+      <div className={cls.join(' ')} data-theme={activeTheme} data-mode={resolvedMode} data-lang={lang} style={rootStyle}>
         <div className="bg-fx" aria-hidden="true">
           <span className="orb orb-1"></span>
           <span className="orb orb-2"></span>
@@ -127,6 +147,10 @@ function App() {
           <div className="view-party">
             <TravelersPage onHome={home} onItinerary={begin} onBookings={openBookings} onPhrases={openPhrases} onEmergency={() => setEmgOpen(true)} lang={lang} onLang={changeLang} />
           </div>
+        ) : view === 'settings' ? (
+          <div className="view-settings">
+            <SettingsPage onHome={home} onItinerary={begin} onBookings={openBookings} onParty={openParty} onPhrases={openPhrases} onEmergency={() => setEmgOpen(true)} lang={lang} onLang={changeLang} mode={mode} onMode={changeMode} />
+          </div>
         ) : (
           <div className="view-itinerary">
             <DayNav days={TRIP.days} current={day} onSelect={selectDay} onHome={home} onBookings={openBookings} onPhrases={openPhrases} onParty={openParty} onEmergency={() => setEmgOpen(true)} lang={lang} onLang={changeLang} />
@@ -143,8 +167,8 @@ function App() {
 
         {emgOpen ? <EmergencySheet data={window.EMERGENCY} onClose={() => setEmgOpen(false)} /> : null}
 
-        {view === 'itinerary' || view === 'bookings' || view === 'phrases' || view === 'party' ? (
-          <MobileTabBar view={view} onItinerary={begin} onBookings={openBookings} onPhrases={openPhrases} onParty={openParty} />
+        {view === 'itinerary' || view === 'bookings' || view === 'party' || view === 'phrases' || view === 'settings' ? (
+          <MobileTabBar view={view} onItinerary={begin} onBookings={openBookings} onParty={openParty} onSettings={openSettings} />
         ) : null}
 
         {!PARAM.embed ? (

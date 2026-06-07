@@ -1090,6 +1090,49 @@
   .mtab-item.active .mtab-ic { background: var(--chip); color: var(--accent); transform: scale(1.16); }
   .mtab-item.active .mtab-lb { transform: translateY(-1px); }
 
+  /* ───────────────────────── LIGHT MODE ─────────────────────────
+     A single cohesive light palette that overrides ANY per-day theme.
+     Must follow the [data-theme] blocks so it wins on equal specificity. */
+  .lookbook[data-mode="light"] {
+    --paper: #f6f1e8; --paper-2: #fffdf8; --ink: #2a2118; --ink-soft: #6e6051;
+    --taupe: #9c7b4e; --sand: #ece2d2; --accent: #b1762a; --accent-2: #c0602f;
+    --line: rgba(42,33,24,.15); --line-soft: rgba(42,33,24,.06); --chip: rgba(177,118,42,.15);
+    --grain: radial-gradient(130% 90% at 82% -15%, rgba(177,118,42,.12), transparent 55%),
+             radial-gradient(120% 95% at -12% 112%, rgba(192,96,47,.09), transparent 50%);
+  }
+  .lookbook[data-mode="light"] .bg-grain {
+    background: radial-gradient(125% 125% at 50% 38%, transparent 60%, rgba(120,96,60,.10) 100%); }
+  .lookbook[data-mode="light"] .bg-fx .orb { opacity: .26; mix-blend-mode: multiply; }
+
+  /* ───────────────────────── SETTINGS PAGE ───────────────────────── */
+  .settings-page { width: 100%; max-width: 640px; margin: 0 auto; }
+  .set-group { margin-bottom: 26px; }
+  .set-label { display: flex; align-items: center; gap: 9px; margin-bottom: 12px; color: var(--ink-soft);
+    font-size: 11.5px; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; }
+  .set-label svg { color: var(--accent); }
+  .set-seg { display: grid; gap: 9px; }
+  .set-seg-3 { grid-template-columns: repeat(3, 1fr); }
+  .set-seg-btn { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px;
+    min-height: 76px; padding: 14px 8px; border-radius: 16px; border: 1px solid var(--line);
+    background: color-mix(in srgb, var(--paper-2) 55%, transparent); color: var(--ink-soft);
+    transition: transform .2s cubic-bezier(.34,1.56,.64,1), border-color .25s ease, background .25s ease, color .25s ease;
+    -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+  .set-seg-btn:active { transform: scale(.93); }
+  .set-seg-btn.on { border-color: var(--accent); background: var(--chip); color: var(--ink); box-shadow: 0 6px 22px -14px var(--accent); }
+  .set-seg-btn svg { color: var(--ink-soft); transition: color .25s ease; }
+  .set-seg-btn.on svg { color: var(--accent); }
+  .set-seg-main { font-size: 15px; font-weight: 600; line-height: 1.1; }
+  .set-seg-sub { font-size: 10px; font-weight: 600; letter-spacing: .2em; opacity: .65; }
+  .set-seg-btn.on .set-seg-sub { color: var(--accent); opacity: 1; }
+  .set-link { display: flex; align-items: center; gap: 13px; width: 100%; padding: 16px 18px;
+    border-radius: 16px; border: 1px solid var(--line); background: color-mix(in srgb, var(--paper-2) 55%, transparent);
+    color: var(--ink); font-size: 15px; font-weight: 600; font-family: var(--sans);
+    transition: transform .2s ease, border-color .25s ease; -webkit-tap-highlight-color: transparent; }
+  .set-link:active { transform: scale(.985); }
+  .set-link-ic { color: var(--accent); display: grid; place-items: center; }
+  .set-link-tx { flex: 1; text-align: left; }
+  .set-link > svg:last-child { color: var(--ink-soft); }
+
   /* ───────────────────────── RESPONSIVE ───────────────────────── */
   @media (max-width: 760px) {
     .timeline { --spine-w: 26px; }
@@ -2701,6 +2744,27 @@ const ICON_PATHS = {
       <path d="M12 16.7h.01" />
     </>
   ),
+  // ── Settings / theme / language ─────────────────────────────────
+  gear: (
+    <>
+      <circle cx="12" cy="12" r="3.4" />
+      <path d="M19.4 13.5a7.5 7.5 0 0 0 0-3l1.8-1.4-1.5-2.6-2.1.8a7.5 7.5 0 0 0-2.6-1.5L14.6 3h-3l-.4 2.3A7.5 7.5 0 0 0 8.6 6.8L6.5 6 5 8.6l1.8 1.4a7.5 7.5 0 0 0 0 3L5 14.4 6.5 17l2.1-.8a7.5 7.5 0 0 0 2.6 1.5l.4 2.3h3l.4-2.3a7.5 7.5 0 0 0 2.6-1.5l2.1.8 1.5-2.6Z" />
+    </>
+  ),
+  moon: <path d="M20 14.5A8 8 0 0 1 9.5 4 7 7 0 1 0 20 14.5Z" />,
+  monitor: (
+    <>
+      <rect x="3.5" y="5" width="17" height="11" rx="1.5" />
+      <path d="M9 19.5h6M12 16.5v3" />
+    </>
+  ),
+  globe: (
+    <>
+      <circle cx="12" cy="12" r="8" />
+      <path d="M4 12h16" />
+      <path d="M12 4c2.5 2.2 3.8 5 3.8 8s-1.3 5.8-3.8 8c-2.5-2.2-3.8-5-3.8-8s1.3-5.8 3.8-8Z" />
+    </>
+  ),
 };
 
 function Icon({ name, size = 18, stroke = 1.25, style, className }) {
@@ -2734,7 +2798,7 @@ Object.assign(window, { Icon, ICON_PATHS });
 //   • feature → big hero image + caption + reference dock (sightseeing, dining)
 //   • step    → compact logistics row with a line-icon (flights, car, transit, check-in)
 // Each day carries its own dark `theme` and a `date`. Built to the Content Template.
-const L = (en, th) => ({ en, th });
+const L = (en, th, ja) => ({ en, th, ja });
 
 const TRIP = {
   title: L('Kyushu', 'คิวชู'),
@@ -4494,9 +4558,7 @@ function Overview({ trip, dest, travelers, onBegin, onJump, onHome, onBookings, 
             <Icon name="note" size={15} stroke={1.4} />
             <span>{x({ en: 'Phrases', th: 'ประโยคใช้บ่อย' })}</span>
           </button>
-          <Clock variant="chrome" />
-          <LangToggle lang={lang} onChange={onLang} tone="ink" />
-        </div>
+          <Clock variant="chrome" />        </div>
       </header>
 
       <main className="ov-stage">
@@ -4596,9 +4658,7 @@ function DayNav({ days, current, onSelect, onHome, onBookings, onPhrases, onPart
             <Icon name="note" size={15} stroke={1.4} />
             <span>{x({ en: 'Phrases', th: 'ประโยคใช้บ่อย' })}</span>
           </button>
-          <Clock variant="chrome" />
-          <LangToggle lang={lang} onChange={onLang} tone="ink" />
-        </div>
+          <Clock variant="chrome" />        </div>
       </div>
 
       <nav className="chrome-days" ref={railRef}>
@@ -4833,9 +4893,7 @@ function Bookings({ trip, onHome, onItinerary, onPhrases, onParty, onEmergency, 
             <Icon name="note" size={15} stroke={1.4} />
             <span>{x({ en: 'Phrases', th: 'ประโยคใช้บ่อย' })}</span>
           </button>
-          <Clock variant="chrome" />
-          <LangToggle lang={lang} onChange={onLang} tone="ink" />
-        </div>
+          <Clock variant="chrome" />        </div>
       </header>
 
       <main className="bk-stage">
@@ -4999,13 +5057,13 @@ function OvEssentials({ data }) {
 }
 
 // ── Mobile bottom tab bar — primary view switcher (mobile only) ─────────
-function MobileTabBar({ view, onItinerary, onBookings, onPhrases, onParty }) {
+function MobileTabBar({ view, onItinerary, onBookings, onParty, onSettings }) {
   const { x } = useT();
   const tabs = [
-    { key: 'itinerary', icon: 'compass', label: { en: 'Itinerary', th: 'แผนการเดินทาง' }, on: onItinerary },
-    { key: 'bookings',  icon: 'book',    label: { en: 'Bookings',  th: 'การจอง' },         on: onBookings },
-    { key: 'party', icon: 'passport', label: { en: 'Party', th: 'ทีมงาน' }, on: onParty },
-    { key: 'phrases', icon: 'note', label: { en: 'Phrases', th: 'ประโยคใช้บ่อย' }, on: onPhrases },
+    { key: 'itinerary', icon: 'compass', label: { en: 'Itinerary', th: 'แผนการเดินทาง', ja: '旅程' }, on: onItinerary },
+    { key: 'bookings',  icon: 'book',    label: { en: 'Bookings',  th: 'การจอง', ja: '予約' },         on: onBookings },
+    { key: 'party', icon: 'passport', label: { en: 'Party', th: 'ทีมงาน', ja: 'メンバー' }, on: onParty },
+    { key: 'settings', icon: 'gear', label: { en: 'Settings', th: 'ตั้งค่า', ja: '設定' }, on: onSettings },
   ];
   return (
     <nav className="mtab" role="tablist" aria-label="Sections">
@@ -5114,9 +5172,7 @@ function PhrasesPage({ onHome, onItinerary, onBookings, onParty, onEmergency, la
             <Icon name="passport" size={15} stroke={1.4} />
             <span>{x({ en: 'Party', th: 'ทีมงาน' })}</span>
           </button>
-          <Clock variant="chrome" />
-          <LangToggle lang={lang} onChange={onLang} tone="ink" />
-        </div>
+          <Clock variant="chrome" />        </div>
       </header>
       <main className="bk-stage">
         <Phrases data={window.PHRASES} />
@@ -5151,12 +5207,93 @@ function TravelersPage({ onHome, onItinerary, onBookings, onPhrases, onEmergency
             <Icon name="note" size={15} stroke={1.4} />
             <span>{x({ en: 'Phrases', th: 'ประโยคใช้บ่อย' })}</span>
           </button>
-          <Clock variant="chrome" />
-          <LangToggle lang={lang} onChange={onLang} tone="ink" />
-        </div>
+          <Clock variant="chrome" />        </div>
       </header>
       <main className="bk-stage">
         <Travelers data={window.TRAVELERS} />
+      </main>
+    </div>
+  );
+}
+
+function SettingsPage({ onHome, onItinerary, onBookings, onParty, onPhrases, onEmergency, lang, onLang, mode, onMode }) {
+  const { x } = useT();
+  const langs = [
+    { v: 'en', main: 'English', sub: 'EN' },
+    { v: 'th', main: 'ไทย', sub: 'TH' },
+    { v: 'ja', main: '日本語', sub: 'JA' },
+  ];
+  const modes = [
+    { v: 'light', icon: 'sun', label: { en: 'Light', th: 'สว่าง', ja: 'ライト' } },
+    { v: 'dark', icon: 'moon', label: { en: 'Dark', th: 'มืด', ja: 'ダーク' } },
+    { v: 'system', icon: 'monitor', label: { en: 'System', th: 'ตามเครื่อง', ja: 'システム' } },
+  ];
+  return (
+    <div className="bookings">
+      <header className="chrome chrome-min">
+        <button className="chrome-home" onClick={onHome}>
+          <Icon name="feather" size={16} stroke={1.3} />
+          <span className="wwn"><b>WWN</b> <span className="wwn-full">World Wide Nick</span></span>
+        </button>
+        <div className="chrome-bar-r">
+          <button className="chrome-sos" onClick={onEmergency}>
+            <Icon name="alert" size={15} stroke={1.5} />
+            <span>{x({ en: 'Emergency', th: 'ฉุกเฉิน', ja: '緊急' })}</span>
+          </button>
+          <button className="chrome-nav" onClick={onItinerary}>
+            <Icon name="compass" size={15} stroke={1.4} />
+            <span>{x({ en: 'Itinerary', th: 'แผนการเดินทาง', ja: '旅程' })}</span>
+          </button>
+          <button className="chrome-nav" onClick={onBookings}>
+            <Icon name="book" size={15} stroke={1.4} />
+            <span>{x({ en: 'Bookings', th: 'การจอง', ja: '予約' })}</span>
+          </button>
+          <button className="chrome-nav" onClick={onParty}>
+            <Icon name="passport" size={15} stroke={1.4} />
+            <span>{x({ en: 'Party', th: 'ทีมงาน', ja: 'メンバー' })}</span>
+          </button>
+          <Clock variant="chrome" />
+        </div>
+      </header>
+      <main className="bk-stage">
+        <section className="party settings-page">
+          <div className="party-head">
+            <span className="ov-kicker">{x({ en: 'Preferences', th: 'การตั้งค่า', ja: '環境設定' })}</span>
+            <h2 className="ov-h2">{x({ en: 'Settings', th: 'ตั้งค่า', ja: '設定' })}</h2>
+          </div>
+
+          <div className="set-group">
+            <div className="set-label"><Icon name="globe" size={16} stroke={1.4} /><span>{x({ en: 'Language', th: 'ภาษา', ja: '言語' })}</span></div>
+            <div className="set-seg set-seg-3">
+              {langs.map((l) => (
+                <button key={l.v} className={'set-seg-btn' + (lang === l.v ? ' on' : '')} onClick={() => onLang(l.v)}>
+                  <span className="set-seg-main">{l.main}</span>
+                  <span className="set-seg-sub">{l.sub}</span>
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className="set-group">
+            <div className="set-label"><Icon name="sun" size={16} stroke={1.4} /><span>{x({ en: 'Appearance', th: 'ธีม', ja: 'テーマ' })}</span></div>
+            <div className="set-seg set-seg-3">
+              {modes.map((m) => (
+                <button key={m.v} className={'set-seg-btn set-seg-ic' + (mode === m.v ? ' on' : '')} onClick={() => onMode(m.v)}>
+                  <Icon name={m.icon} size={19} stroke={1.4} />
+                  <span className="set-seg-main">{x(m.label)}</span>
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className="set-group">
+            <button className="set-link" onClick={onPhrases}>
+              <span className="set-link-ic"><Icon name="note" size={17} stroke={1.4} /></span>
+              <span className="set-link-tx">{x({ en: 'Japanese phrases', th: 'ประโยคใช้บ่อย', ja: '日本語フレーズ' })}</span>
+              <Icon name="chevronRight" size={16} stroke={1.5} />
+            </button>
+          </div>
+        </section>
       </main>
     </div>
   );
@@ -5167,7 +5304,7 @@ Object.assign(window, {
   ActivityBlock, Timeline, Cover, DayNav, ActivityDetail,
   Clock, RouteMap, Travelers, Overview, Emergency, Budget, Bookings,
   Konbini, EmergencySheet, DayKonbini, OvEssentials, DayWeather, MobileTabBar,
-  Packing, Phrases, TravelersPage,
+  Packing, Phrases, TravelersPage, SettingsPage,
 });
 
 </script>
@@ -5212,9 +5349,14 @@ function initialTweaks() {
 }
 
 function readLang() {
-  if (PARAM.lang === 'th' || PARAM.lang === 'en') return PARAM.lang;
+  if (PARAM.lang === 'th' || PARAM.lang === 'en' || PARAM.lang === 'ja') return PARAM.lang;
   try { const s = localStorage.getItem('lookbook-lang'); if (s) return s; } catch (e) {}
   return 'en';
+}
+
+function readMode() {
+  try { const s = localStorage.getItem('lookbook-mode'); if (s) return s; } catch (e) {}
+  return 'system';
 }
 
 function App() {
@@ -5230,6 +5372,20 @@ function App() {
   const scrollRef = React.useRef(null);
 
   const changeLang = (l) => { setLang(l); try { localStorage.setItem('lookbook-lang', l); } catch (e) {} };
+
+  const [mode, setMode] = React.useState(readMode());
+  const changeMode = (m) => { setMode(m); try { localStorage.setItem('lookbook-mode', m); } catch (e) {} };
+  const [sysDark, setSysDark] = React.useState(() => {
+    try { return window.matchMedia('(prefers-color-scheme: dark)').matches; } catch (e) { return true; }
+  });
+  React.useEffect(() => {
+    let mq;
+    try { mq = window.matchMedia('(prefers-color-scheme: dark)'); } catch (e) { return; }
+    const on = (e) => setSysDark(e.matches);
+    mq.addEventListener ? mq.addEventListener('change', on) : mq.addListener(on);
+    return () => { mq.removeEventListener ? mq.removeEventListener('change', on) : mq.removeListener(on); };
+  }, []);
+  const resolvedMode = mode === 'system' ? (sysDark ? 'dark' : 'light') : mode;
 
   React.useEffect(() => { if (window.__hideSplash) window.__hideSplash(); }, []);
 
@@ -5256,6 +5412,7 @@ function App() {
   const openBookings = () => { setDetail(null); setView('bookings'); };
   const openPhrases = () => { setDetail(null); setView('phrases'); };
   const openParty = () => { setDetail(null); setView('party'); };
+  const openSettings = () => { setDetail(null); setView('settings'); };
   const ovTop = () => { const s = document.querySelector('.ov-stage'); if (s) s.scrollTo({ top: 0, behavior: 'smooth' }); };
   const jumpTo = (i) => { setDay(i); setDayKey((k) => k + 1); setView('itinerary'); };
   const selectDay = (i) => {
@@ -5276,7 +5433,7 @@ function App() {
 
   return (
     <LangCtx.Provider value={lang}>
-      <div className={cls.join(' ')} data-theme={activeTheme} data-lang={lang} style={rootStyle}>
+      <div className={cls.join(' ')} data-theme={activeTheme} data-mode={resolvedMode} data-lang={lang} style={rootStyle}>
         <div className="bg-fx" aria-hidden="true">
           <span className="orb orb-1"></span>
           <span className="orb orb-2"></span>
@@ -5301,6 +5458,10 @@ function App() {
           <div className="view-party">
             <TravelersPage onHome={home} onItinerary={begin} onBookings={openBookings} onPhrases={openPhrases} onEmergency={() => setEmgOpen(true)} lang={lang} onLang={changeLang} />
           </div>
+        ) : view === 'settings' ? (
+          <div className="view-settings">
+            <SettingsPage onHome={home} onItinerary={begin} onBookings={openBookings} onParty={openParty} onPhrases={openPhrases} onEmergency={() => setEmgOpen(true)} lang={lang} onLang={changeLang} mode={mode} onMode={changeMode} />
+          </div>
         ) : (
           <div className="view-itinerary">
             <DayNav days={TRIP.days} current={day} onSelect={selectDay} onHome={home} onBookings={openBookings} onPhrases={openPhrases} onParty={openParty} onEmergency={() => setEmgOpen(true)} lang={lang} onLang={changeLang} />
@@ -5317,8 +5478,8 @@ function App() {
 
         {emgOpen ? <EmergencySheet data={window.EMERGENCY} onClose={() => setEmgOpen(false)} /> : null}
 
-        {view === 'itinerary' || view === 'bookings' || view === 'phrases' || view === 'party' ? (
-          <MobileTabBar view={view} onItinerary={begin} onBookings={openBookings} onPhrases={openPhrases} onParty={openParty} />
+        {view === 'itinerary' || view === 'bookings' || view === 'party' || view === 'phrases' || view === 'settings' ? (
+          <MobileTabBar view={view} onItinerary={begin} onBookings={openBookings} onParty={openParty} onSettings={openSettings} />
         ) : null}
 
         {false ? (
@@ -5389,7 +5550,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', function () {
       navigator.serviceWorker.register('sw.js').catch(function () {});
-      if (window.caches) caches.open('wwn-kyushu-v22').then(function (c) {
+      if (window.caches) caches.open('wwn-kyushu-v23').then(function (c) {
         c.add(new Request(location.href, { cache: 'reload' })).catch(function () {});
       });
     });
