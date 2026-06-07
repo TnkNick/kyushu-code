@@ -256,6 +256,9 @@
   /* ───────────────────────── ITINERARY SHELL ───────────────────────── */
   /* ═══════════════════════ OVERVIEW (destination presentation) ═══════════════════════ */
   .view-overview { height: 100%; animation: coverIn .7s ease both; }
+  /* give the non-itinerary views a definite height so their .bk-stage scrolls internally
+     (needed now that the standalone PWA locks body scroll) */
+  .view-bookings, .view-party, .view-phrases { height: 100%; }
   .overview { height: 100%; display: flex; flex-direction: column; }
   .ov-stage { flex: 1; overflow-y: auto; scroll-behavior: smooth; }
   .ov-kicker { display: inline-flex; align-items: center; gap: 13px; font-size: clamp(10px,1vw,12px);
@@ -733,6 +736,7 @@
   .detail-scrim { position: fixed; inset: 0; z-index: 60; display: flex; justify-content: flex-end;
     background: rgba(14,12,9,.42); backdrop-filter: blur(7px); animation: fadeIn .35s ease both; }
   .detail { width: min(560px, 100%); height: 100%; min-height: 100dvh; background: var(--paper); overflow-y: auto; position: relative;
+    padding-top: env(safe-area-inset-top, 0px);
     box-shadow: -30px 0 80px rgba(0,0,0,.28); animation: slideIn .5s cubic-bezier(.2,.8,.2,1) both; }
   @keyframes slideIn { from { transform: translateX(100%); } to { transform: none; } }
   @keyframes slideOut { from { transform: none; } to { transform: translateX(100%); } }
@@ -1066,14 +1070,14 @@
   .mtab { display: none; }
   .mtab { grid-template-columns: repeat(4, 1fr); gap: 4px;
     position: fixed; left: 0; right: 0; bottom: 0; z-index: 55;
-    padding: 7px 10px calc(7px + env(safe-area-inset-bottom, 0px));
+    padding: 4px 10px calc(4px + env(safe-area-inset-bottom, 0px));
     background: color-mix(in srgb, var(--paper) 90%, transparent);
     backdrop-filter: blur(18px) saturate(140%); -webkit-backdrop-filter: blur(18px) saturate(140%);
     border-top: 1px solid var(--line); }
-  .mtab-item { display: flex; flex-direction: column; align-items: center; gap: 4px;
-    padding: 5px 4px 3px; background: none; border: none; color: var(--ink-soft);
+  .mtab-item { display: flex; flex-direction: column; align-items: center; gap: 3px;
+    padding: 3px 4px 1px; background: none; border: none; color: var(--ink-soft);
     transition: color .25s; }
-  .mtab-ic { display: grid; place-items: center; width: 50px; height: 28px; border-radius: 100px;
+  .mtab-ic { display: grid; place-items: center; width: 50px; height: 26px; border-radius: 100px;
     transition: background .25s, color .25s; }
   .mtab-lb { font-size: 10px; font-weight: 600; letter-spacing: 0; white-space: nowrap; max-width: 100%; overflow: hidden; text-overflow: ellipsis; }
   .mtab-item.active { color: var(--accent); }
@@ -5380,7 +5384,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', function () {
       navigator.serviceWorker.register('sw.js').catch(function () {});
-      if (window.caches) caches.open('wwn-kyushu-v13').then(function (c) {
+      if (window.caches) caches.open('wwn-kyushu-v14').then(function (c) {
         c.add(new Request(location.href, { cache: 'reload' })).catch(function () {});
       });
     });
