@@ -15,7 +15,10 @@
 <style>
   /* ───────────────────────── reset ───────────────────────── */
   * { margin: 0; padding: 0; box-sizing: border-box; touch-action: manipulation; }
-  html, body { height: 100%; height: 100dvh; height: var(--app-h, 100dvh); -webkit-text-size-adjust: 100%; }
+  /* iOS PWA full-screen: a STATIC 100dvh element is what makes iOS expand the web view to the
+     full physical screen (innerHeight 932 on a Pro Max). Do NOT pin this to a fixed px such as
+     var(--app-h)=window.innerHeight — that removes the only 100dvh element and iOS drops to 873. */
+  html, body { height: 100%; height: 100dvh; -webkit-text-size-adjust: 100%; }
   /* installed PWA only: lock the document so the top bar can't rubber-band away on overscroll */
   @media (display-mode: standalone) { html, body { overflow: hidden; overscroll-behavior: none; } }
   body {
@@ -6074,17 +6077,6 @@ function App() {
     if (meta) meta.setAttribute('content', paper);
   }, [activeTheme, resolvedMode]);
 
-  // Force the root to the TRUE screen height. On an installed iOS PWA, height:100% /
-  // 100dvh resolve SHORT of the physical screen (they exclude the bottom home-indicator
-  // band) — leaving a dead strip on every page. window.innerHeight IS the full height.
-  React.useEffect(() => {
-    const setH = () => document.documentElement.style.setProperty('--app-h', window.innerHeight + 'px');
-    setH();
-    window.addEventListener('resize', setH);
-    window.addEventListener('orientationchange', setH);
-    return () => { window.removeEventListener('resize', setH); window.removeEventListener('orientationchange', setH); };
-  }, []);
-
   return (
     <LangCtx.Provider value={lang}>
       <div className={cls.join(' ')} data-theme={activeTheme} data-mode={resolvedMode} data-lang={lang} style={rootStyle}>
@@ -6218,7 +6210,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', function () {
       navigator.serviceWorker.register('sw.js').catch(function () {});
-      if (window.caches) caches.open('wwn-kyushu-v50').then(function (c) {
+      if (window.caches) caches.open('wwn-kyushu-v51').then(function (c) {
         c.add(new Request(location.href, { cache: 'reload' })).catch(function () {});
       });
     });
