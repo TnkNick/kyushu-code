@@ -3054,7 +3054,6 @@ const TRIP = {
   origin: L('A self-drive itinerary', 'แผนการเดินทางขับรถเอง'),
   coverId: 'cover-hero',
   days: [
-    // ───────────────────────── DAY 1 · FUKUOKA ─────────────────────────
     {
       label: 'Day 01', labelTh: 'วันที่ 01', theme: 'kurogane',
       date: L('Saturday · 12 Dec 2026', 'เสาร์ · 12 Dec 2026'),
@@ -3168,16 +3167,14 @@ const TRIP = {
           refs: { map: 'https://maps.google.com/?q=FUKUOKA+CRAFT+by+El+Borracho+Daimyo', official: 'https://www.fukuoka-now.com/en/food/fukuoka-craft/', notes: L('Daimyo · open to 24:00 (Fri/Sat to 01:00) · on-site brewery.', 'ไดเมียว · เปิดถึง 24:00 (ศุกร์/เสาร์ ถึง 01:00) · มีโรงเบียร์ในร้าน') } },
       ],
     },
-
-    // ───────────────────────── DAY 2 · ASO / KUROKAWA ─────────────────────────
     {
       label: 'Day 02', labelTh: 'วันที่ 02', theme: 'hisui',
       date: L('Sunday · 13 Dec 2026', 'อาทิตย์ · 13 Dec 2026'),
       title: L('Mount Aso', 'ภูเขาไฟอาโซ'),
       subtitle: L('Pick Up the Car & the Caldera', 'รับรถ & ขับชมปากปล่อง'),
       note: L(
-        'Pick up the car in Hakata and climb the Milk Road into the largest caldera in Japan — rim observatories, the grasslands, the Aso milk stand and the smoking Nakadake crater — then down to Kumamoto for two nights, dinner and a night out.',
-        'รับรถที่ฮากาตะแล้วไต่เส้น Milk Road ขึ้นสู่ปากปล่องภูเขาไฟที่ใหญ่ที่สุดในญี่ปุ่น — จุดชมวิวขอบปล่อง ทุ่งหญ้า ซอฟต์ครีมนมอาโซ และปล่องนากาดาเกะที่ยังคุกรุ่น แล้วลงคุมาโมโตะ พัก 2 คืน มื้อค่ำ และออกเที่ยวกลางคืน'
+        'Pick up the car in Hakata and climb the Milk Road into the largest caldera in Japan — rim observatories, the grasslands, the Aso milk stand and the smoking Nakadake crater — then check in to an onsen ryokan by the caldera: red-wagyu dinner and dark-sky stars.',
+        'รับรถที่ฮากาตะแล้วไต่เส้น Milk Road ขึ้นสู่ปากปล่องภูเขาไฟที่ใหญ่ที่สุดในญี่ปุ่น — จุดชมวิวขอบปล่อง ทุ่งหญ้า ซอฟต์ครีมนมอาโซ และปล่องนากาดาเกะที่ยังคุกรุ่น แล้วเข้าพักเรียวกังออนเซนริมปากปล่อง: มื้อค่ำเนื้อวากิวแดงและนอนดูดาว'
       ),
       coverId: 'day2-cover',
       activities: [
@@ -3255,83 +3252,30 @@ const TRIP = {
                   notes: L('Winter access 09:00–16:30; may close on high-gas days — check before driving up.', 'หน้าหนาวเปิด 09:00–16:30 อาจปิดวันแก๊สสูง เช็กก่อนขับขึ้น') } },
 
         { type: 'step', time: '17:30', meridiem: 'Evening', kind: 'Check-in', icon: 'bed',
-          title: L('Check in · Kumamoto by VESSEL HOTELS', 'เช็คอิน · Kumamoto by VESSEL HOTELS'),
-          place: L('Two nights · central Kumamoto', 'สองคืน · กลางเมืองคุมาโมโตะ'),
-          blurb: L('Drive down off the caldera (~1.5 h) to base in Kumamoto for two nights — central, near the castle and the Shimotori arcade.',
-                   'ขับลงจากปากปล่อง (~1.5 ชม.) มาตั้งฐานที่คุมาโมโตะ 2 คืน — ทำเลกลาง ใกล้ปราสาทและถนนคนเดินชิโมโทริ'),
-          refs: { map: 'https://maps.app.goo.gl/ZA55NKrZ3dXWW43Y6', reservation: { time: '17:30', code: 'VESSEL-KMM', party: L('Nights 2–3 · 2 nights', 'คืน 2–3 · 2 คืน') }, notes: L('Kumamoto by VESSEL HOTELS — same base for Day 2 and Day 3.', 'Kumamoto by VESSEL HOTELS — ฐานเดียวกันทั้ง Day 2 และ Day 3') } },
+          title: L('Check in · Aso onsen ryokan', 'เช็คอิน · เรียวกังออนเซนอาโซ'),
+          place: L('One night · by the caldera', 'หนึ่งคืน · ริมปากปล่อง'),
+          blurb: L('Come down off the caldera to an onsen ryokan around Aso / Uchinomaki — soak after the volcano day and sleep under some of Kyushu’s darkest skies.',
+                   'ลงจากปากปล่องมาพักเรียวกังออนเซนแถบอาโซ / อุจิโนมากิ — แช่น้ำหลังเที่ยวภูเขาไฟ แล้วนอนใต้ฟ้าที่มืดที่สุดแห่งหนึ่งของคิวชู'),
+          refs: { map: 'https://maps.google.com/?q=Aso+onsen+ryokan', reservation: { time: '17:30', code: 'ASO-RYO', party: L('Night 2 · 1 night · to book', 'คืน 2 · 1 คืน · รอจอง') }, notes: L('Aso / Uchinomaki onsen ryokan — still to be booked.', 'เรียวกังออนเซนอาโซ / อุจิโนมากิ — รอจอง') } },
 
         { type: 'feature', time: '19:00', meridiem: 'Night', kind: 'Dining', imageId: 'a-d2-dinner',
-          title: L('Kumamoto ramen', 'ราเมงคุมาโมโตะ'),
-          place: L('Garlic tonkotsu · downtown', 'ทงคตสึกระเทียม · กลางเมือง'),
-          blurb: L('Kumamoto-style tonkotsu — a milder, rounder pork broth finished with fried garlic chips and black garlic oil (mayu). An easy first dinner near the hotel.',
-                   'ทงคตสึสไตล์คุมาโมโตะ — น้ำซุปกระดูกหมูกลมกล่อมกว่า ใส่กระเทียมเจียวและน้ำมันกระเทียมดำ (มายุ) · มื้อค่ำแรกง่ายๆ ใกล้โรงแรม'),
-          refs: { map: 'https://maps.google.com/?q=Kumamoto+ramen+Shimotori' } },
+          title: L('Aso akaushi dinner', 'มื้อค่ำเนื้ออาโซอากาอุชิ'),
+          place: L('Ryokan kaiseki or a local grill', 'ไคเซกิเรียวกัง หรือร้านปิ้งย่างท้องถิ่น'),
+          blurb: L('Dinner built around Aso red-wagyu (akaushi) — the ryokan’s kaiseki course or a nearby grill: lean, grassy beef raised on the caldera pastures.',
+                   'มื้อค่ำเน้นเนื้อวากิวแดง (อากาอุชิ) ของอาโซ — คอร์สไคเซกิของเรียวกัง หรือร้านปิ้งย่างใกล้ๆ: เนื้อไม่ติดมัน เลี้ยงบนทุ่งหญ้าปากปล่อง'),
+          refs: { map: 'https://maps.google.com/?q=Aso+akaushi+restaurant' } },
 
-        { type: 'feature', time: '20:30', meridiem: 'Night', kind: 'Nightlife', imageId: 'a-d2-nightlife',
-          title: L('Shimotori night out', 'เที่ยวกลางคืนชิโมโทริ'),
-          place: L('Shimotori / Sakuranobaba arcades', 'ย่านชิโมโทริ / ซากุระโนะบาบะ'),
-          blurb: L('Kumamoto’s covered arcades stay lively after dark — bar-hop the Shimotori and Karashima lanes, find a tiny standing izakaya, or grab a nightcap with a castle view.',
-                   'ถนนคนเดินมีหลังคาของคุมาโมโตะยังคึกคักหลังมืด — เดินบาร์ฮอปย่านชิโมโทริและคาราชิมะ หาร้านอิซากายะยืนดื่มเล็กๆ หรือจิบปิดท้ายพร้อมวิวปราสาท'),
-          refs: { map: 'https://maps.google.com/?q=Shimotori+Kumamoto', notes: L('10–15 min walk from the hotel — arcades are covered, good for a cold night.', 'เดิน 10–15 นาทีจากโรงแรม — ถนนมีหลังคา เหมาะคืนหนาว') } },
+        { type: 'feature', time: '20:30', meridiem: 'Night', kind: 'View', imageId: 'a-d2-nightlife',
+          title: L('Onsen & a sky full of stars', 'ออนเซน & ฟ้าดาวเต็มฟ้า'),
+          place: L('Aso caldera · dark skies', 'ปากปล่องอาโซ · ฟ้ามืดเห็นดาว'),
+          blurb: L('No nightlife strip up here — soak in the open-air bath, then step out for the stars. The Aso caldera is one of Kyushu’s best dark-sky spots on a clear winter night.',
+                   'บนนี้ไม่มีย่านกลางคืน — แช่ออนเซนกลางแจ้งแล้วออกมาดูดาว · ปากปล่องอาโซเป็นจุดดูดาวที่ดีที่สุดแห่งหนึ่งของคิวชูในคืนหน้าหนาวฟ้าใส'),
+          refs: { map: 'https://maps.google.com/?q=Aso+star+gazing' } },
       ],
     },
-
-    // ───────────────────────── DAY 3 · ASO & KUROKAWA ─────────────────────────
     {
-      label: 'Day 03', labelTh: 'วันที่ 03', theme: 'kohaku',
+      label: 'Day 03', labelTh: 'วันที่ 03', theme: 'urushi',
       date: L('Monday · 14 Dec 2026', 'จันทร์ · 14 Dec 2026'),
-      title: L('Kumamoto', 'คุมาโมโตะ'),
-      subtitle: L('Castle City', 'เมืองปราสาท'),
-      note: L(
-        'A full day in the castle city — one of the great fortresses of Japan, a strolling garden, the local sweet, and horse sashimi for dinner. Second night at the VESSEL.',
-        'เต็มวันในเมืองปราสาท — หนึ่งในป้อมปราการยิ่งใหญ่ของญี่ปุ่น สวนเดินเล่น ขนมพื้นเมือง และม้าดิบเป็นมื้อค่ำ · นอน VESSEL คืนที่สอง'
-      ),
-      coverId: 'day3-cover',
-      activities: [
-        { type: 'feature', time: '09:30', meridiem: 'Morning', kind: 'Castle', imageId: 'a-d4-castle',
-          title: L('Kumamoto Castle', 'ปราสาทคุมาโมโตะ'),
-          place: L('One of Japan’s great keeps', 'หนึ่งในปราสาทยิ่งใหญ่ของญี่ปุ่น'),
-          blurb: L('Black-and-white towers on cyclopean curved stone walls — the main keep reopened after the 2016 quake. Go early before the crowds.',
-                   'หอปราสาทขาว-ดำบนกำแพงหินโค้งมหึมา — หอหลักเปิดอีกครั้งหลังแผ่นดินไหวปี 2016 · ไปเช้าก่อนคนเยอะ'),
-          refs: { map: 'https://maps.google.com/?q=Kumamoto+Castle', official: 'https://castle.kumamoto-guide.jp/en/',
-                  booking: L('Keep entry · ¥800', 'เข้าหอปราสาท · ¥800') } },
-
-        { type: 'feature', time: '11:30', meridiem: 'Midday', kind: 'Dining', imageId: 'a-d4-katsuretsu',
-          title: L('Katsuretsu-tei', 'คัตสึเร็ตสึเทอิ'),
-          place: L('Tonkatsu · AMU Plaza', 'ทงคตสึ · AMU Plaza'),
-          blurb: L('A Kumamoto institution for thick, juicy pork cutlet with shredded cabbage and house sauce.',
-                   'ร้านดังคุมาโมโตะ ทงคตสึชิ้นหนาฉ่ำ เสิร์ฟกับกะหล่ำซอยและซอสสูตรร้าน'),
-          refs: { map: 'https://maps.google.com/?q=Katsuretsutei+Amu+Plaza+Kumamoto', official: 'https://hayashi-sangyo.jp/' } },
-
-        { type: 'feature', time: '13:30', meridiem: 'Afternoon', kind: 'Castle', imageId: 'a-d4-suizenji',
-          title: L('Suizenji Jojuen', 'สวนซุยเซนจิ'),
-          place: L('A miniature Tokaido garden', 'สวนจำลองเส้นทางโทไกโด'),
-          blurb: L('A strolling garden that recreates the old road to Edo in miniature — including a little grassy Mt Fuji.',
-                   'สวนเดินเล่นที่จำลองเส้นทางสู่เอโดะแบบย่อส่วน — มีภูเขาฟูจิหญ้าจิ๋วด้วย'),
-          refs: { map: 'https://maps.google.com/?q=Suizenji+Jojuen', booking: L('Entry · ¥400', 'ค่าเข้า · ¥400') } },
-
-        { type: 'feature', time: '15:30', meridiem: 'Afternoon', kind: 'Sweets', imageId: 'a-d4-sweets',
-          title: L('Ikinari Dango', 'อิคินาริ ดังโงะ'),
-          place: L('Kumamoto sweet · Sakuranobaba', 'ขนมคุมาโมโตะ · ซากุระโนะบาบะ'),
-          blurb: L('A homely Kumamoto sweet — steamed dough wrapped around a slice of sweet potato and sweet red-bean paste. Grab one at the castle-side Sakuranobaba Josaien.',
-                   'ขนมพื้นบ้านคุมาโมโตะ — แป้งนึ่งห่อมันหวานกับถั่วแดงกวน หาซื้อได้ที่ซากุระโนะบาบะข้างปราสาท'),
-          refs: { map: 'https://maps.google.com/?q=Sakuranobaba+Josaien+Kumamoto' } },
-
-        { type: 'feature', time: '19:00', meridiem: 'Night', kind: 'Dining', imageId: 'a-d4-basashi',
-          title: L('Basashi dinner', 'มื้อค่ำบาซาชิ'),
-          place: L('Horse sashimi · Kumamoto specialty', 'ม้าดิบ · ของขึ้นชื่อคุมาโมโตะ'),
-          blurb: L('The local delicacy — lean and fatty cuts of horse, sliced thin with ginger, garlic and sweet soy.',
-                   'ของพื้นเมือง — ม้าดิบทั้งส่วนเนื้อแดงและติดมัน หั่นบางเสิร์ฟกับขิง กระเทียม และซีอิ๊วหวาน'),
-          refs: { map: 'https://maps.google.com/?q=Basashi+Kumamoto',
-                  reservation: { time: '19:00', code: 'BASA-01', party: L('Dinner · book ahead', 'มื้อค่ำ · จองล่วงหน้า') } } },
-      ],
-    },
-
-    // ───────────────────────── DAY 4 · BEPPU ─────────────────────────
-    {
-      label: 'Day 04', labelTh: 'วันที่ 04', theme: 'urushi',
-      date: L('Tuesday · 15 Dec 2026', 'อังคาร · 15 Dec 2026'),
       title: L('Beppu', 'เบปปุ'),
       subtitle: L('Yamanami Highway & the Hells', 'เส้นทางยามานามิ & บ่อนรก'),
       note: L(
@@ -3341,17 +3285,17 @@ const TRIP = {
       coverId: 'day4-cover',
       activities: [
         { type: 'step', time: '08:30', meridiem: 'Morning', kind: 'Check-out', icon: 'luggage',
-          title: L('Check out · Kumamoto VESSEL', 'เช็คเอาท์ · Kumamoto VESSEL'),
-          place: L('Two nights done · onward to the coast', 'ครบสองคืน · มุ่งสู่ชายฝั่ง'),
-          blurb: L('Settle up and load the car — the scenic Yamanami Highway over Aso to Beppu lies ahead.',
-                   'เคลียร์บิลแล้วขนของขึ้นรถ — รออยู่คือยามานามิไฮเวย์วิวสวยข้ามอาโซสู่เบปปุ'),
-          refs: { map: 'https://maps.app.goo.gl/ZA55NKrZ3dXWW43Y6', notes: L('Check-out ~10:00 · two nights at Kumamoto.', 'เช็คเอาท์ ~10:00 · พักคุมาโมโตะ 2 คืน') } },
+          title: L('Check out · Aso ryokan', 'เช็คเอาท์ · เรียวกังอาโซ'),
+          place: L('One night done · onward to the coast', 'ครบหนึ่งคืน · มุ่งสู่ชายฝั่ง'),
+          blurb: L('A morning soak and breakfast, then load the car — the scenic Yamanami Highway down to Beppu lies ahead.',
+                   'แช่น้ำเช้าและกินอาหารเช้า แล้วขนของขึ้นรถ — รออยู่คือยามานามิไฮเวย์วิวสวยลงสู่เบปปุ'),
+          refs: { map: 'https://maps.google.com/?q=Aso+onsen+ryokan', notes: L('Check-out ~10:00 · one night at Aso.', 'เช็คเอาท์ ~10:00 · พักอาโซ 1 คืน') } },
 
-        { type: 'step', time: '08:30', meridiem: 'Morning', kind: 'Transfer', icon: 'car',
+        { type: 'step', time: '09:00', meridiem: 'Morning', kind: 'Transfer', icon: 'car',
           title: L('Drive via Yamanami Highway', 'ขับผ่านยามานามิไฮเวย์'),
-          place: L('Kumamoto → Beppu · ~2.5 h', 'คุมาโมโตะ → เบปปุ · ~2.5 ชม.'),
-          blurb: L('A ribbon of road over rolling volcanic moorland between Aso and the eastern coast.',
-                   'ถนนสายโค้งทอดข้ามทุ่งภูเขาไฟลูกคลื่นระหว่างอาโซกับชายฝั่งตะวันออก'),
+          place: L('Aso → Beppu · ~2 h', 'อาโซ → เบปปุ · ~2 ชม.'),
+          blurb: L('A ribbon of road over rolling volcanic moorland from Aso down to the eastern coast.',
+                   'ถนนสายโค้งทอดข้ามทุ่งภูเขาไฟลูกคลื่นจากอาโซลงสู่ชายฝั่งตะวันออก'),
           refs: { map: 'https://maps.google.com/?q=Yamanami+Highway',
                   notes: L('Optional detour: Takachiho Gorge (adds time — check winter boat hours).', 'แวะเสริมได้: หุบเขาทาคาชิโฮะ (ใช้เวลาเพิ่ม เช็กรอบเรือหน้าหนาว)') } },
 
@@ -3413,11 +3357,9 @@ const TRIP = {
           refs: { map: 'https://maps.google.com/?q=Yufuin+ryokan', reservation: { time: '19:15', code: 'YUF-RYO', party: L('2 nights · onsen ryokan', '2 คืน · เรียวกังออนเซน') } } },
       ],
     },
-
-    // ───────────────────────── DAY 5 · YUFUIN ─────────────────────────
     {
-      label: 'Day 05', labelTh: 'วันที่ 05', theme: 'botan',
-      date: L('Wednesday · 16 Dec 2026', 'พุธ · 16 Dec 2026'),
+      label: 'Day 04', labelTh: 'วันที่ 04', theme: 'botan',
+      date: L('Tuesday · 15 Dec 2026', 'อังคาร · 15 Dec 2026'),
       title: L('Yufuin', 'ยูฟุอิน'),
       subtitle: L('Lake Mist & a Mountain Onsen Town', 'ไอหมอกริมบึง & เมืองออนเซนเชิงเขา'),
       note: L(
@@ -3476,11 +3418,9 @@ const TRIP = {
           refs: { booking: L('Included in stay', 'รวมในค่าที่พัก') } },
       ],
     },
-
-    // ───────────────────────── DAY 6 · RETURN TO FUKUOKA ─────────────────────────
     {
-      label: 'Day 06', labelTh: 'วันที่ 06', theme: 'kurogane',
-      date: L('Thursday · 17 Dec 2026', 'พฤหัสบดี · 17 Dec 2026'),
+      label: 'Day 05', labelTh: 'วันที่ 05', theme: 'kurogane',
+      date: L('Wednesday · 16 Dec 2026', 'พุธ · 16 Dec 2026'),
       title: L('Return to Fukuoka', 'กลับสู่ฟุกุโอกะ'),
       subtitle: L('Drive Back & a Fukuoka Evening', 'ขับกลับ & ค่ำคืนฟุกุโอกะ'),
       note: L(
@@ -3526,10 +3466,10 @@ const TRIP = {
 
         { type: 'step', time: '14:00', meridiem: 'Afternoon', kind: 'Check-in', icon: 'bed',
           title: L('Check in · city hotel', 'เช็คอิน · โรงแรมในเมือง'),
-          place: L('City hotel · return stay (nights 6–8)', 'โรงแรมในเมือง · ช่วงกลับ (คืน 6–8)'),
+          place: L('City hotel · return stay (nights 5–8)', 'โรงแรมในเมือง · ช่วงกลับ (คืน 5–8)'),
           blurb: L('Check in to the Fukuoka base for the rest of the trip — one hotel, right through to the flight home.',
                    'เช็คอินโรงแรมฐานฟุกุโอกะสำหรับช่วงที่เหลือ — โรงแรมเดียวยาวจนวันบินกลับ'),
-          refs: { map: 'https://maps.google.com/?q=Fukuoka+city+hotels', reservation: { time: '14:00', code: 'FUK-RETURN', party: L('Base nights 6–8 · to book', 'พักคืนที่ 6–8 · รอจอง') }, notes: L('Separate from the Monterey (night 1) — return-stay hotel still to be decided.', 'คนละที่กับ Monterey (คืน 1) — โรงแรมช่วงกลับยังไม่ได้เลือก') } },
+          refs: { map: 'https://maps.google.com/?q=Fukuoka+city+hotels', reservation: { time: '14:00', code: 'FUK-RETURN', party: L('Base nights 5–8 · to book', 'พักคืนที่ 5–8 · รอจอง') }, notes: L('Separate from the Monterey (night 1) — return-stay hotel still to be decided.', 'คนละที่กับ Monterey (คืน 1) — โรงแรมช่วงกลับยังไม่ได้เลือก') } },
 
         { type: 'feature', time: '14:45', meridiem: 'Afternoon', kind: 'Park', imageId: 'a-d9-ohori',
           title: L('Ohori Park', 'สวนโอโฮริ'),
@@ -3569,8 +3509,69 @@ const TRIP = {
           refs: { map: 'https://maps.google.com/?q=Canal+City+Hakata' } },
       ],
     },
+    {
+      label: 'Day 06', labelTh: 'วันที่ 06', theme: 'kohaku',
+      date: L('Thursday · 17 Dec 2026', 'พฤหัสบดี · 17 Dec 2026'),
+      title: L('Kumamoto', 'คุมาโมโตะ'),
+      subtitle: L('Castle City', 'เมืองปราสาท'),
+      note: L(
+        'A Shinkansen day-trip from the Fukuoka base — one of the great fortresses of Japan, a strolling garden, the local sweet and horse sashimi, then the bullet train back by night.',
+        'เที่ยวเช้าไป-เย็นกลับด้วยชินคันเซนจากฐานฟุกุโอกะ — หนึ่งในป้อมปราการยิ่งใหญ่ของญี่ปุ่น สวนเดินเล่น ขนมพื้นเมือง และม้าดิบ แล้วนั่งชินคันเซนกลับตอนค่ำ'
+      ),
+      coverId: 'day3-cover',
+      activities: [
+        { type: 'step', time: '08:00', meridiem: 'Morning', kind: 'Train', icon: 'train',
+          title: L('Shinkansen · Hakata → Kumamoto', 'ชินคันเซน · ฮากาตะ → คุมาโมโตะ'),
+          place: L('~40 min · Kyushu Shinkansen', '~40 นาที · ชินคันเซนคิวชู'),
+          blurb: L('A quick bullet-train hop down from Hakata — no car today. Trains run several times an hour; reserved or non-reserved both fine.',
+                   'นั่งชินคันเซนจากฮากาตะลงมาแป๊บเดียว — วันนี้ไม่ใช้รถ · รถออกหลายเที่ยวต่อชั่วโมง จองหรือไม่จองที่นั่งก็ได้'),
+          refs: { map: 'https://maps.google.com/?q=Hakata+Station', notes: L('~¥3,300 each way · ~40 min · day-trip from the Fukuoka hotel.', '~¥3,300 ต่อเที่ยว · ~40 นาที · ไป-กลับจากโรงแรมฟุกุโอกะ') } },
 
-    // ───────────────────────── DAY 7 · DAZAIFU ─────────────────────────
+        { type: 'feature', time: '09:30', meridiem: 'Morning', kind: 'Castle', imageId: 'a-d4-castle',
+          title: L('Kumamoto Castle', 'ปราสาทคุมาโมโตะ'),
+          place: L('One of Japan’s great keeps', 'หนึ่งในปราสาทยิ่งใหญ่ของญี่ปุ่น'),
+          blurb: L('Black-and-white towers on cyclopean curved stone walls — the main keep reopened after the 2016 quake. Go early before the crowds.',
+                   'หอปราสาทขาว-ดำบนกำแพงหินโค้งมหึมา — หอหลักเปิดอีกครั้งหลังแผ่นดินไหวปี 2016 · ไปเช้าก่อนคนเยอะ'),
+          refs: { map: 'https://maps.google.com/?q=Kumamoto+Castle', official: 'https://castle.kumamoto-guide.jp/en/',
+                  booking: L('Keep entry · ¥800', 'เข้าหอปราสาท · ¥800') } },
+
+        { type: 'feature', time: '11:30', meridiem: 'Midday', kind: 'Dining', imageId: 'a-d4-katsuretsu',
+          title: L('Katsuretsu-tei', 'คัตสึเร็ตสึเทอิ'),
+          place: L('Tonkatsu · AMU Plaza', 'ทงคตสึ · AMU Plaza'),
+          blurb: L('A Kumamoto institution for thick, juicy pork cutlet with shredded cabbage and house sauce.',
+                   'ร้านดังคุมาโมโตะ ทงคตสึชิ้นหนาฉ่ำ เสิร์ฟกับกะหล่ำซอยและซอสสูตรร้าน'),
+          refs: { map: 'https://maps.google.com/?q=Katsuretsutei+Amu+Plaza+Kumamoto', official: 'https://hayashi-sangyo.jp/' } },
+
+        { type: 'feature', time: '13:30', meridiem: 'Afternoon', kind: 'Castle', imageId: 'a-d4-suizenji',
+          title: L('Suizenji Jojuen', 'สวนซุยเซนจิ'),
+          place: L('A miniature Tokaido garden', 'สวนจำลองเส้นทางโทไกโด'),
+          blurb: L('A strolling garden that recreates the old road to Edo in miniature — including a little grassy Mt Fuji.',
+                   'สวนเดินเล่นที่จำลองเส้นทางสู่เอโดะแบบย่อส่วน — มีภูเขาฟูจิหญ้าจิ๋วด้วย'),
+          refs: { map: 'https://maps.google.com/?q=Suizenji+Jojuen', booking: L('Entry · ¥400', 'ค่าเข้า · ¥400') } },
+
+        { type: 'feature', time: '15:30', meridiem: 'Afternoon', kind: 'Sweets', imageId: 'a-d4-sweets',
+          title: L('Ikinari Dango', 'อิคินาริ ดังโงะ'),
+          place: L('Kumamoto sweet · Sakuranobaba', 'ขนมคุมาโมโตะ · ซากุระโนะบาบะ'),
+          blurb: L('A homely Kumamoto sweet — steamed dough wrapped around a slice of sweet potato and sweet red-bean paste. Grab one at the castle-side Sakuranobaba Josaien.',
+                   'ขนมพื้นบ้านคุมาโมโตะ — แป้งนึ่งห่อมันหวานกับถั่วแดงกวน หาซื้อได้ที่ซากุระโนะบาบะข้างปราสาท'),
+          refs: { map: 'https://maps.google.com/?q=Sakuranobaba+Josaien+Kumamoto' } },
+
+        { type: 'feature', time: '17:00', meridiem: 'Evening', kind: 'Dining', imageId: 'a-d4-basashi',
+          title: L('Basashi early dinner', 'มื้อเย็นบาซาชิ'),
+          place: L('Horse sashimi · Kumamoto specialty', 'ม้าดิบ · ของขึ้นชื่อคุมาโมโตะ'),
+          blurb: L('The local delicacy — lean and fatty cuts of horse, sliced thin with ginger, garlic and sweet soy. An early dinner before the train back.',
+                   'ของพื้นเมือง — ม้าดิบทั้งส่วนเนื้อแดงและติดมัน หั่นบางเสิร์ฟกับขิง กระเทียม และซีอิ๊วหวาน · มื้อเย็นก่อนขึ้นรถไฟกลับ'),
+          refs: { map: 'https://maps.google.com/?q=Basashi+Kumamoto',
+                  reservation: { time: '17:00', code: 'BASA-01', party: L('Early dinner · book ahead', 'มื้อเย็น · จองล่วงหน้า') } } },
+
+        { type: 'step', time: '19:00', meridiem: 'Night', kind: 'Train', icon: 'train',
+          title: L('Shinkansen · Kumamoto → Fukuoka', 'ชินคันเซน · คุมาโมโตะ → ฟุกุโอกะ'),
+          place: L('~40 min · back to the city hotel', '~40 นาที · กลับโรงแรมในเมือง'),
+          blurb: L('Bullet train back to Hakata and the Fukuoka base for the night — fast trains run late, so no rush.',
+                   'นั่งชินคันเซนกลับฮากาตะและฐานฟุกุโอกะเพื่อนอน — รถเที่ยวด่วนมีถึงดึก ไม่ต้องรีบ'),
+          refs: { map: 'https://maps.google.com/?q=Kumamoto+Station', notes: L('Sleep in Fukuoka — same city hotel as the other return nights.', 'นอนฟุกุโอกะ — โรงแรมเดิมช่วงกลับ') } },
+      ],
+    },
     {
       label: 'Day 07', labelTh: 'วันที่ 07', theme: 'urushi',
       date: L('Friday · 18 Dec 2026', 'ศุกร์ · 18 Dec 2026'),
@@ -3661,8 +3662,6 @@ const TRIP = {
           refs: { map: 'https://maps.google.com/?q=Seimon+Barai+izakaya+Nakasu+Fukuoka', notes: L('Nakasu-Kawabata · lively, fresh seafood · book for a group.', 'นากาสึ-คาวาบาตะ · คึกคัก ซีฟู้ดสด · กลุ่มควรจอง') } },
       ],
     },
-
-    // ───────────────────────── DAY 8 · ITOSHIMA ─────────────────────────
     {
       label: 'Day 08', labelTh: 'วันที่ 08', theme: 'ai',
       date: L('Saturday · 19 Dec 2026', 'เสาร์ · 19 Dec 2026'),
@@ -3739,8 +3738,6 @@ const TRIP = {
           refs: { map: 'https://maps.google.com/?q=Ibiza+Fukuoka+Daimyo', official: 'https://www.ibiza-fukuoka.jp/', notes: L('5F The Shops, 1-12-56 Daimyo · 21:00–05:00 · ~6 min from Tenjin Stn · flight is 11:40 next day, pace yourself.', 'ชั้น 5 The Shops, 1-12-56 ไดเมียว · 21:00–05:00 · ~6 นาทีจากสถานีเท็นจิน · พรุ่งนี้บิน 11:40 เผื่อแรงด้วย') } },
       ],
     },
-
-    // ───────────────────────── DAY 9 · DEPARTURE ─────────────────────────
     {
       label: 'Day 09', labelTh: 'วันที่ 09', theme: 'ai',
       date: L('Sunday · 20 Dec 2026', 'อาทิตย์ · 20 Dec 2026'),
@@ -3833,11 +3830,11 @@ const DESTINATION = {
   ],
   // route stops drive the animated map on the Overview screen; `day` = first day index (0-based)
   route: [
-    { city: L('Fukuoka', 'ฟุกุโอกะ'), days: L('Base · Day 1 & 6–8', 'ฐาน · วันที่ 1 & 6–8'), day: 0, theme: 'kurogane', imageId: 'r-fukuoka', mx: 35.5, my: 13.5 },
+    { city: L('Fukuoka', 'ฟุกุโอกะ'), days: L('Base · Day 1 & 5–8', 'ฐาน · วันที่ 1 & 5–8'), day: 0, theme: 'kurogane', imageId: 'r-fukuoka', mx: 35.5, my: 13.5 },
     { city: L('Aso', 'อาโซ'), days: L('Day 2', 'วันที่ 2'), day: 1, theme: 'hisui', imageId: 'r-aso', mx: 55.5, my: 36.5 },
-    { city: L('Kumamoto', 'คุมาโมโตะ'), days: L('Day 3', 'วันที่ 3'), day: 2, theme: 'kohaku', imageId: 'r-kumamoto', mx: 43.5, my: 47 },
-    { city: L('Beppu', 'เบปปุ'), days: L('Day 4', 'วันที่ 4'), day: 3, theme: 'urushi', imageId: 'r-beppu', mx: 77, my: 21 },
-    { city: L('Yufuin', 'ยูฟุอิน'), days: L('Days 4–5', 'วันที่ 4–5'), day: 4, theme: 'botan', imageId: 'r-yufuin', mx: 67.5, my: 29.5 },
+    { city: L('Kumamoto', 'คุมาโมโตะ'), days: L('Day 6', 'วันที่ 6'), day: 5, theme: 'kohaku', imageId: 'r-kumamoto', mx: 43.5, my: 47 },
+    { city: L('Beppu', 'เบปปุ'), days: L('Day 3', 'วันที่ 3'), day: 2, theme: 'urushi', imageId: 'r-beppu', mx: 77, my: 21 },
+    { city: L('Yufuin', 'ยูฟุอิน'), days: L('Days 3–4', 'วันที่ 3–4'), day: 3, theme: 'botan', imageId: 'r-yufuin', mx: 67.5, my: 29.5 },
     { city: L('Itoshima', 'อิโตชิมะ'), days: L('Day 8', 'วันที่ 8'), day: 7, theme: 'ai', imageId: 'r-itoshima', mx: 22, my: 21 },
   ],
 };
@@ -6283,7 +6280,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', function () {
       navigator.serviceWorker.register('sw.js').catch(function () {});
-      if (window.caches) caches.open('wwn-kyushu-v57').then(function (c) {
+      if (window.caches) caches.open('wwn-kyushu-v58').then(function (c) {
         c.add(new Request(location.href, { cache: 'reload' })).catch(function () {});
       });
     });
