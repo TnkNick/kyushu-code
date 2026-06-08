@@ -1,7 +1,7 @@
 {
-  "name": "WWN · Kyushu Trip",
-  "short_name": "Kyushu Trip",
-  "description": "Fukuoka × Kyushu itinerary · 4–14 Dec 2026",
+  "name": "World Wide Nick",
+  "short_name": "World Wide Nick",
+  "description": "Fukuoka × Kyushu itinerary · 12–20 Dec 2026",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
