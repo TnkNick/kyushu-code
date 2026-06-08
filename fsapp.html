@@ -21,13 +21,13 @@
   html, body { height: 100%; background: #ff00ff; font-family: ui-monospace, Menlo, monospace; overflow: hidden; }
 
   /* Candidate A — position:fixed; inset:0 (the layout viewport).  Dark fill, GREEN bottom edge. */
-  #cFixed { position: fixed; inset: 0; background: #0c1218; border-bottom: 6px solid #00ff66; }
+  #cFixed { position: relative; height: 60px; background: #0c1218; border-bottom: 6px solid #00ff66; }
 
   /* Candidate B — height:100lvh (large viewport).  CYAN bottom edge, transparent. */
-  #cLvh { position: absolute; top: 0; left: 0; right: 0; height: 100lvh; border-bottom: 6px solid #00e5ff; pointer-events: none; }
+  #cLvh { position: absolute; top: 0; left: 0; right: 0; height: 60px; border-bottom: 6px solid #00e5ff; pointer-events: none; }
 
   /* Candidate C — height:100dvh (dynamic viewport).  GOLD dashed bottom edge. */
-  #cDvh { position: absolute; top: 0; left: 0; right: 0; height: 100dvh; border-bottom: 6px dashed #ffcc00; pointer-events: none; }
+  #cDvh { position: absolute; top: 0; left: 0; right: 0; height: 60px; border-bottom: 6px dashed #ffcc00; pointer-events: none; }
 
   #out { position: fixed; top: 130px; left: 50%; transform: translateX(-50%); z-index: 99;
     background: rgba(0,0,0,.9); color: #00ff88; font-size: 14px; line-height: 1.55; white-space: pre;
