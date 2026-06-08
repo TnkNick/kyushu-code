@@ -3277,10 +3277,10 @@ const TRIP = {
       label: 'Day 03', labelTh: 'วันที่ 03', theme: 'urushi',
       date: L('Monday · 14 Dec 2026', 'จันทร์ · 14 Dec 2026'),
       title: L('Beppu', 'เบปปุ'),
-      subtitle: L('Yamanami Highway & the Hells', 'เส้นทางยามานามิ & บ่อนรก'),
+      subtitle: L('Yamanami Highway & Mt Tsurumi', 'เส้นทางยามานามิ & กระเช้าสึรุมิ'),
       note: L(
-        'One of the great drives in Japan — the Yamanami Highway across the highlands to the steaming coast of Beppu, where coloured hot-spring "hells" boil up out of the ground.',
-        'หนึ่งในเส้นทางขับรถที่สวยที่สุดในญี่ปุ่น — ยามานามิไฮเวย์ข้ามที่ราบสูงสู่ชายฝั่งที่พ่นไอน้ำของเบปปุ ที่ซึ่ง "บ่อนรก" น้ำพุร้อนสีต่างๆ เดือดพุ่งขึ้นจากพื้น'
+        'One of the great drives in Japan — the Yamanami Highway across the highlands down to steaming Beppu: a ropeway up Mt Tsurumi, the wild monkeys of Takasakiyama, and a hot-sand bath by the sea.',
+        'หนึ่งในเส้นทางขับรถที่สวยที่สุดในญี่ปุ่น — ยามานามิไฮเวย์ข้ามที่ราบสูงลงสู่เบปปุที่พ่นไอน้ำ: กระเช้าขึ้นเขาสึรุมิ ลิงป่าทากาซากิยามะ และอาบทรายร้อนริมทะเล'
       ),
       coverId: 'day4-cover',
       activities: [
@@ -3306,20 +3306,19 @@ const TRIP = {
                    'แวะจุดพักรถ สั่งซุปดังโงะจิรุและเบนโตะท้องถิ่น'),
           refs: { map: 'https://maps.google.com/?q=Michi+no+Eki+Aso' } },
 
-        { type: 'feature', time: '14:00', meridiem: 'Afternoon', kind: 'View', imageId: 'a-d5-umijigoku',
-          title: L('Umi Jigoku', 'อุมิจิโกกุ'),
-          place: L('The cobalt-blue hell', 'บ่อนรกสีฟ้าโคบอลต์'),
-          blurb: L('The prettiest of the Beppu hells — a steaming pond the colour of deep cobalt, hot enough to boil eggs.',
-                   'สวยที่สุดในบรรดาบ่อนรกเบปปุ — บ่อพ่นไอน้ำสีฟ้าโคบอลต์เข้ม ร้อนพอต้มไข่ได้'),
-          refs: { map: 'https://maps.google.com/?q=Umi+Jigoku+Beppu', official: 'https://www.beppu-jigoku.com/',
-                  booking: L('Hells pass · ¥2,200 (7 hells)', 'พาสบ่อนรก · ¥2,200 (7 บ่อ)') } },
+        { type: 'feature', time: '13:30', meridiem: 'Afternoon', kind: 'View', imageId: 'a-d3-ropeway',
+          title: L('Beppu Ropeway · Mt Tsurumi', 'กระเช้าเบปปุ · เขาสึรุมิ'),
+          place: L('1,375 m summit · 10-min cable car', 'ยอดเขา 1,375 ม. · กระเช้า 10 นาที'),
+          blurb: L('A 10-minute cable car up Mt Tsurumi for a panorama over Beppu Bay and the steaming town — clear winter air, and sometimes frosted “snow flowers” on the summit trees.',
+                   'นั่งกระเช้า 10 นาทีขึ้นเขาสึรุมิ ชมวิวพาโนรามาอ่าวเบปปุและเมืองที่พ่นไอน้ำ — อากาศหน้าหนาวใส บางวันมี “ดอกไม้น้ำแข็ง” เกาะต้นไม้บนยอด'),
+          refs: { map: 'https://maps.google.com/?q=Beppu+Ropeway', official: 'https://www.beppu-ropeway.co.jp/', booking: L('Round trip · ~¥1,800', 'ไป-กลับ · ~¥1,800') } },
 
-        { type: 'feature', time: '15:00', meridiem: 'Afternoon', kind: 'View', imageId: 'a-d5-chinoike',
-          title: L('Chinoike Jigoku', 'จิโนะอิเกะจิโกกุ'),
-          place: L('The blood-red hell', 'บ่อนรกสีเลือด'),
-          blurb: L('Iron-rich clay turns this pond a violent red — steam drifting off a pool the colour of rust.',
-                   'ดินเหนียวที่มีธาตุเหล็กทำให้บ่อนี้แดงจัด ไอน้ำลอยจากบ่อสีสนิม'),
-          refs: { map: 'https://maps.google.com/?q=Chinoike+Jigoku+Beppu' } },
+        { type: 'feature', time: '15:00', meridiem: 'Afternoon', kind: 'View', imageId: 'a-d3-monkey',
+          title: L('Takasakiyama Monkey Park', 'สวนลิงทากาซากิยามะ'),
+          place: L('~1,500 wild macaques', 'ลิงป่า ~1,500 ตัว'),
+          blurb: L('A hillside reserve where troops of wild Japanese macaques come down to be fed — right up close, and in winter they huddle together against the cold. The Umitamago aquarium is right next door.',
+                   'เขตอนุรักษ์เชิงเขาที่ฝูงลิงแสมญี่ปุ่นป่าลงมากินอาหาร — ดูใกล้ๆ หน้าหนาวลิงจะเกาะกลุ่มกันให้อุ่น · ติดกันคืออควาเรียมอุมิตามาโกะ'),
+          refs: { map: 'https://maps.google.com/?q=Takasakiyama+Monkey+Park', official: 'https://www.takasakiyama.jp/', booking: L('Entry · ~¥520 · combo ticket with the Umitamago aquarium', 'ค่าเข้า · ~¥520 · มีตั๋วรวมกับอควาเรียมอุมิตามาโกะ') } },
 
         { type: 'step', time: '16:00', meridiem: 'Afternoon', kind: 'Onsen', icon: 'bed',
           title: L('Beppu sand bath', 'อาบทรายร้อนเบปปุ'),
@@ -6280,7 +6279,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', function () {
       navigator.serviceWorker.register('sw.js').catch(function () {});
-      if (window.caches) caches.open('wwn-kyushu-v59').then(function (c) {
+      if (window.caches) caches.open('wwn-kyushu-v60').then(function (c) {
         c.add(new Request(location.href, { cache: 'reload' })).catch(function () {});
       });
     });
