@@ -8,11 +8,11 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Trirong:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Noto+Serif+Thai:wght@400;500;600;700&family=IBM+Plex+Sans+Thai:wght@300;400;500;600;700&family=Hanken+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet" />
 <link rel="manifest" href="fsapp-manifest.json" />
-<meta name="theme-color" content="#14100b" />
+<meta name="theme-color" content="#000000" />
 <meta name="mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 <link rel="apple-touch-icon" href="icon-192.png" />
-<style>*{margin:0;padding:0;box-sizing:border-box}html,body{height:100%;background:#102030;overflow:hidden;font-family:monospace}#app-splash{display:none!important}</style>
+<style>*{margin:0;padding:0;box-sizing:border-box}html,body{height:100%;background:#102030;overflow:hidden;font-family:monospace}#app-splash,.rotate-lock{display:none!important}</style>
 </head>
 <body>
   <div id="app-splash" role="status" aria-label="Loading Kyushu Trip">
@@ -693,11 +693,11 @@
 })();
 
 </script>
-  <!-- [fs-test] babel removed -->
-  <!-- [fs-test] babel removed -->
-  <!-- [fs-test] babel removed -->
-  <!-- [fs-test] babel removed -->
-  <!-- [fs-test] babel removed -->
+  <!-- babel removed -->
+  <!-- babel removed -->
+  <!-- babel removed -->
+  <!-- babel removed -->
+  <!-- babel removed -->
 <script>
   /* PWA: capture the install prompt (Chrome/Android) for the in-app install tip */
   window.__bip = null;
@@ -706,7 +706,7 @@
   /* PWA: register the offline service worker + self-cache this page (any filename) */
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', function () {
-      Promise.resolve()/*[fs-test] sw off*/.catch(function () {});
+      Promise.resolve()/*sw off*/.catch(function () {});
       if (window.caches) caches.open('wwn-kyushu-v50').then(function (c) {
         c.add(new Request(location.href, { cache: 'reload' })).catch(function () {});
       });
