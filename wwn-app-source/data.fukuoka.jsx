@@ -620,6 +620,13 @@ const TRIP = {
           blurb: L('A boisterous fisherman-style izakaya in Nakasu — live tanks, super-fresh sashimi and grilled skewers, with sake and beer flowing. Great for a lively group dinner.',
                    'อิซากายะสไตล์ชาวประมงคึกคักย่านนากาสึ — มีบ่อปลาเป็นๆ ซาชิมิสดมาก ของย่างเสียบไม้ พร้อมสาเก-เบียร์ไม่หยุด เหมาะกับมื้อค่ำกลุ่มครึกครื้น'),
           refs: { map: 'https://maps.google.com/?q=Seimon+Barai+izakaya+Nakasu+Fukuoka', notes: L('Nakasu-Kawabata · lively, fresh seafood · book for a group.', 'นากาสึ-คาวาบาตะ · คึกคัก ซีฟู้ดสด · กลุ่มควรจอง') } },
+
+        { type: 'feature', time: '23:00', meridiem: 'Night', kind: 'Nightlife', imageId: 'a-d9-nightlife',
+          title: L('Ibiza FUKUOKA', 'Ibiza FUKUOKA'),
+          place: L('Nightclub · Daimyo', 'ไนต์คลับ · ไดเมียว'),
+          blurb: L('A proper Friday night out — Ibiza, the Daimyo club on the 5th floor of The Shops (open 21:00 till 5am). Push on from the izakaya for whoever’s still going.',
+                   'จัดหนักคืนศุกร์ — Ibiza ไนต์คลับย่านไดเมียว ชั้น 5 ตึก The Shops (เปิด 21:00 ยันตี 5) · ต่อจากอิซากายะสำหรับคนที่ยังไหว'),
+          refs: { map: 'https://maps.google.com/?q=Ibiza+Fukuoka+Daimyo', official: 'https://www.ibiza-fukuoka.jp/', notes: L('5F The Shops, 1-12-56 Daimyo · 21:00–05:00 · ~6 min from Tenjin Stn · pace it — two more days to go.', 'ชั้น 5 The Shops, 1-12-56 ไดเมียว · 21:00–05:00 · ~6 นาทีจากสถานีเท็นจิน · เผื่อแรง ยังเหลืออีก 2 วัน') } },
       ],
     },
     {
@@ -689,13 +696,6 @@ const TRIP = {
           blurb: L('A Fukuoka classic you have not had yet — clear, collagen-rich chicken hot pot at Hakata Hanamidori (branches by Hakata Station). Finish with rice porridge in the broth.',
                    'อาหารคลาสสิกฟุกุโอกะที่ยังไม่ได้กิน — หม้อไฟไก่น้ำใสคอลลาเจนเข้มข้นที่ฮานามิโดริ (มีสาขาใกล้สถานีฮากาตะ) · ปิดท้ายด้วยข้าวต้มในน้ำซุป'),
           refs: { map: 'https://maps.google.com/?q=Hakata+Hanamidori+Mizutaki', notes: L('Popular — reserve ahead, especially for a group.', 'ยอดนิยม — จองล่วงหน้า โดยเฉพาะมาเป็นกลุ่ม') } },
-
-        { type: 'feature', time: '22:30', meridiem: 'Night', kind: 'Nightlife', imageId: 'a-d9-nightlife',
-          title: L('Ibiza FUKUOKA', 'Ibiza FUKUOKA'),
-          place: L('Nightclub · Daimyo', 'ไนต์คลับ · ไดเมียว'),
-          blurb: L('The last night out — close the trip at Ibiza, the Daimyo club on the 5th floor of The Shops (Friday night, open 21:00 till 5am).',
-                   'คืนสุดท้ายจัดเต็ม — ปิดทริปที่ Ibiza ไนต์คลับย่านไดเมียว ชั้น 5 ตึก The Shops (คืนศุกร์ เปิด 21:00 ยันตี 5)'),
-          refs: { map: 'https://maps.google.com/?q=Ibiza+Fukuoka+Daimyo', official: 'https://www.ibiza-fukuoka.jp/', notes: L('5F The Shops, 1-12-56 Daimyo · 21:00–05:00 · ~6 min from Tenjin Stn · flight is 11:40 next day, pace yourself.', 'ชั้น 5 The Shops, 1-12-56 ไดเมียว · 21:00–05:00 · ~6 นาทีจากสถานีเท็นจิน · พรุ่งนี้บิน 11:40 เผื่อแรงด้วย') } },
       ],
     },
     {
