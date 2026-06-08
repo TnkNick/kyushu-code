@@ -3101,6 +3101,13 @@ const TRIP = {
                    'ยังเช็คอินไม่ได้ — ฝากกระเป๋าแล้วออกไปเที่ยวต่อ'),
           refs: { map: 'https://maps.google.com/?q=Hotel+Monterey+La+Soeur+Fukuoka', notes: L('Too early to check in — bags held at the front desk.', 'ยังเช็คอินไม่ได้ — ฝากกระเป๋าไว้ที่เคาน์เตอร์') } },
 
+        { type: 'feature', time: '10:00', meridiem: 'Morning', kind: 'Dining', imageId: 'a-d1-ramen',
+          title: L('Menya Gaga · Tenjin', 'เมนยะ กาก้า · เท็นจิน'),
+          place: L('21-hour tonkotsu · the first bowl', 'ทงคตสึเคี่ยว 21 ชม. · ชามแรก'),
+          blurb: L('Straight off the red-eye to the first bowl — a local-loved Hakata tonkotsu in Imaizumi, minutes from Tenjin: a creamy, odour-free pork broth simmered over 21 hours, house-made thin noodles, and an optional spicy garlic tare.',
+                   'ลงจากไฟลท์ดึกมาซดชามแรกเลย — ร้านทงคตสึฮากาตะที่คนท้องถิ่นรัก ย่านอิมาอิซุมิ ห่างจากเท็นจินไม่กี่นาที: น้ำซุปหมูเนียนไม่คาว เคี่ยวกว่า 21 ชม. เส้นบางทำเอง และเติมซอสเผ็ดกระเทียมได้'),
+          refs: { map: 'https://maps.google.com/?q=Menya+Gaga+Tenjin+Fukuoka', official: 'http://menya-gaga.com/', notes: L('No.1 is the ajitama (soft-egg) ramen; add the house spicy tare, a kaedama refill and a takana onigiri. Check the opening time — if it’s not open this early, swap to a nearby Hakata ramen.', 'เมนูอันดับ 1 คือราเมงไข่ยางมะตูม; เพิ่มซอสเผ็ด เติมเส้น (คาเอดามะ) และข้าวปั้นทาคานะ · เช็กเวลาเปิดร้าน ถ้ายังไม่เปิดเช้าขนาดนี้ สลับไปร้านราเมงฮากาตะใกล้ๆ ได้') } },
+
         { type: 'feature', time: '10:30', meridiem: 'Morning', kind: 'Sweets', imageId: 'a-d1-imdonut',
           title: L('I’m Donut?', 'I’m Donut?'),
           place: L('Daimyo · the original', 'ไดเมียว · ต้นตำรับ'),
@@ -3115,14 +3122,14 @@ const TRIP = {
                    'ร้านกาแฟฟุกุโอกะอบอุ่น ขึ้นชื่อลาเต้อาร์ตรูปแผนที่ฟุกุโอกะ — จิบกาแฟถ่ายรูปเริ่มเช้าสบายๆ'),
           refs: { map: 'https://maps.google.com/?q=Fuk+Coffee+Fukuoka', notes: L('Near Gion / Reizenmachi · small shop, may wait at peak.', 'ย่านกิอน / เรเซนมาจิ · ร้านเล็ก ช่วงพีคอาจรอ') } },
 
-        { type: 'feature', time: '12:00', meridiem: 'Midday', kind: 'Dining', imageId: 'a-d1-ramen',
-          title: L('Menya Gaga · Tenjin', 'เมนยะ กาก้า · เท็นจิน'),
-          place: L('21-hour tonkotsu · Imaizumi', 'ทงคตสึเคี่ยว 21 ชม. · อิมาอิซุมิ'),
-          blurb: L('A local-loved Hakata tonkotsu shop in Imaizumi, minutes from Tenjin — a creamy, odour-free pork broth simmered over 21 hours, house-made thin noodles, and an optional spicy garlic tare.',
-                   'ร้านทงคตสึฮากาตะที่คนท้องถิ่นรัก ย่านอิมาอิซุมิ ห่างจากเท็นจินไม่กี่นาที — น้ำซุปหมูเนียนไม่คาว เคี่ยวกว่า 21 ชม. เส้นบางทำเอง และเติมซอสเผ็ดกระเทียมได้'),
-          refs: { map: 'https://maps.google.com/?q=Menya+Gaga+Tenjin+Fukuoka', official: 'http://menya-gaga.com/', notes: L('No.1 is the ajitama (soft-egg) ramen; add the house spicy tare, a kaedama noodle refill and a takana onigiri. Small shop in Imaizumi — expect a short queue at lunch.', 'เมนูอันดับ 1 คือราเมงไข่ยางมะตูม; เพิ่มซอสเผ็ดของร้าน สั่งเติมเส้น (คาเอดามะ) และข้าวปั้นทาคานะ · ร้านเล็กย่านอิมาอิซุมิ มื้อเที่ยงอาจต้องต่อคิวเล็กน้อย') } },
+        { type: 'feature', time: '13:30', meridiem: 'Afternoon', kind: 'Dining', imageId: 'a-d1-gyukatsu',
+          title: L('Gyukatsu · Tenjin', 'กิวคัตสึ · เท็นจิน'),
+          place: L('Crisp panko beef · grill-your-own', 'เนื้อชุบเกล็ดขนมปังกรอบ · ย่างเอง'),
+          blurb: L('Rare beef in a crisp panko crust, sliced and seared — finish each piece yourself on a little hot stone, with miso soup, barley rice and grated yam. Gyukatsu Motomura or Katsugyu in Tenjin.',
+                   'เนื้อแดงชุบเกล็ดขนมปังทอดกรอบ หั่นเป็นชิ้น เสิร์ฟพร้อมหินร้อนให้ย่างเองทีละชิ้น กินคู่ซุปมิโซะ ข้าวบาร์เลย์ และมันภูเขาขูด · ร้าน Gyukatsu Motomura หรือ Katsugyu ย่านเท็นจิน'),
+          refs: { map: 'https://maps.google.com/?q=Gyukatsu+Motomura+Tenjin+Fukuoka', notes: L('Popular chain — usually a short queue; counter seats turn over fast.', 'ร้านเชนยอดนิยม — มักมีคิวสั้นๆ ที่นั่งเคาน์เตอร์หมุนเร็ว') } },
 
-        { type: 'feature', time: '14:00', meridiem: 'Afternoon', kind: 'Wander', imageId: 'a-d1-canalcity',
+        { type: 'feature', time: '15:00', meridiem: 'Afternoon', kind: 'Wander', imageId: 'a-d1-canalcity',
           title: L('Shopping in Tenjin', 'ช้อปปิ้งย่านเท็นจิน'),
           place: L('Malls & shops near the hotel', 'ห้าง & ร้านใกล้โรงแรม'),
           blurb: L('An easy first afternoon around Tenjin & Daimyo, minutes from the hotel — from UNIQLO/GU to department stores, character goods, homeware and Don Quijote. Tap for the shop list.',
@@ -3313,7 +3320,14 @@ const TRIP = {
                    'นั่งกระเช้า 10 นาทีขึ้นเขาสึรุมิ ชมวิวพาโนรามาอ่าวเบปปุและเมืองที่พ่นไอน้ำ — อากาศหน้าหนาวใส บางวันมี “ดอกไม้น้ำแข็ง” เกาะต้นไม้บนยอด'),
           refs: { map: 'https://maps.google.com/?q=Beppu+Ropeway', official: 'https://www.beppu-ropeway.co.jp/', booking: L('Round trip · ~¥1,800', 'ไป-กลับ · ~¥1,800') } },
 
-        { type: 'feature', time: '15:00', meridiem: 'Afternoon', kind: 'View', imageId: 'a-d3-monkey',
+        { type: 'feature', time: '14:30', meridiem: 'Afternoon', kind: 'View', imageId: 'a-d5-umijigoku',
+          title: L('Umi Jigoku · the blue pond', 'อุมิจิโกกุ · บ่อฟ้า'),
+          place: L('The cobalt-blue hell', 'บ่อนรกสีฟ้าโคบอลต์'),
+          blurb: L('The prettiest of the Beppu hells — a steaming pond the colour of deep cobalt, hot enough to boil eggs. The one hell worth keeping.',
+                   'สวยที่สุดในบรรดาบ่อนรกเบปปุ — บ่อพ่นไอน้ำสีฟ้าโคบอลต์เข้ม ร้อนพอต้มไข่ได้ · บ่อเดียวที่เก็บไว้'),
+          refs: { map: 'https://maps.google.com/?q=Umi+Jigoku+Beppu', official: 'https://www.beppu-jigoku.com/', booking: L('Entry · ¥500 (single hell)', 'ค่าเข้า · ¥500 (บ่อเดียว)') } },
+
+        { type: 'feature', time: '15:30', meridiem: 'Afternoon', kind: 'View', imageId: 'a-d3-monkey',
           title: L('Takasakiyama Monkey Park', 'สวนลิงทากาซากิยามะ'),
           place: L('~1,500 wild macaques', 'ลิงป่า ~1,500 ตัว'),
           blurb: L('A hillside reserve where troops of wild Japanese macaques come down to be fed — right up close, and in winter they huddle together against the cold. The Umitamago aquarium is right next door.',
@@ -6279,7 +6293,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', function () {
       navigator.serviceWorker.register('sw.js').catch(function () {});
-      if (window.caches) caches.open('wwn-kyushu-v60').then(function (c) {
+      if (window.caches) caches.open('wwn-kyushu-v61').then(function (c) {
         c.add(new Request(location.href, { cache: 'reload' })).catch(function () {});
       });
     });
