@@ -6232,7 +6232,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', function () {
       navigator.serviceWorker.register('sw.js').catch(function () {});
-      if (window.caches) caches.open('wwn-kyushu-v46').then(function (c) {
+      if (window.caches) caches.open('wwn-kyushu-v47').then(function (c) {
         c.add(new Request(location.href, { cache: 'reload' })).catch(function () {});
       });
     });
@@ -6245,6 +6245,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
   var probe = document.createElement('div');
   probe.style.cssText = 'position:fixed;left:0;bottom:0;width:1px;height:env(safe-area-inset-bottom,0px);pointer-events:none;visibility:hidden;';
   document.body.appendChild(probe);
+  var probeT = document.createElement('div');
+  probeT.style.cssText = 'position:fixed;left:0;top:0;width:1px;height:env(safe-area-inset-top,0px);pointer-events:none;visibility:hidden;';
+  document.body.appendChild(probeT);
   var line = document.createElement('div');
   line.style.cssText = 'position:fixed;left:0;right:0;bottom:0;height:4px;background:#00ff66;z-index:2147483600;pointer-events:none;';
   document.body.appendChild(line);
@@ -6256,14 +6259,20 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
     var root = document.getElementById('root');
     var rb = root ? root.getBoundingClientRect().bottom : 0;
     var vv = window.visualViewport ? window.visualViewport.height : 0;
+    var dm = matchMedia('(display-mode:fullscreen)').matches ? 'fullscreen'
+           : matchMedia('(display-mode:standalone)').matches ? 'standalone'
+           : matchMedia('(display-mode:minimal-ui)').matches ? 'minimal-ui' : 'browser';
     box.textContent =
       'innerHeight   '+window.innerHeight+'\n'+
       'screen.height '+screen.height+'\n'+
-      'docClientH    '+document.documentElement.clientHeight+'\n'+
-      'visualVP.h    '+px(vv)+'\n'+
+      'outerHeight   '+window.outerHeight+'\n'+
+      'screenY       '+px(window.screenY||window.screenTop||0)+'\n'+
+      'standalone    '+(navigator.standalone===true)+'\n'+
+      'display-mode  '+dm+'\n'+
+      'safe-top      '+px(probeT.getBoundingClientRect().height)+'\n'+
       'safe-bottom   '+px(sab)+'\n'+
       'root.bottom   '+px(rb)+'\n'+
-      'gap below root '+px(window.innerHeight - rb);
+      'gap-below-root '+px(window.innerHeight - rb);
   }
   upd(); setInterval(upd, 400);
 })();
