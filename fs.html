@@ -65,6 +65,8 @@
     }
     upd(); setInterval(upd, 400);
     window.addEventListener('resize', upd);
+    /* TEST: register a service worker (the app has one, fs.html didn't) */
+    if ('serviceWorker' in navigator) { navigator.serviceWorker.register('fs-sw.js').catch(function(){}); }
   </script>
 </body>
 </html>
