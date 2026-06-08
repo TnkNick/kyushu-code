@@ -179,7 +179,10 @@ function App() {
   const VIEW_DEPTH = { overview: 0, itinerary: 1, bookings: 1, checklist: 1, wallet: 1, more: 1, guides: 2, party: 2, settings: 2, emergency: 2 };
   const depthOf = (v) => (Object.prototype.hasOwnProperty.call(VIEW_DEPTH, v) ? VIEW_DEPTH[v] : 1);
   const prevViewRef = React.useRef(view);
-  const navDir = depthOf(view) >= depthOf(prevViewRef.current) ? 'fwd' : 'back';
+  const dCur = depthOf(view), dPrev = depthOf(prevViewRef.current);
+  // Slide ONLY the "More" sub-pages (depth 2): entering one slides in from the right, going back
+  // from the left. Plain bottom-tab switches (depth 0/1) stay instant — no slide.
+  const navDir = (dCur < 2 && dPrev < 2) ? 'none' : (dCur >= dPrev ? 'fwd' : 'back');
   React.useEffect(() => { prevViewRef.current = view; }, [view]);
 
   return (
