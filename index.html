@@ -15,10 +15,11 @@
 <style>
   /* ───────────────────────── reset ───────────────────────── */
   * { margin: 0; padding: 0; box-sizing: border-box; touch-action: manipulation; }
-  /* iOS PWA full-screen: a STATIC 100dvh element is what makes iOS expand the web view to the
-     full physical screen (innerHeight 932 on a Pro Max). Do NOT pin this to a fixed px such as
-     var(--app-h)=window.innerHeight — that removes the only 100dvh element and iOS drops to 873. */
-  html, body { height: 100%; height: 100dvh; -webkit-text-size-adjust: 100%; }
+  /* iOS PWA full-screen: html/body MUST use 100lvh (LARGE viewport), not 100dvh. lvh = the full
+     physical screen (innerHeight 932 on a Pro Max) and makes iOS expand the installed-PWA web view
+     to the whole screen. 100dvh / 100% / a fixed px (var(--app-h)=window.innerHeight) all resolve to
+     the SHORT 873px (status-bar-reserved) → dead strip at the bottom on every page. Confirmed on device. */
+  html, body { height: 100%; height: 100lvh; -webkit-text-size-adjust: 100%; }
   /* installed PWA only: lock the document so the top bar can't rubber-band away on overscroll */
   @media (display-mode: standalone) { html, body { overflow: hidden; overscroll-behavior: none; } }
   body {
@@ -6210,7 +6211,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', function () {
       navigator.serviceWorker.register('sw.js').catch(function () {});
-      if (window.caches) caches.open('wwn-kyushu-v51').then(function (c) {
+      if (window.caches) caches.open('wwn-kyushu-v52').then(function (c) {
         c.add(new Request(location.href, { cache: 'reload' })).catch(function () {});
       });
     });
