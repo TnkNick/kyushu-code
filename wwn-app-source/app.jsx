@@ -174,6 +174,17 @@ function App() {
     if (meta) meta.setAttribute('content', paper);
   }, [activeTheme, resolvedMode]);
 
+  // Force the root to the TRUE screen height. On an installed iOS PWA, height:100% /
+  // 100dvh resolve SHORT of the physical screen (they exclude the bottom home-indicator
+  // band) — leaving a dead strip on every page. window.innerHeight IS the full height.
+  React.useEffect(() => {
+    const setH = () => document.documentElement.style.setProperty('--app-h', window.innerHeight + 'px');
+    setH();
+    window.addEventListener('resize', setH);
+    window.addEventListener('orientationchange', setH);
+    return () => { window.removeEventListener('resize', setH); window.removeEventListener('orientationchange', setH); };
+  }, []);
+
   return (
     <LangCtx.Provider value={lang}>
       <div className={cls.join(' ')} data-theme={activeTheme} data-mode={resolvedMode} data-lang={lang} style={rootStyle}>
