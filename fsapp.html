@@ -18,13 +18,13 @@
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   /* MAGENTA body = the "uncovered" indicator. Any magenta on screen = a gap. */
-  html, body { height: 100%; background: #ff00ff; font-family: ui-monospace, Menlo, monospace; overflow: hidden; }
+  html, body { height: 100lvh; background: #ff00ff; font-family: ui-monospace, Menlo, monospace; overflow: hidden; }
 
   /* Candidate A — position:fixed; inset:0 (the layout viewport).  Dark fill, GREEN bottom edge. */
   #cFixed { position: relative; height: 60px; background: #0c1218; border-bottom: 6px solid #00ff66; }
 
   /* Candidate B — height:100lvh (large viewport).  CYAN bottom edge, transparent. */
-  #cLvh { position: absolute; top: 0; left: 0; right: 0; height: 100lvh; border-bottom: 6px solid #00e5ff; pointer-events: none; }
+  #cLvh { position: absolute; top: 0; left: 0; right: 0; height: 60px; border-bottom: 6px solid #00e5ff; pointer-events: none; }
 
   /* Candidate C — height:100dvh (dynamic viewport).  GOLD dashed bottom edge. */
   #cDvh { position: absolute; top: 0; left: 0; right: 0; height: 60px; border-bottom: 6px dashed #ffcc00; pointer-events: none; }
