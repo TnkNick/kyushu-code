@@ -1356,8 +1356,9 @@
     /* keep the back button (under "More") visible + labelled on phones */
     .chrome-nav.chrome-back { display: inline-flex; padding: 6px 13px; }
     .chrome-nav.chrome-back span { display: inline; }
-    .mtab { display: flex; }
-    .bk-stage, .stage { padding-bottom: 72px; }
+    /* TEST: bottom bar hidden + content runs full-bleed to the bottom edge */
+    .mtab { display: none; }
+    .bk-stage, .stage { padding-bottom: calc(16px + env(safe-area-inset-bottom, 0px)); }
     /* sub-pages (no bottom tab bar): let content run to the bottom edge — no dead gap */
     .view-guides .bk-stage, .view-party .bk-stage, .view-settings .bk-stage, .view-emergency .bk-stage {
       padding-bottom: calc(20px + env(safe-area-inset-bottom, 0px)); }
@@ -6218,7 +6219,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', function () {
       navigator.serviceWorker.register('sw.js').catch(function () {});
-      if (window.caches) caches.open('wwn-kyushu-v42').then(function (c) {
+      if (window.caches) caches.open('wwn-kyushu-v43').then(function (c) {
         c.add(new Request(location.href, { cache: 'reload' })).catch(function () {});
       });
     });
