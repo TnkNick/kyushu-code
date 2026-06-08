@@ -3520,6 +3520,13 @@ const TRIP = {
           blurb: L('Wind down at the canal-side mall complex — a fountain-and-light show on the hour and a giant winter tree lit up after dark, with shops and cafés to browse.',
                    'ปิดท้ายที่คอมเพล็กซ์ห้างริมคลอง — โชว์น้ำพุประกอบไฟทุกชั่วโมงและต้นไม้ฤดูหนาวยักษ์ประดับไฟยามค่ำ พร้อมร้านค้าและคาเฟ่ให้เดินเล่น'),
           refs: { map: 'https://maps.google.com/?q=Canal+City+Hakata' } },
+
+        { type: 'feature', time: '21:30', meridiem: 'Night', kind: 'Nightlife', imageId: 'a-d5-bar',
+          title: L('Oyafuko-dori bar street', 'ถนนบาร์โอยาฟุโกะ'),
+          place: L('Tenjin’s nightlife alley', 'ตรอกกลางคืนเท็นจิน'),
+          blurb: L('Tenjin’s classic drinking street — a strip of tiny bars, izakaya and music spots stacked up the buildings. Wander in, grab a counter, and bar-hop your first night back in the city.',
+                   'ถนนดื่มคลาสสิกของเท็นจิน — เรียงรายด้วยบาร์เล็กๆ อิซากายะ และร้านดนตรีซ้อนกันขึ้นไปตามตึก · เดินเข้าไปหาเคาน์เตอร์ แล้วบาร์ฮอปคืนแรกที่กลับเข้าเมือง'),
+          refs: { map: 'https://maps.google.com/?q=Oyafukodori+Tenjin+Fukuoka', notes: L('Off Tenjin / Daimyo · most spots are small, keep some cash.', 'ใกล้เท็นจิน / ไดเมียว · ร้านส่วนใหญ่เล็ก เตรียมเงินสด') } },
       ],
     },
     {
@@ -3583,6 +3590,13 @@ const TRIP = {
           blurb: L('Bullet train back to Hakata and the Fukuoka base for the night — fast trains run late, so no rush.',
                    'นั่งชินคันเซนกลับฮากาตะและฐานฟุกุโอกะเพื่อนอน — รถเที่ยวด่วนมีถึงดึก ไม่ต้องรีบ'),
           refs: { map: 'https://maps.google.com/?q=Kumamoto+Station', notes: L('Sleep in Fukuoka — same city hotel as the other return nights.', 'นอนฟุกุโอกะ — โรงแรมเดิมช่วงกลับ') } },
+
+        { type: 'feature', time: '21:00', meridiem: 'Night', kind: 'Nightlife', imageId: 'a-d6-bar',
+          title: L('Late drink in Daimyo', 'ดื่มดึกย่านไดเมียว'),
+          place: L('Craft beer / standing bar', 'คราฟต์เบียร์ / บาร์ยืนดื่ม'),
+          blurb: L('Back off the bullet train — a low-key nightcap in Daimyo: a craft-beer taproom or a tiny standing bar (kakuuchi) for a sake or highball before bed.',
+                   'ลงจากชินคันเซน — ดื่มปิดท้ายสบายๆ ย่านไดเมียว: แท็ปรูมคราฟต์เบียร์ หรือบาร์ยืนดื่มเล็กๆ (คาคุอุจิ) สั่งสาเกหรือไฮบอลก่อนนอน'),
+          refs: { map: 'https://maps.google.com/?q=Daimyo+craft+beer+bar+Fukuoka', notes: L('Walkable from Tenjin · plenty of small bars open late.', 'เดินจากเท็นจินได้ · มีบาร์เล็กเปิดดึกเยอะ') } },
       ],
     },
     {
@@ -3749,6 +3763,13 @@ const TRIP = {
           blurb: L('A Fukuoka classic you have not had yet — clear, collagen-rich chicken hot pot at Hakata Hanamidori (branches by Hakata Station). Finish with rice porridge in the broth.',
                    'อาหารคลาสสิกฟุกุโอกะที่ยังไม่ได้กิน — หม้อไฟไก่น้ำใสคอลลาเจนเข้มข้นที่ฮานามิโดริ (มีสาขาใกล้สถานีฮากาตะ) · ปิดท้ายด้วยข้าวต้มในน้ำซุป'),
           refs: { map: 'https://maps.google.com/?q=Hakata+Hanamidori+Mizutaki', notes: L('Popular — reserve ahead, especially for a group.', 'ยอดนิยม — จองล่วงหน้า โดยเฉพาะมาเป็นกลุ่ม') } },
+
+        { type: 'feature', time: '22:00', meridiem: 'Night', kind: 'Nightlife', imageId: 'a-d8-bar',
+          title: L('Last-night cocktail bar', 'บาร์ค็อกเทลคืนสุดท้าย'),
+          place: L('Daimyo craft cocktails', 'ค็อกเทลฝีมือดี ไดเมียว'),
+          blurb: L('The last proper night out — settle into one of Daimyo’s craft cocktail bars (Fukuoka has a serious bar scene) for a slow, well-made drink to close the trip.',
+                   'คืนเต็มสุดท้าย — นั่งชิลที่บาร์ค็อกเทลฝีมือดีย่านไดเมียว (ฟุกุโอกะมีวงการบาร์จริงจัง) จิบเครื่องดื่มทำประณีตช้าๆ ปิดทริป'),
+          refs: { map: 'https://maps.google.com/?q=cocktail+bar+Daimyo+Fukuoka', notes: L('Many run till ~01:00–02:00 · flight is the next day, so pace it.', 'หลายร้านเปิดถึง ~01:00–02:00 · พรุ่งนี้บิน เผื่อแรงด้วย') } },
       ],
     },
     {
@@ -6293,7 +6314,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', function () {
       navigator.serviceWorker.register('sw.js').catch(function () {});
-      if (window.caches) caches.open('wwn-kyushu-v61').then(function (c) {
+      if (window.caches) caches.open('wwn-kyushu-v62').then(function (c) {
         c.add(new Request(location.href, { cache: 'reload' })).catch(function () {});
       });
     });
