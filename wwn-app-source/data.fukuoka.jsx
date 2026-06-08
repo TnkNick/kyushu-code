@@ -1,5 +1,5 @@
 // data.jsx — Fukuoka × Kyushu itinerary (bilingual EN / TH), self-drive.
-// Trip: 4–12 Dec 2026 · 8 nights · WWN · World Wide Nick.
+// Trip: 12–20 Dec 2026 · 8 nights · WWN · World Wide Nick.
 // Two entry kinds:
 //   • feature → big hero image + caption + reference dock (sightseeing, dining)
 //   • step    → compact logistics row with a line-icon (flights, car, transit, check-in)
@@ -9,7 +9,7 @@ const L = (en, th, ja) => ({ en, th, ja });
 const TRIP = {
   title: L('Kyushu', 'คิวชู'),
   subtitle: L('Eight Nights Around the Southern Island', 'แปดคืนรอบเกาะใต้'),
-  dates: L('4 — 12 Dec 2026', '4 — 12 Dec 2026'),
+  dates: L('12 — 20 Dec 2026', '12 — 20 Dec 2026'),
   meta: L('Early Winter · Onsen & Illuminations', 'ต้นฤดูหนาว · ออนเซนและไฟประดับ'),
   origin: L('A self-drive itinerary', 'แผนการเดินทางขับรถเอง'),
   coverId: 'cover-hero',
