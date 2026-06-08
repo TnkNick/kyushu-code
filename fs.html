@@ -61,12 +61,22 @@
         'safe-top      ' + px(pT.getBoundingClientRect().height) + '\n' +
         'safe-bottom   ' + px(pB.getBoundingClientRect().height) + '\n' +
         'standalone    ' + (navigator.standalone === true) + '\n' +
-        'display-mode  ' + dm;
+        'display-mode  ' + dm + '\n' +
+        '-------------------\n' +
+        'theme-set(2s) ' + (window.__tcset === true) + '  <-- watch innerHeight!';
     }
     upd(); setInterval(upd, 400);
     window.addEventListener('resize', upd);
-    /* TEST: register a service worker (the app has one, fs.html didn't) */
     if ('serviceWorker' in navigator) { navigator.serviceWorker.register('fs-sw.js').catch(function(){}); }
+    /* TEST: replicate the Kyushu app's post-mount theme-color + canvas paint. If innerHeight
+       drops 932 -> 873 right after this fires at 2s, the dynamic theme-color is the culprit. */
+    setTimeout(function () {
+      document.documentElement.style.backgroundColor = '#14100b';
+      document.body.style.backgroundColor = '#14100b';
+      var m = document.querySelector('meta[name="theme-color"]');
+      if (m) m.setAttribute('content', '#14100b');
+      window.__tcset = true;
+    }, 2000);
   </script>
 </body>
 </html>
