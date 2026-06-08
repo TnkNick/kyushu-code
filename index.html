@@ -38,7 +38,10 @@
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
   }
-  #root { height: 100%; height: 100dvh; height: var(--app-h, 100dvh); }
+  /* Bulletproof full-screen: pin the React root to all 4 physical edges of the
+     viewport (viewport-fit=cover makes the viewport the whole screen, incl. the
+     home-indicator band) — no reliance on height units iOS standalone miscomputes. */
+  #root { position: fixed; inset: 0; }
   button { font-family: inherit; cursor: pointer; color: inherit; }
   a { color: inherit; }
 
@@ -97,8 +100,6 @@
     --serif: "Sukhumvit Set", "IBM Plex Sans Thai", "Hanken Grotesk", system-ui, sans-serif;
     --scale: 1;
     height: 100%;
-    height: 100dvh;
-    height: var(--app-h, 100dvh);
     font-family: var(--sans);
     background: var(--paper);
     color: var(--ink);
@@ -6231,7 +6232,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', function () {
       navigator.serviceWorker.register('sw.js').catch(function () {});
-      if (window.caches) caches.open('wwn-kyushu-v44').then(function (c) {
+      if (window.caches) caches.open('wwn-kyushu-v45').then(function (c) {
         c.add(new Request(location.href, { cache: 'reload' })).catch(function () {});
       });
     });
