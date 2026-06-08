@@ -12,6 +12,18 @@
 <meta name="mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 <link rel="apple-touch-icon" href="icon-192.png" />
+<!-- iOS PWA launch / splash screens (portrait) — iPhone SE2/3 → 16 Pro Max -->
+<link rel="apple-touch-startup-image" media="screen and (device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="splash/launch-750x1334.png" />
+<link rel="apple-touch-startup-image" media="screen and (device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="splash/launch-1242x2208.png" />
+<link rel="apple-touch-startup-image" media="screen and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="splash/launch-1125x2436.png" />
+<link rel="apple-touch-startup-image" media="screen and (device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="splash/launch-828x1792.png" />
+<link rel="apple-touch-startup-image" media="screen and (device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="splash/launch-1242x2688.png" />
+<link rel="apple-touch-startup-image" media="screen and (device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="splash/launch-1170x2532.png" />
+<link rel="apple-touch-startup-image" media="screen and (device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="splash/launch-1284x2778.png" />
+<link rel="apple-touch-startup-image" media="screen and (device-width: 393px) and (device-height: 852px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="splash/launch-1179x2556.png" />
+<link rel="apple-touch-startup-image" media="screen and (device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="splash/launch-1290x2796.png" />
+<link rel="apple-touch-startup-image" media="screen and (device-width: 402px) and (device-height: 874px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="splash/launch-1206x2622.png" />
+<link rel="apple-touch-startup-image" media="screen and (device-width: 440px) and (device-height: 956px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="splash/launch-1320x2868.png" />
 <style>
   /* ───────────────────────── reset ───────────────────────── */
   * { margin: 0; padding: 0; box-sizing: border-box; touch-action: manipulation; }
@@ -1234,7 +1246,7 @@
   .mtab { position: fixed; left: 0; right: 0; bottom: 0; z-index: 55; pointer-events: none; }
   .mtab-inner { display: flex; align-items: center; justify-content: space-between; gap: 4px;
     width: 100%; pointer-events: auto;
-    padding: 8px 16px 10px;
+    padding: 8px 16px calc(10px + env(safe-area-inset-bottom, 0px));
     background: var(--paper);
     border-top: 1px solid var(--line); }
   .mtab-item { display: flex; align-items: center; justify-content: center; flex: 0 0 auto;
@@ -1348,9 +1360,9 @@
     /* keep the back button (under "More") visible + labelled on phones */
     .chrome-nav.chrome-back { display: inline-flex; padding: 6px 13px; }
     .chrome-nav.chrome-back span { display: inline; }
-    /* TEST: bottom bar hidden + content runs full-bleed to the bottom edge */
-    .mtab { display: none; }
-    .bk-stage, .stage { padding-bottom: 16px; }
+    /* primary view nav lives in the bottom tab bar on phones */
+    .mtab { display: flex; }
+    .bk-stage, .stage { padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px)); }
     /* sub-pages (no bottom tab bar): let content run to the bottom edge — no dead gap */
     .view-guides .bk-stage, .view-party .bk-stage, .view-settings .bk-stage, .view-emergency .bk-stage {
       padding-bottom: calc(20px + env(safe-area-inset-bottom, 0px)); }
@@ -6211,50 +6223,11 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', function () {
       navigator.serviceWorker.register('sw.js').catch(function () {});
-      if (window.caches) caches.open('wwn-kyushu-v52').then(function (c) {
+      if (window.caches) caches.open('wwn-kyushu-v53').then(function (c) {
         c.add(new Request(location.href, { cache: 'reload' })).catch(function () {});
       });
     });
   }
-</script>
-<script>
-/* TEMP full-screen diagnostic — shows real device measurements; removed once solved */
-(function(){
-  function px(v){ return Math.round(v); }
-  var probe = document.createElement('div');
-  probe.style.cssText = 'position:fixed;left:0;bottom:0;width:1px;height:env(safe-area-inset-bottom,0px);pointer-events:none;visibility:hidden;';
-  document.body.appendChild(probe);
-  var probeT = document.createElement('div');
-  probeT.style.cssText = 'position:fixed;left:0;top:0;width:1px;height:env(safe-area-inset-top,0px);pointer-events:none;visibility:hidden;';
-  document.body.appendChild(probeT);
-  var line = document.createElement('div');
-  line.style.cssText = 'position:fixed;left:0;right:0;bottom:0;height:4px;background:#00ff66;z-index:2147483600;pointer-events:none;';
-  document.body.appendChild(line);
-  var box = document.createElement('div');
-  box.style.cssText = 'position:fixed;right:6px;bottom:70px;z-index:2147483600;background:rgba(0,0,0,.9);color:#0f6;font:12px/1.5 ui-monospace,Menlo,monospace;padding:10px 12px;border-radius:10px;pointer-events:none;white-space:pre;';
-  document.body.appendChild(box);
-  function upd(){
-    var sab = probe.getBoundingClientRect().height;
-    var root = document.getElementById('root');
-    var rb = root ? root.getBoundingClientRect().bottom : 0;
-    var vv = window.visualViewport ? window.visualViewport.height : 0;
-    var dm = matchMedia('(display-mode:fullscreen)').matches ? 'fullscreen'
-           : matchMedia('(display-mode:standalone)').matches ? 'standalone'
-           : matchMedia('(display-mode:minimal-ui)').matches ? 'minimal-ui' : 'browser';
-    box.textContent =
-      'innerHeight   '+window.innerHeight+'\n'+
-      'screen.height '+screen.height+'\n'+
-      'outerHeight   '+window.outerHeight+'\n'+
-      'screenY       '+px(window.screenY||window.screenTop||0)+'\n'+
-      'standalone    '+(navigator.standalone===true)+'\n'+
-      'display-mode  '+dm+'\n'+
-      'safe-top      '+px(probeT.getBoundingClientRect().height)+'\n'+
-      'safe-bottom   '+px(sab)+'\n'+
-      'root.bottom   '+px(rb)+'\n'+
-      'gap-below-root '+px(window.innerHeight - rb);
-  }
-  upd(); setInterval(upd, 400);
-})();
 </script>
 </body>
 </html>
