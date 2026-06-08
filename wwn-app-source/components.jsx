@@ -380,6 +380,17 @@ function fmtTime(date, tz) {
     return new Intl.DateTimeFormat('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false, timeZone: tz }).format(date);
   } catch (e) { return '--:--:--'; }
 }
+// Trip date range from the itinerary days, e.g. "12–20 Dec 2026" (take the part after "·")
+function tripDateRange(x) {
+  const days = (window.TRIP && window.TRIP.days) || [];
+  if (!days.length) return '';
+  const part = (d) => x(d.date).split('·').pop().trim();
+  const a = part(days[0]), b = part(days[days.length - 1]);
+  const am = a.replace(/^\d+\s*/, ''), bm = b.replace(/^\d+\s*/, '');
+  const ad = (a.match(/^\d+/) || [''])[0], bd = (b.match(/^\d+/) || [''])[0];
+  return am === bm ? (ad + '–' + bd + ' ' + bm) : (a.replace(/\s*\d{4}$/, '') + ' – ' + b);
+}
+
 function Clock({ variant = 'chrome' }) {
   const { x } = useT();
   const now = useNow();
@@ -387,10 +398,11 @@ function Clock({ variant = 'chrome' }) {
   const bkk = fmtTime(now, 'Asia/Bangkok');
   if (variant === 'chrome') {
     const dateStr = now.toLocaleDateString('en-GB', { timeZone: 'Asia/Tokyo', day: 'numeric', month: 'short', year: 'numeric' });
+    const jpHM = jp.split(':').slice(0, 2).join(':');
     return (
-      <div className="clock-chrome" title="Japan Standard Time">
-        <span className="clock-date">{dateStr}</span>
-        <span className="clock-time mono"><span className="clock-zone">JP</span>{jp.split(':').slice(0, 2).join(':')}</span>
+      <div className="clock-chrome" title="Trip dates · now (JST)">
+        <span className="clock-trip">{tripDateRange(x)}</span>
+        <span className="clock-now mono">{dateStr} · <span className="clock-zone">JP</span>{jpHM}</span>
       </div>
     );
   }

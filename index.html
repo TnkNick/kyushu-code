@@ -106,6 +106,7 @@
     background: var(--paper);
     color: var(--ink);
     position: relative;
+    overflow-x: clip;
     background-image: var(--grain, none);
     background-attachment: fixed;
     transition: background-color .9s ease, color .9s ease;
@@ -264,6 +265,13 @@
   /* give the non-itinerary views a definite height so their .bk-stage scrolls internally
      (needed now that the standalone PWA locks body scroll) */
   .view-bookings, .view-checklist, .view-wallet, .view-more, .view-guides, .view-party, .view-settings, .view-emergency { height: 100%; }
+  /* page-swap slide: deeper pages enter from the RIGHT, going back enters from the LEFT */
+  .view-swap { height: 100%; }
+  .view-swap.swap-fwd  { animation: swapInRight .3s cubic-bezier(.22,.61,.36,1) both; }
+  .view-swap.swap-back { animation: swapInLeft  .3s cubic-bezier(.22,.61,.36,1) both; }
+  @keyframes swapInRight { from { transform: translateX(100%); } to { transform: translateX(0); } }
+  @keyframes swapInLeft  { from { transform: translateX(-100%); } to { transform: translateX(0); } }
+  @media (prefers-reduced-motion: reduce) { .view-swap.swap-fwd, .view-swap.swap-back { animation: none; } }
   .overview { height: 100%; display: flex; flex-direction: column; }
   .ov-stage { flex: 1; overflow-y: auto; scroll-behavior: smooth; }
   .ov-kicker { display: inline-flex; align-items: center; gap: 13px; font-size: clamp(10px,1vw,12px);
@@ -591,6 +599,10 @@
   .clock-chrome { display: inline-flex; flex-direction: column; align-items: flex-end; gap: 0; padding: 4px 11px; border-radius: 13px;
     border: 1px solid var(--line); color: var(--ink-soft); line-height: 1.18; }
   .clock-chrome .clock-ic { display: inline-flex; color: var(--accent); }
+  /* nav-bar date stack: trip dates (primary) over the live local date+time (one line) */
+  .clock-trip { font-size: 12px; font-weight: 700; color: var(--ink); white-space: nowrap; letter-spacing: .005em; }
+  .clock-now { font-size: 9.5px; font-weight: 600; color: var(--ink-soft); white-space: nowrap; font-variant-numeric: tabular-nums; letter-spacing: .02em; margin-top: 1px; }
+  .clock-now .clock-zone { margin: 0 3px 0 1px; }
   .clock-date { font-size: 9.5px; letter-spacing: .03em; font-weight: 600; color: var(--ink-soft); white-space: nowrap; }
   .clock-zone { font-size: 9px; letter-spacing: .1em; font-weight: 700; color: var(--accent); margin-right: 4px; }
   .clock-time { font-size: 13px; letter-spacing: .02em; color: var(--ink); font-variant-numeric: tabular-nums; font-weight: 600; }
@@ -1244,11 +1256,14 @@
   /* full-width bar flush to the left / right / bottom edges; active tab = accent pill
      that expands its label in, inactive tabs = icon only. */
   .mtab { position: fixed; left: 0; right: 0; bottom: 0; z-index: 55; pointer-events: none; }
+  /* floating pill: detached from the screen edges (insets L/R + a gap above the home indicator) */
   .mtab-inner { display: flex; align-items: center; justify-content: space-between; gap: 4px;
-    width: 100%; pointer-events: auto;
-    padding: 8px 16px calc(10px + env(safe-area-inset-bottom, 0px));
+    margin: 0 14px calc(12px + env(safe-area-inset-bottom, 0px));
+    pointer-events: auto;
+    padding: 7px 10px;
     background: var(--paper);
-    border-top: 1px solid var(--line); }
+    border: 1px solid var(--line); border-radius: 26px;
+    box-shadow: 0 10px 30px rgba(0,0,0,.20), 0 2px 8px rgba(0,0,0,.10); }
   .mtab-item { display: flex; align-items: center; justify-content: center; flex: 0 0 auto;
     height: 44px; min-width: 44px; padding: 0; border: none; border-radius: 100px; overflow: hidden;
     background: transparent; color: var(--ink-soft); cursor: pointer;
@@ -1360,9 +1375,9 @@
     /* keep the back button (under "More") visible + labelled on phones */
     .chrome-nav.chrome-back { display: inline-flex; padding: 6px 13px; }
     .chrome-nav.chrome-back span { display: inline; }
-    /* primary view nav lives in the bottom tab bar on phones */
+    /* primary view nav lives in the floating bottom tab bar on phones */
     .mtab { display: flex; }
-    .bk-stage, .stage { padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px)); }
+    .bk-stage, .stage { padding-bottom: calc(86px + env(safe-area-inset-bottom, 0px)); }
     /* sub-pages (no bottom tab bar): let content run to the bottom edge — no dead gap */
     .view-guides .bk-stage, .view-party .bk-stage, .view-settings .bk-stage, .view-emergency .bk-stage {
       padding-bottom: calc(20px + env(safe-area-inset-bottom, 0px)); }
@@ -3827,7 +3842,7 @@ const DESTINATION = {
 // ── Travel party (placeholders — edit names/details; no phone/social by design) ──
 const TRAVELERS = {
   title: L('The Party', 'ผู้ร่วมเดินทาง'),
-  subtitle: L('Four travellers, one itinerary', 'สี่ผู้เดินทาง หนึ่งแผนการเดินทาง'),
+  subtitle: L('Five travellers, one itinerary', 'ห้าผู้เดินทาง หนึ่งแผนการเดินทาง'),
   people: [
     { name: L('Nick', 'นิค'), role: L('Trip lead · planner', 'หัวหน้าทริป · ผู้วางแผน'),
       home: L('Bangkok', 'กรุงเทพฯ'), detail: L('Itinerary & budget', 'แผนเที่ยว & งบ'), imageId: 'p-nick' },
@@ -3837,6 +3852,8 @@ const TRAVELERS = {
       home: L('Bangkok', 'กรุงเทพฯ'), detail: L('Books the restaurants', 'จองร้านอาหาร'), imageId: 'p-tagot' },
     { name: L('P’Tam', 'พี่ตั้ม'), role: L('Driver', 'คนขับ'),
       home: L('Tokyo', 'โตเกียว'), detail: L('Friend joining the trip', 'เพื่อนมาเที่ยวด้วย'), imageId: 'p-tum' },
+    { name: L('Ellie', 'แอลลี่'), role: L('Driver · photographer', 'คนขับ · ช่างภาพ'),
+      home: L('Bangkok', 'กรุงเทพฯ'), detail: L('Drives & shoots the trip', 'ขับรถ & ถ่ายรูปทริป'), imageId: 'p-ellie' },
   ],
 };
 
@@ -4608,6 +4625,17 @@ function fmtTime(date, tz) {
     return new Intl.DateTimeFormat('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false, timeZone: tz }).format(date);
   } catch (e) { return '--:--:--'; }
 }
+// Trip date range from the itinerary days, e.g. "12–20 Dec 2026" (take the part after "·")
+function tripDateRange(x) {
+  const days = (window.TRIP && window.TRIP.days) || [];
+  if (!days.length) return '';
+  const part = (d) => x(d.date).split('·').pop().trim();
+  const a = part(days[0]), b = part(days[days.length - 1]);
+  const am = a.replace(/^\d+\s*/, ''), bm = b.replace(/^\d+\s*/, '');
+  const ad = (a.match(/^\d+/) || [''])[0], bd = (b.match(/^\d+/) || [''])[0];
+  return am === bm ? (ad + '–' + bd + ' ' + bm) : (a.replace(/\s*\d{4}$/, '') + ' – ' + b);
+}
+
 function Clock({ variant = 'chrome' }) {
   const { x } = useT();
   const now = useNow();
@@ -4615,10 +4643,11 @@ function Clock({ variant = 'chrome' }) {
   const bkk = fmtTime(now, 'Asia/Bangkok');
   if (variant === 'chrome') {
     const dateStr = now.toLocaleDateString('en-GB', { timeZone: 'Asia/Tokyo', day: 'numeric', month: 'short', year: 'numeric' });
+    const jpHM = jp.split(':').slice(0, 2).join(':');
     return (
-      <div className="clock-chrome" title="Japan Standard Time">
-        <span className="clock-date">{dateStr}</span>
-        <span className="clock-time mono"><span className="clock-zone">JP</span>{jp.split(':').slice(0, 2).join(':')}</span>
+      <div className="clock-chrome" title="Trip dates · now (JST)">
+        <span className="clock-trip">{tripDateRange(x)}</span>
+        <span className="clock-now mono">{dateStr} · <span className="clock-zone">JP</span>{jpHM}</span>
       </div>
     );
   }
@@ -6090,6 +6119,14 @@ function App() {
     if (meta) meta.setAttribute('content', paper);
   }, [activeTheme, resolvedMode]);
 
+  // Page-swap direction: deeper views (the More sub-pages) slide IN from the right;
+  // navigating back (shallower) slides in from the left. Depth drives the direction.
+  const VIEW_DEPTH = { overview: 0, itinerary: 1, bookings: 1, checklist: 1, wallet: 1, more: 1, guides: 2, party: 2, settings: 2, emergency: 2 };
+  const depthOf = (v) => (Object.prototype.hasOwnProperty.call(VIEW_DEPTH, v) ? VIEW_DEPTH[v] : 1);
+  const prevViewRef = React.useRef(view);
+  const navDir = depthOf(view) >= depthOf(prevViewRef.current) ? 'fwd' : 'back';
+  React.useEffect(() => { prevViewRef.current = view; }, [view]);
+
   return (
     <LangCtx.Provider value={lang}>
       <div className={cls.join(' ')} data-theme={activeTheme} data-mode={resolvedMode} data-lang={lang} style={rootStyle}>
@@ -6099,6 +6136,7 @@ function App() {
           <span className="orb orb-3"></span>
           <span className="bg-grain"></span>
         </div>
+        <div className={'view-swap swap-' + navDir} key={view}>
         {view === 'overview' ? (
           <div className="view-overview">
             <Overview trip={TRIP} dest={DESTINATION} travelers={TRAVELERS}
@@ -6148,6 +6186,7 @@ function App() {
             </main>
           </div>
         )}
+        </div>
 
         {detail ? <ActivityDetail a={detail} onClose={() => setDetail(null)} /> : null}
 
@@ -6223,7 +6262,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', function () {
       navigator.serviceWorker.register('sw.js').catch(function () {});
-      if (window.caches) caches.open('wwn-kyushu-v53').then(function (c) {
+      if (window.caches) caches.open('wwn-kyushu-v54').then(function (c) {
         c.add(new Request(location.href, { cache: 'reload' })).catch(function () {});
       });
     });

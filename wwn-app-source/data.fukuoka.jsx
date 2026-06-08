@@ -805,7 +805,7 @@ const DESTINATION = {
 // ── Travel party (placeholders — edit names/details; no phone/social by design) ──
 const TRAVELERS = {
   title: L('The Party', 'ผู้ร่วมเดินทาง'),
-  subtitle: L('Four travellers, one itinerary', 'สี่ผู้เดินทาง หนึ่งแผนการเดินทาง'),
+  subtitle: L('Five travellers, one itinerary', 'ห้าผู้เดินทาง หนึ่งแผนการเดินทาง'),
   people: [
     { name: L('Nick', 'นิค'), role: L('Trip lead · planner', 'หัวหน้าทริป · ผู้วางแผน'),
       home: L('Bangkok', 'กรุงเทพฯ'), detail: L('Itinerary & budget', 'แผนเที่ยว & งบ'), imageId: 'p-nick' },
@@ -815,6 +815,8 @@ const TRAVELERS = {
       home: L('Bangkok', 'กรุงเทพฯ'), detail: L('Books the restaurants', 'จองร้านอาหาร'), imageId: 'p-tagot' },
     { name: L('P’Tam', 'พี่ตั้ม'), role: L('Driver', 'คนขับ'),
       home: L('Tokyo', 'โตเกียว'), detail: L('Friend joining the trip', 'เพื่อนมาเที่ยวด้วย'), imageId: 'p-tum' },
+    { name: L('Ellie', 'แอลลี่'), role: L('Driver · photographer', 'คนขับ · ช่างภาพ'),
+      home: L('Bangkok', 'กรุงเทพฯ'), detail: L('Drives & shoots the trip', 'ขับรถ & ถ่ายรูปทริป'), imageId: 'p-ellie' },
   ],
 };
 

@@ -174,6 +174,14 @@ function App() {
     if (meta) meta.setAttribute('content', paper);
   }, [activeTheme, resolvedMode]);
 
+  // Page-swap direction: deeper views (the More sub-pages) slide IN from the right;
+  // navigating back (shallower) slides in from the left. Depth drives the direction.
+  const VIEW_DEPTH = { overview: 0, itinerary: 1, bookings: 1, checklist: 1, wallet: 1, more: 1, guides: 2, party: 2, settings: 2, emergency: 2 };
+  const depthOf = (v) => (Object.prototype.hasOwnProperty.call(VIEW_DEPTH, v) ? VIEW_DEPTH[v] : 1);
+  const prevViewRef = React.useRef(view);
+  const navDir = depthOf(view) >= depthOf(prevViewRef.current) ? 'fwd' : 'back';
+  React.useEffect(() => { prevViewRef.current = view; }, [view]);
+
   return (
     <LangCtx.Provider value={lang}>
       <div className={cls.join(' ')} data-theme={activeTheme} data-mode={resolvedMode} data-lang={lang} style={rootStyle}>
@@ -183,6 +191,7 @@ function App() {
           <span className="orb orb-3"></span>
           <span className="bg-grain"></span>
         </div>
+        <div className={'view-swap swap-' + navDir} key={view}>
         {view === 'overview' ? (
           <div className="view-overview">
             <Overview trip={TRIP} dest={DESTINATION} travelers={TRAVELERS}
@@ -232,6 +241,7 @@ function App() {
             </main>
           </div>
         )}
+        </div>
 
         {detail ? <ActivityDetail a={detail} onClose={() => setDetail(null)} /> : null}
 
