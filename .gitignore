@@ -1,0 +1,14 @@
+# Python — images/_generate_placeholders.py leaves these behind
+__pycache__/
+*.py[cod]
+
+# Editor / OS junk
+.DS_Store
+.Rhistory
+.Rapp.history
+*.swp
+*~
+
+# Local virtualenvs
+.venv/
+venv/
