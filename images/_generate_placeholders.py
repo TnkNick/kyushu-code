@@ -10,6 +10,11 @@ of the same name (keep it .jpg), or drag-drop it onto the slot in the browser.
 Re-run after editing the trip data (adds/removes activities, days, dishes):
     python3 images/_generate_placeholders.py
 The slot list lives in images/_slots.json.
+
+Existing files are never overwritten (see make()), so this is safe to re-run —
+delete a .jpg first if you want it regenerated.
+
+Needs Pillow: pip3 install pillow. Works on Pillow 8 through 11+.
 """
 import json, os
 from PIL import Image, ImageDraw, ImageFont, ImageFilter
@@ -52,7 +57,23 @@ def norm(s):
 
 
 def measure(font, text):
-    return font.getsize(text)
+    """(width, height) in the sense Pillow's FreeTypeFont.getsize() meant.
+
+    Pillow 10 removed getsize(). Its replacement getbbox() returns
+    (left, top, right, bottom) measured from the same origin, and the old
+    getsize() was defined as (size[0], size[1] + offset[1]) — which in getbbox
+    terms is (right - left, bottom). Note the asymmetry: the height keeps the
+    vertical offset but the width does not.
+
+    Keep that exact mapping. Using (right - left, bottom - top) instead looks
+    reasonable but drops the offset from the height, which shifts the wrapped
+    title down ~11px and shrinks its line spacing — regenerated placeholders
+    then no longer line up with the existing set.
+    """
+    if hasattr(font, "getbbox"):          # Pillow >= 8
+        left, _top, right, bottom = font.getbbox(text)
+        return right - left, bottom
+    return font.getsize(text)             # Pillow < 8
 
 
 def wrap(text, font, maxw):
