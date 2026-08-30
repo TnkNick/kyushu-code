@@ -3209,7 +3209,7 @@ const TRIP = {
           refs: { map: 'https://maps.google.com/?q=Milk+Road+Aso', notes: L('Allow ~2 h from the rental incl. photo stops. Late November is peak susuki (pampas grass) along the ridge - low sun late in the day lights the plumes up silver. The high ridge can drop near freezing at dawn, so watch for ice early.', 'เผื่อ ~2 ชม. จากร้านเช่ารถรวมแวะถ่ายรูป - ปลายพฤศจิกายนเป็นช่วงหญ้าซูซูกิสวยที่สุดตลอดสันเขา แสงเย็นจะส่องให้ปุยหญ้าเป็นสีเงิน - ตอนเช้ามืดสันเขาสูงใกล้จุดเยือกแข็ง ระวังน้ำแข็ง') } },
 
         { type: 'feature', time: '11:15', meridiem: 'Late morning', kind: 'View', imageId: 'a-d2-nishiyu',
-          title: L('Nishiyunoura Observatory ★', 'จุดชมวิวนิชิยุโนะอุระ ★'),
+          title: L('Nishiyunoura Observatory', 'จุดชมวิวนิชิยุโนะอุระ'),
           place: L('Rim panorama over the caldera', 'พาโนรามาขอบปากปล่อง'),
           blurb: L('A quieter rim observatory with a sweeping panorama of the central cones and the town spread across the caldera floor - a great first stop before Daikanbo.',
                    'จุดชมวิวบนขอบปล่องที่คนน้อยกว่า เห็นพาโนรามากรวยภูเขาไฟกลางและเมืองที่กระจายอยู่บนพื้นปากปล่อง - จุดแวะแรกที่ดีก่อนไปไดคันโบ'),
@@ -3264,7 +3264,7 @@ const TRIP = {
                   notes: L('This is ASO MILK FACTORY in Uchinomaki, NOT Aso Milk Farm in Nishihara village - that one is 20 km away on the far side of the caldera. A 20-minute stop, no more; the light is going.', 'ที่นี่คือ ASO MILK FACTORY ในอุจิโนมากิ ไม่ใช่ 阿蘇ミルク牧場 ที่หมู่บ้านนิชิฮาระ - อันนั้นอยู่ไกล 20 กม. คนละฝั่งปากปล่อง - แวะแค่ 20 นาทีพอ แสงกำลังจะหมด') } },
 
         { type: 'feature', time: '16:00', meridiem: 'Afternoon', kind: 'View', imageId: 'a-d2-komezuka',
-          title: L('Komezuka Observatory ★', 'จุดชมวิวโคเมซึกะ ★'),
+          title: L('Komezuka Observatory', 'จุดชมวิวโคเมซึกะ'),
           place: L('The perfect grass cone', 'ภูเขาไฟลูกจิ๋วทรงสวย'),
           blurb: L('A textbook miniature volcano - a perfectly rounded grass cone with a scoop out of its top, said to be where a god took rice. By late November the grass has turned bleached gold, which suits it better than summer green.',
                    'ภูเขาไฟจิ๋วในตำรา - กรวยหญ้าทรงกลมสวยมีรอยเว้าตรงยอด เล่าว่าเทพเจ้าตักข้าวไป - ปลายพฤศจิกายนหญ้าเปลี่ยนเป็นสีทองซีด สวยกว่าสีเขียวหน้าร้อนอีก'),
@@ -3272,7 +3272,7 @@ const TRIP = {
                   parking: L('Free, about 45 spaces at the lower Komezuka lot, then a 5-10 minute walk up to the viewpoint. There is shoulder parking closer to the view along the Panorama Line but it is tiny and goes early at weekends.', 'ฟรี ราว 45 ช่องที่ลานล่างโคเมซึกะ แล้วเดินขึ้นจุดชมวิว 5-10 นาที - มีที่จอดริมไหล่ทางใกล้จุดชมวิวบนพาโนรามาไลน์ แต่น้อยมากและเต็มเร็วช่วงเสาร์อาทิตย์') } },
 
         { type: 'feature', time: '16:30', meridiem: 'Afternoon', kind: 'Park', imageId: 'a-d3-kusasenri',
-          title: L('Kusasenrigahama ★', 'คุซะเซนริกาฮามะ ★'),
+          title: L('Kusasenrigahama', 'คุซะเซนริกาฮามะ'),
           place: L('Grassland under the volcano', 'ทุ่งหญ้าใต้ภูเขาไฟ'),
           blurb: L('A wide meadow with twin crater ponds right under Nakadake - horses graze in summer; in late November it is pale gold kusa-momiji grass and silver susuki under a big sky. Landing here around 16:30 is lucky rather than late: sunset is about 17:20, and low sun through the susuki plumes is the best light of the day.',
                    'ทุ่งหญ้ากว้างมีบ่อปล่องคู่อยู่ใต้นากาดาเกะพอดี - หน้าร้อนมีม้าเล็มหญ้า - ปลายพฤศจิกายนเป็นทุ่งหญ้าสีทองซีดกับหญ้าซูซูกิสีเงินใต้ฟ้ากว้าง - มาถึงราว 16:30 ถือว่าโชคดีไม่ใช่สาย เพราะพระอาทิตย์ตกราว 17:20 แสงเย็นส่องผ่านปุยหญ้าซูซูกิคือแสงที่สวยที่สุดของวัน'),
@@ -6364,7 +6364,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', function () {
       navigator.serviceWorker.register('sw.js').catch(function () {});
-      if (window.caches) caches.open('wwn-kyushu-v72').then(function (c) {
+      if (window.caches) caches.open('wwn-kyushu-v73').then(function (c) {
         c.add(new Request(location.href, { cache: 'reload' })).catch(function () {});
       });
     });
