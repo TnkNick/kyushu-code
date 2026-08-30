@@ -3050,7 +3050,7 @@ const TRIP = {
   title: L('Kyushu', 'คิวชู'),
   subtitle: L('Eight Nights Around the Southern Island', 'แปดคืนรอบเกาะใต้'),
   dates: L('21 - 29 Nov 2026', '21 - 29 Nov 2026'),
-  meta: L('Late Autumn - Onsen & Illuminations', 'ปลายฤดูใบไม้ร่วง - ออนเซนและไฟประดับ'),
+  meta: L('Autumn Colours - Onsen & Illuminations', 'ใบไม้เปลี่ยนสี - ออนเซนและไฟประดับ'),
   origin: L('A self-drive itinerary', 'แผนการเดินทางขับรถเอง'),
   coverId: 'cover-hero',
   days: [
@@ -3060,8 +3060,8 @@ const TRIP = {
       title: L('Fukuoka', 'ฟุกุโอกะ'),
       subtitle: L('Arrival & the First Bowl', 'วันเดินทางถึง & ราเมงชามแรก'),
       note: L(
-        'The overnight flight from Bangkok lands at dawn. Ease into Hakata on little sleep - a donut, a bowl of tonkotsu ramen, the winter lights at night, and motsunabe to close.',
-        'เที่ยวบินกลางคืนจากกรุงเทพฯ ถึงตอนเช้า ค่อยๆ เริ่มวันแรกที่ฮากาตะแบบไม่รีบ - โดนัทร้านดัง ราเมงทงคตสึ ไฟประดับยามค่ำ และปิดท้ายด้วยโมทสึนาเบะ'
+        'The overnight flight from Bangkok lands at dawn. Ease into Hakata on little sleep - a donut, a bowl of tonkotsu ramen, the first illuminations of the season at night, and motsunabe to close.',
+        'เที่ยวบินกลางคืนจากกรุงเทพฯ ถึงตอนเช้า ค่อยๆ เริ่มวันแรกที่ฮากาตะแบบไม่รีบ - โดนัทร้านดัง ราเมงทงคตสึ ไฟประดับชุดแรกของฤดูยามค่ำ และปิดท้ายด้วยโมทสึนาเบะ'
       ),
       coverId: 'day1-cover',
       visitJapan: true,
@@ -3144,11 +3144,11 @@ const TRIP = {
           refs: { map: 'https://maps.google.com/?q=Hotel+Monterey+La+Soeur+Fukuoka', reservation: { time: '15:00', code: 'MONTEREY', party: L('Base night 1', 'พักคืน 1') }, notes: L('Room ready from 15:00 - freshen up after the red-eye.', 'ห้องพร้อมตั้งแต่ 15:00 - พักล้างหน้าหลังบินดึก') } },
 
         { type: 'feature', time: '17:30', meridiem: 'Evening', kind: 'View', imageId: 'a-d1-illum',
-          title: L('Winter Illumination', 'ไฟประดับฤดูหนาว'),
+          title: L('Illuminations & Christmas Market', 'ไฟประดับ & คริสต์มาสมาร์เก็ต'),
           place: L('Hakata Stn tree + Tenjin park', 'ต้นไฟสถานีฮากาตะ + สวนเท็นจิน'),
-          blurb: L('The lights are already on by mid-November - the giant tree at Hakata Station and a belt of light through Tenjin.',
-                   'ไฟประดับเปิดตั้งแต่กลางพฤศจิกายน - ต้นไฟยักษ์หน้าสถานีฮากาตะ และไฟประดับยาวต่อเนื่องทั่วเท็นจิน'),
-          refs: { map: 'https://maps.google.com/?q=Hakata+Station+Illumination', notes: L('Lights switch on around 17:00.', 'ไฟเปิดประมาณ 17:00') } },
+          blurb: L('Fukuoka lights up from mid-November, so the whole trip falls inside the season - the giant tree and Christmas market at Hakata Station, and a belt of light through Tenjin and Canal City.',
+                   'ฟุกุโอกะเปิดไฟประดับตั้งแต่กลางพฤศจิกายน ทริปนี้เลยอยู่ในช่วงพอดีทั้งทริป - ต้นไฟยักษ์กับคริสต์มาสมาร์เก็ตหน้าสถานีฮากาตะ และไฟประดับยาวต่อเนื่องย่านเท็นจินถึงคาแนลซิตี้'),
+          refs: { map: 'https://maps.google.com/?q=Hakata+Station+Illumination', notes: L('Lights switch on around 17:00. In the 2025 season Hakata Station ran from 1 Nov and Tenjin / Canal City from 13 Nov - 2026 dates are usually published in the autumn, so re-check nearer the time.', 'ไฟเปิดประมาณ 17:00 - ปี 2025 สถานีฮากาตะเริ่ม 1 พ.ย. เท็นจิน/คาแนลซิตี้เริ่ม 13 พ.ย. - วันที่ของปี 2026 มักประกาศช่วงใกล้ฤดู เช็กอีกครั้งก่อนไป') } },
 
         { type: 'feature', time: '19:30', meridiem: 'Night', kind: 'Dining', imageId: 'a-d1-motsunabe',
           title: L('Motsunabe Rakutenchi', 'โมทสึนาเบะ ราคุเท็นจิ'),
@@ -3180,8 +3180,8 @@ const TRIP = {
       title: L('Mount Aso', 'ภูเขาไฟอาโซ'),
       subtitle: L('Pick Up the Car & the Caldera', 'รับรถ & ขับชมปากปล่อง'),
       note: L(
-        'Pick up the car in Hakata and climb the Milk Road into the largest caldera in Japan - rim observatories, the grasslands, the Aso milk stand and the smoking Nakadake crater - then check in to an onsen ryokan by the caldera: red-wagyu dinner and dark-sky stars.',
-        'รับรถที่ฮากาตะแล้วไต่เส้น Milk Road ขึ้นสู่ปากปล่องภูเขาไฟที่ใหญ่ที่สุดในญี่ปุ่น - จุดชมวิวขอบปล่อง ทุ่งหญ้า ซอฟต์ครีมนมอาโซ และปล่องนากาดาเกะที่ยังคุกรุ่น แล้วเข้าพักเรียวกังออนเซนริมปากปล่อง: มื้อค่ำเนื้อวากิวแดงและนอนดูดาว'
+        'Pick up the car in Hakata and climb the Milk Road into the largest caldera in Japan. Late November is past the maple season up here - what you get instead is the grassland at its best: bleached-gold slopes and silver susuki plumes across the rim - then check in to an onsen ryokan by the caldera: red-wagyu dinner and dark-sky stars.',
+        'รับรถที่ฮากาตะแล้วไต่เส้น Milk Road ขึ้นสู่ปากปล่องภูเขาไฟที่ใหญ่ที่สุดในญี่ปุ่น - ปลายพฤศจิกายนเลยฤดูใบเมเปิลบนนี้ไปแล้ว สิ่งที่ได้แทนคือทุ่งหญ้าในช่วงสวยที่สุด: เนินหญ้าสีทองซีดกับปุยหญ้าซูซูกิสีเงินทั่วขอบปล่อง - แล้วเข้าพักเรียวกังออนเซนริมปากปล่อง: มื้อค่ำเนื้อวากิวแดงและนอนดูดาว'
       ),
       coverId: 'day2-cover',
       activities: [
@@ -3195,8 +3195,8 @@ const TRIP = {
         { type: 'step', time: '08:30', meridiem: 'Morning', kind: 'Transfer', icon: 'car',
           title: L('Pick up the car - Toyota', 'รับรถ - โตโยต้า'),
           place: L('Toyota Rent a Car - Hakata Stn (Hakataguchi)', 'โตโยต้าเร้นท์อะคาร์ - สถานีฮากาตะ (ฮากาตะกุจิ)'),
-          blurb: L('Collect the 8-seater for the Kyushu loop - ask for snow tyres and an ETC card at the desk.',
-                   'รับรถ 8 ที่นั่งสำหรับลูปคิวชู - ขอยางหน้าหนาวและบัตร ETC ที่เคาน์เตอร์'),
+          blurb: L('Collect the 8-seater for the Kyushu loop - ask for an ETC card at the desk, and about studless tyres if you plan on the high passes.',
+                   'รับรถ 8 ที่นั่งสำหรับลูปคิวชู - ขอบัตร ETC ที่เคาน์เตอร์ และถามเรื่องยางสตัดเลสถ้าจะขึ้นที่สูง'),
           refs: { map: 'https://maps.google.com/?q=Toyota+Rent+a+Car+Hakata+Station+Hakataguchi',
                   reservation: { time: '08:30', code: 'CAR-FUK-5D', party: L('5 days - returns Day 6', '5 วัน - คืน Day 6') },
                   notes: L('International Driving Permit (IDP) required to drive.', 'ต้องมีใบขับขี่สากล (IDP) ในการขับ') } },
@@ -3206,7 +3206,7 @@ const TRIP = {
           place: L('Ridge drive up to Aso - ~2 h from Hakata', 'เส้นทางสันเขาขึ้นอาโซ - ~2 ชม. จากฮากาตะ'),
           blurb: L('The scenic ridge road that climbs onto the Aso outer rim - wide pasture, grazing cattle and the caldera opening up ahead. The drive itself is the first sight of the day.',
                    'ถนนสันเขาวิวสวยที่ไต่ขึ้นขอบนอกปากปล่องอาโซ - ทุ่งเลี้ยงสัตว์กว้าง วัวเล็มหญ้า และแอ่งปากปล่องค่อยๆ เปิดออกข้างหน้า - ตัวเส้นทางเองคือวิวแรกของวัน'),
-          refs: { map: 'https://maps.google.com/?q=Milk+Road+Aso', notes: L('Allow ~2 h from the rental incl. photo stops - late November: the high ridge can drop near freezing, watch for ice.', 'เผื่อ ~2 ชม. จากร้านเช่ารถรวมแวะถ่ายรูป - ปลายพฤศจิกายนบนสันเขาสูงใกล้จุดเยือกแข็ง ระวังน้ำแข็ง') } },
+          refs: { map: 'https://maps.google.com/?q=Milk+Road+Aso', notes: L('Allow ~2 h from the rental incl. photo stops. Late November is peak susuki (pampas grass) along the ridge - low sun late in the day lights the plumes up silver. The high ridge can drop near freezing at dawn, so watch for ice early.', 'เผื่อ ~2 ชม. จากร้านเช่ารถรวมแวะถ่ายรูป - ปลายพฤศจิกายนเป็นช่วงหญ้าซูซูกิสวยที่สุดตลอดสันเขา แสงเย็นจะส่องให้ปุยหญ้าเป็นสีเงิน - ตอนเช้ามืดสันเขาสูงใกล้จุดเยือกแข็ง ระวังน้ำแข็ง') } },
 
         { type: 'feature', time: '11:00', meridiem: 'Late morning', kind: 'View', imageId: 'a-d2-nishiyu',
           title: L('Nishiyunoura Observatory ★', 'จุดชมวิวนิชิยุโนะอุระ ★'),
@@ -3239,31 +3239,31 @@ const TRIP = {
         { type: 'feature', time: '14:30', meridiem: 'Afternoon', kind: 'View', imageId: 'a-d2-komezuka',
           title: L('Komezuka Observatory ★', 'จุดชมวิวโคเมซึกะ ★'),
           place: L('The perfect grass cone', 'ภูเขาไฟลูกจิ๋วทรงสวย'),
-          blurb: L('A textbook miniature volcano - a perfectly rounded grass cone with a scoop out of its top, said to be where a god took rice. Beautiful in the low winter light.',
-                   'ภูเขาไฟจิ๋วในตำรา - กรวยหญ้าทรงกลมสวยมีรอยเว้าตรงยอด เล่าว่าเทพเจ้าตักข้าวไป - สวยมากในแสงเย็นหน้าหนาว'),
+          blurb: L('A textbook miniature volcano - a perfectly rounded grass cone with a scoop out of its top, said to be where a god took rice. By late November the grass has turned bleached gold, which suits it better than summer green.',
+                   'ภูเขาไฟจิ๋วในตำรา - กรวยหญ้าทรงกลมสวยมีรอยเว้าตรงยอด เล่าว่าเทพเจ้าตักข้าวไป - ปลายพฤศจิกายนหญ้าเปลี่ยนเป็นสีทองซีด สวยกว่าสีเขียวหน้าร้อนอีก'),
           refs: { map: 'https://maps.google.com/?q=Komezuka+Aso' } },
 
         { type: 'feature', time: '15:00', meridiem: 'Afternoon', kind: 'Park', imageId: 'a-d3-kusasenri',
           title: L('Kusasenrigahama ★', 'คุซะเซนริกาฮามะ ★'),
           place: L('Grassland under the volcano', 'ทุ่งหญ้าใต้ภูเขาไฟ'),
-          blurb: L('A wide meadow with twin crater ponds right under Nakadake - horses graze in summer; in late November it is pale gold grass under a big sky.',
-                   'ทุ่งหญ้ากว้างมีบ่อปล่องคู่อยู่ใต้นากาดาเกะพอดี - หน้าร้อนมีม้าเล็มหญ้า - ปลายพฤศจิกายนเป็นทุ่งหญ้าสีทองซีดใต้ฟ้ากว้าง'),
+          blurb: L('A wide meadow with twin crater ponds right under Nakadake - horses graze in summer; in late November it is pale gold kusa-momiji grass and silver susuki under a big sky. This is the classic autumn Aso photo, and it stays open even when the crater itself is closed.',
+                   'ทุ่งหญ้ากว้างมีบ่อปล่องคู่อยู่ใต้นากาดาเกะพอดี - หน้าร้อนมีม้าเล็มหญ้า - ปลายพฤศจิกายนเป็นทุ่งหญ้าสีทองซีดกับหญ้าซูซูกิสีเงินใต้ฟ้ากว้าง เป็นภาพอาโซหน้าใบไม้เปลี่ยนสีแบบคลาสสิก และยังเข้าได้แม้ปากปล่องจะปิด'),
           refs: { map: 'https://maps.google.com/?q=Kusasenri+Aso' } },
 
         { type: 'feature', time: '15:45', meridiem: 'Afternoon', kind: 'View', imageId: 'a-d3-nakadake',
           title: L('Aso Nakadake Crater ★', 'ปล่องนากาดาเกะ ★'),
           place: L('Active smoking crater', 'ปล่องที่ยังคุกรุ่น'),
-          blurb: L('A turquoise crater lake hissing sulphurous steam - the highlight of the caldera. Access depends on the gas reading that day.',
-                   'ทะเลสาบปากปล่องสีเทอร์คอยซ์พ่นไอกำมะถัน - ไฮไลต์ของปากปล่อง - เข้าได้หรือไม่ขึ้นกับระดับแก๊สในวันนั้น'),
-          refs: { map: 'https://maps.google.com/?q=Nakadake+Crater+Aso', official: 'https://www.aso.ne.jp/~volcano/eng/',
-                  notes: L('Winter access 09:00-16:30; may close on high-gas days - check before driving up.', 'หน้าหนาวเปิด 09:00-16:30 อาจปิดวันแก๊สสูง เช็กก่อนขับขึ้น') } },
+          blurb: L('A turquoise crater lake hissing sulphurous steam - normally the highlight of the caldera, but CURRENTLY CLOSED: Aso was raised to eruption alert Level 3 on 14 Aug 2026, banning entry within 2 km of the crater. Treat this stop as optional until you have re-checked.',
+                   'ทะเลสาบปากปล่องสีเทอร์คอยซ์พ่นไอกำมะถัน - ปกติคือไฮไลต์ของปากปล่อง แต่ตอนนี้ปิด: อาโซถูกยกระดับเตือนภัยภูเขาไฟเป็นระดับ 3 เมื่อ 14 ส.ค. 2026 ห้ามเข้าในรัศมี 2 กม. รอบปากปล่อง - ให้ถือว่าจุดนี้เป็นตัวเลือกจนกว่าจะเช็กใหม่'),
+          refs: { map: 'https://maps.google.com/?q=Nakadake+Crater+Aso', official: 'https://www.aso-volcano.jp/',
+                  notes: L('CHECK BEFORE YOU GO. Level 3 (as of late Aug 2026) closes the crater, the summit terminal and the shuttle bus; Kusasenri, Komezuka and Daikanbo are all outside the 2 km zone and stay open. The level moves both ways - it was 1, then 2, then 3 within a year - so re-check the official page in the days before the drive. If it is open, the normal November gate hours are 08:30-17:30 (last entry 17:00) and it can still shut at short notice on a high-gas reading.', 'เช็กก่อนไป - ระดับ 3 (ณ ปลาย ส.ค. 2026) ปิดปากปล่อง อาคารบนยอด และรถชัตเทิล แต่คุซะเซนริ โคเมซึกะ ไดคันโบ อยู่นอกรัศมี 2 กม. ยังเข้าได้ปกติ - ระดับเตือนภัยขึ้นลงได้ (ปีเดียวเปลี่ยนจาก 1 เป็น 2 เป็น 3) เช็กเว็บทางการอีกทีก่อนวันขับขึ้นไป - ถ้าเปิด เวลาปกติเดือน พ.ย. คือ 08:30-17:30 (เข้าได้ถึง 17:00) และยังปิดกะทันหันได้ถ้าแก๊สสูง') } },
 
         { type: 'step', time: '17:30', meridiem: 'Evening', kind: 'Check-in', icon: 'bed',
           title: L('Check in - Aso onsen ryokan', 'เช็คอิน - เรียวกังออนเซนอาโซ'),
           place: L('One night - by the caldera', 'หนึ่งคืน - ริมปากปล่อง'),
           blurb: L('Come down off the caldera to an onsen ryokan around Aso / Uchinomaki - soak after the volcano day and sleep under some of Kyushu\'s darkest skies.',
                    'ลงจากปากปล่องมาพักเรียวกังออนเซนแถบอาโซ / อุจิโนมากิ - แช่น้ำหลังเที่ยวภูเขาไฟ แล้วนอนใต้ฟ้าที่มืดที่สุดแห่งหนึ่งของคิวชู'),
-          refs: { map: 'https://maps.google.com/?q=Aso+onsen+ryokan', reservation: { time: '17:30', code: 'ASO-RYO', party: L('Night 2 - 1 night - to book', 'คืน 2 - 1 คืน - รอจอง') }, notes: L('Aso / Uchinomaki onsen ryokan - still to be booked.', 'เรียวกังออนเซนอาโซ / อุจิโนมากิ - รอจอง') } },
+          refs: { map: 'https://maps.google.com/?q=Aso+onsen+ryokan', reservation: { time: '17:30', code: 'ASO-RYO', party: L('Night 2 - 1 night - to book', 'คืน 2 - 1 คืน - รอจอง') }, notes: L('NOT BOOKED YET - and this is the most urgent one: Mon 23 Nov is Labour Thanksgiving Day in Japan, so 21-23 Nov is a three-day weekend and the ryokan will fill. Three candidates in Uchinomaki Onsen: (1) Yumeoisou, yumeoisou.com - the best group fit, 5-person rooms (some with their own open-air bath), around 15 free private family baths, 100 free parking spaces, akaushi on the buffet; (2) Sozankyo, sozankyo.com/en - has an English site and an akaushi lava-grilled kaiseki, plus one 5-person connected room called Higotai; (3) Aso Hotel, asohotel.jp/en - cheapest of the three, rooftop open-air bath with the star view, but no room sleeps more than 4. Prices online are indicative ranges, not quotes for these dates - email them with the exact date, headcount, the akaushi dinner and the 8-seat van.', 'ยังไม่จอง - และเป็นคืนที่เร่งที่สุด เพราะ 23 พ.ย. เป็นวันขอบคุณแรงงานของญี่ปุ่น 21-23 พ.ย. จึงเป็นวันหยุดยาว 3 วัน เรียวกังจะเต็ม - ตัวเลือก 3 ที่ในย่านออนเซนอุจิโนมากิ: (1) Yumeoisou (yumeoisou.com) เหมาะกับกลุ่มที่สุด มีห้องนอน 5 คน (บางห้องมีออนเซนส่วนตัว) บ่อแช่ส่วนตัวแบบครอบครัวฟรีราว 15 บ่อ ที่จอดรถฟรี 100 คัน มีเนื้ออาคาอุชิในบุฟเฟ่ต์ (2) Sozankyo (sozankyo.com/en) มีเว็บภาษาอังกฤษ มีไคเซกิเนื้ออาคาอุชิย่างหินลาวา และมีห้องเชื่อมนอนได้ 5 คนชื่อฮิโกไต (3) Aso Hotel (asohotel.jp/en) ถูกที่สุดในสามที่ มีออนเซนกลางแจ้งบนดาดฟ้าดูดาว แต่ห้องนอนได้สูงสุด 4 คน - ราคาบนเว็บเป็นช่วงราคาโดยประมาณ ไม่ใช่ราคาของวันนี้ - อีเมลถามให้ชัดเรื่องวันที่ จำนวนคน มื้อเย็นอาคาอุชิ และที่จอดรถตู้ 8 ที่นั่ง') } },
 
         { type: 'feature', time: '19:00', meridiem: 'Night', kind: 'Dining', imageId: 'a-d2-dinner',
           title: L('Aso akaushi dinner', 'มื้อค่ำเนื้ออาโซอากาอุชิ'),
@@ -3275,8 +3275,8 @@ const TRIP = {
         { type: 'feature', time: '20:30', meridiem: 'Night', kind: 'View', imageId: 'a-d2-nightlife',
           title: L('Onsen & a sky full of stars', 'ออนเซน & ฟ้าดาวเต็มฟ้า'),
           place: L('Aso caldera - dark skies', 'ปากปล่องอาโซ - ฟ้ามืดเห็นดาว'),
-          blurb: L('No nightlife strip up here - soak in the open-air bath, then step out for the stars. The Aso caldera is one of Kyushu\'s best dark-sky spots on a clear winter night.',
-                   'บนนี้ไม่มีย่านกลางคืน - แช่ออนเซนกลางแจ้งแล้วออกมาดูดาว - ปากปล่องอาโซเป็นจุดดูดาวที่ดีที่สุดแห่งหนึ่งของคิวชูในคืนหน้าหนาวฟ้าใส'),
+          blurb: L('No nightlife strip up here - soak in the open-air bath, then step out for the stars. The Aso caldera is one of Kyushu\'s best dark-sky spots on a clear late-autumn night - dress warm, it drops close to freezing up here after dark.',
+                   'บนนี้ไม่มีย่านกลางคืน - แช่ออนเซนกลางแจ้งแล้วออกมาดูดาว - ปากปล่องอาโซเป็นจุดดูดาวที่ดีที่สุดแห่งหนึ่งของคิวชูในคืนปลายฤดูใบไม้ร่วงฟ้าใส - ใส่เสื้อกันหนาวด้วย กลางคืนบนนี้ใกล้จุดเยือกแข็ง'),
           refs: { map: 'https://maps.google.com/?q=Aso+star+gazing' } },
       ],
     },
@@ -3304,7 +3304,7 @@ const TRIP = {
           blurb: L('A ribbon of road over rolling volcanic moorland from Aso down to the eastern coast.',
                    'ถนนสายโค้งทอดข้ามทุ่งภูเขาไฟลูกคลื่นจากอาโซลงสู่ชายฝั่งตะวันออก'),
           refs: { map: 'https://maps.google.com/?q=Yamanami+Highway',
-                  notes: L('Optional detour: Takachiho Gorge (adds time - check winter boat hours).', 'แวะเสริมได้: หุบเขาทาคาชิโฮะ (ใช้เวลาเพิ่ม เช็กรอบเรือหน้าหนาว)') } },
+                  notes: L('Optional detour: Takachiho Gorge - and it is the single best-timed foliage stop of the trip, peaking mid-to-late November with an evening light-up (18:00-22:00) that runs to the end of the month. It adds real driving time and gets crowded in this exact season, so only take it if you start early.', 'แวะเสริมได้: หุบเขาทาคาชิโฮะ - เป็นจุดใบไม้เปลี่ยนสีที่ตรงช่วงที่สุดของทริปนี้ พีคกลางถึงปลายพฤศจิกายน มีไลต์อัพตอนเย็น (18:00-22:00) ถึงสิ้นเดือน - แต่ใช้เวลาขับเพิ่มเยอะและคนแน่นมากในช่วงนี้ เอาไว้ถ้าออกเช้าจริงๆ') } },
 
         { type: 'feature', time: '12:00', meridiem: 'Midday', kind: 'Dining', imageId: 'a-d5-lunch',
           title: L('Roadside lunch', 'มื้อเที่ยงริมทาง'),
@@ -3316,8 +3316,8 @@ const TRIP = {
         { type: 'feature', time: '13:30', meridiem: 'Afternoon', kind: 'View', imageId: 'a-d3-ropeway',
           title: L('Beppu Ropeway - Mt Tsurumi', 'กระเช้าเบปปุ - เขาสึรุมิ'),
           place: L('1,375 m summit - 10-min cable car', 'ยอดเขา 1,375 ม. - กระเช้า 10 นาที'),
-          blurb: L('A 10-minute cable car up Mt Tsurumi for a panorama over Beppu Bay and the steaming town - clear winter air, and sometimes frosted "snow flowers" on the summit trees.',
-                   'นั่งกระเช้า 10 นาทีขึ้นเขาสึรุมิ ชมวิวพาโนรามาอ่าวเบปปุและเมืองที่พ่นไอน้ำ - อากาศหน้าหนาวใส บางวันมี "ดอกไม้น้ำแข็ง" เกาะต้นไม้บนยอด'),
+          blurb: L('A 10-minute cable car up Mt Tsurumi for a panorama over Beppu Bay and the steaming town. Go for the view, not the leaves - the summit colours peak in late October and are finished by now; only the base station is still turning.',
+                   'นั่งกระเช้า 10 นาทีขึ้นเขาสึรุมิ ชมวิวพาโนรามาอ่าวเบปปุและเมืองที่พ่นไอน้ำ - มาเพื่อวิว ไม่ใช่ใบไม้แดง - ยอดเขาพีคตั้งแต่ปลายตุลาคมและหมดแล้ว เหลือแค่แถวสถานีล่างที่ยังเปลี่ยนสีอยู่'),
           refs: { map: 'https://maps.google.com/?q=Beppu+Ropeway', official: 'https://www.beppu-ropeway.co.jp/', booking: L('Round trip - ~¥1,800', 'ไป-กลับ - ~¥1,800') } },
 
         { type: 'feature', time: '14:30', meridiem: 'Afternoon', kind: 'View', imageId: 'a-d5-umijigoku',
@@ -3330,8 +3330,8 @@ const TRIP = {
         { type: 'feature', time: '15:30', meridiem: 'Afternoon', kind: 'View', imageId: 'a-d3-monkey',
           title: L('Takasakiyama Monkey Park', 'สวนลิงทากาซากิยามะ'),
           place: L('~1,500 wild macaques', 'ลิงป่า ~1,500 ตัว'),
-          blurb: L('A hillside reserve where troops of wild Japanese macaques come down to be fed - right up close, and in winter they huddle together against the cold. The Umitamago aquarium is right next door.',
-                   'เขตอนุรักษ์เชิงเขาที่ฝูงลิงแสมญี่ปุ่นป่าลงมากินอาหาร - ดูใกล้ๆ หน้าหนาวลิงจะเกาะกลุ่มกันให้อุ่น - ติดกันคืออควาเรียมอุมิตามาโกะ'),
+          blurb: L('A hillside reserve where troops of wild Japanese macaques come down to be fed - right up close, and as the weather turns they start bunching together for warmth. The Umitamago aquarium is right next door.',
+                   'เขตอนุรักษ์เชิงเขาที่ฝูงลิงแสมญี่ปุ่นป่าลงมากินอาหาร - ดูใกล้ๆ พออากาศเริ่มเย็นลิงจะเกาะกลุ่มกันให้อุ่น - ติดกันคืออควาเรียมอุมิตามาโกะ'),
           refs: { map: 'https://maps.google.com/?q=Takasakiyama+Monkey+Park', official: 'https://www.takasakiyama.jp/', booking: L('Entry - ~¥520 - combo ticket with the Umitamago aquarium', 'ค่าเข้า - ~¥520 - มีตั๋วรวมกับอควาเรียมอุมิตามาโกะ') } },
 
         { type: 'step', time: '16:00', meridiem: 'Afternoon', kind: 'Onsen', icon: 'bed',
@@ -3367,7 +3367,8 @@ const TRIP = {
           place: L('Mt Yufu view - two nights', 'วิวภูเขายูฟุ - สองคืน'),
           blurb: L('A room with its own bath under the twin-peaked mountain - the headline stay, kept two nights.',
                    'ห้องพักพร้อมอ่างส่วนตัวใต้ภูเขายอดคู่ - ไฮไลต์การพัก เก็บไว้สองคืน'),
-          refs: { map: 'https://maps.google.com/?q=Yufuin+ryokan', reservation: { time: '19:15', code: 'YUF-RYO', party: L('2 nights - onsen ryokan', '2 คืน - เรียวกังออนเซน') } } },
+          refs: { map: 'https://maps.google.com/?q=Yufuin+ryokan', reservation: { time: '19:15', code: 'YUF-RYO', party: L('Nights 3-4 - 2 nights - to book', 'คืน 3-4 - 2 คืน - รอจอง') },
+                  notes: L('NOT BOOKED YET. Yufuin ryokan are small, so they go early in foliage season - reckon on 8-16 weeks ahead. Three candidates: (1) Yufuin Santoukan, yufuin-santokan.com - the best location, about 2 minutes from both Lake Kinrin and Yunotsubo street, 13 rooms of which 6 have a private open-air bath, kaiseki served in the room; (2) Hinoharu Ryokan - central, roughly 10 minutes from the station, three free private baths and a 24-hour open-air bath, wagyu kaiseki, easy to book in English on Booking.com or Rakuten Travel; (3) Kotobuki Hananosho - the only one found with a room sleeping up to 6, and free parking, so the cheapest way to keep everyone together. The famous ones, Kamenoi Besso and Sanso Murata, are a big step up in price and Sanso Murata has only 12 rooms.', 'ยังไม่จอง - เรียวกังยูฟุอินเป็นที่เล็กๆ ช่วงใบไม้เปลี่ยนสีเต็มเร็ว ควรจองล่วงหน้า 8-16 สัปดาห์ - ตัวเลือก 3 ที่: (1) Yufuin Santoukan (yufuin-santokan.com) ทำเลดีที่สุด ห่างบึงคินรินและถนนยูโนะทสึโบราว 2 นาที มี 13 ห้อง 6 ห้องมีออนเซนกลางแจ้งส่วนตัว เสิร์ฟไคเซกิในห้อง (2) Hinoharu Ryokan อยู่กลางเมือง ห่างสถานีราว 10 นาที มีบ่อแช่ส่วนตัวฟรี 3 บ่อ ออนเซนกลางแจ้ง 24 ชม. ไคเซกิเนื้อวากิว จองภาษาอังกฤษง่ายผ่าน Booking.com หรือ Rakuten Travel (3) Kotobuki Hananosho เป็นที่เดียวที่เจอว่ามีห้องนอนได้ถึง 6 คน และมีที่จอดรถฟรี เป็นวิธีถูกที่สุดที่จะอยู่ห้องเดียวกันทั้งกลุ่ม - ส่วนที่ดังอย่าง Kamenoi Besso กับ Sanso Murata ราคาสูงขึ้นมาก และ Sanso Murata มีแค่ 12 ห้อง') } },
 
         { type: 'feature', time: '21:00', meridiem: 'Night', kind: 'Nightlife', imageId: 'a-d3-sake',
           title: L('Ryokan nightcap - Oita shochu', 'ดื่มชิลที่เรียวกัง - โชจูโออิตะ'),
@@ -3383,8 +3384,8 @@ const TRIP = {
       title: L('Yufuin', 'ยูฟุอิน'),
       subtitle: L('Lake Mist & a Mountain Onsen Town', 'ไอหมอกริมบึง & เมืองออนเซนเชิงเขา'),
       note: L(
-        'A short, beautiful drive over the hills to the gentlest town of the trip - a misty lake, a long shopping lane, and a night in a ryokan under Mt Yufu.',
-        'ขับสั้นๆ ผ่านเนินเขาสู่เมืองที่นุ่มนวลที่สุดของทริป - บึงที่มีไอหมอก ถนนช้อปยาวๆ และค้างคืนในเรียวกังใต้ภูเขายูฟุ'
+        'A short, beautiful drive over the hills to the gentlest town of the trip - a misty lake, a long shopping lane, and a night in a ryokan under Mt Yufu. The lakeside maples peak mid-November so expect them thinning by now, but the cold mornings that make the mist are exactly what late November brings.',
+        'ขับสั้นๆ ผ่านเนินเขาสู่เมืองที่นุ่มนวลที่สุดของทริป (ใบไม้ริมบึงพีคกลางพฤศจิกายน ตอนนี้เริ่มร่วงแล้ว แต่เช้าที่หนาวจัดซึ่งทำให้เกิดไอหมอกคือของดีปลายพฤศจิกายนพอดี) - บึงที่มีไอหมอก ถนนช้อปยาวๆ และค้างคืนในเรียวกังใต้ภูเขายูฟุ'
       ),
       coverId: 'day5-cover',
       activities: [
@@ -3398,9 +3399,9 @@ const TRIP = {
         { type: 'feature', time: '11:00', meridiem: 'Late morning', kind: 'Lake', imageId: 'a-d6-kinrin',
           title: L('Kinrin Lake', 'บึงคินริน'),
           place: L('Steaming spring-fed lake', 'บึงน้ำพุร้อนที่มีไอน้ำ'),
-          blurb: L('Warm springs feed the lake, so on a cold morning a soft mist hangs over the water.',
-                   'น้ำพุร้อนหล่อเลี้ยงบึง เช้าที่อากาศเย็นจึงมีไอหมอกบางๆ ลอยเหนือผิวน้ำ'),
-          refs: { map: 'https://maps.google.com/?q=Kinrin+Lake+Yufuin', notes: L('Mist is best in the first hour after sunrise.', 'ไอหมอกสวยสุดในชั่วโมงแรกหลังพระอาทิตย์ขึ้น') } },
+          blurb: L('Warm springs feed the lake, so on a cold morning a soft mist hangs over the water. The lakeside maples peak around mid-November, so by now expect the last of the colour and a lot of fallen leaves on the path.',
+                   'น้ำพุร้อนหล่อเลี้ยงบึง เช้าที่อากาศเย็นจึงมีไอหมอกบางๆ ลอยเหนือผิวน้ำ - ใบเมเปิลริมบึงพีคราวกลางพฤศจิกายน ตอนนี้จะเหลือสีช่วงท้ายๆ กับใบร่วงเต็มทางเดิน'),
+          refs: { map: 'https://maps.google.com/?q=Kinrin+Lake+Yufuin', notes: L('Mist is best in the first hour after sunrise - and late November is prime mist season, because it needs a cold morning over the warm lake. The leaves may be past their peak but the mist is not.', 'ไอหมอกสวยสุดในชั่วโมงแรกหลังพระอาทิตย์ขึ้น - ปลายพฤศจิกายนคือช่วงไอหมอกดีที่สุด เพราะต้องมีเช้าที่หนาวปะทะน้ำอุ่นในบึง - ใบไม้อาจเลยพีคแล้ว แต่ไอหมอกไม่เลย') } },
 
         { type: 'feature', time: '12:00', meridiem: 'Midday', kind: 'Dining', imageId: 'a-d6-mabushi',
           title: L('Yufu Mabushi', 'ยูฟุ มาบุชิ'),
@@ -3451,16 +3452,16 @@ const TRIP = {
       title: L('Return to Fukuoka', 'กลับสู่ฟุกุโอกะ'),
       subtitle: L('Drive Back & a Fukuoka Evening', 'ขับกลับ & ค่ำคืนฟุกุโอกะ'),
       note: L(
-        'Catch the lake in its morning mist, then the drive back to Fukuoka and return the car. The afternoon and evening are free in the city - Ohori Park, the bay tower at sunset, the Tenjin shops and winter lights, counter tempura, then Canal City after dark.',
-        'เก็บภาพบึงในไอหมอกยามเช้า แล้วขับกลับฟุกุโอกะ คืนรถทันทีที่ถึง - บ่ายและค่ำว่างเที่ยวในเมือง - สวนโอโฮริ หอคอยริมอ่าวตอนพระอาทิตย์ตก ช้อปเท็นจินกับไฟประดับ เทมปุระเคาน์เตอร์ แล้วปิดท้ายที่คาแนลซิตี้ยามค่ำ'
+        'Catch the lake in its morning mist, then the drive back to Fukuoka and return the car. The afternoon and evening are free in the city - Ohori Park at the peak of its autumn colour, the bay tower at sunset, the Tenjin shops and illuminations, counter tempura, then Canal City after dark.',
+        'เก็บภาพบึงในไอหมอกยามเช้า แล้วขับกลับฟุกุโอกะ คืนรถทันทีที่ถึง - บ่ายและค่ำว่างเที่ยวในเมือง - สวนโอโฮริช่วงใบไม้เปลี่ยนสีพีคพอดี หอคอยริมอ่าวตอนพระอาทิตย์ตก ช้อปเท็นจินกับไฟประดับ เทมปุระเคาน์เตอร์ แล้วปิดท้ายที่คาแนลซิตี้ยามค่ำ'
       ),
       coverId: 'day6-cover',
       activities: [
         { type: 'feature', time: '07:30', meridiem: 'Dawn', kind: 'Lake', imageId: 'a-d7-mist',
           title: L('Kinrin Lake at dawn', 'บึงคินรินยามรุ่ง'),
           place: L('Mist over still water', 'ไอหมอกเหนือผิวน้ำนิ่ง'),
-          blurb: L('The reason to stay the night - the lake at its most beautiful before the day-trippers arrive.',
-                   'เหตุผลที่ควรค้างคืน - บึงสวยที่สุดก่อนนักท่องเที่ยวไปเช้ากลับเย็นจะมาถึง'),
+          blurb: L('The reason to stay the night - the lake at its most beautiful before the day-trippers arrive. A cold late-November dawn is the best mist of the year: get there in the first hour of light.',
+                   'เหตุผลที่ควรค้างคืน - บึงสวยที่สุดก่อนนักท่องเที่ยวไปเช้ากลับเย็นจะมาถึง - เช้าหนาวปลายพฤศจิกายนคือไอหมอกที่ดีที่สุดของปี ไปให้ทันชั่วโมงแรกของแสง'),
           refs: { map: 'https://maps.google.com/?q=Kinrin+Lake+Yufuin' } },
 
         { type: 'step', time: '09:00', meridiem: 'Morning', kind: 'Check-out', icon: 'luggage',
@@ -3496,14 +3497,15 @@ const TRIP = {
           place: L('City hotel - return stay (nights 5-8)', 'โรงแรมในเมือง - ช่วงกลับ (คืน 5-8)'),
           blurb: L('Check in to the Fukuoka base for the rest of the trip - one hotel, right through to the flight home.',
                    'เช็คอินโรงแรมฐานฟุกุโอกะสำหรับช่วงที่เหลือ - โรงแรมเดียวยาวจนวันบินกลับ'),
-          refs: { map: 'https://maps.google.com/?q=Fukuoka+city+hotels', reservation: { time: '14:00', code: 'FUK-RETURN', party: L('Base nights 5-8 - to book', 'พักคืนที่ 5-8 - รอจอง') }, notes: L('Separate from the Monterey (night 1) - return-stay hotel still to be decided.', 'คนละที่กับ Monterey (คืน 1) - โรงแรมช่วงกลับยังไม่ได้เลือก') } },
+          refs: { map: 'https://maps.google.com/?q=Fukuoka+city+hotels', reservation: { time: '14:00', code: 'FUK-RETURN', party: L('Base nights 5-8 - to book', 'พักคืนที่ 5-8 - รอจอง') }, notes: L('NOT BOOKED YET, and separate from the Monterey (night 1). Four nights, and Sat 28 Nov will price higher than the weeknights - worth checking whether that one night is cheaper elsewhere. Three candidates: (1) Oriental Hotel Fukuoka Hakata Station, fukuoka-orientalhotel.com/en - one minute from JR Hakata, and its Deluxe Twin takes 5, so the whole group fits in one room; best base for the Dazaifu and Itoshima train days; (2) CROSS Life Hakata Yanagibashi - bunk rooms for 4 and genuine connecting rooms, sits between Hakata and Tenjin, best value of the three; (3) Solaria Nishitetsu Hotel Fukuoka, solaria-h.jp/english.html - three minutes from Tenjin station with a triple room for up to 4, and you can walk home from Daimyo and Nakasu. City hotels have far more supply than the ryokan, so book this one last.', 'ยังไม่จอง และเป็นคนละที่กับ Monterey (คืน 1) - พัก 4 คืน และคืนเสาร์ 28 พ.ย. ราคาจะสูงกว่าวันธรรมดา ลองเช็กว่าคืนนั้นย้ายไปที่อื่นถูกกว่าไหม - ตัวเลือก 3 ที่: (1) Oriental Hotel Fukuoka Hakata Station (fukuoka-orientalhotel.com/en) ห่าง JR ฮากาตะ 1 นาที ห้อง Deluxe Twin นอนได้ 5 คน ทั้งกลุ่มอยู่ห้องเดียวกันได้ และเป็นฐานที่ดีที่สุดสำหรับวันนั่งรถไฟไปดาไซฟุกับอิโตชิมะ (2) CROSS Life Hakata Yanagibashi มีห้องเตียงสองชั้นนอน 4 คน และมีห้องเชื่อมกันจริงๆ อยู่ระหว่างฮากาตะกับเท็นจิน คุ้มที่สุดในสามที่ (3) Solaria Nishitetsu Hotel Fukuoka (solaria-h.jp/english.html) ห่างสถานีเท็นจิน 3 นาที มีห้องทริปเปิลนอนได้ถึง 4 คน และเดินกลับจากไดเมียวหรือนากาสึได้ - โรงแรมในเมืองมีห้องเยอะกว่าเรียวกังมาก จองที่นี่เป็นอันสุดท้ายได้') } },
 
         { type: 'feature', time: '14:45', meridiem: 'Afternoon', kind: 'Park', imageId: 'a-d9-ohori',
           title: L('Ohori Park', 'สวนโอโฮริ'),
           place: L('Lake park & Japanese garden', 'สวนริมทะเลสาบ & สวนญี่ปุ่น'),
-          blurb: L('Drop the bags and unwind by the big city lake - a loop of the water and the quiet Japanese garden tucked in one corner.',
-                   'วางกระเป๋าแล้วออกมาเดินเล่นริมทะเลสาบกลางเมือง - เดินรอบบึงและแวะสวนญี่ปุ่นเงียบๆ ที่ซ่อนอยู่มุมหนึ่ง'),
-          refs: { map: 'https://maps.google.com/?q=Ohori+Park+Fukuoka', booking: L('Japanese garden - ¥250', 'สวนญี่ปุ่น - ¥250') } },
+          blurb: L('Drop the bags and unwind by the big city lake - a loop of the water and the quiet Japanese garden tucked in one corner, which is at the peak of its maple colour right now. The ginkgo along the Fukuoka Castle ruins next door turn at the same time.',
+                   'วางกระเป๋าแล้วออกมาเดินเล่นริมทะเลสาบกลางเมือง - เดินรอบบึงและแวะสวนญี่ปุ่นเงียบๆ ที่ซ่อนอยู่มุมหนึ่ง ตอนนี้ใบเมเปิลกำลังพีคพอดี - ใบแปะก๊วยแถวซากปราสาทฟุกุโอกะข้างๆ ก็เปลี่ยนสีพร้อมกัน'),
+          refs: { map: 'https://maps.google.com/?q=Ohori+Park+Fukuoka', booking: L('Japanese garden - ¥250', 'สวนญี่ปุ่น - ¥250'),
+                  notes: L('Japanese garden 09:00-17:00, closed Mondays - fine on a Wednesday. Mid-Nov to early Dec is its window, so this is good timing.', 'สวนญี่ปุ่นเปิด 09:00-17:00 ปิดวันจันทร์ - วันพุธไปได้ - ช่วงสวยคือกลาง พ.ย. ถึงต้น ธ.ค. มาถูกจังหวะพอดี') } },
 
         { type: 'feature', time: '16:15', meridiem: 'Afternoon', kind: 'View', imageId: 'a-d9-tower',
           title: L('Fukuoka Tower & Momochi', 'ฟุกุโอกะทาวเวอร์ & โมโมจิ'),
@@ -3514,9 +3516,9 @@ const TRIP = {
 
         { type: 'feature', time: '17:30', meridiem: 'Evening', kind: 'Wander', imageId: 'a-d7-shopping',
           title: L('Tenjin & Daimyo', 'เท็นจิน & ไดเมียว'),
-          place: L('Shops & winter lights', 'ช้อปปิ้ง & ไฟประดับ'),
-          blurb: L('Back near the hotel - the Tenjin shops and the Daimyo backstreets, then the winter illuminations once it is dark.',
-                   'กลับมาแถวโรงแรม - ร้านค้าย่านเท็นจินและตรอกไดเมียว แล้วชมไฟประดับฤดูหนาวพอฟ้ามืด'),
+          place: L('Shops & illuminations', 'ช้อปปิ้ง & ไฟประดับ'),
+          blurb: L('Back near the hotel - the Tenjin shops and the Daimyo backstreets, then the illuminations through Tenjin Chuo Park and the ACROS forest once it is dark.',
+                   'กลับมาแถวโรงแรม - ร้านค้าย่านเท็นจินและตรอกไดเมียว แล้วชมไฟประดับที่สวนเท็นจินชูโอและป่า ACROS พอฟ้ามืด'),
           refs: { map: 'https://maps.google.com/?q=Tenjin+Fukuoka' } },
 
         { type: 'feature', time: '18:00', meridiem: 'Evening', kind: 'Dining', imageId: 'a-d7-tempura',
@@ -3530,9 +3532,9 @@ const TRIP = {
 
         { type: 'feature', time: '20:00', meridiem: 'Night', kind: 'Wander', imageId: 'a-d10-canal',
           title: L('Canal City Hakata', 'คาแนลซิตี้ ฮากาตะ'),
-          place: L('Fountain show & winter lights', 'โชว์น้ำพุ & ไฟฤดูหนาว'),
-          blurb: L('Wind down at the canal-side mall complex - a fountain-and-light show on the hour and a giant winter tree lit up after dark, with shops and cafés to browse.',
-                   'ปิดท้ายที่คอมเพล็กซ์ห้างริมคลอง - โชว์น้ำพุประกอบไฟทุกชั่วโมงและต้นไม้ฤดูหนาวยักษ์ประดับไฟยามค่ำ พร้อมร้านค้าและคาเฟ่ให้เดินเล่น'),
+          place: L('Fountain show & illuminations', 'โชว์น้ำพุ & ไฟประดับ'),
+          blurb: L('Wind down at the canal-side mall complex - a fountain-and-light show on the hour and the Canal Illumination running from mid-November, with shops and cafés to browse.',
+                   'ปิดท้ายที่คอมเพล็กซ์ห้างริมคลอง - โชว์น้ำพุประกอบไฟทุกชั่วโมง กับไฟประดับคาแนลที่เปิดตั้งแต่กลางพฤศจิกายน พร้อมร้านค้าและคาเฟ่ให้เดินเล่น'),
           refs: { map: 'https://maps.google.com/?q=Canal+City+Hakata' } },
 
         { type: 'feature', time: '21:30', meridiem: 'Night', kind: 'Nightlife', imageId: 'a-d5-bar',
@@ -3564,8 +3566,8 @@ const TRIP = {
         { type: 'feature', time: '09:30', meridiem: 'Morning', kind: 'Castle', imageId: 'a-d4-castle',
           title: L('Kumamoto Castle', 'ปราสาทคุมาโมโตะ'),
           place: L('One of Japan\'s great keeps', 'หนึ่งในปราสาทยิ่งใหญ่ของญี่ปุ่น'),
-          blurb: L('Black-and-white towers on cyclopean curved stone walls - the main keep reopened after the 2016 quake. Go early before the crowds.',
-                   'หอปราสาทขาว-ดำบนกำแพงหินโค้งมหึมา - หอหลักเปิดอีกครั้งหลังแผ่นดินไหวปี 2016 - ไปเช้าก่อนคนเยอะ'),
+          blurb: L('Black-and-white towers on cyclopean curved stone walls - the main keep reopened after the 2016 quake. The ginkgo grove in front of it peaks in late November, which is exactly now: the castle is nicknamed Ginnan-jo, the ginkgo castle. Go early before the crowds.',
+                   'หอปราสาทขาว-ดำบนกำแพงหินโค้งมหึมา - หอหลักเปิดอีกครั้งหลังแผ่นดินไหวปี 2016 - ดงแปะก๊วยหน้าปราสาทพีคปลายพฤศจิกายนซึ่งตรงกับตอนนี้พอดี ปราสาทนี้มีอีกชื่อว่า "กินนันโจ" หรือปราสาทแปะก๊วย - ไปเช้าก่อนคนเยอะ'),
           refs: { map: 'https://maps.google.com/?q=Kumamoto+Castle', official: 'https://castle.kumamoto-guide.jp/en/',
                   booking: L('Keep entry - ¥800', 'เข้าหอปราสาท - ¥800') } },
 
@@ -3581,7 +3583,8 @@ const TRIP = {
           place: L('A miniature Tokaido garden', 'สวนจำลองเส้นทางโทไกโด'),
           blurb: L('A strolling garden that recreates the old road to Edo in miniature - including a little grassy Mt Fuji.',
                    'สวนเดินเล่นที่จำลองเส้นทางสู่เอโดะแบบย่อส่วน - มีภูเขาฟูจิหญ้าจิ๋วด้วย'),
-          refs: { map: 'https://maps.google.com/?q=Suizenji+Jojuen', booking: L('Entry - ¥400', 'ค่าเข้า - ¥400') } },
+          refs: { map: 'https://maps.google.com/?q=Suizenji+Jojuen', booking: L('Entry - ¥400', 'ค่าเข้า - ¥400'),
+                  notes: L('Unlike the castle, this garden peaks in early December - expect partial, early-stage colour rather than full autumn. Worth it for the garden itself, not for the leaves.', 'ต่างจากปราสาท - สวนนี้พีคต้นธันวาคม ตอนนี้จะเปลี่ยนสีแค่บางส่วน ยังไม่เต็มที่ - มาเพื่อตัวสวนเอง ไม่ใช่เพื่อใบไม้') } },
 
         { type: 'feature', time: '15:30', meridiem: 'Afternoon', kind: 'Sweets', imageId: 'a-d4-sweets',
           title: L('Ikinari Dango', 'อิคินาริ ดังโงะ'),
@@ -3619,8 +3622,8 @@ const TRIP = {
       title: L('Dazaifu', 'ดาไซฟุ'),
       subtitle: L('Shrine, Sweets & River Town', 'ศาลเจ้า ขนม และเมืองริมน้ำ'),
       note: L(
-        'A train day south of the city - the great shrine of learning and its woven-wood Starbucks, then a flat-bottomed boat down the canals of Yanagawa, and yatai again at night.',
-        'วันนั่งรถไฟลงใต้ของเมือง - ศาลเจ้าแห่งการเรียนและ Starbucks ไม้สาน แล้วล่องเรือท้องแบนตามคลองยานางาวะ ปิดท้ายด้วยยาไตอีกครั้งยามค่ำ'
+        'A train day south of the city - the great shrine of learning at the peak of its maple colour, the moss garden next door, its woven-wood Starbucks, then a flat-bottomed boat down the canals of Yanagawa, and yatai again at night.',
+        'วันนั่งรถไฟลงใต้ของเมือง - ศาลเจ้าแห่งการเรียนช่วงใบเมเปิลพีคพอดี สวนมอสส์ข้างๆและ Starbucks ไม้สาน แล้วล่องเรือท้องแบนตามคลองยานางาวะ ปิดท้ายด้วยยาไตอีกครั้งยามค่ำ'
       ),
       coverId: 'day7-cover',
       activities: [
@@ -3641,12 +3644,20 @@ const TRIP = {
         { type: 'feature', time: '09:45', meridiem: 'Morning', kind: 'Shrine', imageId: 'a-d2-tenmangu',
           title: L('Dazaifu Tenmangu', 'ดาไซฟุ เท็มมังกู'),
           place: L('Shrine of learning', 'ศาลเจ้าแห่งการเรียน'),
-          blurb: L('A vermilion shrine to the deity of scholarship, ringed by ancient plum trees and arched red bridges.',
-                   'ศาลเจ้าสีชาดของเทพเจ้าแห่งการเรียน รายล้อมด้วยต้นบ๊วยเก่าแก่และสะพานแดงโค้ง'),
+          blurb: L('A vermilion shrine to the deity of scholarship, ringed by ancient plum trees and arched red bridges - and the maples over the arched bridges are at their peak in late November.',
+                   'ศาลเจ้าสีชาดของเทพเจ้าแห่งการเรียน รายล้อมด้วยต้นบ๊วยเก่าแก่และสะพานแดงโค้ง - ใบเมเปิลเหนือสะพานโค้งกำลังพีคช่วงปลายพฤศจิกายนพอดี'),
           refs: { map: 'https://maps.google.com/?q=Dazaifu+Tenmangu', official: 'https://www.dazaifutenmangu.or.jp/en',
-                  booking: L('Free entry to grounds', 'เข้าบริเวณฟรี'), notes: L('Buy an omamori charm for good study luck.', 'ซื้อเครื่องรางโอมาโมริขอพรเรื่องการเรียน') } },
+                  booking: L('Free entry to grounds', 'เข้าบริเวณฟรี'), notes: L('Buy an omamori charm for good study luck. Worth knowing: Kamado Jinja, 10 min by bus up the hill, runs a maple light-up from sunset to 21:00 in this exact window (22 Nov - 7 Dec in 2025) - it would mean giving up the Nakasu night, but it is the best evening foliage in the area.', 'ซื้อเครื่องรางโอมาโมริขอพรเรื่องการเรียน - ข้อมูลเสริม: ศาลเจ้าคามาโดะ นั่งรถเมล์ขึ้นเขา 10 นาที มีไลต์อัพใบไม้แดงตั้งแต่พระอาทิตย์ตกถึง 21:00 ตรงกับช่วงนี้พอดี (ปี 2025 คือ 22 พ.ย. - 7 ธ.ค.) - ต้องแลกกับคืนนากาสึ แต่เป็นใบไม้แดงยามค่ำที่ดีที่สุดแถวนี้') } },
 
-        { type: 'feature', time: '11:00', meridiem: 'Late morning', kind: 'Wander', imageId: 'a-d2-omotesando',
+        { type: 'feature', time: '10:45', meridiem: 'Late morning', kind: 'Garden', imageId: 'a-d7-komyozenji',
+          title: L('Komyozenji moss garden', 'สวนมอสส์โคเมียวเซนจิ'),
+          place: L('Moss, raked gravel & maples', 'มอสส์ กรวดเรียว & ใบเมเปิล'),
+          blurb: L('A small Zen temple five minutes from the shrine, and the one place in Dazaifu people come specifically for the leaves - a dry gravel garden at the front, and a back garden where red maples stand over deep green moss. You sit on the wooden veranda and look at it.',
+                   'วัดเซนเล็กๆ ห่างจากศาลเจ้าห้านาที เป็นที่เดียวในดาไซฟุที่คนตั้งใจมาดูใบไม้โดยเฉพาะ - ด้านหน้าเป็นสวนกรวดแห้ง ด้านหลังเป็นเมเปิลแดงตั้งอยู่บนพื้นมอสส์เขียวเข้ม - นั่งที่ระเบียงไม้แล้วมองเฉยๆ'),
+          refs: { map: 'https://maps.google.com/?q=Komyozenji+Dazaifu', booking: L('Entry - ¥200', 'ค่าเข้า - ¥200'),
+                  notes: L('Roughly 09:30-16:30, cash only, and photography inside the garden is restricted - check the signs at the gate. Small and gets busy in koyo season, so go straight after the shrine.', 'ประมาณ 09:30-16:30 รับเงินสดเท่านั้น และห้ามถ่ายรูปบางจุดในสวน - ดูป้ายตรงทางเข้า - ที่เล็กและคนเยอะช่วงใบไม้เปลี่ยนสี ควรไปต่อจากศาลเจ้าเลย') } },
+
+        { type: 'feature', time: '11:20', meridiem: 'Late morning', kind: 'Wander', imageId: 'a-d2-omotesando',
           title: L('Omotesando & Umegae Mochi', 'ถนนซันโด & อุเมะกาเอะโมจิ'),
           place: L('The approach street', 'ถนนทางเข้าศาลเจ้า'),
           blurb: L('Grilled umegae mochi straight off the iron - sweet red bean in a crisp rice cake.',
@@ -3677,8 +3688,8 @@ const TRIP = {
         { type: 'feature', time: '14:30', meridiem: 'Afternoon', kind: 'Ferry', imageId: 'a-d2-yanagawa',
           title: L('Yanagawa river boat', 'ล่องเรือยานางาวะ'),
           place: L('Donko-bune punting', 'เรือพายดงโกะบุเนะ'),
-          blurb: L('A boatman poles you down willow-lined canals under low stone bridges - in winter, a heated kotatsu boat.',
-                   'คนพายพาล่องคลองริมต้นหลิวลอดสะพานหินเตี้ยๆ หน้าหนาวเป็นเรือโคทัตสึอุ่นๆ'),
+          blurb: L('A boatman poles you down willow-lined canals under low stone bridges. Once it turns cold they run the heated kotatsu boats - worth asking whether they have started.',
+                   'คนพายพาล่องคลองริมต้นหลิวลอดสะพานหินเตี้ยๆ - พออากาศเย็นจะเปลี่ยนเป็นเรือโคทัตสึอุ่นๆ ลองถามดูว่าเริ่มให้บริการหรือยัง'),
           refs: { map: 'https://maps.google.com/?q=Yanagawa+River+Cruise', booking: L('Boat - ~¥1,800 pp', 'ค่าเรือ - ~¥1,800/ท่าน') } },
 
         { type: 'step', time: '17:30', meridiem: 'Evening', kind: 'Train', icon: 'train',
@@ -3716,8 +3727,8 @@ const TRIP = {
       title: L('Itoshima', 'อิโตชิมะ'),
       subtitle: L('Coast, Oysters & the Last Night', 'ชายฝั่ง หอยนางรม และคืนสุดท้าย'),
       note: L(
-        'No car today - out west to the Itoshima coast by train and local transport: the white sea-torii, seaside cafés along Sunset Road, grilled winter oysters, then back to the city for the last night out.',
-        'วันนี้ไม่มีรถ - นั่งรถไฟ + รถท้องถิ่นไปชายฝั่งอิโตชิมะ: เสาโทริอิขาวกลางทะเล คาเฟ่ริมทะเลเลียบ Sunset Road หอยนางรมเผาหน้าหนาว แล้วกลับเข้าเมืองไปปาร์ตี้คืนสุดท้าย'
+        'No car today - out west to the Itoshima coast by train and local transport: the white sea-torii, seaside cafés along Sunset Road, grilled oysters at a kaki-goya hut, then back to the city for the last night out.',
+        'วันนี้ไม่มีรถ - นั่งรถไฟ + รถท้องถิ่นไปชายฝั่งอิโตชิมะ: เสาโทริอิขาวกลางทะเล คาเฟ่ริมทะเลเลียบ Sunset Road หอยนางรมเผาที่กระท่อมคากิโกยะ แล้วกลับเข้าเมืองไปปาร์ตี้คืนสุดท้าย'
       ),
       coverId: 'day8-cover',
       activities: [
@@ -3745,8 +3756,8 @@ const TRIP = {
         { type: 'feature', time: '12:30', meridiem: 'Midday', kind: 'Dining', imageId: 'a-d8-oyster',
           title: L('Kaki-goya oyster hut', 'กระท่อมหอยนางรมเผา'),
           place: L('Grill-your-own by the bay', 'เผากินเองริมอ่าว'),
-          blurb: L('Winter-only huts along the bay where you grill plump local oysters yourself over a charcoal burner.',
-                   'กระท่อมเปิดเฉพาะหน้าหนาวริมอ่าว เผาหอยนางรมตัวอ้วนท้องถิ่นเองบนเตาถ่าน'),
+          blurb: L('Seasonal huts along the bay where you grill plump local oysters yourself over a charcoal burner. The season runs roughly October to April, so late November is comfortably inside it.',
+                   'กระท่อมตามฤดูริมอ่าว เผาหอยนางรมตัวอ้วนท้องถิ่นเองบนเตาถ่าน - ฤดูกาลราวตุลาคมถึงเมษายน ปลายพฤศจิกายนจึงอยู่ในช่วงสบายๆ'),
           refs: { map: 'https://maps.google.com/?q=Itoshima+Oyster+Hut+Kakigoya',
                   notes: L('Season Nov-Mar; busiest at weekends - some huts take bookings.', 'ฤดูกาล พ.ย.-มี.ค. เสาร์อาทิตย์คนเยอะ บางร้านจองได้') } },
 
@@ -3755,7 +3766,8 @@ const TRIP = {
           place: L('Basalt sea cliffs', 'หน้าผาหินบะซอลต์ริมทะเล'),
           blurb: L('Hexagonal basalt columns and a sea cave at the tip of the peninsula - a short detour if there is time.',
                    'เสาหินบะซอลต์หกเหลี่ยมและถ้ำทะเลที่ปลายคาบสมุทร - แวะสั้นๆ ได้ถ้ามีเวลา'),
-          refs: { map: 'https://maps.google.com/?q=Keya+no+Oto+Itoshima' } },
+          refs: { map: 'https://maps.google.com/?q=Keya+no+Oto+Itoshima',
+                  notes: L('Itoshima\'s famous foliage spot is Raizan Sennyoji Daihioin and its 400-year-old maple, but it is inland in the hills - awkward without a car, and its peak is usually around mid-November, so by the 28th expect a carpet of fallen leaves rather than a full canopy. Only worth a taxi if the reports still look good.', 'จุดใบไม้แดงชื่อดังของอิโตชิมะคือวัดไรซัง เซ็นเนียวจิ ไดฮิโออิน กับต้นเมเปิลอายุ 400 ปี แต่อยู่ลึกเข้าไปในเขา - ไม่มีรถจะลำบาก และปกติพีคราวกลางพฤศจิกายน วันที่ 28 จึงน่าจะเป็นใบร่วงเต็มพื้นมากกว่าใบเต็มต้น - เหมาะจะนั่งแท็กซี่ไปก็ต่อเมื่อรายงานสภาพใบยังดีอยู่') } },
 
         { type: 'feature', time: '16:30', meridiem: 'Afternoon', kind: 'View', imageId: 'a-d8-sunset',
           title: L('Sunset over the sea', 'พระอาทิตย์ตกริมทะเล'),
@@ -3868,8 +3880,8 @@ const DESTINATION = {
   islandNative: '九州',
   country: L('Japan', 'ญี่ปุ่น'),
   native: '日本',
-  tagline: L('Volcano calderas, hidden onsen towns and a city of ramen - eight nights driving the southern island.',
-             'ปากปล่องภูเขาไฟ เมืองออนเซนซ่อนตัว และเมืองแห่งราเมง - แปดคืนขับรถรอบเกาะใต้'),
+  tagline: L('Volcano calderas, hidden onsen towns and a city of ramen - eight nights driving the southern island at the turn of the leaves.',
+             'ปากปล่องภูเขาไฟ เมืองออนเซนซ่อนตัว และเมืองแห่งราเมง - แปดคืนขับรถรอบเกาะใต้ช่วงใบไม้เปลี่ยนสี'),
   facts: [
     { k: L('Duration', 'ระยะเวลา'), v: L('9 days - 8 nights', '9 วัน - 8 คืน') },
     { k: L('Season', 'ฤดูกาล'), v: L('Late autumn - November', 'ปลายฤดูใบไม้ร่วง - พฤศจิกายน') },
@@ -3950,28 +3962,21 @@ const KONBINI = {
       ],
       pharmacy: [ { brand: 'Matsumoto Kiyoshi', detail: L('Drugstore - Tenjin', 'ร้านขายยา - เท็นจิน'), map: 'https://maps.google.com/?q=33.5905,130.3992' } ],
       hospital: [ { brand: 'Kyushu Medical Center', detail: L('24h emergency - ~2 km', 'ฉุกเฉิน 24 ชม. - ~2 กม.'), map: 'https://maps.google.com/?q=33.5808,130.3768' } ] },
-    { days: L('Day 02', 'วันที่ 02'), area: L('Kumamoto - downtown', 'คุมาโมโตะ - กลางเมือง'),
+    { days: L('Day 02', 'วันที่ 02'), area: L('Aso - Uchinomaki', 'อาโซ - อุจิโนมากิ'),
       stores: [
-        { brand: '7-Eleven', detail: L('Shimotori / downtown', 'ชิโมโทริ / กลางเมือง'), map: 'https://maps.google.com/?q=32.8035,130.7075' },
-        { brand: 'Lawson', detail: L('Karashima-cho arcade', 'คาราชิมะ - อาเขต'), map: 'https://maps.google.com/?q=32.8018,130.7058' },
+        { brand: '7-Eleven', detail: L('Uchinomaki / Route 212', 'อุจิโนมากิ / เส้น 212'), map: 'https://maps.google.com/?q=7-Eleven+Uchinomaki+Aso' },
+        { brand: 'Lawson', detail: L('Aso Stn area', 'แถวสถานีอาโซ'), map: 'https://maps.google.com/?q=Lawson+Aso+Station' },
       ],
-      pharmacy: [ { brand: 'Matsumoto Kiyoshi', detail: L('Drugstore - Shimotori arcade', 'ร้านขายยา - อาเขตชิโมโทริ'), map: 'https://maps.google.com/?q=32.8040,130.7068' } ],
-      hospital: [ { brand: 'Kumamoto Chuo Hospital', detail: L('Emergency - central', 'ฉุกเฉิน - กลางเมือง'), map: 'https://maps.google.com/?q=32.7858,130.7012' } ] },
-    { days: L('Day 03', 'วันที่ 03'), area: L('Kumamoto - downtown', 'คุมาโมโตะ - กลางเมือง'),
-      stores: [
-        { brand: '7-Eleven', detail: L('Shimotori / downtown', 'ชิโมโทริ / กลางเมือง'), map: 'https://maps.google.com/?q=32.8035,130.7075' },
-        { brand: 'Lawson', detail: L('Karashima-cho arcade', 'คาราชิมะ - อาเขต'), map: 'https://maps.google.com/?q=32.8018,130.7058' },
-      ],
-      pharmacy: [ { brand: 'Matsumoto Kiyoshi', detail: L('Drugstore - Shimotori arcade', 'ร้านขายยา - อาเขตชิโมโทริ'), map: 'https://maps.google.com/?q=32.8040,130.7068' } ],
-      hospital: [ { brand: 'Kumamoto Chuo Hospital', detail: L('Emergency - central', 'ฉุกเฉิน - กลางเมือง'), map: 'https://maps.google.com/?q=32.7858,130.7012' } ] },
-    { days: L('Day 04-05', 'วันที่ 04-05'), area: L('Yufuin', 'ยูฟุอิน'),
+      pharmacy: [ { brand: 'Drugstore', detail: L('Aso city - limited, closes early', 'ตัวเมืองอาโซ - มีน้อย ปิดเร็ว'), map: 'https://maps.google.com/?q=drugstore+Aso+city+Kumamoto' } ],
+      hospital: [ { brand: 'Aso Medical Center', detail: L('Nearest hospital', 'โรงพยาบาลใกล้สุด'), map: 'https://maps.google.com/?q=Aso+Medical+Center' } ] },
+    { days: L('Day 03-04', 'วันที่ 03-04'), area: L('Yufuin', 'ยูฟุอิน'),
       stores: [
         { brand: 'Lawson', detail: L('Yufuin Stn - ~300 m', 'สถานียูฟุอิน - ~300 ม.'), map: 'https://maps.google.com/?q=33.2638,131.3558' },
         { brand: '7-Eleven', detail: L('Route 210 - ~600 m', 'เส้น 210 - ~600 ม.'), map: 'https://maps.google.com/?q=33.2665,131.3505' },
       ],
       pharmacy: [ { brand: 'Drugstore', detail: L('Yufuin centre - limited', 'ใจกลางยูฟุอิน - มีจำกัด'), map: 'https://maps.google.com/?q=33.2650,131.3560' } ],
       hospital: [ { brand: 'Yufuin Hospital', detail: L('Nearest hospital', 'โรงพยาบาลใกล้สุด'), map: 'https://maps.google.com/?q=33.2685,131.3548' } ] },
-    { days: L('Day 06-09', 'วันที่ 06-09'), area: L('Hakata - Nakasu', 'ฮากาตะ - นากาสึ'),
+    { days: L('Day 05-09', 'วันที่ 05-09'), area: L('Hakata - Nakasu', 'ฮากาตะ - นากาสึ'),
       stores: [
         { brand: '7-Eleven', detail: L('Hakata Stn - ~150 m', 'สถานีฮากาตะ - ~150 ม.'), map: 'https://maps.google.com/?q=33.5898,130.4200' },
         { brand: 'FamilyMart', detail: L('Canal City - ~200 m', 'คาแนลซิตี้ - ~200 ม.'), map: 'https://maps.google.com/?q=33.5897,130.4110' },
@@ -4054,7 +4059,7 @@ const MENUS = {
     { name: L('Kumamoto wagyu', 'วากิวคุมาโมโตะ'), note: L('Local marbled beef, grilled or in hot pot.', 'เนื้อลายหินอ่อนท้องถิ่น ย่างหรือใส่หม้อไฟ'), signature: true },
     { name: L('River fish shioyaki', 'ปลาแม่น้ำย่างเกลือ'), note: L('Salt-grilled on the bone.', 'ย่างเกลือทั้งตัว') },
     { name: L('Seasonal sakizuke', 'ของเรียกน้ำย่อยตามฤดู'), note: L('The chef\'s opening bite.', 'จานเปิดจากเชฟ') },
-    { name: L('Mountain-vegetable nimono', 'ผักภูเขาต้มนิโมโนะ'), note: L('Simmered winter sansai.', 'ผักป่าซันไซหน้าหนาวต้ม') },
+    { name: L('Mountain-vegetable nimono', 'ผักภูเขาต้มนิโมโนะ'), note: L('Simmered autumn sansai.', 'ผักป่าซันไซหน้าใบไม้ร่วงต้ม') },
   ] },
   'a-d4-katsuretsu': { items: [
     { name: L('Loin tonkatsu set', 'เซ็ตทงคตสึสันนอก'), note: L('Thick juicy cutlet with cabbage.', 'ทงคตสึชิ้นหนาฉ่ำเสิร์ฟกับกะหล่ำ'), signature: true },
@@ -4084,7 +4089,7 @@ const MENUS = {
     { name: L('Seasonal sakizuke', 'ของเรียกน้ำย่อยตามฤดู'), note: L('The chef\'s opening course.', 'คอร์สเปิดจากเชฟ') },
     { name: L('Bungo wagyu shabu', 'ชาบูวากิวบุงโกะ'), note: L('Local beef swished in broth.', 'เนื้อท้องถิ่นลวกในน้ำซุป'), signature: true },
     { name: L('Grilled river fish', 'ปลาน้ำจืดย่าง'), note: L('Salt-grilled, on the bone.', 'ย่างเกลือทั้งตัว') },
-    { name: L('Winter vegetable nimono', 'ผักหน้าหนาวต้มนิโมโนะ'), note: L('Simmered until tender.', 'ต้มจนนุ่ม') },
+    { name: L('Autumn vegetable nimono', 'ผักหน้าใบไม้ร่วงต้มนิโมโนะ'), note: L('Simmered until tender.', 'ต้มจนนุ่ม') },
   ] },
   'a-d7-tempura': { items: [
     { name: L('Prawn tempura', 'เทมปุระกุ้ง'), note: L('Fried to order at the counter.', 'ทอดสดที่เคาน์เตอร์'), signature: true },
@@ -4191,11 +4196,11 @@ const PACKING = {
       L('eSIM or pocket Wi-Fi', 'eSIM หรือ pocket Wi-Fi'),
       L('IC card - Suica / ICOCA', 'บัตร IC - Suica / ICOCA'),
     ] },
-    { label: L('Winter & Driving', 'หน้าหนาว & การขับรถ'), items: [
+    { label: L('Late Autumn & Driving', 'ปลายฤดูใบไม้ร่วง & การขับรถ'), items: [
       L('Warm coat - 5-15°C (colder in the highlands)', 'เสื้อโค้ตกันหนาว - 5-15°C (บนภูเขาหนาวกว่า)'),
       L('Gloves & hat for Aso / Yufuin', 'ถุงมือ & หมวกสำหรับอาโซ / ยูฟุอิน'),
       L('Comfortable walking shoes', 'รองเท้าเดินสบาย'),
-      L('Request snow tyres + ETC card', 'ขอยางหน้าหนาว + บัตร ETC'),
+      L('ETC card + ask about studless tyres', 'ขอบัตร ETC + ถามเรื่องยางสตัดเลส'),
       L('Power adapter - Type A', 'ปลั๊กแปลง - Type A'),
     ] },
   ],
@@ -4255,7 +4260,7 @@ const DRIVING = {
     { icon: 'pin', label: L('Navigate by MAPCODE', 'นำทางด้วย MAPCODE'), note: L('Car GPS takes a phone number or MAPCODE - set the destination before you set off; Google Maps works too.', 'GPS รถใช้เบอร์โทรหรือ MAPCODE - ตั้งจุดหมายก่อนออก หรือใช้ Google Maps ก็ได้') },
     { icon: 'store', label: L('Self-serve fuel', 'ปั๊มเซลฟ์เซอร์วิส'), note: L('"Self" (セルフ) pumps: pay at the machine, touch the static pad, レギュラー = regular petrol.', 'ปั๊ม "セルフ": จ่ายที่ตู้ แตะแผ่นไล่ไฟฟ้าสถิต - レギュラー = น้ำมันธรรมดา') },
     { icon: 'wallet', label: L('Paid parking', 'ที่จอดเก็บเงิน'), note: L('Coin lots lock a plate under the car - pay the machine before driving off. Hotels often charge parking separately.', 'ที่จอดหยอดเหรียญมีแผ่นล็อกใต้รถ - จ่ายตู้ก่อนถอยออก - โรงแรมมักคิดค่าจอดแยก') },
-    { icon: 'cloud', label: L('Winter & snow', 'หน้าหนาว & หิมะ'), note: L('Late November in Aso/highlands can already ice over - ask for snow tyres, keep to Route 111 (Panorama Line), ease off on bridges.', 'ปลายพฤศจิกายนแถบอาโซ/ที่สูงอาจมีน้ำแข็งแล้ว - ขอยางหิมะ ใช้เส้น 111 (พาโนรามาไลน์) ชะลอบนสะพาน') },
+    { icon: 'cloud', label: L('Cold & mountain roads', 'อากาศเย็น & ถนนบนเขา'), note: L('Snow is unlikely in late November, but dawn frost and black ice on the high passes are not - the Aso rim and Makinoto Pass sit above 1,000 m. Studless tyres are cheap insurance rather than a must; keep to Route 111 (Panorama Line) and ease off on bridges and in shade.', 'ปลายพฤศจิกายนหิมะไม่ค่อยตก แต่น้ำค้างแข็งและถนนลื่นตอนเช้ามืดบนช่องเขาสูงมีจริง - สันเขาอาโซกับช่องเขามากิโนโตะสูงเกิน 1,000 ม. - ยางสตัดเลสเป็นการเผื่อไว้ ไม่ถึงกับต้องมี - ใช้เส้น 111 (พาโนรามาไลน์) ชะลอบนสะพานและช่วงที่ร่มเงา') },
   ],
 };
 
@@ -6311,7 +6316,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', function () {
       navigator.serviceWorker.register('sw.js').catch(function () {});
-      if (window.caches) caches.open('wwn-kyushu-v64').then(function (c) {
+      if (window.caches) caches.open('wwn-kyushu-v65').then(function (c) {
         c.add(new Request(location.href, { cache: 'reload' })).catch(function () {});
       });
     });

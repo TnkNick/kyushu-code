@@ -56,7 +56,7 @@
 | `p-tagot.jpg` | Tagot | 820×820 |
 | `p-tum.jpg` | P’Tum | 820×820 |
 
-### Itinerary timeline + activity detail — 60 รูป
+### Itinerary timeline + activity detail — 65 รูป
 
 | ไฟล์ | คือ | ขนาด |
 |---|---|---|
@@ -90,6 +90,7 @@
 | `a-d6-sweets.jpg` | Yufuin Sweets · B-speak & Milch | 1280×800 |
 | `a-d6-ryokan.jpg` | Ryokan kaiseki | 1280×800 |
 | `a-d7-mist.jpg` | Kinrin Lake at dawn | 1280×800 |
+| `a-d7-komyozenji.jpg` | Komyozenji moss garden | 1280×800 |
 | `a-d7-lunch.jpg` | Lunch stop · Hita | 1280×800 |
 | `a-d7-shopping.jpg` | Tenjin & Canal City | 1280×800 |
 | `a-d7-tempura.jpg` | Tempura Hirao | 1280×800 |
@@ -120,6 +121,10 @@
 | `a-d10-illum.jpg` | Final illumination stroll | 1280×800 |
 | `a-d10-dinner.jpg` | Hakata Yakitori | 1280×800 |
 | `a-d10-nightlife.jpg` | Bar Gentle — a quiet last drink | 1280×800 |
+| `a-d2-milkroad.jpg` | Milk Road | 1280×800 |
+| `a-d2-nishiyu.jpg` | Nishiyunoura Observatory | 1280×800 |
+| `a-d2-komezuka.jpg` | Komezuka Observatory | 1280×800 |
+| `a-d2-dinner.jpg` | Kumamoto ramen | 1280×800 |
 
 ### Activity menu — dish photo popup — 76 รูป
 
@@ -202,4 +207,4 @@
 | `dish-a-d9-sweets-1.jpg` | Fluffy fruit pancakes | 1080×810 |
 | `dish-a-d9-sweets-2.jpg` | Fruit sandwich | 1080×810 |
 
-_รวม 159 ไฟล์ · สร้างจาก `_generate_placeholders.py`_
+_รวม 164 ไฟล์ · สร้างจาก `_generate_placeholders.py`_

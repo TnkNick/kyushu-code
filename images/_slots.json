@@ -266,6 +266,13 @@
     "h": 800
   },
   {
+    "id": "a-d7-komyozenji",
+    "label": "Komyozenji moss garden",
+    "cat": "activity",
+    "w": 1280,
+    "h": 800
+  },
+  {
     "id": "a-d7-lunch",
     "label": "Lunch stop · Hita",
     "cat": "activity",
