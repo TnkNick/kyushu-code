@@ -66,9 +66,9 @@ TRIP.days.forEach((d, i) => {
   p(`> ${th(d.note)}`);
   p();
   d.activities.forEach((a) => {
-    const star = a.title && th(a.title).includes('★') ? '' : '';
     const place = a.place ? ` - _${th(a.place)}_` : '';
-    p(`- **${a.time}** ${th(a.title)}${star}${place}`);
+    p(`- **${a.time}** ${th(a.title)}${place}`);
+    if (a.refs && a.refs.parking) p(`  - ที่จอดรถ: ${th(a.refs.parking)}`);
   });
   const konb = KONBINI.areas.find((ar) => (ar.days.en.match(/\d+/g) || []).map(Number).some((n, idx, arr) =>
     arr.length === 1 ? n === i + 1 : (i + 1) >= arr[0] && (i + 1) <= arr[arr.length - 1]));
