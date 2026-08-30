@@ -1,4 +1,4 @@
-// icons.jsx — bespoke thin-line iconography for the travel lookbook.
+// icons.jsx - bespoke thin-line iconography for the travel lookbook.
 // Single <Icon name size stroke/> component. All strokes use currentColor,
 // fill:none, round caps/joins, 24×24 grid. Tuned hairline weight (1.25).
 
@@ -21,7 +21,7 @@ const ICON_PATHS = {
       <path d="M4.2 17.4l1.3 1.3 2.3-2.5" />
     </>
   ),
-  // ── Reference dock ──────────────────────────────────────────────
+  // -- Reference dock ----------------------------------------------
   map: (
     <>
       <path d="M9 3.5 3.5 6v14.5L9 18l6 2.5 5.5-2.5V6L15 8.5 9 6Z" />
@@ -74,7 +74,7 @@ const ICON_PATHS = {
       <path d="M8.5 15h4" />
     </>
   ),
-  // ── Navigation / chrome ─────────────────────────────────────────
+  // -- Navigation / chrome -----------------------------------------
   arrowRight: <path d="M5 12h13M13 6.5 18.5 12 13 17.5" />,
   arrowUpRight: <path d="M7 17 17 7M9 7h8v8" />,
   chevronRight: <path d="M9.5 5.5 16 12l-6.5 6.5" />,
@@ -106,7 +106,7 @@ const ICON_PATHS = {
       <path d="M5 19l4.5-4.5M9 12h4" />
     </>
   ),
-  // ── Logistics / transit (step entries) ──────────────────────────
+  // -- Logistics / transit (step entries) --------------------------
   plane: (
     <>
       <path d="M10.4 3.6c.5-1.1 2-1.1 2.5 0l1.2 2.5 6 3.2c.6.3 1 .9 1 1.6v.7l-7.4-1.6v4.1l1.9 1.4v1.4l-3.3-.9-3.3.9v-1.4l1.9-1.4v-4.1L3.5 11.6v-.7c0-.7.4-1.3 1-1.6l6-3.2Z" />
@@ -210,7 +210,7 @@ const ICON_PATHS = {
       <path d="M12 16.7h.01" />
     </>
   ),
-  // ── Settings / theme / language ─────────────────────────────────
+  // -- Settings / theme / language ---------------------------------
   gear: (
     <>
       <circle cx="12" cy="12" r="3" />

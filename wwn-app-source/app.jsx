@@ -1,4 +1,4 @@
-// app.jsx — composition root: state, transitions, language, tweaks, embed params.
+// app.jsx - composition root: state, transitions, language, tweaks, embed params.
 const FONT_STACKS = {
   trirong: '"Trirong", "Sukhumvit Set", "IBM Plex Sans Thai", Georgia, serif',
   sukhumvit: '"Sukhumvit Set", "IBM Plex Sans Thai", "Hanken Grotesk", system-ui, sans-serif',
@@ -53,7 +53,7 @@ function readBegan() {
   try { return localStorage.getItem('lookbook-began') === 'yes'; } catch (e) { return false; }
 }
 
-// which day index does today fall on: before the trip → 0, after → last, during → that day
+// which day index does today fall on: before the trip -> 0, after -> last, during -> that day
 function computeTodayDay() {
   const today = new Date(); today.setHours(0, 0, 0, 0);
   const dates = TRIP.days.map((d) => {
@@ -126,8 +126,8 @@ function App() {
   };
 
   const begin = () => { setView('itinerary'); };
-  // "Begin the journey" — jump to today's day: before the trip → first day,
-  // after it → last day, during it → the matching day.
+  // "Begin the journey" - jump to today's day: before the trip -> first day,
+  // after it -> last day, during it -> the matching day.
   const beginJourney = () => {
     try { localStorage.setItem('lookbook-began', 'yes'); } catch (e) {}
     setDay(computeTodayDay()); setDayKey((k) => k + 1); setView('itinerary');
@@ -138,7 +138,6 @@ function App() {
   const openWallet = () => { setDetail(null); setView('wallet'); };
   const openMore = () => { setDetail(null); setView('more'); };
   const openGuides = () => { setDetail(null); setView('guides'); };
-  const openParty = () => { setDetail(null); setView('party'); };
   const openSettings = () => { setDetail(null); setView('settings'); };
   const openEmergency = () => { setDetail(null); setView('emergency'); };
   const openPhrases = openGuides;
@@ -161,7 +160,7 @@ function App() {
   const activeTheme = PARAM.theme || (view === 'itinerary' ? TRIP.days[day].theme : TRIP.days[0].theme);
 
   // Paint the page CANVAS (html/body) with the active theme's --paper so the iOS
-  // home-indicator strip — which shows the canvas background, NOT any fixed layer —
+  // home-indicator strip - which shows the canvas background, NOT any fixed layer -
   // matches the content instead of leaving a dark dead-zone band.
   React.useEffect(() => {
     const lb = document.querySelector('.lookbook');
@@ -176,12 +175,12 @@ function App() {
 
   // Page-swap direction: deeper views (the More sub-pages) slide IN from the right;
   // navigating back (shallower) slides in from the left. Depth drives the direction.
-  const VIEW_DEPTH = { overview: 0, itinerary: 1, bookings: 1, checklist: 1, wallet: 1, more: 1, guides: 2, party: 2, settings: 2, emergency: 2 };
+  const VIEW_DEPTH = { overview: 0, itinerary: 1, bookings: 1, checklist: 1, wallet: 1, more: 1, guides: 2, settings: 2, emergency: 2 };
   const depthOf = (v) => (Object.prototype.hasOwnProperty.call(VIEW_DEPTH, v) ? VIEW_DEPTH[v] : 1);
   const prevViewRef = React.useRef(view);
   const dCur = depthOf(view), dPrev = depthOf(prevViewRef.current);
   // Slide ONLY the "More" sub-pages (depth 2): entering one slides in from the right, going back
-  // from the left. Plain bottom-tab switches (depth 0/1) stay instant — no slide.
+  // from the left. Plain bottom-tab switches (depth 0/1) stay instant - no slide.
   const navDir = (dCur < 2 && dPrev < 2) ? 'none' : (dCur >= dPrev ? 'fwd' : 'back');
   React.useEffect(() => { prevViewRef.current = view; }, [view]);
 
@@ -198,7 +197,7 @@ function App() {
         {view === 'overview' ? (
           <div className="view-overview">
             <Overview trip={TRIP} dest={DESTINATION} travelers={TRAVELERS}
-              onBegin={beginJourney} onJump={jumpTo} onHome={ovTop} onBookings={openBookings} onPhrases={openPhrases} onParty={openParty} onEmergency={openEmergency}
+              onBegin={beginJourney} onJump={jumpTo} onHome={ovTop} onBookings={openBookings} onPhrases={openPhrases} onEmergency={openEmergency}
               lang={lang} onLang={changeLang} />
           </div>
         ) : view === 'bookings' ? (
@@ -215,15 +214,11 @@ function App() {
           </div>
         ) : view === 'more' ? (
           <div className="view-more">
-            <MorePage onHome={home} onSettings={openSettings} onGuides={openGuides} onParty={openParty} onEmergency={openEmergency} lang={lang} />
+            <MorePage onHome={home} onSettings={openSettings} onGuides={openGuides} onEmergency={openEmergency} lang={lang} />
           </div>
         ) : view === 'guides' ? (
           <div className="view-guides">
             <GuidesPage onHome={home} onMore={openMore} lang={lang} />
-          </div>
-        ) : view === 'party' ? (
-          <div className="view-party">
-            <TravelersPage onHome={home} onMore={openMore} lang={lang} />
           </div>
         ) : view === 'settings' ? (
           <div className="view-settings">
@@ -235,7 +230,7 @@ function App() {
           </div>
         ) : (
           <div className="view-itinerary">
-            <DayNav days={TRIP.days} current={day} onSelect={selectDay} onHome={home} onBookings={openBookings} onPhrases={openPhrases} onParty={openParty} onEmergency={openEmergency} lang={lang} onLang={changeLang} />
+            <DayNav days={TRIP.days} current={day} onSelect={selectDay} onHome={home} onBookings={openBookings} onPhrases={openPhrases} onEmergency={openEmergency} lang={lang} onLang={changeLang} />
             <main className="stage" ref={scrollRef}>
               <div className="stage-inner" key={dayKey + '-' + lang}>
                 <Timeline day={TRIP.days[day]} onOpen={setDetail} />
@@ -259,7 +254,7 @@ function App() {
             <TweakSelect
               label="Display font"
               value={t.display}
-              options={[{ value: 'sukhumvit', label: 'Sukhumvit — all sans' }, { value: 'trirong', label: 'Trirong — elegant serif' }, { value: 'notoserif', label: 'Noto Serif — classic' }]}
+              options={[{ value: 'sukhumvit', label: 'Sukhumvit - all sans' }, { value: 'trirong', label: 'Trirong - elegant serif' }, { value: 'notoserif', label: 'Noto Serif - classic' }]}
               onChange={(v) => setTweak('display', v)}
             />
             <TweakSection label="Composition" />
@@ -291,7 +286,7 @@ function Footer({ trip, day, onPrev, onNext, first, last, lang }) {
         {last ? (
           <div className="stage-foot-end">
             <Icon name="compass" size={20} stroke={1.1} />
-            <p>{x({ en: 'Journey complete — nine days across Kyushu.', th: 'การเดินทางสิ้นสุดลง — เก้าวันทั่วคิวชู' })}</p>
+            <p>{x({ en: 'Journey complete - nine days across Kyushu.', th: 'การเดินทางสิ้นสุดลง - เก้าวันทั่วคิวชู' })}</p>
           </div>
         ) : (
           <button className="stage-next" onClick={onNext}>
