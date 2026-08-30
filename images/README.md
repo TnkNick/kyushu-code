@@ -56,7 +56,7 @@
 | `p-tagot.jpg` | Tagot | 820×820 |
 | `p-tum.jpg` | P’Tum | 820×820 |
 
-### Itinerary timeline + activity detail — 65 รูป
+### Itinerary timeline + activity detail — 66 รูป
 
 | ไฟล์ | คือ | ขนาด |
 |---|---|---|
@@ -71,6 +71,7 @@
 | `a-d3-daikanbo.jpg` | Daikanbo viewpoint | 1280×800 |
 | `a-d3-lunch.jpg` | Aso Akaushi-don | 1280×800 |
 | `a-d3-kusasenri.jpg` | Kusasenri & Komezuka | 1280×800 |
+| `a-d3-tegata.jpg` | Kurokawa rotenburo-meguri | 1280×800 |
 | `a-d3-nakadake.jpg` | Nakadake Crater | 1280×800 |
 | `a-d3-sweets.jpg` | Aso Milk soft serve | 1280×800 |
 | `a-d3-kaiseki.jpg` | Ryokan kaiseki | 1280×800 |
@@ -207,4 +208,4 @@
 | `dish-a-d9-sweets-1.jpg` | Fluffy fruit pancakes | 1080×810 |
 | `dish-a-d9-sweets-2.jpg` | Fruit sandwich | 1080×810 |
 
-_รวม 164 ไฟล์ · สร้างจาก `_generate_placeholders.py`_
+_รวม 165 ไฟล์ · สร้างจาก `_generate_placeholders.py`_
