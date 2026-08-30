@@ -872,7 +872,7 @@ const TRAVELERS = {
       home: L('Bangkok', 'กรุงเทพฯ'), detail: L('Books the restaurants', 'จองร้านอาหาร'), imageId: 'p-tagot' },
     { name: L('P\'Tam', 'พี่ตั้ม'), role: L('Driver', 'คนขับ'),
       home: L('Tokyo', 'โตเกียว'), detail: L('Friend joining the trip', 'เพื่อนมาเที่ยวด้วย'), imageId: 'p-tum' },
-    { name: L('Ellie', 'แอลลี่'), role: L('Driver - photographer', 'คนขับ - ช่างภาพ'),
+    { name: L('Jane', 'เจน'), role: L('Driver - photographer', 'คนขับ - ช่างภาพ'),
       home: L('Bangkok', 'กรุงเทพฯ'), detail: L('Drives & shoots the trip', 'ขับรถ & ถ่ายรูปทริป'), imageId: 'p-ellie' },
   ],
 };
