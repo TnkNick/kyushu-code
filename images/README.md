@@ -56,7 +56,7 @@
 | `p-tagot.jpg` | Tagot | 820×820 |
 | `p-tum.jpg` | P’Tum | 820×820 |
 
-### Itinerary timeline + activity detail — 66 รูป
+### Itinerary timeline + activity detail — 67 รูป
 
 | ไฟล์ | คือ | ขนาด |
 |---|---|---|
@@ -125,6 +125,7 @@
 | `a-d2-milkroad.jpg` | Milk Road | 1280×800 |
 | `a-d2-nishiyu.jpg` | Nishiyunoura Observatory | 1280×800 |
 | `a-d2-komezuka.jpg` | Komezuka Observatory | 1280×800 |
+| `a-d2-asojinja.jpg` | Aso Shrine & Monzenmachi | 1280×800 |
 | `a-d2-dinner.jpg` | Kumamoto ramen | 1280×800 |
 
 ### Activity menu — dish photo popup — 76 รูป
@@ -208,4 +209,4 @@
 | `dish-a-d9-sweets-1.jpg` | Fluffy fruit pancakes | 1080×810 |
 | `dish-a-d9-sweets-2.jpg` | Fruit sandwich | 1080×810 |
 
-_รวม 165 ไฟล์ · สร้างจาก `_generate_placeholders.py`_
+_รวม 166 ไฟล์ · สร้างจาก `_generate_placeholders.py`_
