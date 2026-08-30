@@ -71,7 +71,6 @@
 | `a-d3-daikanbo.jpg` | Daikanbo viewpoint | 1280×800 |
 | `a-d3-lunch.jpg` | Aso Akaushi-don | 1280×800 |
 | `a-d3-kusasenri.jpg` | Kusasenri & Komezuka | 1280×800 |
-| `a-d3-tegata.jpg` | Kurokawa rotenburo-meguri | 1280×800 |
 | `a-d3-nakadake.jpg` | Nakadake Crater | 1280×800 |
 | `a-d3-sweets.jpg` | Aso Milk soft serve | 1280×800 |
 | `a-d3-kaiseki.jpg` | Ryokan kaiseki | 1280×800 |
@@ -102,6 +101,7 @@
 | `a-d2-yanagawa.jpg` | Yanagawa river boat | 1280×800 |
 | `a-d2-yatai.jpg` | Nakasu Yatai dinner | 1280×800 |
 | `a-d2-nightlife.jpg` | Seimon-Barai izakaya | 1280×800 |
+| `a-d2-stars.jpg` | Stars over the caldera | 1280×800 |
 | `a-d8-torii.jpg` | Sakurai Futamigaura | 1280×800 |
 | `a-d8-cafes.jpg` | Sunset Road cafés | 1280×800 |
 | `a-d8-oyster.jpg` | Kaki-goya oyster hut | 1280×800 |
