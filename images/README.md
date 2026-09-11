@@ -25,11 +25,11 @@
 | ไฟล์ | คือ | ขนาด |
 |---|---|---|
 | `day1-cover.jpg` | Day 1 · Fukuoka | 1280×800 |
-| `day2-cover.jpg` | Day 2 · Mt Aso | 1280×800 |
-| `day3-cover.jpg` | Day 3 · Kumamoto | 1280×800 |
-| `day4-cover.jpg` | Day 4 · Beppu | 1280×800 |
+| `day2-cover.jpg` | Day 2 · Kumamoto | 1280×800 |
+| `day3-cover.jpg` | Day 3 · Mt Aso | 1280×800 |
+| `day4-cover.jpg` | Day 4 · Yamanami Highway | 1280×800 |
 | `day5-cover.jpg` | Day 5 · Yufuin | 1280×800 |
-| `day6-cover.jpg` | Day 6 · Return to Hakata | 1280×800 |
+| `day6-cover.jpg` | Day 6 · Beppu & Fukuoka | 1280×800 |
 | `day7-cover.jpg` | Day 7 · Dazaifu | 1280×800 |
 | `day8-cover.jpg` | Day 8 · Itoshima | 1280×800 |
 | `day9-cover.jpg` | Day 9 · Fukuoka — Slow Day | 1280×800 |
@@ -56,7 +56,7 @@
 | `p-tagot.jpg` | Tagot | 820×820 |
 | `p-tum.jpg` | P’Tum | 820×820 |
 
-### Itinerary timeline + activity detail — 67 รูป
+### Itinerary timeline + activity detail — 71 รูป
 
 | ไฟล์ | คือ | ขนาด |
 |---|---|---|
@@ -74,16 +74,16 @@
 | `a-d3-nakadake.jpg` | Nakadake Crater | 1280×800 |
 | `a-d3-sweets.jpg` | Aso Milk soft serve | 1280×800 |
 | `a-d3-kaiseki.jpg` | Ryokan kaiseki | 1280×800 |
-| `a-d4-katsuretsu.jpg` | Katsuretsu-tei | 1280×800 |
+| `a-d4-katsuretsu.jpg` | Katsuretsu-tei Minami-Kumamoto | 1280×800 |
 | `a-d4-castle.jpg` | Kumamoto Castle | 1280×800 |
 | `a-d4-suizenji.jpg` | Suizenji Jojuen | 1280×800 |
 | `a-d4-sweets.jpg` | Ikinari Dango | 1280×800 |
 | `a-d4-basashi.jpg` | Basashi dinner | 1280×800 |
-| `a-d5-lunch.jpg` | Roadside lunch | 1280×800 |
+| `a-d5-lunch.jpg` | Lunch on the high road | 1280×800 |
 | `a-d5-umijigoku.jpg` | Umi Jigoku | 1280×800 |
 | `a-d5-chinoike.jpg` | Chinoike Jigoku | 1280×800 |
 | `a-d5-sweets.jpg` | Beppu Purin | 1280×800 |
-| `a-d5-sushi.jpg` | Katsugyo kaiten sushi | 1280×800 |
+| `a-d5-sushi.jpg` | Kamesho Kurukuru Sushi | 1280×800 |
 | `a-d6-kinrin.jpg` | Kinrin Lake | 1280×800 |
 | `a-d6-mabushi.jpg` | Yufu Mabushi | 1280×800 |
 | `a-d6-yunotsubo.jpg` | Yunotsubo Kaido | 1280×800 |
@@ -100,7 +100,7 @@
 | `a-d2-unagi.jpg` | Yanagawa Unagi Seiro-mushi | 1280×800 |
 | `a-d2-yanagawa.jpg` | Yanagawa river boat | 1280×800 |
 | `a-d2-yatai.jpg` | Nakasu Yatai dinner | 1280×800 |
-| `a-d2-nightlife.jpg` | Seimon-Barai izakaya | 1280×800 |
+| `a-d2-nightlife.jpg` | A drink in Aso town | 1280×800 |
 | `a-d2-stars.jpg` | Stars over the caldera | 1280×800 |
 | `a-d8-torii.jpg` | Sakurai Futamigaura | 1280×800 |
 | `a-d8-cafes.jpg` | Sunset Road cafés | 1280×800 |
@@ -126,9 +126,13 @@
 | `a-d2-nishiyu.jpg` | Nishiyunoura Observatory | 1280×800 |
 | `a-d2-komezuka.jpg` | Komezuka Observatory | 1280×800 |
 | `a-d2-asojinja.jpg` | Aso Shrine & Monzenmachi | 1280×800 |
-| `a-d2-dinner.jpg` | Kumamoto ramen | 1280×800 |
+| `a-d2-dinner.jpg` | Akaushi dinner in Aso town | 1280×800 |
+| `a-d4-kokonoe.jpg` | Kokonoe "Yume" Suspension Bridge | 1280×800 |
+| `a-d7-robata.jpg` | Robata no Ito Okashi | 1280×800 |
+| `a-d7-sashisu.jpg` | Sushi Sakaba Sashisu | 1280×800 |
+| `a-d8-anzen.jpg` | Anzen Shokudo | 1280×800 |
 
-### Activity menu — dish photo popup — 76 รูป
+### Activity menu — dish photo popup — 88 รูป
 
 | ไฟล์ | คือ | ขนาด |
 |---|---|---|
@@ -156,18 +160,18 @@
 | `dish-a-d3-kaiseki-1.jpg` | River fish shioyaki | 1080×810 |
 | `dish-a-d3-kaiseki-2.jpg` | Seasonal sakizuke | 1080×810 |
 | `dish-a-d3-kaiseki-3.jpg` | Mountain-vegetable nimono | 1080×810 |
-| `dish-a-d4-katsuretsu-0.jpg` | Loin tonkatsu set | 1080×810 |
+| `dish-a-d4-katsuretsu-0.jpg` | Rokuhaku kurobuta loin set | 1080×810 |
 | `dish-a-d4-katsuretsu-1.jpg` | Fillet tonkatsu | 1080×810 |
-| `dish-a-d4-katsuretsu-2.jpg` | Kuruma-ebi fry | 1080×810 |
-| `dish-a-d4-katsuretsu-3.jpg` | Pork-cutlet sandwich | 1080×810 |
+| `dish-a-d4-katsuretsu-2.jpg` | Grind-your-own sesame | 1080×810 |
+| `dish-a-d4-katsuretsu-3.jpg` | Katsu-sando to take away | 1080×810 |
 | `dish-a-d4-basashi-0.jpg` | Lean basashi | 1080×810 |
 | `dish-a-d4-basashi-1.jpg` | Fatty (toro) basashi | 1080×810 |
 | `dish-a-d4-basashi-2.jpg` | Karashi renkon | 1080×810 |
 | `dish-a-d4-basashi-3.jpg` | Taipi-en | 1080×810 |
-| `dish-a-d5-sushi-0.jpg` | Bungo-bay sashimi | 1080×810 |
-| `dish-a-d5-sushi-1.jpg` | Seki-saba | 1080×810 |
-| `dish-a-d5-sushi-2.jpg` | Toriten | 1080×810 |
-| `dish-a-d5-sushi-3.jpg` | Aji nigiri | 1080×810 |
+| `dish-a-d5-sushi-0.jpg` | Seki-saba | 1080×810 |
+| `dish-a-d5-sushi-1.jpg` | Seki-aji | 1080×810 |
+| `dish-a-d5-sushi-2.jpg` | Today's blackboard | 1080×810 |
+| `dish-a-d5-sushi-3.jpg` | Fatty tuna / prawn | 1080×810 |
 | `dish-a-d6-mabushi-0.jpg` | Bungo beef mabushi | 1080×810 |
 | `dish-a-d6-mabushi-1.jpg` | Jidori chicken mabushi | 1080×810 |
 | `dish-a-d6-mabushi-2.jpg` | Dashi pour-over | 1080×810 |
@@ -208,5 +212,17 @@
 | `dish-a-d9-sweets-0.jpg` | Seasonal fruit parfait | 1080×810 |
 | `dish-a-d9-sweets-1.jpg` | Fluffy fruit pancakes | 1080×810 |
 | `dish-a-d9-sweets-2.jpg` | Fruit sandwich | 1080×810 |
+| `dish-a-d7-robata-0.jpg` | Grilled silver salmon set | 1080×810 |
+| `dish-a-d7-robata-1.jpg` | Yamada Suisan eel set | 1080×810 |
+| `dish-a-d7-robata-2.jpg` | Clay-pot rice | 1080×810 |
+| `dish-a-d7-robata-3.jpg` | Grilled scallop | 1080×810 |
+| `dish-a-d7-sashisu-0.jpg` | Nigiri, two a plate | 1080×810 |
+| `dish-a-d7-sashisu-1.jpg` | Sashimi moriawase | 1080×810 |
+| `dish-a-d7-sashisu-2.jpg` | Draft beer / highball | 1080×810 |
+| `dish-a-d7-sashisu-3.jpg` | Aburi nigiri | 1080×810 |
+| `dish-a-d8-anzen-0.jpg` | Tonkotsu ramen | 1080×810 |
+| `dish-a-d8-anzen-1.jpg` | Chanpon | 1080×810 |
+| `dish-a-d8-anzen-2.jpg` | Kaedama | 1080×810 |
+| `dish-a-d8-anzen-3.jpg` | Gyoza | 1080×810 |
 
-_รวม 166 ไฟล์ · สร้างจาก `_generate_placeholders.py`_
+_รวม 182 ไฟล์ · สร้างจาก `_generate_placeholders.py`_

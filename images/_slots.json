@@ -71,7 +71,7 @@
   },
   {
     "id": "day2-cover",
-    "label": "Day 2 · Mt Aso",
+    "label": "Day 2 · Kumamoto",
     "cat": "daycover",
     "w": 1280,
     "h": 800
@@ -127,14 +127,14 @@
   },
   {
     "id": "day3-cover",
-    "label": "Day 3 · Kumamoto",
+    "label": "Day 3 · Mt Aso",
     "cat": "daycover",
     "w": 1280,
     "h": 800
   },
   {
     "id": "a-d4-katsuretsu",
-    "label": "Katsuretsu-tei",
+    "label": "Katsuretsu-tei Minami-Kumamoto",
     "cat": "activity",
     "w": 1280,
     "h": 800
@@ -169,14 +169,14 @@
   },
   {
     "id": "day4-cover",
-    "label": "Day 4 · Beppu",
+    "label": "Day 4 · Yamanami Highway",
     "cat": "daycover",
     "w": 1280,
     "h": 800
   },
   {
     "id": "a-d5-lunch",
-    "label": "Roadside lunch",
+    "label": "Lunch on the high road",
     "cat": "activity",
     "w": 1280,
     "h": 800
@@ -204,7 +204,7 @@
   },
   {
     "id": "a-d5-sushi",
-    "label": "Katsugyo kaiten sushi",
+    "label": "Kamesho Kurukuru Sushi",
     "cat": "activity",
     "w": 1280,
     "h": 800
@@ -253,7 +253,7 @@
   },
   {
     "id": "day6-cover",
-    "label": "Day 6 · Return to Hakata",
+    "label": "Day 6 · Beppu & Fukuoka",
     "cat": "daycover",
     "w": 1280,
     "h": 800
@@ -344,7 +344,7 @@
   },
   {
     "id": "a-d2-nightlife",
-    "label": "Seimon-Barai izakaya",
+    "label": "A drink in Aso town",
     "cat": "activity",
     "w": 1280,
     "h": 800
@@ -764,7 +764,7 @@
   },
   {
     "id": "dish-a-d4-katsuretsu-0",
-    "label": "Loin tonkatsu set",
+    "label": "Rokuhaku kurobuta loin set",
     "cat": "dish",
     "w": 1080,
     "h": 810
@@ -778,14 +778,14 @@
   },
   {
     "id": "dish-a-d4-katsuretsu-2",
-    "label": "Kuruma-ebi fry",
+    "label": "Grind-your-own sesame",
     "cat": "dish",
     "w": 1080,
     "h": 810
   },
   {
     "id": "dish-a-d4-katsuretsu-3",
-    "label": "Pork-cutlet sandwich",
+    "label": "Katsu-sando to take away",
     "cat": "dish",
     "w": 1080,
     "h": 810
@@ -820,28 +820,28 @@
   },
   {
     "id": "dish-a-d5-sushi-0",
-    "label": "Bungo-bay sashimi",
-    "cat": "dish",
-    "w": 1080,
-    "h": 810
-  },
-  {
-    "id": "dish-a-d5-sushi-1",
     "label": "Seki-saba",
     "cat": "dish",
     "w": 1080,
     "h": 810
   },
   {
+    "id": "dish-a-d5-sushi-1",
+    "label": "Seki-aji",
+    "cat": "dish",
+    "w": 1080,
+    "h": 810
+  },
+  {
     "id": "dish-a-d5-sushi-2",
-    "label": "Toriten",
+    "label": "Today's blackboard",
     "cat": "dish",
     "w": 1080,
     "h": 810
   },
   {
     "id": "dish-a-d5-sushi-3",
-    "label": "Aji nigiri",
+    "label": "Fatty tuna / prawn",
     "cat": "dish",
     "w": 1080,
     "h": 810
@@ -1156,9 +1156,121 @@
   },
   {
     "id": "a-d2-dinner",
-    "label": "Kumamoto ramen",
+    "label": "Akaushi dinner in Aso town",
     "cat": "activity",
     "w": 1280,
     "h": 800
+  },
+  {
+    "id": "a-d4-kokonoe",
+    "label": "Kokonoe \"Yume\" Suspension Bridge",
+    "cat": "activity",
+    "w": 1280,
+    "h": 800
+  },
+  {
+    "id": "a-d7-robata",
+    "label": "Robata no Ito Okashi",
+    "cat": "activity",
+    "w": 1280,
+    "h": 800
+  },
+  {
+    "id": "a-d7-sashisu",
+    "label": "Sushi Sakaba Sashisu",
+    "cat": "activity",
+    "w": 1280,
+    "h": 800
+  },
+  {
+    "id": "a-d8-anzen",
+    "label": "Anzen Shokudo",
+    "cat": "activity",
+    "w": 1280,
+    "h": 800
+  },
+  {
+    "id": "dish-a-d7-robata-0",
+    "label": "Grilled silver salmon set",
+    "cat": "dish",
+    "w": 1080,
+    "h": 810
+  },
+  {
+    "id": "dish-a-d7-robata-1",
+    "label": "Yamada Suisan eel set",
+    "cat": "dish",
+    "w": 1080,
+    "h": 810
+  },
+  {
+    "id": "dish-a-d7-robata-2",
+    "label": "Clay-pot rice",
+    "cat": "dish",
+    "w": 1080,
+    "h": 810
+  },
+  {
+    "id": "dish-a-d7-robata-3",
+    "label": "Grilled scallop",
+    "cat": "dish",
+    "w": 1080,
+    "h": 810
+  },
+  {
+    "id": "dish-a-d7-sashisu-0",
+    "label": "Nigiri, two a plate",
+    "cat": "dish",
+    "w": 1080,
+    "h": 810
+  },
+  {
+    "id": "dish-a-d7-sashisu-1",
+    "label": "Sashimi moriawase",
+    "cat": "dish",
+    "w": 1080,
+    "h": 810
+  },
+  {
+    "id": "dish-a-d7-sashisu-2",
+    "label": "Draft beer / highball",
+    "cat": "dish",
+    "w": 1080,
+    "h": 810
+  },
+  {
+    "id": "dish-a-d7-sashisu-3",
+    "label": "Aburi nigiri",
+    "cat": "dish",
+    "w": 1080,
+    "h": 810
+  },
+  {
+    "id": "dish-a-d8-anzen-0",
+    "label": "Tonkotsu ramen",
+    "cat": "dish",
+    "w": 1080,
+    "h": 810
+  },
+  {
+    "id": "dish-a-d8-anzen-1",
+    "label": "Chanpon",
+    "cat": "dish",
+    "w": 1080,
+    "h": 810
+  },
+  {
+    "id": "dish-a-d8-anzen-2",
+    "label": "Kaedama",
+    "cat": "dish",
+    "w": 1080,
+    "h": 810
+  },
+  {
+    "id": "dish-a-d8-anzen-3",
+    "label": "Gyoza",
+    "cat": "dish",
+    "w": 1080,
+    "h": 810
   }
 ]
