@@ -380,15 +380,28 @@ function fmtTime(date, tz) {
     return new Intl.DateTimeFormat('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false, timeZone: tz }).format(date);
   } catch (e) { return '--:--:--'; }
 }
-// Trip date range from the itinerary days, e.g. "21-29 Nov 2026" (take the part after "-")
+// Day/month/year out of a localized date line, e.g. "Saturday - 21 Nov 2026"
+// or the Thai "เสาร์ 21 พฤศจิกายน 2026".
+const TH_MONTH_SHORT = {
+  'มกราคม': 'ม.ค.', 'กุมภาพันธ์': 'ก.พ.', 'มีนาคม': 'มี.ค.', 'เมษายน': 'เม.ย.',
+  'พฤษภาคม': 'พ.ค.', 'มิถุนายน': 'มิ.ย.', 'กรกฎาคม': 'ก.ค.', 'สิงหาคม': 'ส.ค.',
+  'กันยายน': 'ก.ย.', 'ตุลาคม': 'ต.ค.', 'พฤศจิกายน': 'พ.ย.', 'ธันวาคม': 'ธ.ค.',
+};
+function dateParts(s) {
+  const m = String(s || '').match(/(\d{1,2})\s+(\S+)\s+(\d{4})/);
+  return m ? { day: m[1], month: m[2], year: m[3] } : null;
+}
+function shortMonth(m) { return TH_MONTH_SHORT[m] || String(m).slice(0, 3); }
+
+// Trip date range from the itinerary days, e.g. "21-29 Nov 2026" / "21-29 พ.ย. 2026"
 function tripDateRange(x) {
   const days = (window.TRIP && window.TRIP.days) || [];
   if (!days.length) return '';
-  const part = (d) => x(d.date).split('-').pop().trim();
-  const a = part(days[0]), b = part(days[days.length - 1]);
-  const am = a.replace(/^\d+\s*/, ''), bm = b.replace(/^\d+\s*/, '');
-  const ad = (a.match(/^\d+/) || [''])[0], bd = (b.match(/^\d+/) || [''])[0];
-  return am === bm ? (ad + '-' + bd + ' ' + bm) : (a.replace(/\s*\d{4}$/, '') + ' - ' + b);
+  const a = dateParts(x(days[0].date)), b = dateParts(x(days[days.length - 1].date));
+  if (!a || !b) return '';
+  return a.month === b.month
+    ? a.day + '-' + b.day + ' ' + shortMonth(a.month) + ' ' + b.year
+    : a.day + ' ' + shortMonth(a.month) + ' - ' + b.day + ' ' + shortMonth(b.month) + ' ' + b.year;
 }
 
 function Clock({ variant = 'chrome' }) {
@@ -751,11 +764,10 @@ function DayNav({ days, current, onSelect, onHome, onBookings, onPhrases, onEmer
       rail.scrollTo({ left: Math.max(0, target), behavior: 'smooth' });
     }
   }, [current]);
-  // short date for each chip, e.g. "14 Nov" - derived from the localized date string
+  // short date for each chip, e.g. "14 Nov" / "14 พ.ย."
   const shortDate = (d) => {
-    const s = x(d.date);
-    const m = s.match(/(\d{1,2})\s+([^\s-]+)/);
-    return m ? m[1] + ' ' + m[2].slice(0, 3) : '';
+    const p = dateParts(x(d.date));
+    return p ? p.day + ' ' + shortMonth(p.month) : '';
   };
 
   return (
@@ -904,9 +916,8 @@ function bkCategory(a) {
 }
 
 function bkShortDate(dateObj, lang) {
-  const s = window.tx(dateObj, lang);
-  const m = s.match(/(\d{1,2})\s+([^\s-]+)/);
-  return m ? m[1] + ' ' + m[2].slice(0, 3) : '';
+  const p = dateParts(window.tx(dateObj, lang));
+  return p ? p.day + ' ' + shortMonth(p.month) : '';
 }
 
 function collectBookings(trip) {
@@ -931,7 +942,7 @@ function BookingCard({ item, booked, onToggle, lang }) {
   return (
     <article className={'bk-card' + (isBooked ? ' is-booked' : '')}>
       <div className="bk-card-top">
-        <span className="bk-badge"><b>{lang === 'th' ? day.labelTh : day.label}</b> - {bkShortDate(day.date, lang)}</span>
+        <span className="bk-badge"><b>{lang === 'th' ? day.labelTh : day.label}</b> {'\u00b7'} {bkShortDate(day.date, lang)}</span>
         <button className="bk-status" onClick={() => onToggle(code)} aria-pressed={isBooked}>
           <span className="bk-tick"><Icon name="check" size={11} stroke={2.2} /></span>
           <span>{isBooked ? x({ en: 'Booked', th: 'จองแล้ว' }) : x({ en: 'To book', th: 'ยังไม่จอง' })}</span>
@@ -980,7 +991,7 @@ function Bookings({ trip, onHome, lang }) {
           <h1 className="bk-h1">{x({ en: 'Bookings', th: 'การจอง', ja: '予約' })}</h1>
           <p className="bk-lede">{x({
             en: 'Flights, hotels, cars and tickets - tick each off as it\'s confirmed.',
-            th: 'เที่ยวบิน โรงแรม รถเช่า และตั๋ว - ติ๊กเมื่อจองเรียบร้อยแล้ว',
+            th: 'เที่ยวบิน โรงแรม รถเช่า และตั๋ว ติ๊กเมื่อจองเรียบร้อยแล้ว',
             ja: 'フライト・ホテル・レンタカー・チケット - 予約できたらチェック。',
           })}</p>
         </section>
@@ -1013,7 +1024,7 @@ function ChecklistPage({ onHome, lang }) {
           <h1 className="bk-h1">{x({ en: 'Checklist', th: 'เช็กลิสต์', ja: 'チェックリスト' })}</h1>
           <p className="bk-lede">{x({
             en: 'What to pack and the souvenirs to grab - tick as you go.',
-            th: 'ของที่ต้องแพ็ค และของฝากที่ต้องซื้อ - ติ๊กไปเรื่อยๆ',
+            th: 'ของที่ต้องแพ็คและของฝากที่ต้องซื้อ ติ๊กไปเรื่อยๆ ได้เลย',
             ja: '荷物とお土産のチェックリスト - チェックしていこう。',
           })}</p>
         </section>
@@ -1117,7 +1128,7 @@ function Converter() {
     <section className="party conv">
       <div className="party-head">
         <span className="ov-kicker">{x({ en: 'Converter', th: 'แปลงเงิน', ja: '両替' })}</span>
-        <h2 className="ov-h2">{x({ en: 'Yen -> Baht', th: 'เยน -> บาท', ja: '円 -> バーツ' })}</h2>
+        <h2 className="ov-h2">{x({ en: 'Yen -> Baht', th: 'แปลงเยนเป็นบาท', ja: '円 -> バーツ' })}</h2>
       </div>
       <div className="conv-card">
         <label className="conv-side">
@@ -1135,7 +1146,7 @@ function Converter() {
           <button key={v} className="conv-chip" onClick={() => setYen(String(v))}>¥{v.toLocaleString('en-US')}</button>
         ))}
       </div>
-      <span className="conv-note">{x({ en: 'Rate ¥100 = ฿22.6 - indicative', th: 'เรต ¥100 = ฿22.6 - โดยประมาณ', ja: '¥100 = ฿22.6 - 目安' })}</span>
+      <span className="conv-note">{x({ en: 'Rate: 100 yen is about 22.6 baht (indicative)', th: 'เรตโดยประมาณ 100 เยน เท่ากับ 22.6 บาท', ja: '100円は約22.6バーツ（目安）' })}</span>
     </section>
   );
 }
@@ -1185,7 +1196,7 @@ function Expenses() {
           ))}
         </ul>
       ) : (
-        <p className="exp-empty">{x({ en: 'No expenses yet - add one above.', th: 'ยังไม่มีรายการ - เพิ่มด้านบนได้เลย', ja: 'まだ記録なし' })}</p>
+        <p className="exp-empty">{x({ en: 'No expenses yet - add one above.', th: 'ยังไม่มีรายการ เพิ่มด้านบนได้เลย', ja: 'まだ記録なし' })}</p>
       )}
     </section>
   );
@@ -1420,7 +1431,7 @@ function GuidesPage({ onHome, onMore, lang }) {
           <h1 className="bk-h1">{x({ en: 'Tips & Guides', th: 'คำแนะนำต่างๆ', ja: 'ガイド' })}</h1>
           <p className="bk-lede">{x({
             en: 'Driving rules, handy phrases and etiquette for Japan - pick a tab.',
-            th: 'การขับรถ ประโยคที่ใช้บ่อย และมารยาทในญี่ปุ่น - เลือกแท็บด้านล่าง',
+            th: 'การขับรถ ประโยคที่ใช้บ่อย และมารยาทในญี่ปุ่น เลือกแท็บด้านล่างได้เลย',
             ja: '運転・会話・マナー - タブを選んでね。',
           })}</p>
         </section>
@@ -1546,7 +1557,7 @@ function WalletPage({ onHome, lang }) {
           <h1 className="bk-h1">{x({ en: 'Expenses', th: 'บันทึกรายจ่าย', ja: '費用' })}</h1>
           <p className="bk-lede">{x({
             en: 'Log spending in yen or baht, tag who shares it, and see each person\'s split - in both currencies.',
-            th: 'บันทึกค่าใช้จ่ายเป็นเยนหรือบาท เลือกคนที่หารด้วย แล้วดูส่วนแบ่งของแต่ละคน - ทั้งสองสกุลเงิน',
+            th: 'บันทึกค่าใช้จ่ายเป็นเยนหรือบาท เลือกคนที่หารด้วย แล้วดูส่วนแบ่งของแต่ละคนได้ทั้งสองสกุลเงิน',
             ja: '円かバーツで記録し、割り勘する人を選ぶと各自の負担がわかります。',
           })}</p>
         </section>
@@ -1622,9 +1633,9 @@ function WalletPage({ onHome, lang }) {
 function MorePage({ onHome, onSettings, onGuides, onEmergency, lang }) {
   const { x } = useT();
   const links = [
-    { icon: 'gear', title: { en: 'Settings', th: 'ตั้งค่า', ja: '設定' }, desc: { en: 'Language - theme', th: 'ภาษา - ธีม', ja: '言語・テーマ' }, on: onSettings },
-    { icon: 'globe', title: { en: 'Tips & Guides', th: 'คำแนะนำต่างๆ', ja: 'ガイド' }, desc: { en: 'Driving - phrases - etiquette', th: 'ขับรถ - ประโยค - มารยาท', ja: '運転・会話・マナー' }, on: onGuides },
-    { icon: 'alert', title: { en: 'Emergency', th: 'เบอร์ติดต่อฉุกเฉิน', ja: '緊急連絡先' }, desc: { en: 'Police - ambulance - embassy', th: 'ตำรวจ - รถพยาบาล - สถานทูต', ja: '警察・救急・大使館' }, on: onEmergency, urgent: true },
+    { icon: 'gear', title: { en: 'Settings', th: 'ตั้งค่า', ja: '設定' }, desc: { en: 'Language - theme', th: 'ภาษาและธีม', ja: '言語・テーマ' }, on: onSettings },
+    { icon: 'globe', title: { en: 'Tips & Guides', th: 'คำแนะนำต่างๆ', ja: 'ガイド' }, desc: { en: 'Driving - phrases - etiquette', th: 'ขับรถ ประโยค และมารยาท', ja: '運転・会話・マナー' }, on: onGuides },
+    { icon: 'alert', title: { en: 'Emergency', th: 'เบอร์ติดต่อฉุกเฉิน', ja: '緊急連絡先' }, desc: { en: 'Police - ambulance - embassy', th: 'ตำรวจ รถพยาบาล และสถานทูต', ja: '警察・救急・大使館' }, on: onEmergency, urgent: true },
   ];
   return (
     <div className="bookings">

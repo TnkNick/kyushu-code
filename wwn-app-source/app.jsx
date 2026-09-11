@@ -286,7 +286,7 @@ function Footer({ trip, day, onPrev, onNext, first, last, lang }) {
         {last ? (
           <div className="stage-foot-end">
             <Icon name="compass" size={20} stroke={1.1} />
-            <p>{x({ en: 'Journey complete - nine days across Kyushu.', th: 'การเดินทางสิ้นสุดลง - เก้าวันทั่วคิวชู' })}</p>
+            <p>{x({ en: 'Journey complete - nine days across Kyushu.', th: 'การเดินทางสิ้นสุดลง รวมเก้าวันทั่วคิวชู' })}</p>
           </div>
         ) : (
           <button className="stage-next" onClick={onNext}>
