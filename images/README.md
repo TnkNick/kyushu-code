@@ -25,9 +25,9 @@
 | ไฟล์ | คือ | ขนาด |
 |---|---|---|
 | `day1-cover.jpg` | Day 1 · Fukuoka | 1280×800 |
-| `day2-cover.jpg` | Day 2 · Kumamoto | 1280×800 |
-| `day3-cover.jpg` | Day 3 · Mt Aso | 1280×800 |
-| `day4-cover.jpg` | Day 4 · Yamanami Highway | 1280×800 |
+| `day2-cover.jpg` | Day 2 · Mt Aso | 1280×800 |
+| `day3-cover.jpg` | Day 3 · Kumamoto | 1280×800 |
+| `day4-cover.jpg` | Day 4 · Yamanami & Beppu | 1280×800 |
 | `day5-cover.jpg` | Day 5 · Yufuin | 1280×800 |
 | `day6-cover.jpg` | Day 6 · Beppu & Fukuoka | 1280×800 |
 | `day7-cover.jpg` | Day 7 · Dazaifu | 1280×800 |
@@ -47,7 +47,7 @@
 | `r-yufuin.jpg` | Yufuin | 820×820 |
 | `r-itoshima.jpg` | Itoshima | 820×820 |
 
-### Overview — The Party — 4 รูป
+### Overview — The Party — 5 รูป
 
 | ไฟล์ | คือ | ขนาด |
 |---|---|---|
@@ -55,8 +55,9 @@
 | `p-bank.jpg` | Bank | 820×820 |
 | `p-tagot.jpg` | Tagot | 820×820 |
 | `p-tum.jpg` | P’Tum | 820×820 |
+| `p-ellie.jpg` | Jane | 1280×800 |
 
-### Itinerary timeline + activity detail — 71 รูป
+### Itinerary timeline + activity detail — 78 รูป
 
 | ไฟล์ | คือ | ขนาด |
 |---|---|---|
@@ -131,8 +132,15 @@
 | `a-d7-robata.jpg` | Robata no Ito Okashi | 1280×800 |
 | `a-d7-sashisu.jpg` | Sushi Sakaba Sashisu | 1280×800 |
 | `a-d8-anzen.jpg` | Anzen Shokudo | 1280×800 |
+| `a-d1-gyukatsu.jpg` | Gyukatsu - Tenjin | 1280×800 |
+| `a-d6-bar.jpg` | Shimotori & Kamitori arcades | 1280×800 |
+| `a-d3-sake.jpg` | Ryokan nightcap - Oita shochu | 1280×800 |
+| `a-d4-sake.jpg` | Nightcap - Yufuin craft beer & sake | 1280×800 |
+| `a-d3-ropeway.jpg` | Beppu Ropeway - Mt Tsurumi | 1280×800 |
+| `a-d5-bar.jpg` | Bar Higuchi - cocktails | 1280×800 |
+| `a-d8-bar.jpg` | Last-night cocktail bar | 1280×800 |
 
-### Activity menu — dish photo popup — 88 รูป
+### Activity menu — dish photo popup — 97 รูป
 
 | ไฟล์ | คือ | ขนาด |
 |---|---|---|
@@ -224,5 +232,14 @@
 | `dish-a-d8-anzen-1.jpg` | Chanpon | 1080×810 |
 | `dish-a-d8-anzen-2.jpg` | Kaedama | 1080×810 |
 | `dish-a-d8-anzen-3.jpg` | Gyoza | 1080×810 |
+| `dish-a-d1-canalcity-0.jpg` | Mina Tenjin | 1080×810 |
+| `dish-a-d1-canalcity-1.jpg` | Fukuoka PARCO | 1080×810 |
+| `dish-a-d1-canalcity-2.jpg` | ONE FUKUOKA BLDG. (ワンビル) | 1080×810 |
+| `dish-a-d1-canalcity-3.jpg` | Iwataya Main Store | 1080×810 |
+| `dish-a-d1-canalcity-4.jpg` | Don Quijote | 1080×810 |
+| `dish-a-d1-canalcity-5.jpg` | B-B-B POTTERS | 1080×810 |
+| `dish-a-d10-canal-0.jpg` | MUJI / Uniqlo - Canal City | 1080×810 |
+| `dish-a-d10-canal-1.jpg` | Mina Tenjin (GU) | 1080×810 |
+| `dish-a-d10-canal-2.jpg` | Daimyo | 1080×810 |
 
-_รวม 182 ไฟล์ · สร้างจาก `_generate_placeholders.py`_
+_รวม 199 ไฟล์ · สร้างจาก `_generate_placeholders.py`_

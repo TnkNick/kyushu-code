@@ -71,7 +71,7 @@
   },
   {
     "id": "day2-cover",
-    "label": "Day 2 · Kumamoto",
+    "label": "Day 2 · Mt Aso",
     "cat": "daycover",
     "w": 1280,
     "h": 800
@@ -127,7 +127,7 @@
   },
   {
     "id": "day3-cover",
-    "label": "Day 3 · Mt Aso",
+    "label": "Day 3 · Kumamoto",
     "cat": "daycover",
     "w": 1280,
     "h": 800
@@ -169,7 +169,7 @@
   },
   {
     "id": "day4-cover",
-    "label": "Day 4 · Yamanami Highway",
+    "label": "Day 4 · Yamanami & Beppu",
     "cat": "daycover",
     "w": 1280,
     "h": 800
@@ -1269,6 +1269,125 @@
   {
     "id": "dish-a-d8-anzen-3",
     "label": "Gyoza",
+    "cat": "dish",
+    "w": 1080,
+    "h": 810
+  },
+  {
+    "id": "a-d1-gyukatsu",
+    "label": "Gyukatsu - Tenjin",
+    "cat": "activity",
+    "w": 1280,
+    "h": 800
+  },
+  {
+    "id": "a-d6-bar",
+    "label": "Shimotori & Kamitori arcades",
+    "cat": "activity",
+    "w": 1280,
+    "h": 800
+  },
+  {
+    "id": "a-d3-sake",
+    "label": "Ryokan nightcap - Oita shochu",
+    "cat": "activity",
+    "w": 1280,
+    "h": 800
+  },
+  {
+    "id": "a-d4-sake",
+    "label": "Nightcap - Yufuin craft beer & sake",
+    "cat": "activity",
+    "w": 1280,
+    "h": 800
+  },
+  {
+    "id": "a-d3-ropeway",
+    "label": "Beppu Ropeway - Mt Tsurumi",
+    "cat": "activity",
+    "w": 1280,
+    "h": 800
+  },
+  {
+    "id": "a-d5-bar",
+    "label": "Bar Higuchi - cocktails",
+    "cat": "activity",
+    "w": 1280,
+    "h": 800
+  },
+  {
+    "id": "a-d8-bar",
+    "label": "Last-night cocktail bar",
+    "cat": "activity",
+    "w": 1280,
+    "h": 800
+  },
+  {
+    "id": "p-ellie",
+    "label": "Jane",
+    "cat": "traveler",
+    "w": 1280,
+    "h": 800
+  },
+  {
+    "id": "dish-a-d1-canalcity-0",
+    "label": "Mina Tenjin",
+    "cat": "dish",
+    "w": 1080,
+    "h": 810
+  },
+  {
+    "id": "dish-a-d1-canalcity-1",
+    "label": "Fukuoka PARCO",
+    "cat": "dish",
+    "w": 1080,
+    "h": 810
+  },
+  {
+    "id": "dish-a-d1-canalcity-2",
+    "label": "ONE FUKUOKA BLDG. (ワンビル)",
+    "cat": "dish",
+    "w": 1080,
+    "h": 810
+  },
+  {
+    "id": "dish-a-d1-canalcity-3",
+    "label": "Iwataya Main Store",
+    "cat": "dish",
+    "w": 1080,
+    "h": 810
+  },
+  {
+    "id": "dish-a-d1-canalcity-4",
+    "label": "Don Quijote",
+    "cat": "dish",
+    "w": 1080,
+    "h": 810
+  },
+  {
+    "id": "dish-a-d1-canalcity-5",
+    "label": "B-B-B POTTERS",
+    "cat": "dish",
+    "w": 1080,
+    "h": 810
+  },
+  {
+    "id": "dish-a-d10-canal-0",
+    "label": "MUJI / Uniqlo - Canal City",
+    "cat": "dish",
+    "w": 1080,
+    "h": 810
+  },
+  {
+    "id": "dish-a-d10-canal-1",
+    "label": "Mina Tenjin (GU)",
+    "cat": "dish",
+    "w": 1080,
+    "h": 810
+  },
+  {
+    "id": "dish-a-d10-canal-2",
+    "label": "Daimyo",
     "cat": "dish",
     "w": 1080,
     "h": 810
