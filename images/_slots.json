@@ -15,7 +15,7 @@
   },
   {
     "id": "day1-cover",
-    "label": "Day 1 · Fukuoka",
+    "label": "Day 1 · Arrival & Kumamoto",
     "cat": "daycover",
     "w": 1280,
     "h": 800
@@ -127,7 +127,7 @@
   },
   {
     "id": "day3-cover",
-    "label": "Day 3 · Kumamoto",
+    "label": "Day 3 · Yamanami & Beppu",
     "cat": "daycover",
     "w": 1280,
     "h": 800
@@ -169,14 +169,14 @@
   },
   {
     "id": "day4-cover",
-    "label": "Day 4 · Yamanami & Beppu",
+    "label": "Day 4 · Beppu to Yufuin",
     "cat": "daycover",
     "w": 1280,
     "h": 800
   },
   {
     "id": "a-d5-lunch",
-    "label": "Lunch on the high road",
+    "label": "Dinner in Beppu",
     "cat": "activity",
     "w": 1280,
     "h": 800
@@ -190,7 +190,7 @@
   },
   {
     "id": "a-d5-chinoike",
-    "label": "Chinoike Jigoku",
+    "label": "Chinoike Jigoku - blood pond",
     "cat": "activity",
     "w": 1280,
     "h": 800
@@ -211,7 +211,7 @@
   },
   {
     "id": "day5-cover",
-    "label": "Day 5 · Yufuin",
+    "label": "Day 5 · Back to Fukuoka",
     "cat": "daycover",
     "w": 1280,
     "h": 800
@@ -253,7 +253,7 @@
   },
   {
     "id": "day6-cover",
-    "label": "Day 6 · Beppu & Fukuoka",
+    "label": "Day 6 · Fukuoka",
     "cat": "daycover",
     "w": 1280,
     "h": 800
@@ -274,7 +274,7 @@
   },
   {
     "id": "a-d7-lunch",
-    "label": "Lunch stop · Hita",
+    "label": "Hita Mameda-machi",
     "cat": "activity",
     "w": 1280,
     "h": 800

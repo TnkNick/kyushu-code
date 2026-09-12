@@ -454,7 +454,7 @@ function RouteMap({ route, onJump }) {
   const cx = route.reduce((a, s) => a + s.mx, 0) / route.length;
   const cy = route.reduce((a, s) => a + s.my, 0) / route.length;
   const ring = route.slice().sort((a, b) => Math.atan2(a.my - cy, a.mx - cx) - Math.atan2(b.my - cy, b.mx - cx));
-  const startAt = Math.max(0, ring.findIndex((s) => s.day === 0));
+  const startAt = Math.max(0, ring.findIndex((s) => s.start));
   const loop = ring.slice(startAt).concat(ring.slice(0, startAt));
   const d = loop.map((s, i) => (i === 0 ? 'M' : 'L') + s.mx + ',' + (s.my * 1.35).toFixed(2)).join(' ') + ' Z';
   return (
@@ -474,9 +474,9 @@ function RouteMap({ route, onJump }) {
         </circle>
       </svg>
       {route.map((s, i) => (
-        <button className={'jmap-node' + (s.day === 0 ? ' is-start' : '')} key={i} style={{ left: s.mx + '%', top: s.my + '%', '--i': i }}
+        <button className={'jmap-node' + (s.start ? ' is-start' : '')} key={i} style={{ left: s.mx + '%', top: s.my + '%', '--i': i }}
           onClick={() => onJump(s.day)} aria-label={x(s.city)}>
-          {s.day === 0 ? <span className="jmap-flag">{x({ en: 'Start \u00b7 End', th: '\u0e40\u0e23\u0e34\u0e48\u0e21 \u00b7 \u0e08\u0e1a' })}</span> : null}
+          {s.start ? <span className="jmap-flag">{x({ en: 'Start \u00b7 End', th: '\u0e40\u0e23\u0e34\u0e48\u0e21 \u00b7 \u0e08\u0e1a' })}</span> : null}
           <span className="jmap-pin" aria-hidden="true"></span>
           <span className="jmap-label">
             <span className="jmap-city">{x(s.city)}</span>

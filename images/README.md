@@ -24,12 +24,12 @@
 
 | ไฟล์ | คือ | ขนาด |
 |---|---|---|
-| `day1-cover.jpg` | Day 1 · Fukuoka | 1280×800 |
+| `day1-cover.jpg` | Day 1 · Arrival & Kumamoto | 1280×800 |
 | `day2-cover.jpg` | Day 2 · Mt Aso | 1280×800 |
-| `day3-cover.jpg` | Day 3 · Kumamoto | 1280×800 |
-| `day4-cover.jpg` | Day 4 · Yamanami & Beppu | 1280×800 |
-| `day5-cover.jpg` | Day 5 · Yufuin | 1280×800 |
-| `day6-cover.jpg` | Day 6 · Beppu & Fukuoka | 1280×800 |
+| `day3-cover.jpg` | Day 3 · Yamanami & Beppu | 1280×800 |
+| `day4-cover.jpg` | Day 4 · Beppu to Yufuin | 1280×800 |
+| `day5-cover.jpg` | Day 5 · Back to Fukuoka | 1280×800 |
+| `day6-cover.jpg` | Day 6 · Fukuoka | 1280×800 |
 | `day7-cover.jpg` | Day 7 · Dazaifu | 1280×800 |
 | `day8-cover.jpg` | Day 8 · Itoshima | 1280×800 |
 | `day9-cover.jpg` | Day 9 · Fukuoka — Slow Day | 1280×800 |
@@ -80,9 +80,9 @@
 | `a-d4-suizenji.jpg` | Suizenji Jojuen | 1280×800 |
 | `a-d4-sweets.jpg` | Ikinari Dango | 1280×800 |
 | `a-d4-basashi.jpg` | Basashi dinner | 1280×800 |
-| `a-d5-lunch.jpg` | Lunch on the high road | 1280×800 |
+| `a-d5-lunch.jpg` | Dinner in Beppu | 1280×800 |
 | `a-d5-umijigoku.jpg` | Umi Jigoku | 1280×800 |
-| `a-d5-chinoike.jpg` | Chinoike Jigoku | 1280×800 |
+| `a-d5-chinoike.jpg` | Chinoike Jigoku - blood pond | 1280×800 |
 | `a-d5-sweets.jpg` | Beppu Purin | 1280×800 |
 | `a-d5-sushi.jpg` | Kamesho Kurukuru Sushi | 1280×800 |
 | `a-d6-kinrin.jpg` | Kinrin Lake | 1280×800 |
@@ -92,7 +92,7 @@
 | `a-d6-ryokan.jpg` | Ryokan kaiseki | 1280×800 |
 | `a-d7-mist.jpg` | Kinrin Lake at dawn | 1280×800 |
 | `a-d7-komyozenji.jpg` | Komyozenji moss garden | 1280×800 |
-| `a-d7-lunch.jpg` | Lunch stop · Hita | 1280×800 |
+| `a-d7-lunch.jpg` | Hita Mameda-machi | 1280×800 |
 | `a-d7-shopping.jpg` | Tenjin & Canal City | 1280×800 |
 | `a-d7-tempura.jpg` | Tempura Hirao | 1280×800 |
 | `a-d2-tenmangu.jpg` | Dazaifu Tenmangu | 1280×800 |
