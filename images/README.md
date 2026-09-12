@@ -68,7 +68,7 @@
 | `a-d1-illum.jpg` | Winter Illumination | 1280×800 |
 | `a-d1-motsunabe.jpg` | Motsunabe Rakutenchi | 1280×800 |
 | `a-d1-nightlife.jpg` | FUKUOKA CRAFT by El Borracho | 1280×800 |
-| `a-d2-cityrun.jpg` | Morning city run | 1280×800 |
+| `a-d2-cityrun.jpg` | Morning run - Ohori & the castle | 1280×800 |
 | `a-d3-daikanbo.jpg` | Daikanbo viewpoint | 1280×800 |
 | `a-d3-lunch.jpg` | Aso Akaushi-don | 1280×800 |
 | `a-d3-kusasenri.jpg` | Kusasenri & Komezuka | 1280×800 |
@@ -140,7 +140,7 @@
 | `a-d5-bar.jpg` | Bar Higuchi - cocktails | 1280×800 |
 | `a-d8-bar.jpg` | Last-night cocktail bar | 1280×800 |
 
-### Activity menu — dish photo popup — 97 รูป
+### Activity menu — dish photo popup — 103 รูป
 
 | ไฟล์ | คือ | ขนาด |
 |---|---|---|
@@ -241,5 +241,11 @@
 | `dish-a-d10-canal-0.jpg` | MUJI / Uniqlo - Canal City | 1080×810 |
 | `dish-a-d10-canal-1.jpg` | Mina Tenjin (GU) | 1080×810 |
 | `dish-a-d10-canal-2.jpg` | Daimyo | 1080×810 |
+| `dish-a-d2-cityrun-0.jpg` | Ohori-koen Station (start) | 1080×810 |
+| `dish-a-d2-cityrun-1.jpg` | The 2 km lake loop | 1080×810 |
+| `dish-a-d2-cityrun-2.jpg` | Ukimido & island bridges | 1080×810 |
+| `dish-a-d2-cityrun-3.jpg` | Into Maizuru Park | 1080×810 |
+| `dish-a-d2-cityrun-4.jpg` | Tenshudai keep base | 1080×810 |
+| `dish-a-d2-cityrun-5.jpg` | Starbucks Ohori Park (finish) | 1080×810 |
 
-_รวม 199 ไฟล์ · สร้างจาก `_generate_placeholders.py`_
+_รวม 205 ไฟล์ · สร้างจาก `_generate_placeholders.py`_

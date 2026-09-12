@@ -488,6 +488,130 @@ function RouteMap({ route, onJump }) {
   );
 }
 
+// -- Morning run route map ------------------------------------------------
+// Hand-drawn schematic of the Ohori Park / Fukuoka Castle green belt.
+// All geometry lives in a 0 0 100 76 viewBox and matches the `x`/`y`
+// percentages carried by RUNROUTE.stops, so the pins land on the drawing.
+const RUN_LAKE = 'M33,10 Q46,12 50,25 Q54,38 47,50 Q40,63 29,65 Q17,64 12,51 Q8,36 15,23 Q21,10 33,10 Z';
+const RUN_PARK = 'M6,7 Q4,38 8,60 Q12,72 30,73 Q50,74 58,64 Q62,50 60,30 Q58,12 48,7 Q28,3 6,7 Z';
+const RUN_GARDEN = 'M45,55 L58,57 L57,67 L44,65 Z';
+const RUN_CASTLE = 'M66,18 Q84,14 96,22 Q99,40 94,58 Q80,70 68,63 Q63,42 66,18 Z';
+const RUN_MOAT = 'M64,60 Q78,70 97,59';
+const RUN_WALL = 'M74,30 L90,33 L92,46 L79,52 L72,44 Z';
+// the run itself, drawn as one continuous line
+// one continuous stroke: station, anticlockwise round the lake, back across the
+// island bridges, east into the castle, up the keep base, down to the cafe
+const RUN_PATH = 'M61,13 L49,14 Q36,9 24,16 Q12,24 9,38 Q8,53 19,62 Q31,70 42,64 Q50,58 51,50'
+  + ' Q41,48 31,45 Q34,40 36,36 Q40,34 43,32 Q48,30 50,24 Q51,18 55,16'
+  + ' Q62,20 68,31 Q77,34 85,41 Q88,50 80,56 Q70,61 64,52 Q59,46 55,41';
+
+function RunRouteMap({ data }) {
+  const { x } = useT();
+  const ref = useInView();
+  const [active, setActive] = React.useState(null);
+  const stops = data.stops || [];
+  const total = parseFloat(data.distance) || 1;
+  // elevation profile: flat round the lake, one bump at the keep base
+  const elev = stops.map((s) => ({ km: parseFloat(s.km), m: s.kind === 'climb' ? 35 : s.kind === 'run' && parseFloat(s.km) > 2.5 ? 8 : 3 }));
+  const elevPts = elev.map((e) => (e.km / total) * 100 + ',' + (26 - (e.m / 40) * 22).toFixed(1)).join(' ');
+
+  return (
+    <div className="runmap" ref={ref}>
+      <div className="runmap-stats">
+        {(data.stats || []).map((s, i) => (
+          <div className="runstat" key={i} style={{ '--i': i }}>
+            <span className="runstat-ic"><Icon name={s.icon} size={14} stroke={1.5} /></span>
+            <span className="runstat-v">{x(s.v)}</span>
+            <span className="runstat-k">{x(s.k)}</span>
+          </div>
+        ))}
+      </div>
+
+      <div className="runmap-canvas">
+        <svg viewBox="0 0 100 76" className="runmap-svg" role="img" aria-label={x(data.title)}>
+          <defs>
+            <linearGradient id="runWater" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="var(--accent)" stopOpacity="0.30" />
+              <stop offset="100%" stopColor="var(--accent)" stopOpacity="0.12" />
+            </linearGradient>
+          </defs>
+          <path className="runmap-park" d={RUN_PARK} />
+          <path className="runmap-castle" d={RUN_CASTLE} />
+          <path className="runmap-moat" d={RUN_MOAT} fill="none" />
+          <path className="runmap-wall" d={RUN_WALL} />
+          <path className="runmap-lake" d={RUN_LAKE} fill="url(#runWater)" />
+          <path className="runmap-garden" d={RUN_GARDEN} />
+          {/* the island chain across the lake, with its stone bridges */}
+          <path className="runmap-bridge" d="M50,28 L44,32 M41,33 L37,35 M35,37 L31,43" fill="none" />
+          <ellipse className="runmap-isle" cx="43" cy="32" rx="2.6" ry="2" />
+          <ellipse className="runmap-isle" cx="36" cy="36" rx="2.2" ry="1.7" />
+          <ellipse className="runmap-isle" cx="30" cy="44" rx="1.8" ry="1.4" />
+          <text className="runmap-name" x="22" y="40">{x({ en: 'Ohori Park', th: 'สวนโอโฮริ' })}</text>
+          <text className="runmap-name" x="80" y="22">{x({ en: 'Maizuru Park', th: 'สวนไมซุรุ' })}</text>
+          <path className="runmap-line-case" d={RUN_PATH} fill="none" />
+          <path id="runRoute" className="runmap-line" d={RUN_PATH} pathLength="100" fill="none" />
+          <circle className="runmap-dot" r="1.5">
+            <animateMotion dur="9s" repeatCount="indefinite" calcMode="linear" rotate="0">
+              <mpath href="#runRoute" />
+            </animateMotion>
+          </circle>
+        </svg>
+        {stops.map((s, i) => (
+          <button key={i} type="button"
+            className={'runpin is-' + s.kind + (active === i ? ' is-on' : '')}
+            style={{ left: s.x + '%', top: s.y + '%', '--i': i }}
+            onClick={() => { const n = active === i ? null : i; setActive(n);
+              if (n !== null) setTimeout(() => { const el = document.querySelectorAll('.runsteps > li')[n]; if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' }); }, 60); }}
+            aria-label={x(s.name)}>
+            {s.flag ? <span className="runpin-flag">{x(s.flag)}</span> : null}
+            <span className="runpin-dot">{s.kind === 'finish' ? <Icon name="bowl" size={11} stroke={1.8} /> : i + 1}</span>
+            <span className="runpin-tip">{x(s.name)}<b>{s.km} {x(data.unit)}</b></span>
+          </button>
+        ))}
+      </div>
+
+      <div className="runmap-elev">
+        <svg viewBox="0 0 100 28" preserveAspectRatio="none" aria-hidden="true">
+          <polyline className="runelev-line" points={elevPts} fill="none" />
+          <polygon className="runelev-fill" points={'0,28 ' + elevPts + ' 100,28'} />
+        </svg>
+        <div className="runmap-elev-ax">
+          <span>0 {x(data.unit)}</span>
+          <span>{x({ en: 'keep base +35 m', th: 'ฐานหอปราสาท +35 ม.' })}</span>
+          <span>{data.distance} {x(data.unit)}</span>
+        </div>
+      </div>
+
+      <ol className="runsteps">
+        {stops.map((s, i) => (
+          <li key={i} className={active === i ? 'is-on' : ''}>
+            <button type="button" className="runstep" onClick={() => setActive(active === i ? null : i)}>
+              <span className={'runstep-n is-' + s.kind}>{s.kind === 'finish' ? <Icon name="bowl" size={13} stroke={1.7} /> : i + 1}</span>
+              <span className="runstep-body">
+                <span className="runstep-top">
+                  <span className="runstep-name">{x(s.name)}</span>
+                  <span className="runstep-km">{s.km} {x(data.unit)}</span>
+                </span>
+                <span className="runstep-note">{x(s.note)}</span>
+                <span className="runstep-media">
+                  <ImageFrame id={'dish-a-d2-cityrun-' + i} placeholder={x(s.name)} ratio="4 / 3" className="runstep-img" />
+                </span>
+                {s.map ? (
+                  <span className="runstep-go" onClick={(e) => { e.stopPropagation(); window.open(s.map, '_blank', 'noopener,noreferrer'); }}>
+                    <Icon name="map" size={13} stroke={1.5} /> {x({ en: 'Open in Maps', th: 'เปิดในแผนที่' })}
+                  </span>
+                ) : null}
+              </span>
+            </button>
+          </li>
+        ))}
+      </ol>
+
+      {data.note ? <p className="runmap-foot">{x(data.note)}</p> : null}
+    </div>
+  );
+}
+
 // -- Travelers - the party grid ------------------------------------------
 function Travelers({ data }) {
   const { x } = useT();
@@ -842,6 +966,16 @@ function ActivityDetail({ a, onClose }) {
           <h2 className="detail-title">{x(a.title)}</h2>
           <p className="detail-place">{x(a.place)}</p>
           <p className="detail-blurb">{x(a.blurb)}</p>
+
+          {a.kind === 'Run' && window.RUNROUTE ? (
+            <div className="detail-menu">
+              <div className="detail-dock-head">
+                <span className="detail-dock-line" aria-hidden="true"></span>
+                <span className="detail-dock-label">{x({ en: 'The route', th: 'เส้นทางวิ่ง' })}</span>
+              </div>
+              <RunRouteMap data={window.RUNROUTE} />
+            </div>
+          ) : null}
 
           {menu ? (
             <div className="detail-menu">

@@ -101,7 +101,7 @@ const TRIP = {
           place: L('Monterey La Soeur - Daimyo, Tenjin', 'มอนเทอเรย์ ลา ซัวร์ ย่านไดเมียว เท็นจิน'),
           blurb: L('Swing back to collect the room (ready from 15:00), drop the day bag and freshen up after the red-eye before the evening out.',
                    'แวะกลับมารับห้อง (พร้อมตั้งแต่ 15:00) เก็บของ พักล้างหน้าหลังบินกลางคืน ก่อนออกไปเที่ยวค่ำ'),
-          refs: { map: 'https://maps.google.com/?q=Hotel+Monterey+La+Soeur+Fukuoka', reservation: { time: '15:00', code: 'MONTEREY', party: L('Base night 1', 'พักคืน 1') }, notes: L('Room ready from 15:00 - freshen up after the red-eye.', 'ห้องพร้อมตั้งแต่ 15:00 ขึ้นไปพักล้างหน้าล้างตาหลังบินดึกได้') } },
+          refs: { map: 'https://maps.google.com/?q=Hotel+Monterey+La+Soeur+Fukuoka', reservation: { time: '15:00', code: 'MONTEREY', party: L('Night 1 - booked', 'คืนที่ 1 จองแล้ว') }, notes: L('Room ready from 15:00 - freshen up after the red-eye.', 'ห้องพร้อมตั้งแต่ 15:00 ขึ้นไปพักล้างหน้าล้างตาหลังบินดึกได้') } },
 
         { type: 'feature', time: '17:30', meridiem: 'Evening', kind: 'View', imageId: 'a-d1-illum',
           title: L('Illuminations & Christmas Market', 'ไฟประดับและคริสต์มาสมาร์เก็ต'),
@@ -266,7 +266,7 @@ const TRIP = {
           blurb: L('Straight down off the Panorama Line and you are there - about 25 minutes from Kusasenri, no detour and no mountain lanes in the dark. The hotel is one minute from JR Aso Station and 120 m from the Michi-no-Eki, in the middle of Aso town.',
                    'ลงจากพาโนรามาไลน์มาก็ถึงเลย ห่างคุซะเซนริราว 25 นาที ไม่ต้องอ้อมและไม่ต้องขับถนนภูเขาตอนมืด ตัวโรงแรมห่างสถานี JR อาโซแค่หนึ่งนาที ห่าง Michi-no-Eki 120 เมตร อยู่กลางเมืองอาโซพอดี'),
           refs: { map: 'https://maps.google.com/?q=Fairfield+by+Marriott+Kumamoto+Aso', official: 'https://www.marriott.com/en-us/hotels/kmjfi-fairfield-kumamoto-aso/overview/',
-                  reservation: { time: '17:45', code: 'ASO-FFM', party: L('Night 2 - 1 night - to book', 'คืนที่ 2 พักหนึ่งคืน ยังไม่ได้จอง') },
+                  reservation: { time: '17:45', code: 'ASO-FFM', party: L('Night 2 - 1 night - to book', 'คืนที่ 2 หนึ่งคืน ยังไม่ได้จอง') },
                   parking: L('Free, no reservation needed, right at the hotel.', 'ฟรี ไม่ต้องจอง อยู่ที่โรงแรมเลย'),
                   notes: L('Read this before booking - it is a road-station Fairfield, not a ryokan. (1) Maximum two adults per room and no extra beds, so five people = THREE rooms. (2) There is no restaurant: breakfast is a reservation-only box, and there is a shared lounge with a microwave, fridge and coffee machine, plus a marketplace selling local food. (3) There is no communal bath - but Yume no Yu, a real flowing-onsen day bath, is a two-minute walk. (4) Tonight is the Sunday of a three-day holiday weekend, so book early. Check-in 15:00, out 11:00.',
                            'อ่านก่อนจอง เพราะที่นี่เป็นแฟร์ฟิลด์แบบติดสถานีทางหลวง ไม่ใช่เรียวกัง ข้อแรก ห้องหนึ่งพักได้ไม่เกิน 2 ผู้ใหญ่และไม่มีเตียงเสริม ห้าคนจึงต้องจองสามห้อง ข้อสอง ไม่มีห้องอาหาร อาหารเช้าเป็นกล่องที่ต้องสั่งจองล่วงหน้า แต่มีเลานจ์ส่วนกลางพร้อมไมโครเวฟ ตู้เย็น เครื่องชงกาแฟ และร้านขายของกินท้องถิ่น ข้อสาม ไม่มีบ่อรวม แต่ยูเมะโนะยุซึ่งเป็นออนเซนน้ำแร่จริงแบบไปเช้าเย็นกลับอยู่ห่างไปสองนาที ข้อสี่ คืนนี้เป็นวันอาทิตย์ของวันหยุดยาวสามวัน ควรจองแต่เนิ่นๆ เช็คอิน 15:00 เช็คเอาท์ 11:00') } },
@@ -384,7 +384,7 @@ const TRIP = {
           blurb: L('Park the car for the night and walk out to dinner - you want a downtown hotel with its own car park so nobody has to drive after the sake.',
                    'เอารถเข้าที่จอดแล้วเดินออกไปกินข้าว ควรเลือกโรงแรมกลางเมืองที่มีลานจอดของตัวเอง จะได้ไม่มีใครต้องขับรถหลังดื่ม'),
           refs: { map: 'https://maps.google.com/?q=Kumamoto+Shimotori+hotels',
-                  reservation: { time: '17:15', code: 'KMM-CITY', party: L('Night 3 - 1 night - to book', 'คืนที่ 3 พักหนึ่งคืน ยังไม่ได้จอง') },
+                  reservation: { time: '17:15', code: 'KMM-CITY', party: L('Night 3 - 1 night - to book', 'คืนที่ 3 หนึ่งคืน ยังไม่ได้จอง') },
                   notes: L('NOT BOOKED YET. Two things matter for this one night: on-site or contracted parking, and a walk home from the Shimotori arcade. Vessel Hotel Kumamoto was the earlier pick and fits both; Daiwa Roynet Kumamoto Ginza-dori and Kumamoto Tokyu REI are the same idea. For five people expect two rooms - city hotels here are twins. Monday night after a holiday is the easiest night of the trip to book.',
                            'ยังไม่ได้จอง คืนนี้ดูแค่สองอย่างก็พอ คือมีที่จอดรถของโรงแรมหรือลานที่ทำสัญญาไว้ และเดินกลับจากถนนชิโมโทริได้ Vessel Hotel Kumamoto คือตัวเลือกเดิมที่เคยเล็งไว้ ตรงทั้งสองข้อ ส่วน Daiwa Roynet Kumamoto Ginza-dori และ Kumamoto Tokyu REI ก็แนวเดียวกัน ห้าคนน่าจะต้องใช้สองห้อง เพราะโรงแรมในเมืองแถบนี้เป็นห้องทวิน ข่าวดีคือคืนวันจันทร์หลังวันหยุดยาวเป็นคืนที่จองง่ายที่สุดของทริป') } },
 
@@ -494,7 +494,7 @@ const TRIP = {
           blurb: L('Tatami, yukata, a private open-air bath and kaiseki served in the room or a private dining room. This is the stay to spend money on - it is the only one of the eight nights that is an experience rather than a bed.',
                    'เสื่อทาทามิ ชุดยูกาตะ บ่อกลางแจ้งส่วนตัว และไคเซกิที่เสิร์ฟในห้องหรือห้องอาหารส่วนตัว คืนนี้คือคืนที่ควรทุ่มงบ เพราะเป็นคืนเดียวในแปดคืนที่เป็นประสบการณ์ ไม่ใช่แค่ที่นอน'),
           refs: { map: 'https://maps.google.com/?q=Yufuin+ryokan',
-                  reservation: { time: '17:15', code: 'YUF-RYO', party: L('Nights 4-5 - 2 nights - to book', 'คืนที่ 4 ถึง 5 พักสองคืน ยังไม่ได้จอง') },
+                  reservation: { time: '17:15', code: 'YUF-RYO', party: L('Nights 4-5 - 2 nights - to book', 'คืนที่ 4-5 สองคืน ยังไม่ได้จอง') },
                   notes: L('NOT BOOKED YET. Good news on timing: these are a Tuesday and a Wednesday, the two cheapest and easiest nights of the week to get a Yufuin room in foliage season - book these before anything else anyway, ryokan want 8-16 weeks in koyo season. Three researched candidates: Santoukan, two minutes from Kinrin Lake and Yunotsubo, 13 rooms; Hinoharu, three free private baths and easy to book in English; Kotobuki Hananosho, which has rooms sleeping six so all five fit in one. Aspirational: Kamenoi Besso, Sanso Murata. Confirm it has parking for a van, and tell them you are arriving around 17:15 so dinner is set late enough.',
                            'ยังไม่ได้จอง ข่าวดีเรื่องวันคือสองคืนนี้เป็นอังคารกับพุธ ซึ่งเป็นคืนที่ถูกและจองง่ายที่สุดของสัปดาห์สำหรับยูฟุอินช่วงใบไม้เปลี่ยนสี ถึงอย่างนั้นก็ควรจองที่นี่ก่อนที่อื่น เพราะเรียวกังช่วงใบไม้แดงต้องจองล่วงหน้า 8 ถึง 16 สัปดาห์ สามตัวเลือกที่หาไว้คือ Santoukan ห่างบึงคินรินและยูโนทสึโบะสองนาที มี 13 ห้อง Hinoharu มีบ่อส่วนตัวฟรีสามบ่อและจองภาษาอังกฤษง่าย และ Kotobuki Hananosho ที่มีห้องนอนได้หกคน ห้าคนอยู่ห้องเดียวกันได้ ส่วนระดับในฝันคือ Kamenoi Besso และ Sanso Murata อย่าลืมเช็คด้วยว่ามีที่จอดรถตู้ และบอกเขาว่าจะถึงราว 17:15 เพื่อให้จัดรอบมื้อค่ำสายพอ') } },
 
@@ -693,7 +693,7 @@ const TRIP = {
           place: L('Fukuoka base - nights 6-8', 'ฐานที่ฟุกุโอกะ คืนที่ 6 ถึง 8'),
           blurb: L('Back to the city for the last three nights - one base, no more packing, two train days and a flight.',
                    'กลับเข้าเมืองเพื่อพักสามคืนสุดท้าย อยู่ฐานเดียว ไม่ต้องเก็บกระเป๋าอีก เหลือวันนั่งรถไฟสองวันกับวันบินกลับ'),
-          refs: { map: 'https://maps.google.com/?q=Fukuoka+city+hotels', reservation: { time: '17:30', code: 'FUK-RETURN', party: L('Base nights 6-8 - to book', 'พักคืนที่ 6 ถึง 8 ยังไม่ได้จอง') }, notes: L('NOT BOOKED YET, and separate from the Monterey (night 1). Three nights now that Kumamoto has its own night, and Sat 28 Nov will price higher than the two weeknights - worth checking whether that one night is cheaper elsewhere. Three candidates: (1) Oriental Hotel Fukuoka Hakata Station, fukuoka-orientalhotel.com/en - one minute from JR Hakata, and its Deluxe Twin takes 5, so the whole group fits in one room; best base for the Dazaifu and Itoshima train days; (2) CROSS Life Hakata Yanagibashi - bunk rooms for 4 and genuine connecting rooms, sits between Hakata and Tenjin, best value of the three; (3) Solaria Nishitetsu Hotel Fukuoka, solaria-h.jp/english.html - three minutes from Tenjin station with a triple room for up to 4, and you can walk home from Daimyo and Nakasu. City hotels have far more supply than the ryokan, so book this one last.', 'ยังไม่ได้จอง และเป็นคนละที่กับมอนเทอเรย์ที่พักคืนแรก ตอนนี้เหลือ 3 คืน เพราะคุมาโมโตะแยกไปนอนของตัวเองแล้ว คืนเสาร์ 28 พ.ย. ราคาจะสูงกว่าสองคืนวันธรรมดา ลองเช็กดูว่าคืนนั้นย้ายไปที่อื่นถูกกว่าไหม ตัวเลือกมีสามที่ ที่แรกคือ Oriental Hotel Fukuoka Hakata Station ห่าง JR ฮากาตะ 1 นาที ห้อง Deluxe Twin นอนได้ 5 คน ทั้งกลุ่มอยู่ห้องเดียวกันได้ และเป็นฐานที่ดีที่สุดสำหรับวันนั่งรถไฟไปดาไซฟุกับอิโตชิมะ ที่สองคือ CROSS Life Hakata Yanagibashi มีห้องเตียงสองชั้นนอน 4 คน และมีห้องเชื่อมกันจริงๆ อยู่ระหว่างฮากาตะกับเท็นจิน คุ้มที่สุดในสามที่ ที่สามคือ Solaria Nishitetsu Hotel Fukuoka ห่างสถานีเท็นจิน 3 นาที มีห้องทริปเปิลนอนได้ถึง 4 คน และเดินกลับจากไดเมียวหรือนากาสึได้ โรงแรมในเมืองมีห้องเยอะกว่าเรียวกังมาก จองที่นี่เป็นอันสุดท้ายได้') } },
+          refs: { map: 'https://maps.google.com/?q=Fukuoka+city+hotels', reservation: { time: '17:30', code: 'FUK-RETURN', party: L('Base nights 6-8 - to book', 'คืนที่ 6-8 สามคืน ยังไม่ได้จอง') }, notes: L('NOT BOOKED YET, and separate from the Monterey (night 1). Three nights now that Kumamoto has its own night, and Sat 28 Nov will price higher than the two weeknights - worth checking whether that one night is cheaper elsewhere. Three candidates: (1) Oriental Hotel Fukuoka Hakata Station, fukuoka-orientalhotel.com/en - one minute from JR Hakata, and its Deluxe Twin takes 5, so the whole group fits in one room; best base for the Dazaifu and Itoshima train days; (2) CROSS Life Hakata Yanagibashi - bunk rooms for 4 and genuine connecting rooms, sits between Hakata and Tenjin, best value of the three; (3) Solaria Nishitetsu Hotel Fukuoka, solaria-h.jp/english.html - three minutes from Tenjin station with a triple room for up to 4, and you can walk home from Daimyo and Nakasu. City hotels have far more supply than the ryokan, so book this one last.', 'ยังไม่ได้จอง และเป็นคนละที่กับมอนเทอเรย์ที่พักคืนแรก ตอนนี้เหลือ 3 คืน เพราะคุมาโมโตะแยกไปนอนของตัวเองแล้ว คืนเสาร์ 28 พ.ย. ราคาจะสูงกว่าสองคืนวันธรรมดา ลองเช็กดูว่าคืนนั้นย้ายไปที่อื่นถูกกว่าไหม ตัวเลือกมีสามที่ ที่แรกคือ Oriental Hotel Fukuoka Hakata Station ห่าง JR ฮากาตะ 1 นาที ห้อง Deluxe Twin นอนได้ 5 คน ทั้งกลุ่มอยู่ห้องเดียวกันได้ และเป็นฐานที่ดีที่สุดสำหรับวันนั่งรถไฟไปดาไซฟุกับอิโตชิมะ ที่สองคือ CROSS Life Hakata Yanagibashi มีห้องเตียงสองชั้นนอน 4 คน และมีห้องเชื่อมกันจริงๆ อยู่ระหว่างฮากาตะกับเท็นจิน คุ้มที่สุดในสามที่ ที่สามคือ Solaria Nishitetsu Hotel Fukuoka ห่างสถานีเท็นจิน 3 นาที มีห้องทริปเปิลนอนได้ถึง 4 คน และเดินกลับจากไดเมียวหรือนากาสึได้ โรงแรมในเมืองมีห้องเยอะกว่าเรียวกังมาก จองที่นี่เป็นอันสุดท้ายได้') } },
 
         { type: 'feature', time: '18:15', meridiem: 'Evening', kind: 'View', imageId: 'a-d9-tower',
           title: L('Fukuoka Tower & Momochi', 'ฟุกุโอกะทาวเวอร์และย่านโมโมจิ'),
@@ -743,10 +743,10 @@ const TRIP = {
       activities: [
         { type: 'feature', time: '06:15', meridiem: 'Morning', kind: 'Run', imageId: 'a-d2-cityrun',
           title: L('Morning city run', 'วิ่งเช้าในเมือง'),
-          place: L('Ohori Park + Castle loop - ~6.5 km', 'วิ่งรอบสวนโอโฮริต่อด้วยปราสาท ระยะประมาณ 6.5 กิโลเมตร'),
-          blurb: L('A gentle ~6.5 km dawn loop from the hotel - the lake at Ohori Park (its flat 2 km jogging track and the red Ukimido pavilion), up to the Fukuoka Castle ruins for a sunrise city view, then back near the hotel for coffee. Quiet and misty at 6 am - perfect for the vlog.',
-                   'วิ่งวนเช้าราว 6.5 กิโลเมตรชิลล์ๆ จากโรงแรม เริ่มที่บึงสวนโอโฮริซึ่งมีลู่วิ่งทางเรียบ 2 กิโลเมตรและศาลาแดงอุคิมิโด ขึ้นซากปราสาทฟุกุโอกะชมวิวเมืองยามอาทิตย์ขึ้น แล้ววนกลับมาจิบกาแฟใกล้โรงแรม ตอนหกโมงคนน้อย มีไอหมอก เหมาะถ่าย vlog สุดๆ'),
-          refs: { map: 'https://maps.google.com/?q=Ohori+Park+Fukuoka', notes: L('Run 06:15-07:15, then shower and go straight to breakfast at 08:15 - it is tight, so skip the run if you would rather not rush it. Flat & easy - tap each stop below for the map.', 'วิ่ง 06:15 ถึง 07:15 แล้วอาบน้ำไปกินข้าวเช้า 08:15 เลย ค่อนข้างกระชั้น ถ้าไม่อยากรีบก็ข้ามการวิ่งไปได้ เส้นทางเป็นทางเรียบ วิ่งง่าย แตะจุดแวะด้านล่างเพื่อดูแผนที่') } },
+          place: L('Ohori Park & the castle - 5.2 km', 'สวนโอโฮริและปราสาท ระยะ 5.2 กิโลเมตร'),
+          blurb: L('A 5.2 km dawn loop that never leaves the park. Start at Ohori-koen station, take the flat 2 km rubber track once round the lake, cut back across the island bridges past the red Ukimido, then over into the castle grounds and up the old keep base for a sunrise view of the whole city - and finish at the lakeside Starbucks, which opens at 07:00. Quiet and misty at six, perfect for the vlog.',
+                   'ลูปเช้า 5.2 กิโลเมตร อยู่ในสวนทั้งเส้น เริ่มที่สถานีโอโฮริโคเอ็น วิ่งรอบบึงบนลู่ยาง 2 กิโลเมตร ตัดกลับข้ามเกาะกลางบึงผ่านศาลาแดงอุคิมิโด แล้วข้ามไปไต่ฐานหอปราสาทฟุกุโอกะชมเมืองตอนพระอาทิตย์ขึ้น ก่อนลงมาเข้าเส้นชัยที่สตาร์บัคส์ริมบึง ตอนหกโมงคนน้อย มีไอหมอก เหมาะถ่าย vlog สุดๆ'),
+          refs: { map: 'https://maps.google.com/?q=Ohori+Park+Fukuoka', notes: L('Run 06:15-07:15, coffee at the finish from 07:00, then walk 1 km to Ropponmatsu for the 08:15 breakfast - it all lines up. Tap the map below to see the route, and tap a pin or a step for its photo and directions.', 'วิ่ง 06:15 ถึง 07:15 จบแล้วนั่งจิบกาแฟที่เส้นชัยได้เลยเพราะร้านเปิด 07:00 จากนั้นเดินอีก 1 กิโลเมตรไปกินข้าวเช้าที่ร็อปปงมัตสึตอน 08:15 ต่อกันพอดี แตะแผนที่ด้านล่างเพื่อดูเส้นทาง และแตะหมุดหรือแต่ละช่วงเพื่อดูรูปกับเส้นทางไปจุดนั้น') } },
 
         { type: 'feature', time: '08:15', meridiem: 'Morning', kind: 'Dining', imageId: 'a-d7-robata',
           title: L('Robata no Ito Okashi', 'โรบาตะ โนะ อิโตะโอคาชิ'),
@@ -1165,14 +1165,6 @@ const MENUS = {
     { name: L('Don Quijote', 'ดองกิโฮเต้'), note: L('Discount mega-store - snacks, cosmetics, electronics, souvenirs; tax-free and open late.', 'ร้านลดราคาสารพัด ทั้งขนม เครื่องสำอาง เครื่องใช้ไฟฟ้า และของฝาก ซื้อปลอดภาษีได้ และเปิดถึงดึก'), map: 'https://maps.google.com/?q=Don+Quijote+Tenjin+Fukuoka' },
     { name: L('B-B-B POTTERS', 'B-B-B POTTERS'), note: L('Stylish homeware select shop - kitchenware, tableware and design goods, with a café upstairs.', 'ร้านของแต่งบ้านสไตล์ดี มีเครื่องครัว ภาชนะ ของดีไซน์ และมีคาเฟ่อยู่ชั้นบน'), map: 'https://maps.google.com/?q=BBB+POTTERS+Fukuoka' },
   ] },
-  'a-d2-cityrun': { items: [
-    { name: L('Start at Hotel Monterey in Daimyo', 'จุดเริ่มต้นที่โรงแรมมอนเทอเรย์ ย่านไดเมียว'), note: L('06:00 - warm up and head west through quiet Akasaka toward the park (~1.3 km).', 'เริ่ม 06:00 วอร์มอัพแล้ววิ่งไปทางตะวันตกผ่านอาคาซากะเงียบๆ เข้าสู่สวน ระยะประมาณ 1.3 กิโลเมตร'), map: 'https://maps.google.com/?q=Hotel+Monterey+La+Soeur+Fukuoka' },
-    { name: L('Ohori Park, the 2 km lake loop', 'สวนโอโฮริ ลู่วิ่งรอบบึงระยะ 2 กิโลเมตร'), note: L('The flat yellow-rubber jogging track once around the lake - the running heart of the city.', 'ลู่วิ่งยางสีเหลืองทางเรียบ วิ่งรอบบึงได้หนึ่งรอบ เป็นลู่วิ่งหัวใจของเมือง'), map: 'https://maps.google.com/?q=Ohori+Park+jogging+course', signature: true },
-    { name: L('Ukimido pavilion and the island bridges', 'ศาลาอุคิมิโดและสะพานข้ามเกาะ'), note: L('Cross the stone bridges to the island; the red Ukimido is the park symbol - the best photo/vlog spot, mist on the water at dawn.', 'ข้ามสะพานหินไปเกาะกลางบึง ศาลาแดงอุคิมิโดคือสัญลักษณ์ของสวน เป็นจุดถ่ายรูปและถ่าย vlog ที่เด็ดที่สุด ตอนเช้ามีไอหมอกลอยเหนือน้ำด้วย'), map: 'https://maps.google.com/?q=Ukimido+Ohori+Park', signature: true },
-    { name: L('Ohori Japanese Garden, run past it', 'สวนญี่ปุ่นโอโฮริ วิ่งผ่านได้เลย'), note: L('Pass the garden wall on the south side (it opens later) to finish the lake loop.', 'วิ่งผ่านกำแพงสวนญี่ปุ่นด้านใต้ (เปิดสายกว่านี้) แล้ววิ่งจบรอบบึง'), map: 'https://maps.google.com/?q=Ohori+Park+Japanese+Garden' },
-    { name: L('Fukuoka Castle ruins in Maizuru Park', 'ซากปราสาทฟุกุโอกะ ในสวนไมซุรุ'), note: L('Cross northeast and run up to the Tenshudai (keep base) for a sunrise panorama over the city + the old stone walls (~1.3 km).', 'ข้ามไปทางตะวันออกเฉียงเหนือ วิ่งขึ้นฐานหอปราสาท (เท็นชูได) ชมวิวเมืองยามอาทิตย์ขึ้นพร้อมกำแพงหินเก่า ระยะประมาณ 1.3 กิโลเมตร'), map: 'https://maps.google.com/?q=Fukuoka+Castle+Ruins+Tenshudai', signature: true },
-    { name: L('Finish with coffee near the hotel', 'เข้าเส้นชัย จบด้วยกาแฟใกล้โรงแรม'), note: L('Easy jog back to Daimyo (~1.5 km), around 07:00. Manu Coffee Daimyo (by the hotel) opens 09:00; Starbucks Ohori Park (lakeside) ~08:00. At 7 am, a konbini coffee wraps the vlog.', 'จ็อกกลับไดเมียวสบายๆ ระยะประมาณ 1.5 กิโลเมตร ถึงราว 07:00 ร้าน Manu Coffee ไดเมียวที่อยู่ใกล้โรงแรมเปิด 09:00 ส่วน Starbucks โอโฮริริมบึงเปิดประมาณ 08:00 ถ้ากลับถึงตอนเจ็ดโมง ใช้กาแฟคอนบินิปิด vlog ไปเลยก็ได้'), map: 'https://maps.google.com/?q=Manu+Coffee+Daimyo+Fukuoka' },
-  ] },
   'a-d1-imdonut': { items: [
     { name: L('Original I\'m Donut', 'ไอแอมโดนัทออริจินอล'), note: L('The famous fresh, fluffy raised donut.', 'โดนัทเนื้อนุ่มสดที่โด่งดัง'), signature: true },
     { name: L('Pistachio donut', 'โดนัทพิสตาชิโอ'), note: L('Nutty cream filling.', 'ไส้ครีมถั่วพิสตาชิโอ') },
@@ -1461,4 +1453,54 @@ const PHRASES = {
   ],
 };
 
-Object.assign(window, { TRIP, REF_TYPES, TR, tx, tr, DESTINATION, TRAVELERS, EMERGENCY, BUDGET, KONBINI, ESSENTIALS, WEATHER, MENUS, PACKING, SOUVENIRS, DRIVING, VISITJAPAN, CULTURE, PHRASES, CREDIT });
+// -- Morning run route (Ohori Park + Fukuoka Castle) ---------------------
+// `x`/`y` are percentages inside the RunRouteMap canvas; `km` is cumulative.
+const RUNROUTE = {
+  title: L('Ohori Park & the castle', 'สวนโอโฮริและปราสาทฟุกุโอกะ'),
+  subtitle: L('A flat dawn loop that finishes with coffee', 'ลูปเช้าทางเรียบที่จบด้วยกาแฟ'),
+  distance: '5.2', unit: L('km', 'กม.'),
+  stats: [
+    { k: L('Distance', 'ระยะทาง'), v: L('5.2 km', '5.2 กม.'), icon: 'compass' },
+    { k: L('Climb', 'ความชัน'), v: L('+35 m', '+35 ม.'), icon: 'arrowUpRight' },
+    { k: L('Easy pace', 'วิ่งสบายๆ'), v: L('35-40 min', '35-40 นาที'), icon: 'clock' },
+    { k: L('Surface', 'พื้นผิว'), v: L('Rubber & stone', 'ยางและหินปู'), icon: 'walk' },
+  ],
+  note: L(
+    'Start and finish inside the park, so it works from any hotel - take the Kuko subway line to Ohori-koen. The lake loop is a rubber-chip jogging track with its own running lane, dead flat. The only climb is the stone ramp up to the old keep base, and it is worth it at sunrise.',
+    'เริ่มและจบในสวนทั้งคู่ เลยใช้ได้ไม่ว่าจะพักโรงแรมไหน แค่นั่งรถไฟใต้ดินสายคูโคมาลงสถานีโอโฮริโคเอ็น ลู่รอบบึงเป็นพื้นยางสังเคราะห์มีเลนวิ่งแยกของตัวเอง ราบเรียบสนิท มีแค่ช่วงเดียวที่ต้องไต่คือทางหินขึ้นฐานหอปราสาทเก่า ซึ่งคุ้มมากถ้าไปตอนพระอาทิตย์ขึ้น'
+  ),
+  stops: [
+    { km: '0.0', x: 61, y: 13, kind: 'start', icon: 'train', flag: L('Start', 'เริ่ม'),
+      name: L('Ohori-koen Station', 'สถานีโอโฮริโคเอ็น'),
+      note: L('Kuko line, 9 min from Hakata and 4 from Tenjin. Out of exit 3, the park gate is 200 m and you are running by 06:20.',
+              'สายคูโค จากฮากาตะ 9 นาที จากเท็นจิน 4 นาที ออกทางออก 3 เดินอีก 200 เมตรถึงประตูสวน เริ่มวิ่งได้ราว 06:20'),
+      map: 'https://maps.google.com/?q=Ohori+Koen+Station+Fukuoka' },
+    { km: '0.3', x: 11, y: 38, kind: 'run', icon: 'walk',
+      name: L('The 2 km lake loop', 'ลู่วิ่งรอบบึง 2 กิโลเมตร'),
+      note: L('Anticlockwise around the water on the yellow rubber track. It is split into walking, running and cycling lanes - stay in the middle one. Exactly 2 km, no traffic, no crossings.',
+              'วิ่งทวนเข็มนาฬิการอบบึงบนลู่ยางสีเหลือง ลู่แบ่งเป็นเลนเดิน เลนวิ่ง และเลนจักรยาน ให้อยู่เลนกลาง ระยะ 2 กิโลเมตรพอดี ไม่มีรถ ไม่มีทางข้าม'),
+      map: 'https://maps.google.com/?q=Ohori+Park+jogging+course' },
+    { km: '2.3', x: 36, y: 36, kind: 'photo', icon: 'image',
+      name: L('Ukimido & the island bridges', 'ศาลาอุคิมิโดและสะพานข้ามเกาะ'),
+      note: L('Cut back across the middle of the lake on the chain of islands and stone bridges. The red Ukimido pavilion sits over the water with mist on it at dawn - this is the shot of the morning.',
+              'ตัดกลับข้ามกลางบึงตามแนวเกาะและสะพานหิน ศาลาแดงอุคิมิโดตั้งอยู่เหนือผิวน้ำ ตอนเช้าจะมีไอหมอกลอยคลุม เป็นภาพที่ดีที่สุดของเช้านี้'),
+      map: 'https://maps.google.com/?q=Ukimido+Ohori+Park' },
+    { km: '2.9', x: 68, y: 31, kind: 'run', icon: 'compass',
+      name: L('Into Maizuru Park', 'เข้าสู่สวนไมซุรุ'),
+      note: L('Cross the road east and you are inside the castle grounds. The lake you just ran round was this castle\'s outer moat four hundred years ago.',
+              'ข้ามถนนไปทางตะวันออกก็เข้าเขตปราสาทแล้ว บึงที่เพิ่งวิ่งรอบเมื่อกี้คือคูเมืองชั้นนอกของปราสาทนี้เมื่อสี่ร้อยปีก่อน'),
+      map: 'https://maps.google.com/?q=Maizuru+Park+Fukuoka' },
+    { km: '3.6', x: 85, y: 41, kind: 'climb', icon: 'sun',
+      name: L('Tenshudai, the old keep base', 'เท็นชูได ฐานหอปราสาทเก่า'),
+      note: L('The one climb of the run - a stone ramp up onto the keep base, about 35 m. From the top the whole city is below you with the sun coming up behind it. Catch your breath here.',
+              'ช่วงเดียวของเส้นทางที่ต้องไต่ เป็นทางหินขึ้นฐานหอปราสาท สูงราว 35 เมตร จากด้านบนมองเห็นเมืองทั้งเมืองอยู่เบื้องล่างพร้อมพระอาทิตย์ที่กำลังขึ้นด้านหลัง พักหายใจตรงนี้ได้'),
+      map: 'https://maps.google.com/?q=Fukuoka+Castle+Tenshudai' },
+    { km: '5.2', x: 55, y: 41, kind: 'finish', icon: 'bowl', flag: L('Coffee', 'กาแฟ'),
+      name: L('Starbucks Ohori Park - finish', 'สตาร์บัคส์สวนโอโฮริ เส้นชัย'),
+      note: L('Down off the walls, back west across the road and along the lake to the finish. The park branch opens at 07:00 and its terrace looks straight down the water - the right place to stop the watch.',
+              'ลงจากกำแพงปราสาท ข้ามถนนกลับมาทางตะวันตกแล้ววิ่งเลียบบึงเข้าเส้นชัย สาขาในสวนเปิด 07:00 และระเบียงหันหน้าลงบึงพอดี เป็นที่ที่เหมาะจะกดหยุดนาฬิกาที่สุด'),
+      map: 'https://maps.google.com/?q=Starbucks+Ohori+Park+Fukuoka' },
+  ],
+};
+
+Object.assign(window, { TRIP, REF_TYPES, TR, tx, tr, DESTINATION, TRAVELERS, EMERGENCY, BUDGET, KONBINI, ESSENTIALS, WEATHER, MENUS, PACKING, SOUVENIRS, DRIVING, VISITJAPAN, CULTURE, PHRASES, RUNROUTE, CREDIT });
