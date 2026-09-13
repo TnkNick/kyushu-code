@@ -71,7 +71,7 @@
   },
   {
     "id": "day2-cover",
-    "label": "Day 2 · Mt Aso",
+    "label": "Day 2 · Aso & the Milk Road",
     "cat": "daycover",
     "w": 1280,
     "h": 800
@@ -127,7 +127,7 @@
   },
   {
     "id": "day3-cover",
-    "label": "Day 3 · Yamanami & Beppu",
+    "label": "Day 3 · Beppu to Yufuin",
     "cat": "daycover",
     "w": 1280,
     "h": 800
@@ -169,7 +169,7 @@
   },
   {
     "id": "day4-cover",
-    "label": "Day 4 · Beppu to Yufuin",
+    "label": "Day 4 · Back to Fukuoka",
     "cat": "daycover",
     "w": 1280,
     "h": 800
@@ -211,7 +211,7 @@
   },
   {
     "id": "day5-cover",
-    "label": "Day 5 · Back to Fukuoka",
+    "label": "Day 5 · Fukuoka",
     "cat": "daycover",
     "w": 1280,
     "h": 800
@@ -253,7 +253,7 @@
   },
   {
     "id": "day6-cover",
-    "label": "Day 6 · Fukuoka",
+    "label": "Day 6 · Hakata Old Town",
     "cat": "daycover",
     "w": 1280,
     "h": 800
@@ -519,7 +519,7 @@
   },
   {
     "id": "day11-cover",
-    "label": "Day 11 · Homeward",
+    "label": "Day 9 · Homeward",
     "cat": "daycover",
     "w": 1280,
     "h": 800
@@ -1433,5 +1433,61 @@
     "cat": "dish",
     "w": 1080,
     "h": 810
+  },
+  {
+    "id": "a-hakata-kushida",
+    "label": "Kushida Shrine",
+    "cat": "activity",
+    "w": 1280,
+    "h": 800
+  },
+  {
+    "id": "a-hakata-tochoji",
+    "label": "Tochoji & Shofukuji",
+    "cat": "activity",
+    "w": 1280,
+    "h": 800
+  },
+  {
+    "id": "a-hakata-kawabata",
+    "label": "Kawabata Arcade",
+    "cat": "activity",
+    "w": 1280,
+    "h": 800
+  },
+  {
+    "id": "a-hakata-ramen",
+    "label": "Hakata Ramen · Shin-Shin",
+    "cat": "activity",
+    "w": 1280,
+    "h": 800
+  },
+  {
+    "id": "a-hakata-rakusuien",
+    "label": "Rakusuien & Sumiyoshi",
+    "cat": "activity",
+    "w": 1280,
+    "h": 800
+  },
+  {
+    "id": "a-hakata-torikawa",
+    "label": "Hakata Torikawa Daijin",
+    "cat": "activity",
+    "w": 1280,
+    "h": 800
+  },
+  {
+    "id": "a-aso-kabutoiwa",
+    "label": "Kabutoiwa Observatory",
+    "cat": "activity",
+    "w": 1280,
+    "h": 800
+  },
+  {
+    "id": "a-beppu-takegawara",
+    "label": "Takegawara Onsen sand bath",
+    "cat": "activity",
+    "w": 1280,
+    "h": 800
   }
 ]

@@ -25,16 +25,16 @@
 | ไฟล์ | คือ | ขนาด |
 |---|---|---|
 | `day1-cover.jpg` | Day 1 · Arrival & Kumamoto | 1280×800 |
-| `day2-cover.jpg` | Day 2 · Mt Aso | 1280×800 |
-| `day3-cover.jpg` | Day 3 · Yamanami & Beppu | 1280×800 |
-| `day4-cover.jpg` | Day 4 · Beppu to Yufuin | 1280×800 |
-| `day5-cover.jpg` | Day 5 · Back to Fukuoka | 1280×800 |
-| `day6-cover.jpg` | Day 6 · Fukuoka | 1280×800 |
+| `day2-cover.jpg` | Day 2 · Aso & the Milk Road | 1280×800 |
+| `day3-cover.jpg` | Day 3 · Beppu to Yufuin | 1280×800 |
+| `day4-cover.jpg` | Day 4 · Back to Fukuoka | 1280×800 |
+| `day5-cover.jpg` | Day 5 · Fukuoka | 1280×800 |
+| `day6-cover.jpg` | Day 6 · Hakata Old Town | 1280×800 |
 | `day7-cover.jpg` | Day 7 · Dazaifu | 1280×800 |
 | `day8-cover.jpg` | Day 8 · Itoshima | 1280×800 |
 | `day9-cover.jpg` | Day 9 · Fukuoka — Slow Day | 1280×800 |
 | `day10-cover.jpg` | Day 10 · Last Day in Fukuoka | 1280×800 |
-| `day11-cover.jpg` | Day 11 · Homeward | 1280×800 |
+| `day11-cover.jpg` | Day 9 · Homeward | 1280×800 |
 
 ### Overview — route-map pins — 6 รูป
 
@@ -57,7 +57,7 @@
 | `p-tum.jpg` | P’Tum | 820×820 |
 | `p-ellie.jpg` | Jane | 1280×800 |
 
-### Itinerary timeline + activity detail — 78 รูป
+### Itinerary timeline + activity detail — 86 รูป
 
 | ไฟล์ | คือ | ขนาด |
 |---|---|---|
@@ -139,6 +139,14 @@
 | `a-d3-ropeway.jpg` | Beppu Ropeway - Mt Tsurumi | 1280×800 |
 | `a-d5-bar.jpg` | Bar Higuchi - cocktails | 1280×800 |
 | `a-d8-bar.jpg` | Last-night cocktail bar | 1280×800 |
+| `a-hakata-kushida.jpg` | Kushida Shrine | 1280×800 |
+| `a-hakata-tochoji.jpg` | Tochoji & Shofukuji | 1280×800 |
+| `a-hakata-kawabata.jpg` | Kawabata Arcade | 1280×800 |
+| `a-hakata-ramen.jpg` | Hakata Ramen · Shin-Shin | 1280×800 |
+| `a-hakata-rakusuien.jpg` | Rakusuien & Sumiyoshi | 1280×800 |
+| `a-hakata-torikawa.jpg` | Hakata Torikawa Daijin | 1280×800 |
+| `a-aso-kabutoiwa.jpg` | Kabutoiwa Observatory | 1280×800 |
+| `a-beppu-takegawara.jpg` | Takegawara Onsen sand bath | 1280×800 |
 
 ### Activity menu — dish photo popup — 103 รูป
 
@@ -248,4 +256,4 @@
 | `dish-a-d2-cityrun-4.jpg` | Tenshudai keep base | 1080×810 |
 | `dish-a-d2-cityrun-5.jpg` | Starbucks Ohori Park (finish) | 1080×810 |
 
-_รวม 205 ไฟล์ · สร้างจาก `_generate_placeholders.py`_
+_รวม 213 ไฟล์ · สร้างจาก `_generate_placeholders.py`_
