@@ -1510,5 +1510,26 @@
     "cat": "activity",
     "w": 1280,
     "h": 800
+  },
+  {
+    "id": "a-kmm-kumamon",
+    "label": "Kumamon Square",
+    "cat": "activity",
+    "w": 1280,
+    "h": 800
+  },
+  {
+    "id": "a-kmm-kokutei",
+    "label": "Kokutei ramen",
+    "cat": "activity",
+    "w": 1280,
+    "h": 800
+  },
+  {
+    "id": "a-kmm-oppeshan",
+    "label": "Oppeshan ramen",
+    "cat": "activity",
+    "w": 1280,
+    "h": 800
   }
 ]
