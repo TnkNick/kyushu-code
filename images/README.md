@@ -57,7 +57,7 @@
 | `p-tum.jpg` | P’Tum | 820×820 |
 | `p-ellie.jpg` | Jane | 1280×800 |
 
-### Itinerary timeline + activity detail — 86 รูป
+### Itinerary timeline + activity detail — 89 รูป
 
 | ไฟล์ | คือ | ขนาด |
 |---|---|---|
@@ -147,6 +147,9 @@
 | `a-hakata-torikawa.jpg` | Hakata Torikawa Daijin | 1280×800 |
 | `a-aso-kabutoiwa.jpg` | Kabutoiwa Observatory | 1280×800 |
 | `a-beppu-takegawara.jpg` | Takegawara Onsen sand bath | 1280×800 |
+| `a-kmm-josaien.jpg` | Sakuranobaba Josaien | 1280×800 |
+| `a-kmm-kato.jpg` | Kato Shrine | 1280×800 |
+| `a-kmm-camk.jpg` | Kumamoto Contemporary Art Museum | 1280×800 |
 
 ### Activity menu — dish photo popup — 103 รูป
 
@@ -256,4 +259,4 @@
 | `dish-a-d2-cityrun-4.jpg` | Tenshudai keep base | 1080×810 |
 | `dish-a-d2-cityrun-5.jpg` | Starbucks Ohori Park (finish) | 1080×810 |
 
-_รวม 213 ไฟล์ · สร้างจาก `_generate_placeholders.py`_
+_รวม 216 ไฟล์ · สร้างจาก `_generate_placeholders.py`_

@@ -1489,5 +1489,26 @@
     "cat": "activity",
     "w": 1280,
     "h": 800
+  },
+  {
+    "id": "a-kmm-josaien",
+    "label": "Sakuranobaba Josaien",
+    "cat": "activity",
+    "w": 1280,
+    "h": 800
+  },
+  {
+    "id": "a-kmm-kato",
+    "label": "Kato Shrine",
+    "cat": "activity",
+    "w": 1280,
+    "h": 800
+  },
+  {
+    "id": "a-kmm-camk",
+    "label": "Kumamoto Contemporary Art Museum",
+    "cat": "activity",
+    "w": 1280,
+    "h": 800
   }
 ]
