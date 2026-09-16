@@ -197,7 +197,7 @@
   },
   {
     "id": "a-d5-sweets",
-    "label": "Beppu Purin",
+    "label": "Okamotoya jigoku-mushi purin",
     "cat": "activity",
     "w": 1280,
     "h": 800
@@ -736,7 +736,7 @@
   },
   {
     "id": "dish-a-d3-kaiseki-0",
-    "label": "Kumamoto wagyu",
+    "label": "Bungo beef steak",
     "cat": "dish",
     "w": 1080,
     "h": 810
@@ -1058,14 +1058,14 @@
   },
   {
     "id": "dish-a-d5-sweets-0",
-    "label": "Classic Beppu purin",
+    "label": "Jigoku-mushi purin",
     "cat": "dish",
     "w": 1080,
     "h": 810
   },
   {
     "id": "dish-a-d5-sweets-1",
-    "label": "Jigoku-mushi purin",
+    "label": "Jigoku-mushi egg sandwich",
     "cat": "dish",
     "w": 1080,
     "h": 810
@@ -1528,6 +1528,48 @@
   {
     "id": "a-kmm-oppeshan",
     "label": "Oppeshan ramen",
+    "cat": "activity",
+    "w": 1280,
+    "h": 800
+  },
+  {
+    "id": "a-beppu-izutsu",
+    "label": "Kaisen Izutsu",
+    "cat": "activity",
+    "w": 1280,
+    "h": 800
+  },
+  {
+    "id": "a-yuf-laruche",
+    "label": "CAFE LA RUCHE",
+    "cat": "activity",
+    "w": 1280,
+    "h": 800
+  },
+  {
+    "id": "a-hita-sofuren",
+    "label": "Sofuren Sohonten",
+    "cat": "activity",
+    "w": 1280,
+    "h": 800
+  },
+  {
+    "id": "a-sasaguri-nanzoin",
+    "label": "Nanzoin reclining Buddha",
+    "cat": "activity",
+    "w": 1280,
+    "h": 800
+  },
+  {
+    "id": "a-hakata-suzukake",
+    "label": "Suzukake Honten",
+    "cat": "activity",
+    "w": 1280,
+    "h": 800
+  },
+  {
+    "id": "a-itoshima-tottan",
+    "label": "Kobo Tottan salt pudding",
     "cat": "activity",
     "w": 1280,
     "h": 800

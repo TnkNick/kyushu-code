@@ -57,7 +57,7 @@
 | `p-tum.jpg` | P’Tum | 820×820 |
 | `p-ellie.jpg` | Jane | 1280×800 |
 
-### Itinerary timeline + activity detail — 92 รูป
+### Itinerary timeline + activity detail — 98 รูป
 
 | ไฟล์ | คือ | ขนาด |
 |---|---|---|
@@ -83,7 +83,7 @@
 | `a-d5-lunch.jpg` | Dinner in Beppu | 1280×800 |
 | `a-d5-umijigoku.jpg` | Umi Jigoku | 1280×800 |
 | `a-d5-chinoike.jpg` | Chinoike Jigoku - blood pond | 1280×800 |
-| `a-d5-sweets.jpg` | Beppu Purin | 1280×800 |
+| `a-d5-sweets.jpg` | Okamotoya jigoku-mushi purin | 1280×800 |
 | `a-d5-sushi.jpg` | Kamesho Kurukuru Sushi | 1280×800 |
 | `a-d6-kinrin.jpg` | Kinrin Lake | 1280×800 |
 | `a-d6-mabushi.jpg` | Yufu Mabushi | 1280×800 |
@@ -153,6 +153,12 @@
 | `a-kmm-kumamon.jpg` | Kumamon Square | 1280×800 |
 | `a-kmm-kokutei.jpg` | Kokutei ramen | 1280×800 |
 | `a-kmm-oppeshan.jpg` | Oppeshan ramen | 1280×800 |
+| `a-beppu-izutsu.jpg` | Kaisen Izutsu | 1280×800 |
+| `a-yuf-laruche.jpg` | CAFE LA RUCHE | 1280×800 |
+| `a-hita-sofuren.jpg` | Sofuren Sohonten | 1280×800 |
+| `a-sasaguri-nanzoin.jpg` | Nanzoin reclining Buddha | 1280×800 |
+| `a-hakata-suzukake.jpg` | Suzukake Honten | 1280×800 |
+| `a-itoshima-tottan.jpg` | Kobo Tottan salt pudding | 1280×800 |
 
 ### Activity menu — dish photo popup — 103 รูป
 
@@ -178,7 +184,7 @@
 | `dish-a-d2-yatai-1.jpg` | Tonkotsu ramen | 1080×810 |
 | `dish-a-d2-yatai-2.jpg` | Oden | 1080×810 |
 | `dish-a-d2-yatai-3.jpg` | Mentai tamagoyaki | 1080×810 |
-| `dish-a-d3-kaiseki-0.jpg` | Kumamoto wagyu | 1080×810 |
+| `dish-a-d3-kaiseki-0.jpg` | Bungo beef steak | 1080×810 |
 | `dish-a-d3-kaiseki-1.jpg` | River fish shioyaki | 1080×810 |
 | `dish-a-d3-kaiseki-2.jpg` | Seasonal sakizuke | 1080×810 |
 | `dish-a-d3-kaiseki-3.jpg` | Mountain-vegetable nimono | 1080×810 |
@@ -224,8 +230,8 @@
 | `dish-a-d4-sweets-0.jpg` | Classic ikinari dango | 1080×810 |
 | `dish-a-d4-sweets-1.jpg` | Mugwort (yomogi) dango | 1080×810 |
 | `dish-a-d4-sweets-2.jpg` | Honey castella | 1080×810 |
-| `dish-a-d5-sweets-0.jpg` | Classic Beppu purin | 1080×810 |
-| `dish-a-d5-sweets-1.jpg` | Jigoku-mushi purin | 1080×810 |
+| `dish-a-d5-sweets-0.jpg` | Jigoku-mushi purin | 1080×810 |
+| `dish-a-d5-sweets-1.jpg` | Jigoku-mushi egg sandwich | 1080×810 |
 | `dish-a-d5-sweets-2.jpg` | Purin a la mode | 1080×810 |
 | `dish-a-d6-sweets-0.jpg` | B-speak P-roll | 1080×810 |
 | `dish-a-d6-sweets-1.jpg` | Milch cheese tart (warm) | 1080×810 |
@@ -262,4 +268,4 @@
 | `dish-a-d2-cityrun-4.jpg` | Tenshudai keep base | 1080×810 |
 | `dish-a-d2-cityrun-5.jpg` | Starbucks Ohori Park (finish) | 1080×810 |
 
-_รวม 219 ไฟล์ · สร้างจาก `_generate_placeholders.py`_
+_รวม 225 ไฟล์ · สร้างจาก `_generate_placeholders.py`_
