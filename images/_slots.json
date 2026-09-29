@@ -78,7 +78,7 @@
   },
   {
     "id": "a-d2-cityrun",
-    "label": "Morning city run - Sumiyoshi & old Hakata",
+    "label": "Morning run - Nishi Park, Ohori & the castle",
     "cat": "activity",
     "w": 1280,
     "h": 800
@@ -1394,70 +1394,56 @@
   },
   {
     "id": "dish-a-d2-cityrun-0",
-    "label": "The house - Sumiyoshi (start)",
+    "label": "The house - Arato (start)",
     "cat": "dish",
     "w": 1080,
     "h": 810
   },
   {
     "id": "dish-a-d2-cityrun-1",
-    "label": "Sumiyoshi Shrine",
+    "label": "Nishi Park east terrace",
     "cat": "dish",
     "w": 1080,
     "h": 810
   },
   {
     "id": "dish-a-d2-cityrun-2",
-    "label": "Canal City & Nakasu tip",
+    "label": "Ohori Park north gate",
     "cat": "dish",
     "w": 1080,
     "h": 810
   },
   {
     "id": "dish-a-d2-cityrun-3",
-    "label": "Tenjin Central Park",
+    "label": "West shore at sunrise",
     "cat": "dish",
     "w": 1080,
     "h": 810
   },
   {
     "id": "dish-a-d2-cityrun-4",
-    "label": "Fukuhaku Deai Bridge",
+    "label": "South shore & island bridges",
     "cat": "dish",
     "w": 1080,
     "h": 810
   },
   {
     "id": "dish-a-d2-cityrun-5",
-    "label": "Kushida Shrine",
+    "label": "Ukimido pavilion",
     "cat": "dish",
     "w": 1080,
     "h": 810
   },
   {
     "id": "dish-a-d2-cityrun-6",
-    "label": "Shofukuji temple lanes",
+    "label": "Fukuoka Castle keep base",
     "cat": "dish",
     "w": 1080,
     "h": 810
   },
   {
     "id": "dish-a-d2-cityrun-7",
-    "label": "Hakata Sennen-no-mon",
-    "cat": "dish",
-    "w": 1080,
-    "h": 810
-  },
-  {
-    "id": "dish-a-d2-cityrun-8",
-    "label": "Hakata Station plaza",
-    "cat": "dish",
-    "w": 1080,
-    "h": 810
-  },
-  {
-    "id": "dish-a-d2-cityrun-9",
-    "label": "OBC (finish)",
+    "label": "Starbucks Ohori Park (finish)",
     "cat": "dish",
     "w": 1080,
     "h": 810

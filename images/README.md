@@ -68,7 +68,7 @@
 | `a-d1-illum.jpg` | Winter Illumination | 1280×800 |
 | `a-d1-motsunabe.jpg` | Motsunabe Rakutenchi | 1280×800 |
 | `a-d1-nightlife.jpg` | FUKUOKA CRAFT by El Borracho | 1280×800 |
-| `a-d2-cityrun.jpg` | Morning city run - Sumiyoshi & old Hakata | 1280×800 |
+| `a-d2-cityrun.jpg` | Morning run - Nishi Park, Ohori & the castle | 1280×800 |
 | `a-d3-daikanbo.jpg` | Daikanbo viewpoint | 1280×800 |
 | `a-d3-lunch.jpg` | Aso Akaushi-don | 1280×800 |
 | `a-d3-kusasenri.jpg` | Kusasenri & Komezuka | 1280×800 |
@@ -160,7 +160,7 @@
 | `a-hakata-suzukake.jpg` | Suzukake Honten | 1280×800 |
 | `a-itoshima-tottan.jpg` | Kobo Tottan salt pudding | 1280×800 |
 
-### Activity menu — dish photo popup — 107 รูป
+### Activity menu — dish photo popup — 105 รูป
 
 | ไฟล์ | คือ | ขนาด |
 |---|---|---|
@@ -261,15 +261,13 @@
 | `dish-a-d10-canal-0.jpg` | MUJI / Uniqlo - Canal City | 1080×810 |
 | `dish-a-d10-canal-1.jpg` | Mina Tenjin (GU) | 1080×810 |
 | `dish-a-d10-canal-2.jpg` | Daimyo | 1080×810 |
-| `dish-a-d2-cityrun-0.jpg` | The house - Sumiyoshi (start) | 1080×810 |
-| `dish-a-d2-cityrun-1.jpg` | Sumiyoshi Shrine | 1080×810 |
-| `dish-a-d2-cityrun-2.jpg` | Canal City & Nakasu tip | 1080×810 |
-| `dish-a-d2-cityrun-3.jpg` | Tenjin Central Park | 1080×810 |
-| `dish-a-d2-cityrun-4.jpg` | Fukuhaku Deai Bridge | 1080×810 |
-| `dish-a-d2-cityrun-5.jpg` | Kushida Shrine | 1080×810 |
-| `dish-a-d2-cityrun-6.jpg` | Shofukuji temple lanes | 1080×810 |
-| `dish-a-d2-cityrun-7.jpg` | Hakata Sennen-no-mon | 1080×810 |
-| `dish-a-d2-cityrun-8.jpg` | Hakata Station plaza | 1080×810 |
-| `dish-a-d2-cityrun-9.jpg` | OBC (finish) | 1080×810 |
+| `dish-a-d2-cityrun-0.jpg` | The house - Arato (start) | 1080×810 |
+| `dish-a-d2-cityrun-1.jpg` | Nishi Park east terrace | 1080×810 |
+| `dish-a-d2-cityrun-2.jpg` | Ohori Park north gate | 1080×810 |
+| `dish-a-d2-cityrun-3.jpg` | West shore at sunrise | 1080×810 |
+| `dish-a-d2-cityrun-4.jpg` | South shore & island bridges | 1080×810 |
+| `dish-a-d2-cityrun-5.jpg` | Ukimido pavilion | 1080×810 |
+| `dish-a-d2-cityrun-6.jpg` | Fukuoka Castle keep base | 1080×810 |
+| `dish-a-d2-cityrun-7.jpg` | Starbucks Ohori Park (finish) | 1080×810 |
 
-_รวม 229 ไฟล์ · สร้างจาก `_generate_placeholders.py`_
+_รวม 227 ไฟล์ · สร้างจาก `_generate_placeholders.py`_
