@@ -62,13 +62,11 @@
 | ไฟล์ | คือ | ขนาด |
 |---|---|---|
 | `a-d1-imdonut.jpg` | I’m Donut? | 1280×800 |
-| `a-d1-fukcoffee.jpg` | Fuk Coffee | 1280×800 |
-| `a-d1-ramen.jpg` | Menya Gaga · Tenjin | 1280×800 |
 | `a-d1-canalcity.jpg` | Canal City & Tenjin | 1280×800 |
 | `a-d1-illum.jpg` | Winter Illumination | 1280×800 |
 | `a-d1-motsunabe.jpg` | Motsunabe Rakutenchi | 1280×800 |
 | `a-d1-nightlife.jpg` | FUKUOKA CRAFT by El Borracho | 1280×800 |
-| `a-d2-cityrun.jpg` | Morning run - Nishi Park, Ohori & the castle | 1280×800 |
+| `a-d2-cityrun.jpg` | Morning run - Ohori Park & Maizuru Park | 1280×800 |
 | `a-d3-daikanbo.jpg` | Daikanbo viewpoint | 1280×800 |
 | `a-d3-lunch.jpg` | Aso Akaushi-don | 1280×800 |
 | `a-d3-kusasenri.jpg` | Kusasenri & Komezuka | 1280×800 |
@@ -100,7 +98,6 @@
 | `a-d2-starbucks.jpg` | Starbucks Dazaifu | 1280×800 |
 | `a-d2-unagi.jpg` | Yanagawa Unagi Seiro-mushi | 1280×800 |
 | `a-d2-yanagawa.jpg` | Yanagawa river boat | 1280×800 |
-| `a-d2-yatai.jpg` | Nakasu Yatai dinner | 1280×800 |
 | `a-d2-nightlife.jpg` | A drink in Aso town | 1280×800 |
 | `a-d2-stars.jpg` | Stars over the caldera | 1280×800 |
 | `a-d8-torii.jpg` | Sakurai Futamigaura | 1280×800 |
@@ -142,37 +139,34 @@
 | `a-hakata-kushida.jpg` | Kushida Shrine | 1280×800 |
 | `a-hakata-tochoji.jpg` | Tochoji & Shofukuji | 1280×800 |
 | `a-hakata-kawabata.jpg` | Kawabata Arcade | 1280×800 |
-| `a-hakata-ramen.jpg` | Hakata Ramen · Shin-Shin | 1280×800 |
 | `a-hakata-rakusuien.jpg` | Rakusuien & Sumiyoshi | 1280×800 |
 | `a-hakata-torikawa.jpg` | Hakata Torikawa Daijin | 1280×800 |
 | `a-aso-kabutoiwa.jpg` | Kabutoiwa Observatory | 1280×800 |
-| `a-beppu-takegawara.jpg` | Takegawara Onsen sand bath | 1280×800 |
 | `a-kmm-josaien.jpg` | Sakuranobaba Josaien | 1280×800 |
 | `a-kmm-kato.jpg` | Kato Shrine | 1280×800 |
 | `a-kmm-camk.jpg` | Kumamoto Contemporary Art Museum | 1280×800 |
 | `a-kmm-kumamon.jpg` | Kumamon Square | 1280×800 |
 | `a-kmm-kokutei.jpg` | Kokutei ramen | 1280×800 |
 | `a-kmm-oppeshan.jpg` | Oppeshan ramen | 1280×800 |
-| `a-beppu-izutsu.jpg` | Kaisen Izutsu | 1280×800 |
 | `a-yuf-laruche.jpg` | CAFE LA RUCHE | 1280×800 |
 | `a-hita-sofuren.jpg` | Sofuren Sohonten | 1280×800 |
 | `a-sasaguri-nanzoin.jpg` | Nanzoin reclining Buddha | 1280×800 |
 | `a-hakata-suzukake.jpg` | Suzukake Honten | 1280×800 |
 | `a-itoshima-tottan.jpg` | Kobo Tottan salt pudding | 1280×800 |
+| `a-beppu-gansou.jpg` | Yakiniku Gansou Honten · Beppu | 1280×800 |
+| `a-fuk-kanetora.jpg` | Menya Kanetora · Tenjin honten | 1280×800 |
+| `a-fuk-nishidori.jpg` | Tenjin Nishi-dori · the Human Made lane | 1280×800 |
+| `a-d2-yatai.jpg` | Nakasu Yatai dinner | 1280×800 |
+| `a-fuk-fukseaside.jpg` | FUK COFFEE Seaside | 1280×800 |
+| `a-fuk-fukparks.jpg` | FUK COFFEE Parks | 1280×800 |
 
-### Activity menu — dish photo popup — 105 รูป
+### Activity menu — dish photo popup — 107 รูป
 
 | ไฟล์ | คือ | ขนาด |
 |---|---|---|
 | `dish-a-d1-imdonut-0.jpg` | Original I’m Donut | 1080×810 |
 | `dish-a-d1-imdonut-1.jpg` | Pistachio donut | 1080×810 |
 | `dish-a-d1-imdonut-2.jpg` | Custard donut | 1080×810 |
-| `dish-a-d1-fukcoffee-0.jpg` | Fukuoka-map latte | 1080×810 |
-| `dish-a-d1-fukcoffee-1.jpg` | Drip coffee | 1080×810 |
-| `dish-a-d1-ramen-0.jpg` | Tonkotsu ramen | 1080×810 |
-| `dish-a-d1-ramen-1.jpg` | Ajitama ramen | 1080×810 |
-| `dish-a-d1-ramen-2.jpg` | Chashu ramen | 1080×810 |
-| `dish-a-d1-ramen-3.jpg` | Gyoza | 1080×810 |
 | `dish-a-d1-motsunabe-0.jpg` | Motsunabe · soy broth | 1080×810 |
 | `dish-a-d1-motsunabe-1.jpg` | Motsunabe · miso broth | 1080×810 |
 | `dish-a-d1-motsunabe-2.jpg` | Champon shime | 1080×810 |
@@ -180,10 +174,6 @@
 | `dish-a-d2-starbucks-0.jpg` | Seasonal latte | 1080×810 |
 | `dish-a-d2-starbucks-1.jpg` | Umegae mochi (nearby) | 1080×810 |
 | `dish-a-d2-starbucks-2.jpg` | Matcha frappuccino | 1080×810 |
-| `dish-a-d2-yatai-0.jpg` | Yakitori skewers | 1080×810 |
-| `dish-a-d2-yatai-1.jpg` | Tonkotsu ramen | 1080×810 |
-| `dish-a-d2-yatai-2.jpg` | Oden | 1080×810 |
-| `dish-a-d2-yatai-3.jpg` | Mentai tamagoyaki | 1080×810 |
 | `dish-a-d3-kaiseki-0.jpg` | Bungo beef steak | 1080×810 |
 | `dish-a-d3-kaiseki-1.jpg` | River fish shioyaki | 1080×810 |
 | `dish-a-d3-kaiseki-2.jpg` | Seasonal sakizuke | 1080×810 |
@@ -262,12 +252,24 @@
 | `dish-a-d10-canal-1.jpg` | Mina Tenjin (GU) | 1080×810 |
 | `dish-a-d10-canal-2.jpg` | Daimyo | 1080×810 |
 | `dish-a-d2-cityrun-0.jpg` | The house - Arato (start) | 1080×810 |
-| `dish-a-d2-cityrun-1.jpg` | Nishi Park east terrace | 1080×810 |
-| `dish-a-d2-cityrun-2.jpg` | Ohori Park north gate | 1080×810 |
-| `dish-a-d2-cityrun-3.jpg` | West shore at sunrise | 1080×810 |
-| `dish-a-d2-cityrun-4.jpg` | South shore & island bridges | 1080×810 |
-| `dish-a-d2-cityrun-5.jpg` | Ukimido pavilion | 1080×810 |
-| `dish-a-d2-cityrun-6.jpg` | Fukuoka Castle keep base | 1080×810 |
-| `dish-a-d2-cityrun-7.jpg` | Starbucks Ohori Park (finish) | 1080×810 |
+| `dish-a-d2-cityrun-1.jpg` | West shore - sky paling over the water | 1080×810 |
+| `dish-a-d2-cityrun-2.jpg` | Island bridges and Ukimido | 1080×810 |
+| `dish-a-d2-cityrun-3.jpg` | Fukuoka Castle keep base | 1080×810 |
+| `dish-a-d2-cityrun-4.jpg` | The Najima Gate | 1080×810 |
+| `dish-a-d2-cityrun-5.jpg` | Starbucks Ohori Park (finish) | 1080×810 |
+| `dish-a-beppu-gansou-0.jpg` | Seven-second sirloin | 1080×810 |
+| `dish-a-beppu-gansou-1.jpg` | Salted tsubo-kalbi | 1080×810 |
+| `dish-a-beppu-gansou-2.jpg` | Silver rice (ginmeshi) | 1080×810 |
+| `dish-a-beppu-gansou-3.jpg` | Beppu reimen | 1080×810 |
+| `dish-a-d2-yatai-0.jpg` | Yakitori skewers | 1080×810 |
+| `dish-a-d2-yatai-1.jpg` | Tonkotsu ramen | 1080×810 |
+| `dish-a-d2-yatai-2.jpg` | Oden | 1080×810 |
+| `dish-a-d2-yatai-3.jpg` | Mentai tamagoyaki | 1080×810 |
+| `dish-a-fuk-fukseaside-0.jpg` | Cafe latte | 1080×810 |
+| `dish-a-fuk-fukseaside-1.jpg` | Pudding | 1080×810 |
+| `dish-a-fuk-fukparks-0.jpg` | Cafe latte | 1080×810 |
+| `dish-a-fuk-fukparks-1.jpg` | Ohori pudding | 1080×810 |
+| `dish-a-fuk-fukparks-2.jpg` | Cream puff | 1080×810 |
+| `dish-a-fuk-fukparks-3.jpg` | Matcha latte | 1080×810 |
 
-_รวม 227 ไฟล์ · สร้างจาก `_generate_placeholders.py`_
+_รวม 229 ไฟล์ · สร้างจาก `_generate_placeholders.py`_

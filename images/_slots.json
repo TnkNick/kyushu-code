@@ -28,20 +28,6 @@
     "h": 800
   },
   {
-    "id": "a-d1-fukcoffee",
-    "label": "Fuk Coffee",
-    "cat": "activity",
-    "w": 1280,
-    "h": 800
-  },
-  {
-    "id": "a-d1-ramen",
-    "label": "Menya Gaga · Tenjin",
-    "cat": "activity",
-    "w": 1280,
-    "h": 800
-  },
-  {
     "id": "a-d1-canalcity",
     "label": "Canal City & Tenjin",
     "cat": "activity",
@@ -78,7 +64,7 @@
   },
   {
     "id": "a-d2-cityrun",
-    "label": "Morning run - Nishi Park, Ohori & the castle",
+    "label": "Morning run - Ohori Park & Maizuru Park",
     "cat": "activity",
     "w": 1280,
     "h": 800
@@ -331,13 +317,6 @@
   {
     "id": "a-d2-yanagawa",
     "label": "Yanagawa river boat",
-    "cat": "activity",
-    "w": 1280,
-    "h": 800
-  },
-  {
-    "id": "a-d2-yatai",
-    "label": "Nakasu Yatai dinner",
     "cat": "activity",
     "w": 1280,
     "h": 800
@@ -616,48 +595,6 @@
     "h": 810
   },
   {
-    "id": "dish-a-d1-fukcoffee-0",
-    "label": "Fukuoka-map latte",
-    "cat": "dish",
-    "w": 1080,
-    "h": 810
-  },
-  {
-    "id": "dish-a-d1-fukcoffee-1",
-    "label": "Drip coffee",
-    "cat": "dish",
-    "w": 1080,
-    "h": 810
-  },
-  {
-    "id": "dish-a-d1-ramen-0",
-    "label": "Tonkotsu ramen",
-    "cat": "dish",
-    "w": 1080,
-    "h": 810
-  },
-  {
-    "id": "dish-a-d1-ramen-1",
-    "label": "Ajitama ramen",
-    "cat": "dish",
-    "w": 1080,
-    "h": 810
-  },
-  {
-    "id": "dish-a-d1-ramen-2",
-    "label": "Chashu ramen",
-    "cat": "dish",
-    "w": 1080,
-    "h": 810
-  },
-  {
-    "id": "dish-a-d1-ramen-3",
-    "label": "Gyoza",
-    "cat": "dish",
-    "w": 1080,
-    "h": 810
-  },
-  {
     "id": "dish-a-d1-motsunabe-0",
     "label": "Motsunabe · soy broth",
     "cat": "dish",
@@ -702,34 +639,6 @@
   {
     "id": "dish-a-d2-starbucks-2",
     "label": "Matcha frappuccino",
-    "cat": "dish",
-    "w": 1080,
-    "h": 810
-  },
-  {
-    "id": "dish-a-d2-yatai-0",
-    "label": "Yakitori skewers",
-    "cat": "dish",
-    "w": 1080,
-    "h": 810
-  },
-  {
-    "id": "dish-a-d2-yatai-1",
-    "label": "Tonkotsu ramen",
-    "cat": "dish",
-    "w": 1080,
-    "h": 810
-  },
-  {
-    "id": "dish-a-d2-yatai-2",
-    "label": "Oden",
-    "cat": "dish",
-    "w": 1080,
-    "h": 810
-  },
-  {
-    "id": "dish-a-d2-yatai-3",
-    "label": "Mentai tamagoyaki",
     "cat": "dish",
     "w": 1080,
     "h": 810
@@ -1401,48 +1310,34 @@
   },
   {
     "id": "dish-a-d2-cityrun-1",
-    "label": "Nishi Park east terrace",
+    "label": "West shore - sky paling over the water",
     "cat": "dish",
     "w": 1080,
     "h": 810
   },
   {
     "id": "dish-a-d2-cityrun-2",
-    "label": "Ohori Park north gate",
+    "label": "Island bridges and Ukimido",
     "cat": "dish",
     "w": 1080,
     "h": 810
   },
   {
     "id": "dish-a-d2-cityrun-3",
-    "label": "West shore at sunrise",
-    "cat": "dish",
-    "w": 1080,
-    "h": 810
-  },
-  {
-    "id": "dish-a-d2-cityrun-4",
-    "label": "South shore & island bridges",
-    "cat": "dish",
-    "w": 1080,
-    "h": 810
-  },
-  {
-    "id": "dish-a-d2-cityrun-5",
-    "label": "Ukimido pavilion",
-    "cat": "dish",
-    "w": 1080,
-    "h": 810
-  },
-  {
-    "id": "dish-a-d2-cityrun-6",
     "label": "Fukuoka Castle keep base",
     "cat": "dish",
     "w": 1080,
     "h": 810
   },
   {
-    "id": "dish-a-d2-cityrun-7",
+    "id": "dish-a-d2-cityrun-4",
+    "label": "The Najima Gate",
+    "cat": "dish",
+    "w": 1080,
+    "h": 810
+  },
+  {
+    "id": "dish-a-d2-cityrun-5",
     "label": "Starbucks Ohori Park (finish)",
     "cat": "dish",
     "w": 1080,
@@ -1470,13 +1365,6 @@
     "h": 800
   },
   {
-    "id": "a-hakata-ramen",
-    "label": "Hakata Ramen · Shin-Shin",
-    "cat": "activity",
-    "w": 1280,
-    "h": 800
-  },
-  {
     "id": "a-hakata-rakusuien",
     "label": "Rakusuien & Sumiyoshi",
     "cat": "activity",
@@ -1493,13 +1381,6 @@
   {
     "id": "a-aso-kabutoiwa",
     "label": "Kabutoiwa Observatory",
-    "cat": "activity",
-    "w": 1280,
-    "h": 800
-  },
-  {
-    "id": "a-beppu-takegawara",
-    "label": "Takegawara Onsen sand bath",
     "cat": "activity",
     "w": 1280,
     "h": 800
@@ -1547,13 +1428,6 @@
     "h": 800
   },
   {
-    "id": "a-beppu-izutsu",
-    "label": "Kaisen Izutsu",
-    "cat": "activity",
-    "w": 1280,
-    "h": 800
-  },
-  {
     "id": "a-yuf-laruche",
     "label": "CAFE LA RUCHE",
     "cat": "activity",
@@ -1587,5 +1461,145 @@
     "cat": "activity",
     "w": 1280,
     "h": 800
+  },
+  {
+    "id": "a-beppu-gansou",
+    "label": "Yakiniku Gansou Honten · Beppu",
+    "cat": "activity",
+    "w": 1280,
+    "h": 800
+  },
+  {
+    "id": "dish-a-beppu-gansou-0",
+    "label": "Seven-second sirloin",
+    "cat": "dish",
+    "w": 1080,
+    "h": 810
+  },
+  {
+    "id": "dish-a-beppu-gansou-1",
+    "label": "Salted tsubo-kalbi",
+    "cat": "dish",
+    "w": 1080,
+    "h": 810
+  },
+  {
+    "id": "dish-a-beppu-gansou-2",
+    "label": "Silver rice (ginmeshi)",
+    "cat": "dish",
+    "w": 1080,
+    "h": 810
+  },
+  {
+    "id": "dish-a-beppu-gansou-3",
+    "label": "Beppu reimen",
+    "cat": "dish",
+    "w": 1080,
+    "h": 810
+  },
+  {
+    "id": "a-fuk-kanetora",
+    "label": "Menya Kanetora · Tenjin honten",
+    "cat": "activity",
+    "w": 1280,
+    "h": 800
+  },
+  {
+    "id": "a-fuk-nishidori",
+    "label": "Tenjin Nishi-dori · the Human Made lane",
+    "cat": "activity",
+    "w": 1280,
+    "h": 800
+  },
+  {
+    "id": "a-d2-yatai",
+    "label": "Nakasu Yatai dinner",
+    "cat": "activity",
+    "w": 1280,
+    "h": 800
+  },
+  {
+    "id": "dish-a-d2-yatai-0",
+    "label": "Yakitori skewers",
+    "cat": "dish",
+    "w": 1080,
+    "h": 810
+  },
+  {
+    "id": "dish-a-d2-yatai-1",
+    "label": "Tonkotsu ramen",
+    "cat": "dish",
+    "w": 1080,
+    "h": 810
+  },
+  {
+    "id": "dish-a-d2-yatai-2",
+    "label": "Oden",
+    "cat": "dish",
+    "w": 1080,
+    "h": 810
+  },
+  {
+    "id": "dish-a-d2-yatai-3",
+    "label": "Mentai tamagoyaki",
+    "cat": "dish",
+    "w": 1080,
+    "h": 810
+  },
+  {
+    "id": "a-fuk-fukseaside",
+    "label": "FUK COFFEE Seaside",
+    "cat": "activity",
+    "w": 1280,
+    "h": 800
+  },
+  {
+    "id": "a-fuk-fukparks",
+    "label": "FUK COFFEE Parks",
+    "cat": "activity",
+    "w": 1280,
+    "h": 800
+  },
+  {
+    "id": "dish-a-fuk-fukseaside-0",
+    "label": "Cafe latte",
+    "cat": "dish",
+    "w": 1080,
+    "h": 810
+  },
+  {
+    "id": "dish-a-fuk-fukseaside-1",
+    "label": "Pudding",
+    "cat": "dish",
+    "w": 1080,
+    "h": 810
+  },
+  {
+    "id": "dish-a-fuk-fukparks-0",
+    "label": "Cafe latte",
+    "cat": "dish",
+    "w": 1080,
+    "h": 810
+  },
+  {
+    "id": "dish-a-fuk-fukparks-1",
+    "label": "Ohori pudding",
+    "cat": "dish",
+    "w": 1080,
+    "h": 810
+  },
+  {
+    "id": "dish-a-fuk-fukparks-2",
+    "label": "Cream puff",
+    "cat": "dish",
+    "w": 1080,
+    "h": 810
+  },
+  {
+    "id": "dish-a-fuk-fukparks-3",
+    "label": "Matcha latte",
+    "cat": "dish",
+    "w": 1080,
+    "h": 810
   }
 ]
