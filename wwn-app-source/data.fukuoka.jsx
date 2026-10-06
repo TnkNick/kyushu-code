@@ -57,8 +57,8 @@ const TRIP = {
                            'เปิด 08:00 ถึง 20:00 ทุกวัน โทร 092-778-0100 ห้าคนพร้อมกระเป๋าต้องใช้รถตู้เล็ก Noah Voxy หรือ Serena และลานจอดที่คุมาโมโตะคืนนี้รับรถกว้างไม่เกิน 1.9 เมตร สูงไม่เกิน 2.1 เมตร ไฮเอซจึงใช้ไม่ได้ เผื่อเวลาทำเอกสาร 30 นาที เพราะลงทะเบียนคนขับหลายคนใช้เวลานานกว่าปกติ วันที่ 4 จะคืนรถที่สาขาหน้าสถานีฮากาตะ ไม่ใช่สาขานี้ ต้องให้ในการจองระบุไว้ และถามค่าคืนรถต่างสาขาไว้ด้วย') } },
 
         { type: 'step', time: '10:50', meridiem: 'Morning', kind: 'Transfer', icon: 'car',
-          title: L('Drive to Nishitetsu Inn Fukuoka - pick up the friends', 'ขับไปรับเพื่อนที่โรงแรมนิชิเท็ตสึ อินน์ ฟุกุโอกะ'),
-          place: L('Tenjin 1-chome - about 6 km from the airport, 15 to 20 min', 'เท็นจิน 1 โจเมะ ห่างจากสนามบินราว 6 กิโลเมตร ใช้เวลา 15 ถึง 20 นาที'),
+          title: L('Pick up the gang', 'รับผองเพื่อน ชายแทร่'),
+          place: L('Nishitetsu Inn Fukuoka, Tenjin 1-chome - about 6 km from the airport, 15 to 20 min', 'โรงแรมนิชิเท็ตสึ อินน์ ฟุกุโอกะ เท็นจิน 1 โจเมะ ห่างจากสนามบินราว 6 กิโลเมตร ใช้เวลา 15 ถึง 20 นาที'),
           blurb: L('Before heading south the car goes into the city to collect the friends from their hotel in Tenjin, three minutes on foot from both Tenjin and Nakasu-Kawabata stations. The detour adds only a few kilometres to the drive - what it really costs is the stop, which is why everything after it runs about half an hour later than it otherwise would. Message them as you leave the airport so they are down at the door with their bags.',
                    'ก่อนมุ่งใต้ รถเข้าเมืองไปรับเพื่อนจากโรงแรมในเท็นจิน เดินจากสถานีเท็นจินและสถานีนากาสึคาวาบาตะได้สามนาทีทั้งสองสถานี การอ้อมเพิ่มระยะทางแค่ไม่กี่กิโลเมตร สิ่งที่เสียจริงๆ คือเวลาแวะ ทุกอย่างหลังจากนี้จึงเลื่อนไปราวครึ่งชั่วโมง ส่งข้อความหาเพื่อนตอนออกจากสนามบิน จะได้ลงมารอที่ประตูพร้อมกระเป๋า'),
           refs: { map: 'https://maps.app.goo.gl/56nZBHfwpvGWGuoS8',
@@ -1171,20 +1171,20 @@ const TRIP = {
   const run = by('a-d2-cityrun'), shop = by('a-d1-canalcity'), kane = by('a-fuk-kanetora'), donut = by('a-d1-imdonut'),
         tower = by('a-d9-tower'), kuro = by('a-fuk-kurodahan'), mots = by('a-d1-motsunabe'), craft = by('a-d1-nightlife');
 
-  const fukGion = { type: 'feature', time: '09:00', meridiem: 'Morning', kind: 'Coffee', imageId: 'a-fuk-fukgion',
-    title: L('FUK COFFEE - Gion', 'FUK COFFEE สาขากิอง'),
-    place: L('Gionmachi - beside Kushida Shrine, open from 08:00', 'กิองมาจิ ข้างศาลเจ้าคุชิดะ เปิดตั้งแต่ 08:00'),
-    blurb: L('The original FUK COFFEE, a small shop beside Kushida Shrine that opens at eight, so it works as the first coffee of a Tenjin day: a cafe latte at about Y650, with a tiramisu or the pudding. It is known for its latte art, and the Kuko Line gets you there from the house in under half an hour.',
-             'ร้าน FUK COFFEE ต้นตำรับ เป็นร้านเล็กข้างศาลเจ้าคุชิดะที่เปิดตั้งแต่แปดโมง จึงเป็นกาแฟแรกของวันเท็นจินได้ดี คาเฟ่ลาเต้ราว 650 เยน กับทีรามิสุหรือพุดดิ้ง ร้านขึ้นชื่อเรื่องลาเต้อาร์ต และนั่งสายคูโคจากบ้านไปถึงในไม่ถึงครึ่งชั่วโมง'),
-    refs: { map: 'https://maps.google.com/?q=' + encodeURIComponent('FUK COFFEE 福岡市博多区祇園町6-22'), official: 'https://fuk-coffee.com/shop/fuk-coffee-2/',
-            booking: L('Latte about Y650', 'ลาเต้ราว 650 เยน'),
-            notes: L('Gionmachi 6-22, Hakata-ku, tel 092-281-7300. Open 08:00-20:00 daily. One minute from Kushida-jinja-mae Station and five from Gion Station. From the house walk to Ohori-koen (seven minutes) and take the Kuko Line to Gion, four stops - leave by half past eight to be here at nine. Menya Kanetora\'s honten is 1.45 km from here, about nineteen minutes on foot: leave at twenty to ten to be at the door when it opens at ten.',
-                     'ที่อยู่กิองมาจิ 6-22 เขตฮากาตะ โทร 092-281-7300 เปิด 08:00 ถึง 20:00 ทุกวัน เดินจากสถานีคุชิดะจินจามาเอะหนึ่งนาที และจากสถานีกิองห้านาที จากบ้านเดินไปสถานีโอโฮริโคเอ็นเจ็ดนาทีแล้วนั่งสายคูโคไปกิองสี่สถานี ออกจากบ้านไม่เกินแปดโมงครึ่งจะถึงตอนเก้าโมง จากที่นี่ไปเมนยะ คาเนโทระสาขาใหญ่ 1.45 กิโลเมตร เดินราว 19 นาที ออกตอนเก้าโมงสี่สิบจะถึงหน้าร้านตอนเปิดสิบโมง') } };
+  // FUK COFFEE Parks is also Day 6's first stop, so Plan B gets a copy with its own Day 5 times and directions
+  const parks = TRIP.days[5].activities.find((x) => x.imageId === 'a-fuk-fukparks');
+  const parksB = Object.assign({}, parks, { time: '09:00', meridiem: 'Morning',
+    blurb: L('The Ohori Park branch of Fuk Coffee, in the same quiet grid as the house and open from eight - about ten minutes on foot - so it is a slow first coffee before the day heads to Tenjin. The Ohori pudding, a cream puff and a latte are the order, and the shop sits right on the way to the Kuko Line.',
+             'สาขาสวนโอโฮริของ Fuk Coffee อยู่ในตารางถนนเงียบๆ เดียวกับบ้านพักและเปิดตั้งแต่แปดโมง เดินจากบ้านราวสิบนาที จึงเป็นกาแฟแรกแบบไม่รีบก่อนไปเท็นจิน เมนูแนะนำคือพุดดิ้งโอโฮริ ครีมพัฟ และลาเต้ และร้านอยู่ติดทางไปสายคูโค'),
+    refs: Object.assign({}, parks.refs, {
+      notes: L('Arato 1-4-20, tel 092-741-6600. The shop\'s own page gives 08:00-20:00, and some listings show an earlier close on weekdays. Three minutes on foot from Ohori-koen Station exit 2 and about ten from the house, so leaving at half past eight leaves plenty of slack. Leave the shop by half past nine: Tenjin is two stops and three minutes on the Kuko Line, and Menya Kanetora\'s honten is seven minutes on foot from Tenjin Station, so you are at the door when it opens at ten. The menu changes, and the shop posts on Instagram at fuk.coffee.parks.',
+               'ที่อยู่อาราโตะ 1-4-20 โทร 092-741-6600 หน้าเว็บของร้านระบุ 08:00 ถึง 20:00 บางแหล่งข้อมูลลงเวลาปิดเร็วกว่านั้นในวันธรรมดา เดินจากสถานีโอโฮริโคเอ็นทางออก 2 สามนาที และจากบ้านราวสิบนาที ออกจากบ้านแปดโมงครึ่งจึงเหลือเวลาเผื่อเยอะ ออกจากร้านก่อนเก้าโมงครึ่ง เพราะเท็นจินอยู่ห่างสองสถานี สามนาทีบนสายคูโค แล้วเดินจากสถานีเท็นจินไปเมนยะ คาเนโทระสาขาใหญ่เจ็ดนาที จะถึงหน้าร้านตอนเปิดสิบโมงพอดี เมนูเปลี่ยนได้ และร้านโพสต์ในอินสตาแกรม fuk.coffee.parks'),
+    }) });
 
   const kaneB = Object.assign({}, kane, { time: '10:00', meridiem: 'Morning',
     refs: Object.assign({}, kane.refs, {
-      notes: L('Watanabe-dori 4-9-18, Fukusake Building 1F, tel 092-726-6700. Open 10:00-22:00 on weekdays and never closed, with only 16 seats and no parking. Ten o\'clock is the opening time, so this is when the line is at its shortest. Buy a ticket at the machine - rich tsukemen about Y900, Y1,000 with the marinated egg, the spicy one Y950, a large portion Y150 more - and note it is CASH ONLY. Oil, strength, garlic and spring onion can be set at the machine. From FUK COFFEE in Gion it is about nineteen minutes on foot. If the line is hopeless, the newer branch at Daimyo 1-14-45 (Qiz Tenjin 1F, tel 092-406-2202, 11:00-21:00 on weekdays, cards accepted) is in the shopping lane, and Fukuoka PARCO has one on B1F.',
-               'วาตานาเบะโดริ 4-9-18 อาคารฟุกุซาเกะ ชั้น 1 โทร 092-726-6700 วันธรรมดาเปิด 10:00 ถึง 22:00 ไม่มีวันหยุด มีแค่ 16 ที่นั่งและไม่มีที่จอดรถ สิบโมงคือเวลาเปิดร้าน คิวจึงสั้นที่สุดตอนนี้ ซื้อตั๋วจากตู้ ซึเคเมงเข้มข้นราว 900 เยน ใส่ไข่ต้มซีอิ๊วเป็น 1,000 เยน แบบเผ็ด 950 เยน เส้นใหญ่พิเศษเพิ่ม 150 เยน และรับเงินสดเท่านั้น ที่ตู้ปรับความมัน ความเข้ม กระเทียม และต้นหอมได้ จาก FUK COFFEE ที่กิองเดินราว 19 นาที ถ้าคิวยาวเกินรับไหวให้ไปสาขาใหม่ที่ไดเมียว 1-14-45 (อาคาร Qiz Tenjin ชั้น 1 โทร 092-406-2202 วันธรรมดา 11:00 ถึง 21:00 รับบัตร) ซึ่งอยู่ในซอยช้อปปิ้ง หรือสาขาที่ฟุกุโอกะพาร์โกะชั้นใต้ดิน 1'),
+      notes: L('Watanabe-dori 4-9-18, Fukusake Building 1F, tel 092-726-6700. Open 10:00-22:00 on weekdays and never closed, with only 16 seats and no parking. Ten o\'clock is the opening time, so this is when the line is at its shortest. Buy a ticket at the machine - rich tsukemen about Y900, Y1,000 with the marinated egg, the spicy one Y950, a large portion Y150 more - and note it is CASH ONLY. Oil, strength, garlic and spring onion can be set at the machine. From FUK COFFEE Parks take the Kuko Line from Ohori-koen to Tenjin, two stops, then walk seven minutes. If the line is hopeless, the newer branch at Daimyo 1-14-45 (Qiz Tenjin 1F, tel 092-406-2202, 11:00-21:00 on weekdays, cards accepted) is in the shopping lane, and Fukuoka PARCO has one on B1F.',
+               'วาตานาเบะโดริ 4-9-18 อาคารฟุกุซาเกะ ชั้น 1 โทร 092-726-6700 วันธรรมดาเปิด 10:00 ถึง 22:00 ไม่มีวันหยุด มีแค่ 16 ที่นั่งและไม่มีที่จอดรถ สิบโมงคือเวลาเปิดร้าน คิวจึงสั้นที่สุดตอนนี้ ซื้อตั๋วจากตู้ ซึเคเมงเข้มข้นราว 900 เยน ใส่ไข่ต้มซีอิ๊วเป็น 1,000 เยน แบบเผ็ด 950 เยน เส้นใหญ่พิเศษเพิ่ม 150 เยน และรับเงินสดเท่านั้น ที่ตู้ปรับความมัน ความเข้ม กระเทียม และต้นหอมได้ จาก FUK COFFEE Parks นั่งสายคูโคจากโอโฮริโคเอ็นไปเท็นจินสองสถานี แล้วเดินเจ็ดนาที ถ้าคิวยาวเกินรับไหวให้ไปสาขาใหม่ที่ไดเมียว 1-14-45 (อาคาร Qiz Tenjin ชั้น 1 โทร 092-406-2202 วันธรรมดา 11:00 ถึง 21:00 รับบัตร) ซึ่งอยู่ในซอยช้อปปิ้ง หรือสาขาที่ฟุกุโอกะพาร์โกะชั้นใต้ดิน 1'),
     }) });
 
   const shopB = Object.assign({}, shop, { time: '10:45', meridiem: 'Morning',
@@ -1236,9 +1236,9 @@ const TRIP = {
       activities: d.activities, note: d.note },
     { id: 'B', label: L('Plan B', 'แผน B'),
       tag: L('Tenjin first, the Tower at sunset', 'เท็นจินก่อน พระอาทิตย์ตกที่หอคอย'),
-      activities: [run, fukGion, kaneB, shopB, kuroB, donutB, homeB, towerB, mots, craft],
-      note: L('The same run at half past five and the same dinner - this plan swaps the middle of the day. Out of the house by half past eight for a coffee at FUK COFFEE in Gion at nine, then a walk to Menya Kanetora to be at the door when it opens at ten. The rest of the morning is Tenjin and Daimyo shopping, with a stop at two for tuna bowls at Kurodahan and a donut, and then home to drop the shopping. At half past three the day heads west to Fukuoka Tower and the Momochi shore, with time to walk the seafront before the sun goes down into the bay at about a quarter past five and the city lights come on behind it. Then back to Imaizumi for motsunabe, and craft beer in Daimyo to finish.',
-              'วิ่งตอนตีห้าครึ่งและมื้อค่ำเหมือนเดิม แผนนี้สลับช่วงกลางวัน ออกจากบ้านไม่เกินแปดโมงครึ่งไปดื่มกาแฟที่ FUK COFFEE สาขากิองตอนเก้าโมง แล้วเดินไปเมนยะ คาเนโทระให้ถึงหน้าร้านตอนเปิดสิบโมง ที่เหลือของช่วงเช้าเป็นการช้อปปิ้งย่านเท็นจินและไดเมียว แวะตอนบ่ายสองกินข้าวหน้าทูน่าที่คุโรดะฮันและโดนัท แล้วกลับบ้านไปเก็บของที่ซื้อ ตอนสามโมงครึ่งออกไปทางตะวันตกถึงฟุกุโอกะทาวเวอร์และริมหาดโมโมจิ มีเวลาเดินเล่นริมทะเลก่อนพระอาทิตย์ลงอ่าวราวห้าโมงสิบห้าและไฟเมืองเริ่มติดขึ้นข้างหลัง จากนั้นกลับอิมาอิซุมิไปกินโมทสึนาเบะ และปิดท้ายด้วยคราฟต์เบียร์ที่ไดเมียว') },
+      activities: [run, parksB, kaneB, shopB, kuroB, donutB, homeB, towerB, mots, craft],
+      note: L('The same run at half past five and the same dinner - this plan swaps the middle of the day. Out of the house by half past eight for a coffee at FUK COFFEE Parks, ten minutes away, at nine, then the Kuko Line to Tenjin and a short walk to Menya Kanetora to be at the door when it opens at ten. The rest of the morning is Tenjin and Daimyo shopping, with a stop at two for tuna bowls at Kurodahan and a donut, and then home to drop the shopping. At half past three the day heads west to Fukuoka Tower and the Momochi shore, with time to walk the seafront before the sun goes down into the bay at about a quarter past five and the city lights come on behind it. Then back to Imaizumi for motsunabe, and craft beer in Daimyo to finish.',
+              'วิ่งตอนตีห้าครึ่งและมื้อค่ำเหมือนเดิม แผนนี้สลับช่วงกลางวัน ออกจากบ้านไม่เกินแปดโมงครึ่งไปดื่มกาแฟที่ FUK COFFEE Parks ซึ่งอยู่ห่างสิบนาทีตอนเก้าโมง แล้วนั่งสายคูโคไปเท็นจินและเดินไปเมนยะ คาเนโทระให้ถึงหน้าร้านตอนเปิดสิบโมง ที่เหลือของช่วงเช้าเป็นการช้อปปิ้งย่านเท็นจินและไดเมียว แวะตอนบ่ายสองกินข้าวหน้าทูน่าที่คุโรดะฮันและโดนัท แล้วกลับบ้านไปเก็บของที่ซื้อ ตอนสามโมงครึ่งออกไปทางตะวันตกถึงฟุกุโอกะทาวเวอร์และริมหาดโมโมจิ มีเวลาเดินเล่นริมทะเลก่อนพระอาทิตย์ลงอ่าวราวห้าโมงสิบห้าและไฟเมืองเริ่มติดขึ้นข้างหลัง จากนั้นกลับอิมาอิซุมิไปกินโมทสึนาเบะ และปิดท้ายด้วยคราฟต์เบียร์ที่ไดเมียว') },
   ];
 })();
 
@@ -1425,11 +1425,6 @@ const MENUS = {
   'a-fuk-fukseaside': { items: [
     { name: L('Cafe latte', 'คาเฟ่ลาเต้'), note: L('The order at this stand - have it with the pudding.', 'เมนูแนะนำของร้าน สั่งคู่กับพุดดิ้ง'), signature: true },
     { name: L('Pudding', 'พุดดิ้ง'), note: L('The other thing Fuk Coffee is known for.', 'อีกเมนูที่ร้านขึ้นชื่อ') },
-  ] },
-  'a-fuk-fukgion': { items: [
-    { name: L('Cafe latte', 'คาเฟ่ลาเต้'), note: L('About Y650, and the latte art is what people photograph.', 'ราว 650 เยน และลาเต้อาร์ตคือสิ่งที่คนถ่ายรูปกัน'), signature: true },
-    { name: L('Tiramisu', 'ทีรามิสุ'), note: L('One of the shop\'s desserts.', 'หนึ่งในของหวานของร้าน') },
-    { name: L('Pudding', 'พุดดิ้ง'), note: L('The other dessert Fuk Coffee is known for.', 'อีกเมนูของหวานที่ร้านขึ้นชื่อ') },
   ] },
   'a-fuk-kurodahan': { items: [
     { name: L('Negitoro bowl', 'เนกิโทโรด้ง'), note: L('The house bowl, about Y1,800 - eat it as it comes, then with sesame soy, then with tuna broth.', 'เมนูประจำร้าน ราว 1,800 เยน กินตามที่เสิร์ฟ แล้วราดซีอิ๊วงา และท้ายสุดราดน้ำซุปทูน่า'), signature: true },
