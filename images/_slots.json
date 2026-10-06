@@ -1601,5 +1601,61 @@
     "cat": "dish",
     "w": 1080,
     "h": 810
+  },
+  {
+    "id": "a-fuk-kurodahan",
+    "label": "Maguro to Gohan KURODAHAN",
+    "cat": "activity",
+    "w": 1280,
+    "h": 800
+  },
+  {
+    "id": "a-fuk-fukgion",
+    "label": "FUK COFFEE · Gion",
+    "cat": "activity",
+    "w": 1280,
+    "h": 800
+  },
+  {
+    "id": "dish-a-fuk-kurodahan-0",
+    "label": "Negitoro bowl",
+    "cat": "dish",
+    "w": 1080,
+    "h": 810
+  },
+  {
+    "id": "dish-a-fuk-kurodahan-1",
+    "label": "Premium tuna bowl",
+    "cat": "dish",
+    "w": 1080,
+    "h": 810
+  },
+  {
+    "id": "dish-a-fuk-kurodahan-2",
+    "label": "Seared toro bowl",
+    "cat": "dish",
+    "w": 1080,
+    "h": 810
+  },
+  {
+    "id": "dish-a-fuk-fukgion-0",
+    "label": "Cafe latte",
+    "cat": "dish",
+    "w": 1080,
+    "h": 810
+  },
+  {
+    "id": "dish-a-fuk-fukgion-1",
+    "label": "Tiramisu",
+    "cat": "dish",
+    "w": 1080,
+    "h": 810
+  },
+  {
+    "id": "dish-a-fuk-fukgion-2",
+    "label": "Pudding",
+    "cat": "dish",
+    "w": 1080,
+    "h": 810
   }
 ]

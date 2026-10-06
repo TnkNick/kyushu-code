@@ -57,7 +57,7 @@
 | `p-tum.jpg` | P’Tum | 820×820 |
 | `p-ellie.jpg` | Jane | 1280×800 |
 
-### Itinerary timeline + activity detail — 98 รูป
+### Itinerary timeline + activity detail — 100 รูป
 
 | ไฟล์ | คือ | ขนาด |
 |---|---|---|
@@ -159,8 +159,10 @@
 | `a-d2-yatai.jpg` | Nakasu Yatai dinner | 1280×800 |
 | `a-fuk-fukseaside.jpg` | FUK COFFEE Seaside | 1280×800 |
 | `a-fuk-fukparks.jpg` | FUK COFFEE Parks | 1280×800 |
+| `a-fuk-kurodahan.jpg` | Maguro to Gohan KURODAHAN | 1280×800 |
+| `a-fuk-fukgion.jpg` | FUK COFFEE · Gion | 1280×800 |
 
-### Activity menu — dish photo popup — 107 รูป
+### Activity menu — dish photo popup — 113 รูป
 
 | ไฟล์ | คือ | ขนาด |
 |---|---|---|
@@ -271,5 +273,11 @@
 | `dish-a-fuk-fukparks-1.jpg` | Ohori pudding | 1080×810 |
 | `dish-a-fuk-fukparks-2.jpg` | Cream puff | 1080×810 |
 | `dish-a-fuk-fukparks-3.jpg` | Matcha latte | 1080×810 |
+| `dish-a-fuk-kurodahan-0.jpg` | Negitoro bowl | 1080×810 |
+| `dish-a-fuk-kurodahan-1.jpg` | Premium tuna bowl | 1080×810 |
+| `dish-a-fuk-kurodahan-2.jpg` | Seared toro bowl | 1080×810 |
+| `dish-a-fuk-fukgion-0.jpg` | Cafe latte | 1080×810 |
+| `dish-a-fuk-fukgion-1.jpg` | Tiramisu | 1080×810 |
+| `dish-a-fuk-fukgion-2.jpg` | Pudding | 1080×810 |
 
-_รวม 229 ไฟล์ · สร้างจาก `_generate_placeholders.py`_
+_รวม 237 ไฟล์ · สร้างจาก `_generate_placeholders.py`_
