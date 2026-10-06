@@ -239,7 +239,7 @@
   },
   {
     "id": "day6-cover",
-    "label": "Day 6 · Hakata Old Town",
+    "label": "Day 6 · Dazaifu",
     "cat": "daycover",
     "w": 1280,
     "h": 800
@@ -281,7 +281,7 @@
   },
   {
     "id": "day7-cover",
-    "label": "Day 7 · Dazaifu",
+    "label": "Day 7 · Hakata Old Town",
     "cat": "daycover",
     "w": 1280,
     "h": 800
@@ -337,43 +337,8 @@
   },
   {
     "id": "day8-cover",
-    "label": "Day 8 · Itoshima",
+    "label": "Day 8 · A free day",
     "cat": "daycover",
-    "w": 1280,
-    "h": 800
-  },
-  {
-    "id": "a-d8-torii",
-    "label": "Sakurai Futamigaura",
-    "cat": "activity",
-    "w": 1280,
-    "h": 800
-  },
-  {
-    "id": "a-d8-cafes",
-    "label": "Sunset Road cafés",
-    "cat": "activity",
-    "w": 1280,
-    "h": 800
-  },
-  {
-    "id": "a-d8-oyster",
-    "label": "Kaki-goya oyster hut",
-    "cat": "activity",
-    "w": 1280,
-    "h": 800
-  },
-  {
-    "id": "a-d8-keya",
-    "label": "Keya no Oto",
-    "cat": "activity",
-    "w": 1280,
-    "h": 800
-  },
-  {
-    "id": "a-d8-sunset",
-    "label": "Sunset over the sea",
-    "cat": "activity",
     "w": 1280,
     "h": 800
   },
@@ -534,13 +499,6 @@
   {
     "id": "r-yufuin",
     "label": "Yufuin",
-    "cat": "route",
-    "w": 820,
-    "h": 820
-  },
-  {
-    "id": "r-itoshima",
-    "label": "Itoshima",
     "cat": "route",
     "w": 820,
     "h": 820
@@ -840,34 +798,6 @@
     "h": 810
   },
   {
-    "id": "dish-a-d8-oyster-0",
-    "label": "Grilled oysters",
-    "cat": "dish",
-    "w": 1080,
-    "h": 810
-  },
-  {
-    "id": "dish-a-d8-oyster-1",
-    "label": "Grilled scallops",
-    "cat": "dish",
-    "w": 1080,
-    "h": 810
-  },
-  {
-    "id": "dish-a-d8-oyster-2",
-    "label": "Sazae turban shell",
-    "cat": "dish",
-    "w": 1080,
-    "h": 810
-  },
-  {
-    "id": "dish-a-d8-oyster-3",
-    "label": "Oyster rice",
-    "cat": "dish",
-    "w": 1080,
-    "h": 810
-  },
-  {
     "id": "dish-a-d9-yakiniku-0",
     "label": "Kuroge wagyu set",
     "cat": "dish",
@@ -1092,13 +1022,6 @@
     "h": 800
   },
   {
-    "id": "a-d8-anzen",
-    "label": "Anzen Shokudo",
-    "cat": "activity",
-    "w": 1280,
-    "h": 800
-  },
-  {
     "id": "dish-a-d7-robata-0",
     "label": "Grilled silver salmon set",
     "cat": "dish",
@@ -1150,34 +1073,6 @@
   {
     "id": "dish-a-d7-sashisu-3",
     "label": "Aburi nigiri",
-    "cat": "dish",
-    "w": 1080,
-    "h": 810
-  },
-  {
-    "id": "dish-a-d8-anzen-0",
-    "label": "Tonkotsu ramen",
-    "cat": "dish",
-    "w": 1080,
-    "h": 810
-  },
-  {
-    "id": "dish-a-d8-anzen-1",
-    "label": "Chanpon",
-    "cat": "dish",
-    "w": 1080,
-    "h": 810
-  },
-  {
-    "id": "dish-a-d8-anzen-2",
-    "label": "Kaedama",
-    "cat": "dish",
-    "w": 1080,
-    "h": 810
-  },
-  {
-    "id": "dish-a-d8-anzen-3",
-    "label": "Gyoza",
     "cat": "dish",
     "w": 1080,
     "h": 810
@@ -1456,13 +1351,6 @@
     "h": 800
   },
   {
-    "id": "a-itoshima-tottan",
-    "label": "Kobo Tottan salt pudding",
-    "cat": "activity",
-    "w": 1280,
-    "h": 800
-  },
-  {
     "id": "a-beppu-gansou",
     "label": "Yakiniku Gansou Honten · Beppu",
     "cat": "activity",
@@ -1629,5 +1517,26 @@
     "cat": "dish",
     "w": 1080,
     "h": 810
+  },
+  {
+    "id": "a-d8-coffee",
+    "label": "Coffee by the lake",
+    "cat": "activity",
+    "w": 1280,
+    "h": 800
+  },
+  {
+    "id": "a-d8-parkwalk",
+    "label": "Ohori Park & the castle ruins",
+    "cat": "activity",
+    "w": 1280,
+    "h": 800
+  },
+  {
+    "id": "a-d8-free",
+    "label": "Free time",
+    "cat": "activity",
+    "w": 1280,
+    "h": 800
   }
 ]

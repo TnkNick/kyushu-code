@@ -29,14 +29,14 @@
 | `day3-cover.jpg` | Day 3 · Beppu to Yufuin | 1280×800 |
 | `day4-cover.jpg` | Day 4 · Back to Fukuoka | 1280×800 |
 | `day5-cover.jpg` | Day 5 · Fukuoka | 1280×800 |
-| `day6-cover.jpg` | Day 6 · Hakata Old Town | 1280×800 |
-| `day7-cover.jpg` | Day 7 · Dazaifu | 1280×800 |
-| `day8-cover.jpg` | Day 8 · Itoshima | 1280×800 |
+| `day6-cover.jpg` | Day 6 · Dazaifu | 1280×800 |
+| `day7-cover.jpg` | Day 7 · Hakata Old Town | 1280×800 |
+| `day8-cover.jpg` | Day 8 · A free day | 1280×800 |
 | `day9-cover.jpg` | Day 9 · Fukuoka — Slow Day | 1280×800 |
 | `day10-cover.jpg` | Day 10 · Last Day in Fukuoka | 1280×800 |
 | `day11-cover.jpg` | Day 9 · Homeward | 1280×800 |
 
-### Overview — route-map pins — 6 รูป
+### Overview — route-map pins — 5 รูป
 
 | ไฟล์ | คือ | ขนาด |
 |---|---|---|
@@ -45,7 +45,6 @@
 | `r-kumamoto.jpg` | Kumamoto | 820×820 |
 | `r-beppu.jpg` | Beppu | 820×820 |
 | `r-yufuin.jpg` | Yufuin | 820×820 |
-| `r-itoshima.jpg` | Itoshima | 820×820 |
 
 ### Overview — The Party — 5 รูป
 
@@ -57,7 +56,7 @@
 | `p-tum.jpg` | P’Tum | 820×820 |
 | `p-ellie.jpg` | Jane | 1280×800 |
 
-### Itinerary timeline + activity detail — 99 รูป
+### Itinerary timeline + activity detail — 95 รูป
 
 | ไฟล์ | คือ | ขนาด |
 |---|---|---|
@@ -100,11 +99,6 @@
 | `a-d2-yanagawa.jpg` | Yanagawa river boat | 1280×800 |
 | `a-d2-nightlife.jpg` | A drink in Aso town | 1280×800 |
 | `a-d2-stars.jpg` | Stars over the caldera | 1280×800 |
-| `a-d8-torii.jpg` | Sakurai Futamigaura | 1280×800 |
-| `a-d8-cafes.jpg` | Sunset Road cafés | 1280×800 |
-| `a-d8-oyster.jpg` | Kaki-goya oyster hut | 1280×800 |
-| `a-d8-keya.jpg` | Keya no Oto | 1280×800 |
-| `a-d8-sunset.jpg` | Sunset over the sea | 1280×800 |
 | `a-d8-dinner.jpg` | Hakata Mizutaki · Hanamidori | 1280×800 |
 | `a-d9-ohori.jpg` | Ohori Park | 1280×800 |
 | `a-d9-maizuru.jpg` | Fukuoka Castle ruins | 1280×800 |
@@ -128,7 +122,6 @@
 | `a-d4-kokonoe.jpg` | Kokonoe "Yume" Suspension Bridge | 1280×800 |
 | `a-d7-robata.jpg` | Robata no Ito Okashi | 1280×800 |
 | `a-d7-sashisu.jpg` | Sushi Sakaba Sashisu | 1280×800 |
-| `a-d8-anzen.jpg` | Anzen Shokudo | 1280×800 |
 | `a-d1-gyukatsu.jpg` | Gyukatsu - Tenjin | 1280×800 |
 | `a-d6-bar.jpg` | Shimotori & Kamitori arcades | 1280×800 |
 | `a-d3-sake.jpg` | Ryokan nightcap - Oita shochu | 1280×800 |
@@ -152,7 +145,6 @@
 | `a-hita-sofuren.jpg` | Sofuren Sohonten | 1280×800 |
 | `a-sasaguri-nanzoin.jpg` | Nanzoin reclining Buddha | 1280×800 |
 | `a-hakata-suzukake.jpg` | Suzukake Honten | 1280×800 |
-| `a-itoshima-tottan.jpg` | Kobo Tottan salt pudding | 1280×800 |
 | `a-beppu-gansou.jpg` | Yakiniku Gansou Honten · Beppu | 1280×800 |
 | `a-fuk-kanetora.jpg` | Menya Kanetora · Tenjin honten | 1280×800 |
 | `a-fuk-nishidori.jpg` | Tenjin Nishi-dori · the Human Made lane | 1280×800 |
@@ -160,8 +152,11 @@
 | `a-fuk-fukseaside.jpg` | FUK COFFEE Seaside | 1280×800 |
 | `a-fuk-fukparks.jpg` | FUK COFFEE Parks | 1280×800 |
 | `a-fuk-kurodahan.jpg` | Maguro to Gohan KURODAHAN | 1280×800 |
+| `a-d8-coffee.jpg` | Coffee by the lake | 1280×800 |
+| `a-d8-parkwalk.jpg` | Ohori Park & the castle ruins | 1280×800 |
+| `a-d8-free.jpg` | Free time | 1280×800 |
 
-### Activity menu — dish photo popup — 110 รูป
+### Activity menu — dish photo popup — 102 รูป
 
 | ไฟล์ | คือ | ขนาด |
 |---|---|---|
@@ -203,10 +198,6 @@
 | `dish-a-d7-tempura-1.jpg` | Seasonal vegetable tempura | 1080×810 |
 | `dish-a-d7-tempura-2.jpg` | Anago tempura | 1080×810 |
 | `dish-a-d7-tempura-3.jpg` | Tempura over rice | 1080×810 |
-| `dish-a-d8-oyster-0.jpg` | Grilled oysters | 1080×810 |
-| `dish-a-d8-oyster-1.jpg` | Grilled scallops | 1080×810 |
-| `dish-a-d8-oyster-2.jpg` | Sazae turban shell | 1080×810 |
-| `dish-a-d8-oyster-3.jpg` | Oyster rice | 1080×810 |
 | `dish-a-d9-yakiniku-0.jpg` | Kuroge wagyu set | 1080×810 |
 | `dish-a-d9-yakiniku-1.jpg` | Harami skirt steak | 1080×810 |
 | `dish-a-d9-yakiniku-2.jpg` | Tongue (tan) salt | 1080×810 |
@@ -239,10 +230,6 @@
 | `dish-a-d7-sashisu-1.jpg` | Sashimi moriawase | 1080×810 |
 | `dish-a-d7-sashisu-2.jpg` | Draft beer / highball | 1080×810 |
 | `dish-a-d7-sashisu-3.jpg` | Aburi nigiri | 1080×810 |
-| `dish-a-d8-anzen-0.jpg` | Tonkotsu ramen | 1080×810 |
-| `dish-a-d8-anzen-1.jpg` | Chanpon | 1080×810 |
-| `dish-a-d8-anzen-2.jpg` | Kaedama | 1080×810 |
-| `dish-a-d8-anzen-3.jpg` | Gyoza | 1080×810 |
 | `dish-a-d1-canalcity-0.jpg` | Mina Tenjin | 1080×810 |
 | `dish-a-d1-canalcity-1.jpg` | Fukuoka PARCO | 1080×810 |
 | `dish-a-d1-canalcity-2.jpg` | ONE FUKUOKA BLDG. (ワンビル) | 1080×810 |
@@ -276,4 +263,4 @@
 | `dish-a-fuk-kurodahan-1.jpg` | Premium tuna bowl | 1080×810 |
 | `dish-a-fuk-kurodahan-2.jpg` | Seared toro bowl | 1080×810 |
 
-_รวม 233 ไฟล์ · สร้างจาก `_generate_placeholders.py`_
+_รวม 220 ไฟล์ · สร้างจาก `_generate_placeholders.py`_
