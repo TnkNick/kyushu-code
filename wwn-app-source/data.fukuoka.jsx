@@ -1144,6 +1144,58 @@ const TRIP = {
   ],
 };
 
+// -- Day 5 offers two plans ----------------------------------------------
+// Plan A is the day's own `activities` (the Bookings page keeps reading those, so nothing is listed twice).
+// Plan B swaps the halves: Tenjin in the morning, then Fukuoka Tower for the sunset. Stops that do not
+// change are the SAME objects in both plans, so an edit to one lands in both.
+(function () {
+  const d = TRIP.days[4];
+  const by = (id) => d.activities.find((a) => a.imageId === id);
+  const run = by('a-d2-cityrun'), shop = by('a-d1-canalcity'), kane = by('a-fuk-kanetora'), donut = by('a-d1-imdonut'),
+        tower = by('a-d9-tower'), mots = by('a-d1-motsunabe'), craft = by('a-d1-nightlife');
+
+  const shopB = Object.assign({}, shop, {
+    time: '10:00', meridiem: 'Morning',
+    place: L('Malls and shops around Tenjin Station - the morning', 'ห้างและร้านค้ารอบสถานีเท็นจิน ช่วงเช้า'),
+    refs: Object.assign({}, shop.refs, {
+      notes: L(shop.refs.notes.en + ' Opening hours differ shop to shop - the big stores open around ten and smaller boutiques often later - so start with the department stores. Kanetora, for lunch, is eight minutes on foot south of the station: be on your way by 12:15.',
+               shop.refs.notes.th + ' เวลาเปิดของแต่ละร้านต่างกัน ห้างใหญ่เปิดราวสิบโมงและร้านเล็กมักเปิดทีหลัง จึงควรเริ่มจากห้างสรรพสินค้า ส่วนคาเนโทระที่กินมื้อเที่ยงอยู่ทางใต้ของสถานีเดินแปดนาที ควรออกเดินก่อน 12:15'),
+    }),
+  });
+
+  const homeB = { type: 'step', time: '14:00', meridiem: 'Afternoon', kind: 'Train', icon: 'train',
+    title: L('Subway home to drop the shopping', 'นั่งรถไฟใต้ดินกลับบ้านไปเก็บของที่ซื้อ'),
+    place: L('Tenjin to Ohori-koen - two stops, three minutes, then five on foot', 'จากเท็นจินถึงโอโฮริโคเอ็น สองสถานี สามนาที แล้วเดินห้านาที'),
+    blurb: L('Lunch and the donut done, the Kuko Line takes the morning\'s bags straight home: two stops from Tenjin to Ohori-koen, then five minutes on foot to the house. Leave the shopping, put the feet up for a few minutes, and set out for Momochi in time to be there by three.',
+             'กินมื้อเที่ยงและโดนัทเสร็จแล้ว สายคูโคพาถุงของที่ซื้อตอนเช้ากลับบ้านได้ตรงๆ จากเท็นจินสองสถานีถึงโอโฮริโคเอ็น แล้วเดินห้านาทีถึงบ้าน วางของ พักสักครู่ แล้วออกไปโมโมจิให้ทันถึงตอนบ่ายสาม'),
+    refs: { map: 'https://maps.google.com/?q=33.5907973,130.3745958',
+            booking: L('IC cards work', 'ใช้บัตร IC ได้'),
+            notes: L('Set off for the tower by 14:20 on foot - about 40 minutes along the shore - or by 14:45 in a taxi of around 3 km, to be at Momochi by three.',
+                     'ออกไปหอคอยก่อน 14:20 ถ้าเดิน ราว 40 นาทีตามริมทะเล หรือก่อน 14:45 ถ้านั่งแท็กซี่ระยะราว 3 กิโลเมตร จะถึงโมโมจิตอนบ่ายสาม') } };
+
+  const towerB = Object.assign({}, tower, {
+    time: '15:00', meridiem: 'Afternoon',
+    place: L('Seaside tower - sunset and the lights', 'หอคอยริมทะเล ชมพระอาทิตย์ตกและแสงไฟ'),
+    blurb: L('Japan\'s tallest seaside tower, all mirrored glass, with a 123 m observation deck over Hakata Bay. Get to Momochi by three and walk the seafront while the light turns gold, then go up at about a quarter to five: sunset is about 17:15, the sun going down into the bay, and then the city lit up and the tower running its winter illumination on the outside.',
+             'หอคอยริมทะเลที่สูงที่สุดในญี่ปุ่น ผิวกระจกเงาทั้งหลัง มีจุดชมวิวที่ความสูง 123 เมตรเหนืออ่าวฮากาตะ ไปถึงโมโมจิให้ทันบ่ายสามแล้วเดินเล่นริมทะเลตอนแสงเริ่มเป็นสีทอง จากนั้นขึ้นหอคอยราวสี่โมงสี่สิบห้า พระอาทิตย์ตกราวห้าโมงสิบห้าลงอ่าวไป แล้วต่อด้วยเมืองที่ติดไฟหมดและตัวหอที่เปิดไฟประดับฤดูหนาวด้านนอก'),
+    refs: Object.assign({}, tower.refs, {
+      notes: L('Open 09:30-22:00 with last entry at 21:30. From the house it is a short taxi of around 3 km, or about 40 minutes on foot along the shore. FUK COFFEE Seaside, 17 minutes along the shore from the tower and open until 21:00, is the place to wait for the light. The Fukuoka City Museum next door is due to close for renovation from about October 2026. Check the current ticket price on the official site. Motsunabe in Imaizumi is about 25 minutes back by bus or taxi, so leave the tower by half past six.',
+               'เปิด 09:30 ถึง 22:00 ปิดรับเข้า 21:30 จากบ้านนั่งแท็กซี่ระยะราว 3 กิโลเมตร หรือเดินตามริมทะเลราว 40 นาที FUK COFFEE Seaside เดินจากหอคอยตามชายฝั่ง 17 นาที เปิดถึง 21:00 เป็นที่นั่งรอแสงได้ พิพิธภัณฑ์เมืองฟุกุโอกะที่อยู่ติดกันมีกำหนดปิดปรับปรุงตั้งแต่ราวเดือนตุลาคม 2026 ราคาตั๋วล่าสุดเช็กได้ที่เว็บทางการ ส่วนร้านโมทสึนาเบะที่อิมาอิซุมิ นั่งรถเมล์หรือแท็กซี่กลับราว 25 นาที จึงควรออกจากหอคอยภายในหกโมงครึ่ง'),
+    }),
+  });
+
+  d.plans = [
+    { id: 'A', label: L('Plan A', 'แผน A'),
+      tag: L('Morning by the sea, afternoon in Tenjin', 'เช้าริมทะเล บ่ายเท็นจิน'),
+      activities: d.activities, note: d.note },
+    { id: 'B', label: L('Plan B', 'แผน B'),
+      tag: L('Tenjin first, the Tower at sunset', 'เท็นจินก่อน พระอาทิตย์ตกที่หอคอย'),
+      activities: [run, shopB, kane, donut, homeB, towerB, mots, craft],
+      note: L('Same dawn run, same lunch, same dinner - this plan just swaps the day\'s halves. After the run and breakfast the morning goes to Tenjin: the department stores, Daimyo and the shopping streets from ten. Menya Kanetora for lunch at half past twelve and a donut two minutes away, then the Kuko Line home to drop the shopping. At three the day heads west to Fukuoka Tower and the Momochi shore, with time to walk the seafront before the sun goes down into the bay at about a quarter past five and the city lights come on behind it. Then back to Imaizumi for motsunabe, and craft beer in Daimyo to finish.',
+              'วิ่งเช้า มื้อเที่ยง และมื้อค่ำเหมือนเดิม แผนนี้แค่สลับครึ่งวันกัน หลังวิ่งและกินมื้อเช้า ช่วงเช้าไปเท็นจิน เดินห้างสรรพสินค้า ย่านไดเมียว และถนนช้อปปิ้งตั้งแต่สิบโมง มื้อเที่ยงกินที่เมนยะ คาเนโทระตอนเที่ยงครึ่ง แวะโดนัทที่อยู่ห่างสองนาที แล้วนั่งสายคูโคกลับบ้านไปเก็บของที่ซื้อ บ่ายสามโมงออกไปทางตะวันตกถึงฟุกุโอกะทาวเวอร์และริมหาดโมโมจิ มีเวลาเดินเล่นริมทะเลก่อนพระอาทิตย์ลงอ่าวราวห้าโมงสิบห้าและไฟเมืองเริ่มติดขึ้นข้างหลัง จากนั้นกลับอิมาอิซุมิไปกินโมทสึนาเบะ และปิดท้ายด้วยคราฟต์เบียร์ที่ไดเมียว') },
+  ];
+})();
+
 // Reference dock types - bilingual labels + icon names, in dock order.
 const REF_TYPES = [
   { key: 'map', label: L('Directions', 'เส้นทาง'), icon: 'map', kind: 'link' },

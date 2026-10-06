@@ -298,8 +298,24 @@ function VisitJapanBox() {
   );
 }
 
+// A day may carry `plans` (Plan A / Plan B): the chosen plan decides which activities and which overview note show.
+// The choice is remembered per day in localStorage, so reopening the app lands on the plan you were using.
+function readPlan(day) {
+  try { return localStorage.getItem('jp-plan-' + day.label) || 'A'; } catch (e) { return 'A'; }
+}
+
 function Timeline({ day, onOpen }) {
   const { x, lang } = useT();
+  const [picked, setPicked] = React.useState({});
+  const plan = day.plans
+    ? (day.plans.find((p) => p.id === (picked[day.label] || readPlan(day))) || day.plans[0])
+    : null;
+  const choosePlan = (id) => {
+    setPicked(Object.assign({}, picked, { [day.label]: id }));
+    try { localStorage.setItem('jp-plan-' + day.label, id); } catch (e) { /* private mode: the choice just will not stick */ }
+  };
+  const acts = plan ? plan.activities : day.activities;
+  const note = plan && plan.note ? plan.note : day.note;
   return (
     <section className="day" key={day.label}>
       <header className="day-head">
@@ -311,7 +327,18 @@ function Timeline({ day, onOpen }) {
         </div>
         <h2 className="day-title">{x(day.title)}</h2>
         <p className="day-sub">{x(day.subtitle)}</p>
-        <p className="day-note">{x(day.note)}</p>
+        <p className="day-note">{x(note)}</p>
+        {plan ? (
+          <div className="plan-switch" role="tablist" aria-label={x({ en: 'Choose a plan for this day', th: 'เลือกแผนของวันนี้' })}>
+            {day.plans.map((p) => (
+              <button key={p.id} type="button" role="tab" aria-selected={p.id === plan.id}
+                className={'plan-btn' + (p.id === plan.id ? ' on' : '')} onClick={() => choosePlan(p.id)}>
+                <span className="plan-btn-k">{x(p.label)}</span>
+                <span className="plan-btn-s">{x(p.tag)}</span>
+              </button>
+            ))}
+          </div>
+        ) : null}
       </header>
 
       {day.visitJapan ? <VisitJapanBox /> : null}
@@ -319,8 +346,8 @@ function Timeline({ day, onOpen }) {
       <DayKonbini area={konbiniForDay(day)} />
 
       <div className="timeline">
-        {day.activities.map((a, i) => (
-          <ActivityBlock key={a.imageId || (a.kind + a.time)} a={a} index={i} onOpen={onOpen} />
+        {acts.map((a, i) => (
+          <ActivityBlock key={(plan ? plan.id + '-' : '') + (a.imageId || (a.kind + a.time))} a={a} index={i} onOpen={onOpen} />
         ))}
       </div>
     </section>

@@ -111,6 +111,21 @@ hr();
 // -- day by day, in full --------------------------------------------------
 p('## แผนรายวันแบบละเอียด');
 p();
+const printAct = (a) => {
+  p(`#### ${a.time} ${th(a.title)}`);
+  if (a.place) { p(); p('*' + th(a.place) + '*'); }
+  if (a.blurb) { p(); p(th(a.blurb)); }
+  const r = a.refs || {};
+  const bits = [];
+  if (r.booking) bits.push('**ค่าใช้จ่าย** ' + th(r.booking));
+  if (r.parking) bits.push('**ที่จอดรถ** ' + th(r.parking));
+  if (r.reservation) bits.push('**การจอง** รหัส `' + r.reservation.code + '` เวลา ' + r.reservation.time + ' - ' + th(r.reservation.party));
+  if (r.notes) bits.push('**หมายเหตุ** ' + th(r.notes));
+  if (r.official) bits.push('**เว็บไซต์** ' + r.official);
+  if (r.map) bits.push('**แผนที่** ' + r.map);
+  if (bits.length) { p(); bits.forEach((b) => p('- ' + b)); }
+  p();
+};
 TRIP.days.forEach((d, i) => {
   const wx = WEATHER.days[i + 1];
   p(`### ${th(d.labelTh || d.label)} - ${th(d.date)} - ${th(d.title)}`);
@@ -119,20 +134,16 @@ TRIP.days.forEach((d, i) => {
   p();
   p('> ' + th(d.note));
   p();
-  d.activities.forEach((a) => {
-    p(`#### ${a.time} ${th(a.title)}`);
-    if (a.place) { p(); p('*' + th(a.place) + '*'); }
-    if (a.blurb) { p(); p(th(a.blurb)); }
-    const r = a.refs || {};
-    const bits = [];
-    if (r.booking) bits.push('**ค่าใช้จ่าย** ' + th(r.booking));
-    if (r.parking) bits.push('**ที่จอดรถ** ' + th(r.parking));
-    if (r.reservation) bits.push('**การจอง** รหัส `' + r.reservation.code + '` เวลา ' + r.reservation.time + ' - ' + th(r.reservation.party));
-    if (r.notes) bits.push('**หมายเหตุ** ' + th(r.notes));
-    if (r.official) bits.push('**เว็บไซต์** ' + r.official);
-    if (r.map) bits.push('**แผนที่** ' + r.map);
-    if (bits.length) { p(); bits.forEach((b) => p('- ' + b)); }
+  if (!d.plans) { d.activities.forEach(printAct); return; }
+  // a day with two plans: plan A in full, then plan B (stops shared with plan A are only listed, not repeated)
+  d.plans.forEach((pl, pi) => {
+    p(`##### ${th(pl.label)} - ${th(pl.tag)}`);
     p();
+    if (pi > 0 && pl.note) { p('> ' + th(pl.note)); p(); }
+    pl.activities.forEach((a) => {
+      if (pi > 0 && d.activities.includes(a)) { p(`#### ${a.time} ${th(a.title)} (เหมือนแผน A)`); p(); }
+      else printAct(a);
+    });
   });
 });
 hr();
